@@ -1458,8 +1458,6 @@
     <Content Include="scripts\js-libs\jquery-export\.gitignore" />
     <Content Include="scripts\js-libs\jquery-export\alasql\alasql.min.js" />
     <Content Include="scripts\js-libs\jquery-export\alasql\xlsx.core.min.js" />
-    <Content Include="scripts\js-libs\jquery-export\canvg\canvg.js" />
-    <Content Include="scripts\js-libs\jquery-export\canvg\canvg.min.js" />
     <Content Include="scripts\js-libs\jquery-export\html2canvas\canvas2image.js" />
     <Content Include="scripts\js-libs\jquery-export\html2canvas\html2canvas.js" />
     <Content Include="scripts\js-libs\jquery-export\jquery.base64.js" />

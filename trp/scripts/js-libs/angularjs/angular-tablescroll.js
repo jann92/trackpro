@@ -141,7 +141,7 @@ function NgTablecroll() {
             function isIE8() {
                 var rv = -1;
                 var ua = navigator.userAgent;
-                var re = new RegExp("Trident\/([0-9]{1,}[\.0-9]{0,})");
+                var re = new RegExp("Trident\\/([0-9]{1,}[\\.0-9]{0,})");
                 if (re.exec(ua)) {
                     rv = parseFloat(RegExp.$1);
                 }
