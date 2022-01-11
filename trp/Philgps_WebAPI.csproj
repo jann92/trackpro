@@ -1494,12 +1494,6 @@
     <Content Include="scripts\js-libs\jquery-ui\jquery.mCustomScrollbar.min.js" />
     <Content Include="scripts\js-libs\jquery-ui\jquery.mousewheel-3.0.6.js" />
     <Content Include="scripts\js-libs\jquery-ui\jquery.mousewheel.js" />
-    <Content Include="scripts\js-libs\jquery\flexslider\angular-flexslider.js" />
-    <Content Include="scripts\js-libs\jquery\flexslider\flexslider.css" />
-    <Content Include="scripts\js-libs\jquery\flexslider\fonts\flexslider-icon.svg" />
-    <Content Include="scripts\js-libs\jquery\flexslider\images\bg_play_pause.png" />
-    <Content Include="scripts\js-libs\jquery\flexslider\jquery.flexslider-min.js" />
-    <Content Include="scripts\js-libs\jquery\flexslider\jquery.flexslider.js" />
     <Content Include="scripts\js-libs\jquery\jquery-2.2.3.js" />
     <Content Include="scripts\js-libs\jquery\jquery-2.2.3.min.js" />
     <Content Include="scripts\js-libs\jquery\jquery.stickytableheaders.js" />
@@ -2897,10 +2891,6 @@
     <Content Include="scripts\js-libs\jquery-export\tools\minify3.py" />
     <Content Include="scripts\js-libs\parsley\parsley.js.map" />
     <Content Include="scripts\js-libs\parsley\parsley.min.js.map" />
-    <Content Include="scripts\js-libs\jquery\flexslider\flexslider.less" />
-    <Content Include="scripts\js-libs\jquery\flexslider\fonts\flexslider-icon.eot" />
-    <Content Include="scripts\js-libs\jquery\flexslider\fonts\flexslider-icon.ttf" />
-    <Content Include="scripts\js-libs\jquery\flexslider\fonts\flexslider-icon.woff" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
