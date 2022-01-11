@@ -1,0 +1,21 @@
+﻿<div class="col-md-6" style="top: 20px;">
+    <script type="text/ng-template" id="alertCheckModal">
+        <div class="modal-header modal-list-header" style="background-color:#cd0a0a !important;">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Check List</h4>
+        </div>
+        <div class="modal-body" style="height:220px;">
+            <table class="table table-condensed table-hover">
+                <tbody>
+                    <tr ng-repeat="vio in vioData.checkList">
+                        <td><input ng-click="checkProtocol(vio)" ng-model="vio.check" class="alert-checkbox" type="checkbox" ng-disabled="vio.check"/></td>
+                        <td><b class="font-20px">{{vio.name}}</b></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="modal-button">
+                <a class="btn btn-default btn-xs trackpro-red-btn pull-right font-15px" title="Resolve" ng-click="resolve()">Resolve&nbsp;&nbsp;<i class="fa fa-exclamation-circle"></i></a>
+            </div>
+        </div>
+    </script>
+</div>

@@ -1,0 +1,16 @@
+﻿.label-icon {
+    width: 14px;
+}
+
+table#asset-information-details tr td {
+        font-size: 11px;
+        padding-top: 3px;
+}
+
+.location-ellipsis{
+    position: absolute;
+    white-space: nowrap;
+    width: 239px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

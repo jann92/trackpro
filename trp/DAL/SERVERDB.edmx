@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SERVERDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'SERVERDB.dbo.WebServerConfiguration' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="WebServerConfiguration">
+          <Key>
+            <PropertyRef Name="web_server_configuration_id" />
+          </Key>
+          <Property Name="web_server_configuration_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="web_server_id" Type="int" />
+          <Property Name="config_name" Type="varchar" MaxLength="50" />
+          <Property Name="database_name" Type="varchar" MaxLength="50" />
+          <Property Name="web_config_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WebServers">
+          <Key>
+            <PropertyRef Name="web_server_id" />
+          </Key>
+          <Property Name="web_server_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="200" />
+          <Property Name="url" Type="varchar" MaxLength="500" />
+          <Property Name="code" Type="varchar" MaxLength="200" />
+          <Property Name="config_name" Type="varchar" MaxLength="50" />
+          <Property Name="default_coordinates" Type="varchar" MaxLength="50" />
+          <Property Name="downloads_url" Type="varchar" MaxLength="200" />
+          <Property Name="images_url" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="FK__WebServer__web_s__00551192">
+          <End Role="WebServers" Type="Self.WebServers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WebServerConfiguration" Type="Self.WebServerConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebServers">
+              <PropertyRef Name="web_server_id" />
+            </Principal>
+            <Dependent Role="WebServerConfiguration">
+              <PropertyRef Name="web_server_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SERVERDBModelStoreContainer">
+          <EntitySet Name="WebServers" EntityType="Self.WebServers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebServerConfiguration" EntityType="Self.WebServerConfiguration" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WebServerConfiguration].[web_server_configuration_id] AS [web_server_configuration_id], 
+    [WebServerConfiguration].[web_server_id] AS [web_server_id], 
+    [WebServerConfiguration].[config_name] AS [config_name], 
+    [WebServerConfiguration].[database_name] AS [database_name], 
+    [WebServerConfiguration].[web_config_name] AS [web_config_name]
+    FROM [dbo].[WebServerConfiguration] AS [WebServerConfiguration]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__WebServer__web_s__00551192" Association="Self.FK__WebServer__web_s__00551192">
+            <End Role="WebServers" EntitySet="WebServers" />
+            <End Role="WebServerConfiguration" EntitySet="WebServerConfiguration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SERVERDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="WebServers">
+          <Key>
+            <PropertyRef Name="web_server_id" />
+          </Key>
+          <Property Name="web_server_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="code" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="config_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="default_coordinates" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="downloads_url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="images_url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WebServerConfiguration" Relationship="Self.FK__WebServer__web_s__00551192" FromRole="WebServers" ToRole="WebServerConfiguration" />
+        </EntityType>
+        <EntityType Name="WebServerConfiguration">
+          <Key>
+            <PropertyRef Name="web_server_configuration_id" />
+          </Key>
+          <Property Name="web_server_configuration_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="web_server_id" Type="Int32" />
+          <Property Name="config_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="database_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="web_config_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="WebServers" Relationship="Self.FK__WebServer__web_s__00551192" FromRole="WebServerConfiguration" ToRole="WebServers" />
+        </EntityType>
+        <Association Name="FK__WebServer__web_s__00551192">
+          <End Role="WebServers" Type="Self.WebServers" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WebServerConfiguration" Type="Self.WebServerConfiguration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebServers">
+              <PropertyRef Name="web_server_id" />
+            </Principal>
+            <Dependent Role="WebServerConfiguration">
+              <PropertyRef Name="web_server_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SERVERDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="WebServers" EntityType="Self.WebServers" />
+          <EntitySet Name="WebServerConfiguration" EntityType="Self.WebServerConfiguration" />
+          <AssociationSet Name="FK__WebServer__web_s__00551192" Association="Self.FK__WebServer__web_s__00551192">
+            <End Role="WebServers" EntitySet="WebServers" />
+            <End Role="WebServerConfiguration" EntitySet="WebServerConfiguration" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SERVERDBModelStoreContainer" CdmEntityContainer="SERVERDBEntities">
+          <EntitySetMapping Name="WebServers">
+            <EntityTypeMapping TypeName="SERVERDBModel.WebServers">
+              <MappingFragment StoreEntitySet="WebServers">
+                <ScalarProperty Name="web_server_id" ColumnName="web_server_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="config_name" ColumnName="config_name" />
+                <ScalarProperty Name="default_coordinates" ColumnName="default_coordinates" />
+                <ScalarProperty Name="downloads_url" ColumnName="downloads_url" />
+                <ScalarProperty Name="images_url" ColumnName="images_url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebServerConfiguration">
+            <EntityTypeMapping TypeName="SERVERDBModel.WebServerConfiguration">
+              <MappingFragment StoreEntitySet="WebServerConfiguration">
+                <ScalarProperty Name="web_server_configuration_id" ColumnName="web_server_configuration_id" />
+                <ScalarProperty Name="web_server_id" ColumnName="web_server_id" />
+                <ScalarProperty Name="config_name" ColumnName="config_name" />
+                <ScalarProperty Name="database_name" ColumnName="database_name" />
+                <ScalarProperty Name="web_config_name" ColumnName="web_config_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

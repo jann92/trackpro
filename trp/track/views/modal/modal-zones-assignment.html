@@ -1,0 +1,123 @@
+﻿<div class="col-md-12" style="top: 20px;">
+    <script type="text/ng-template" id="zonesAssignmentModal">
+        <div class="modal-header modal-list-header">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+            <h3 class="modal-title">Zone Asset Assignment</h3>
+        </div>
+        <div class="modal-body modal-body-360px">
+        
+            <div class="child-list">
+                <div ng-show="isZoneList">
+                    <div class="loading-panel-modal" ng-show="isZoneListLoading">
+                        <div style="text-align:center; margin-top: 5%;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                    </div>
+           
+                    <div class="padding-10px">
+                        <input type="text" ng-show="UserZoneList.length > 0" ng-model="filterZone"  placeholder="filter zone..." class="width-100-percent" />
+                    </div>
+                    <div class="font-10px" ng-show="UserZoneList.length > 0"><b>&nbsp;&nbsp;&nbsp;Total Zones: &nbsp;</b>{{UserZoneList.length}}</div>
+                    <div class="modal-parent-list list-scroll" style="max-height:300px !important;">
+                        <table class="table table-condensed table-hover">
+                            <tbody>
+                                <tr class="cursor-pointer"
+                                    ng-repeat="UserZone in UserZoneList | toArray:false | filter:filterZone | orderBy: '+Name'"
+                                    ng-click="GetZoneAssignedList(UserZone.ZoneID)"
+                                    ng-class="{'trackpro-green' : UserZone.ZoneID == SelectedZoneID}" 
+                                    on-finish-render="ngRepeatZoneListFinished" id="user{{UserZone.ZoneID}}">
+                                    <td class="right-align width-15-percent">{{$index +1}}</td>
+                                    <td class="left-align">{{UserZone.Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div ng-show="!isZoneList">
+                    <div class="padding-10px">
+                        <input type="text" ng-model="filterAsset" placeholder="filter assets..." class="width-100-percent" />
+                    </div>
+                    <div class="font-10px" ng-show="TotalAssets > 0"><b>&nbsp;&nbsp;&nbsp;Total Assets: &nbsp;</b>{{TotalAssets}}</div>
+                    <div class="modal-parent-list">
+                        <div ng-show="filtered.length === 0" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                        <div class="collapse-list" ng-repeat="cus in CustomerList | orderBy: '+CustomerName'">
+                            <h6><a class="fa fa-plus-circle summary-font-icon active" id="zone-asset-modal-{{cus.CustomerID}}" ng-click="viewAsset(cus.CustomerID)"></a> {{cus.CustomerName}} ({{filtered.length}})</h6>
+                            <div id="zone-asset-{{cus.CustomerID}}" class="collapse">
+                                <table class="table table-condensed table-hover">
+                                    <tbody>
+                                        <tr ng-repeat="asset in filtered = (cus.AssetList | filter:filterAsset) | orderBy: '+Name'"
+                                            ng-class="{'trackpro-green' : asset.AssetID == SelectedAssetID}">
+                                            <td class="right-align col-xs-3">{{$index +1}}</td>
+                                            <td class="col-xs-9 pointer"
+                                                ng-click="getAssetAssignedZoneList(asset.AssetID)">
+                                                {{asset.Name}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="asset-list">
+                <div ng-show="isZoneList">
+                    <div ng-show="isLoading" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                    <input type="text" ng-show="ZoneAssignedAssetList.length > 0" ng-model="filterAsset" placeholder="filter assets..." class="width-100-percent" />
+                    <div style="position:relative;" class="padding-10px" ng-hide="isLoading"><div class="pull-right font-10px"><b>&nbsp;&nbsp;&nbsp;Total Assigned Assets: &nbsp;</b>{{TotalAssignedAssets}} / {{TotalAssets}}</div></div>
+                      <div class="modal-oveflow">
+                         <div class="collapse-list" ng-repeat="cus in ZoneAssignedAssetList | toArray:false | orderBy: '+CustomerName'">
+                             <h6><a class="fa fa-plus-circle summary-font-icon active" id="zone-cus-modal-{{cus.CustomerID}}" ng-click="viewCustomer(cus.CustomerID)"></a> {{cus.CustomerName}} ({{filtered.length}})</h6>
+                             <div id="zone-cus-{{cus.CustomerID}}" class="collapse">
+                                 <table class="table table-condensed table-hover">
+                                     <tbody>
+                                         <tr ng-show="filtered.length > 0">
+                                             <td class="col-xs-3 center-align">Select All:</td>
+                                             <td class="col-xs-9"><input type="checkbox" ng-model="cus.CustomerID" ng-click="getSelected(filtered, cus.CustomerID)"></td>
+                                         </tr>
+                                         <tr ng-repeat="asset in filtered = (cus.AccountUserChildAssetList | filter:filterAsset) | orderBy: '+AssetName'">
+                                             <td class="col-xs-3 center-align"><input type="checkbox" ng-model="asset.IsAssigned" ng-click="toggleSelectAll(asset.IsAssigned, cus)" ></td>
+                                             <td class="col-xs-3">{{asset.AssetName}}</td>
+                                         </tr>
+                                     </tbody>
+                                 </table>
+                             </div>
+                         </div>
+                    </div>
+                    <div class="modal-button">
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-left" title="Switch to Asset" ng-click="toggleList()">Switch to Asset <i class="fa fa-exchange"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Close" ng-click="cancel()">Close <i class="fa fa-close"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Assign" ng-click="UpdateZoneAssignment()" ng-show="ZoneAssignedAssetList.length > 0">Assign <i class="fa fa-save"></i></a>
+
+                    </div>
+                </div>
+                <div ng-show="!isZoneList">
+                    <div ng-show="isLoading" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                    <input type="text" ng-show="AssetAssignedZoneList.length > 0" ng-model="filterZone" placeholder="filter zones..." class="width-100-percent" />
+                    <div style="position:relative;" class="padding-10px" ng-show="SelectedAssetID && AssetAssignedZoneList.length > 0"><div class="pull-right font-10px"><b>&nbsp;&nbsp;&nbsp;Total Assigned Zones: &nbsp;</b>{{TotalAssignedZones}} / {{TotalZones}}</div></div>
+                    <div class="modal-oveflow">
+                        <table class="table table-condensed table-hover" ng-show="AssetAssignedZoneList.length > 0">
+                            <tbody>
+                                <tr ng-show="filteredZone.length > 0">
+                                    <td class="col-xs-3 center-align">Select All:</td>
+                                    <td class="col-xs-9"><input type="checkbox" ng-model="allSelected.Zone" ng-click="getSelectedZone(filteredZone, allSelected.Zone)"></td>
+                                </tr>
+                                <tr class="cursor-pointer"
+                                    ng-repeat="UserZone in filteredZone = (AssetAssignedZoneList | filter:filterZone) | orderBy: '+Name'">
+                                    <td class="col-xs-3 center-align"><input type="checkbox" ng-model="UserZone.IsAssigned" ng-click="toggleSelectAllZone(UserZone.IsAssigned)"></td>
+                                    <td class="col-xs-9">{{UserZone.Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="center-align" ng-hide="SelectedAssetID">
+                            <h5><i class="fa fa-exclamation-triangle"></i> No selected Asset.</h5>
+                        </div>
+                    </div>
+                    <div class="modal-button">
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-left" title="Update" ng-click="toggleList()">Switch to Zone <i class="fa fa-exchange"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Close" ng-click="cancel()">Close <i class="fa fa-close"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Update" ng-click="UpdateAssetAssignment(AssetAssignedZoneList)" ng-show="AssetAssignedZoneList.length > 0">Assign <i class="fa fa-save"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>

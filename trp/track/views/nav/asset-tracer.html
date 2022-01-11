@@ -1,0 +1,92 @@
+﻿<div class="left-side-content-container" id="asset-tracer">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Asset Tracer</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/5/asset'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <div class="pull-right export-file fade in" id="export-file-asset-tracer" ng-show="assetTracerList.length > 0 && SelectedAsset.AssetID">
+                <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x xls"></i>
+                        <strong class="fa-stack-1x file-type">XLS</strong>
+                    </span>
+                </button>
+                <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x csv"></i>
+                        <strong class="fa-stack-1x file-type">CSV</strong>
+                    </span>
+                </button>
+                <button class="btn btn-default btn-type btn-xs" title="Export to KML" ng-click="exportToKML()">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x csv"></i>
+                        <strong class="fa-stack-1x file-type">KML</strong>
+                    </span>
+                </button>
+            </div>
+            <a class="btn btn-default export-panel" title="Export" ng-click="exportPanel()" ng-show="assetTracerList.length > 0 && SelectedAsset.AssetID">
+                <i class="fa fa-download export-awesome-alignment"></i>
+            </a>
+            <hr class="spacing-2px" />
+            <div>
+                <table class="col-xs-12">
+                    <tr>
+                        <td>
+                            <span class="spacing-2px">
+                                <a ng-show="SelectedAsset" class="btn btn-xs btn-default trackpro-green-btn" ng-click="tracer()">
+                                    <i class="fa" ng-class='(tracing) ? "fa-stop-circle" : "fa-play-circle"'></i>&nbsp;{{ (tracing) ? "Stop Trace" : "Start Trace" }}
+                                </a>
+
+                                <a ng-hide="SelectedAsset" class="btn btn-xs btn-default trackpro-green-btn" ng-click="openAssetList()">
+                                    Please select an asset first.
+                                </a>
+                            </span>
+                        </td>
+                        <td class="pull-right">
+                            <button class="btn btn-xs btn-default trackpro-green-btn" ng-click="clearTracer()" ng-show="assetTracerList.length > 0">Clear</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h5 ng-show="SelectedAsset">{{SelectedAsset.Name + ' - '}}{{SelectedAsset.AssetID}}</h5>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr class="spacing" />
+    <div class="side-panel-menu-content-body-container">
+        <div class="side-panel-menu-content-body">
+            <div id="export-asset-tracer">
+                <div class="center-align" ng-show="tracing"><i class="fa fa-refresh fa-spin"></i>&nbsp; Tracing...</div>
+                <table class="table table-condensed table-hover separate" ng-show="SelectedAsset.AssetID">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td class="width-20-percent center-align">Time</td>
+                            <!--<td class="width-30-percent">Location</td>-->
+                            <td class="width-25-percent center-align">Speed-Course</td>
+                            <td class="width-25-percent center-align">Status</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="asset in assetTracerList | orderBy:'GPSTime':true">
+                            <!--<tr ng-repeat="asset in assetTracer track by $index>-->
+                            <td>{{$index + 1}}</td>
+                            <td class="width-20-percent center-align"><span style="white-space:pre-wrap;">{{(asset.GPSTime)}}</span></td>
+                            <!--<td class="width-30-percent" title="{{asset.Location}}">{{asset.Location | limitTo: 20 }}{{asset.Location.length > 20 ? '...' : ''}}</td>-->
+                            <td class="width-30-percent center-align" hidden>{{asset.Location}}</td>
+                            <td class="center-align width-25-percent center-align">{{asset.Speed + ' kph, ' + asset.DirectionDegrees + ' ' + asset.DirectionCardinal}}</td>
+                            <td class="width-25-percent center-align">{{asset.Status}}</td>
+                            <td>
+                                <div class="asset-icons">
+                                    <a class="fa fa-map-marker pointer" ng-click="panMarker(asset)" title="Map" style="text-decoration:none;"></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

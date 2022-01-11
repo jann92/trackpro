@@ -1,0 +1,172 @@
+﻿<div class="summary-container" id="summary-control">
+    <div class="left-side-panel-summary">
+        <br />
+        <a ng-show="assetListCount > 0" id="export-btn" class="btn btn-default btn-export" title="Export" data-slidetoggle="export-menu" aria-expanded="true">
+            <i class="fa fa-download alignment"></i>
+        </a>
+        <div id="export-menu" class="export-menu collapse" ng-show="assetListCount > 0">
+            <table class=" table table-condensed">
+                <tr>
+                    <td style="padding-top: 11px;">Export Summary</td>
+                    <td>
+                        <a href="#" class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xls')">
+                            <span class="fa-stack">
+                                <i class="fa fa-stack-1-6x xls" ng-class="{'fa-circle-o-notch fa-spin': exportXLSX === true,'fa-file': exportXLSX === false}"></i>
+                                <strong class="fa-stack-1x file-type" ng-show="!exportXLSX">XLS</strong>
+                            </span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')">
+                            <span class="fa-stack">
+                                <i class="fa fa-stack-1-6x csv" ng-class="{'fa-circle-o-notch fa-spin': exportCSV === true,'fa-file': exportCSV === false}"></i>
+                                <strong class="fa-stack-1x file-type" ng-show="!exportCSV">CSV</strong>
+                            </span>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-default btn-type btn-xs" title="Export to KML" ng-click="exportToKML()">
+                            <span class="fa-stack">
+                                <i class="fa fa-stack-1-6x fa-file csv"></i>
+                                <strong class="fa-stack-1x file-type">KML</strong>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="summary-table-container">
+        <div class="top-border-container"></div>
+        <div class="search-assets" id="inp-search-assets" style="padding-left: 5px;">
+            <input placeholder="Search Asset..." type="text" ng-model="filterTable" class="width-25-percent black">
+        </div>
+        <div class="summary-content" id="summary-content">
+            <table id="summary-export-table" style="display:none;" data-tableexport-display="always">
+                <thead>
+                    <tr>
+                        <th style="width:30%">Customer</th>
+                        <th class="width-10-percent">Asset</th>
+                        <th class="width-10-percent">Speed-Course</th>
+                        <th class="width-10-percent">GPS Time</th>
+                        <th class="width-10-percent">Status</th>
+                        <th class="width-10-percent">Fuel</th>
+                        <th class="width-10-percent">Temperature1</th>
+                        <th class="width-10-percent">Temperature2</th>
+                        <th class="width-10-percent">Sensor1</th>
+                        <th class="width-10-percent">Sensor2</th>
+                        <th class="width-10-percent">SIM Number</th>
+                        <th class="width-10-percent">Coordinates</th>
+                        <th class="width-10-percent">Location</th>
+                        <th class="width-10-percent">Zone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td colspan="14"></td>
+                    </tr>
+                    <tr ng-repeat-start="cus in customerList | filter: filterTable">
+                        <td class="width-20-percent">
+                            {{cus.CustomerName}} ({{filtered.length}})
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr ng-repeat="asset in (filtered = (cus.AssetList | filter:filterTable)) | orderBy: '+assetName'">
+                        <td></td>
+                        <td>{{asset.assetName}}</td>
+                        <td>{{asset.Speed +' kph, '+ asset.DirectionDegrees +'° '+ asset.DirectionCardinal}}</td>
+                        <td>{{asset.GPSTime}}</td>
+                        <td>{{asset.Status.Description}}</td>
+                        <td>{{asset.Fuel <0 ? "N/A" : asset.Fuel}}</td>
+                        <td>{{asset.Temperature1 <0 ? "N/A" : asset.Temperature1 }}</td>
+                        <td>{{asset.Temperature2 <0 ? "N/A" : asset.Temperature2 }}</td>
+                        <td>{{(asset.Status.Sensor1) ? 'On':'Off'}}</td>
+                        <td>{{(asset.Status.Sensor2) ? 'On':'Off'}}</td>
+                        <td>{{asset.SIMNumber}}</td>
+                        <td>{{asset.Latitude + ', ' + asset.Longitude}}</td>
+                        <td>{{asset.Location}}</td>
+                        <td>{{asset.ZoneInsideList}}</td>
+                    </tr>
+                    <tr ng-repeat-end>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class='scroll-table'>
+                <div class="collapse-list" ng-repeat="cus in customerList | filter: filterTable">
+                    <h5>
+                        <a class="fa fa-minus-circle summary-font-icon" id="summary-font-icon-{{cus.CustomerID
+}}" ng-click="viewAsset(cus.CustomerID)"></a> {{cus.CustomerName}} ({{filtered.length}})
+                    </h5>
+                    <div id="{{cus.CustomerID}}">
+                        <table class="table table-condensed" ng-show="cus.AssetList.length">
+                            <tr>
+                                <th class="width-3-percent"></th>
+                                <th class="width-2-percent"></th>
+                                <th class="center-align width-10-percent">Asset</th>
+                                <th class="center-align width-10-percent">Speed-Course</th>
+                                <th class="center-align width-10-percent">Time</th>
+                                <th class="center-align width-10-percent">Status</th>
+                                <th class="center-align width-5-percent">Fuel<small>(L)</small></th>
+                                <th class="center-align width-5-percent">Temp 1<small>(°C)</small></th>
+                                <th class="center-align width-5-percent">Temp 2<small>(°C)</small></th>
+                                <th class="center-align width-5-percent">Sensor 1</th>
+                                <th class="center-align width-5-percent">Sensor 2</th>
+                                <th class="center-align width-5-percent" ng-show="isDelivery">Delivery</th>
+                                <!--<th class="center-align width-8-percent">SIM</th>-->
+                                <!--<th class="center-align width-15-percent">Location</th>-->
+                                <th class="center-align width-10-percent" ng-show="Driver">Driver</th>
+                                <th class="center-align width-15-percent">Zone</th>
+                            </tr>
+                        </table>
+                        <table class="table table-condensed separate" ng-repeat="asset in (filtered = (cus.AssetList | filter:filterTable)) | orderBy: '+assetName'">
+                            <tr ng-click="highlight(asset)" ng-dblclick="showMap(asset)" class="pointer" ng-class="{'trackpro-green-blur': asset.AssetID === isClicked}">
+                                <td class="width-3-percent asset-icon-td">
+                                    <img ng-src="../../contents/map/Asset-menu/{{asset.TypeName}}.gif" class="asset-icons-svg" />
+                                </td>
+                                <td class="width-2-percent" ng-class="asset.color">{{$index +1 }}</td>
+                                <td class="center-align width-10-percent">{{asset.assetName}}</td>
+                                <td class="center-align width-10-percent">{{asset.Speed +' kph, '+ asset.DirectionDegrees +'° '+ asset.DirectionCardinal}}</td>
+                                <td class="center-align width-10-percent">
+                                    <span style="white-space:pre-wrap;">{{(asset.GPSTime)}}</span>
+                                </td>
+                                <td class="center-align width-10-percent">{{asset.Status.Description}}</td>
+                                <td class="center-align width-5-percent">{{asset.Fuel <0 ? "N/A" : asset.Fuel}}</td>
+                                <td class="center-align width-5-percent">{{asset.Temperature1 <0 ? "N/A" : asset.Temperature1 }}</td>
+                                <td class="center-align width-5-percent">{{asset.Temperature2 <0 ? "N/A" : asset.Temperature2 }}</td>
+                                <td class="center-align width-5-percent">{{(asset.Status.Sensor1) ? 'On':'Off'}}</td>
+                                <td class="center-align width-5-percent">{{(asset.Status.Sensor2) ? 'On':'Off'}}</td>
+                                <td class="center-align width-5-percent" ng-show="isDelivery">{{asset.DeliveryCount}} item(s)</td>
+                                <!--<td class="left-align width-8-percent">{{asset.SIMNumber}}</td>-->
+                                <!--<td class="left-align width-15-percent">{{reverse(asset.Longitude,asset.Latitude)}}</td>-->
+                                <td class="center-align width-10-percent" ng-show="Driver">{{asset.CurrentDriver}}</td>
+                                <td class="center-align width-15-percent">{{asset.ZoneInsideList}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-side-panel-menu">
+    </div>
+</div>
+
+<script>
+    $('#export-btn').click(function () {
+        if ($(this).hasClass('active')) {
+            $('#export-btn').removeClass('active');
+            $('.export-menu').hide("slide");
+        }
+        else {
+            $('#export-btn').removeClass('active');
+            $('.export-menu').hide("slide");
+
+            $(this).addClass('active');
+            var target = $(this).attr('data-slidetoggle');
+            $('#' + target).show("slide");
+        }
+    });
+</script>

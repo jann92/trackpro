@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="34.114px" height="28.563px" viewBox="32.771 36.272 34.114 28.563" enable-background="new 32.771 36.272 34.114 28.563"
+	 xml:space="preserve">
+<g display="none">
+	<path id="smoke_2" display="inline" fill="#666766" d="M66.838,48.515c0.199,0.299-0.301,0.599-0.301,0.599c0.5,0.602,0,1,0,1
+		c-0.199,0.301-0.898,0-0.898,0c-0.199,0.602-0.801,0.5-0.801,0.5c-0.699,0-0.602-0.6-0.602-0.6c-0.604-0.101-0.5-0.5-0.5-0.5
+		c0-0.3,0.602-0.3,0.602-0.3c-0.699-0.301-0.5-0.801-0.5-0.801c0.199-0.6,1-0.199,1-0.199c0.699-0.601,1.199,0.199,1.199,0.199
+		C66.338,47.914,66.838,48.515,66.838,48.515z	">
+<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;2,-2" repeatCount="indefinite" dur="1">
+			</animateTransform>
+		
+			<animate  fill="remove" from="1" to="0" additive="replace" attributeName="opacity" calcMode="linear" begin="0.5s" accumulate="none" restart="always" repeatCount="indefinite" dur="1">
+			</animate>
+	</path>
+	<path id="smoke_1" display="inline" fill="#999999" d="M65.539,49.414c0.102,0.199-0.199,0.4-0.199,0.4c0.301,0.399,0,0.6,0,0.6
+		c-0.102,0.199-0.5,0-0.5,0c-0.102,0.4-0.5,0.301-0.5,0.301c-0.4,0-0.4-0.4-0.4-0.4c-0.396-0.1-0.299-0.301-0.299-0.301
+		c0-0.199,0.299-0.199,0.299-0.199c-0.5-0.2-0.299-0.5-0.299-0.5c0.104-0.399,0.604-0.1,0.604-0.1c0.396-0.301,0.694,0.1,0.694,0.1
+		C65.238,49.113,65.539,49.414,65.539,49.414z	">
+<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;1,-1" repeatCount="indefinite" dur="0.5">
+			</animateTransform>
+		
+			<animate  fill="remove" from="1" to="0" additive="replace" attributeName="opacity" calcMode="linear" begin="0.5s" accumulate="none" restart="always" repeatCount="indefinite" dur="1">
+			</animate>
+	</path>
+</g>
+<g id="Tire_2_1_">
+	<path d="M44.995,64.827c0,0-1.259-0.237-1.893-1.562c0,0-0.292-2.276,1.566-3.029c0,0,1.465,0.084,2.103,1.097
+		C47.432,62.559,44.995,64.827,44.995,64.827z"/>
+	<path fill="#333333" d="M46.678,63.505c-0.446,1.033-1.324,1.522-1.915,1.261c-0.59-0.265-0.711-1.345-0.188-2.354
+		c0.445-1.03,1.324-1.523,1.914-1.262C47.08,61.417,47.174,62.594,46.678,63.505z"/>
+	<path fill="#999999" d="M46.331,61.734c-0.436-0.229-1.03,0.14-1.397,0.88c-0.366,0.737-0.242,1.506,0.193,1.728
+		c0.436,0.223,1.031-0.139,1.397-0.881C46.813,62.705,46.767,61.958,46.331,61.734z M46.215,63.379
+		c-0.184,0.37-0.467,0.503-0.621,0.461c-0.231-0.063-0.202-0.476-0.046-0.744c0.157-0.271,0.466-0.504,0.622-0.462
+		C46.323,62.674,46.398,63.011,46.215,63.379z"/>
+	<path fill="#FFFFFF" d="M45.531,61.938c0,0,0.205,0.162,0.279,0.494l-0.103,0.075c0,0-0.126-0.45-0.28-0.493L45.531,61.938z"/>
+	
+		<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;0.1,0.1;0,0" repeatCount="indefinite" dur="1">
+		</animateTransform>
+</g>
+<g id="Tire_2_3_">
+	<path d="M60.65,55.814c0,0-1.258-0.237-1.896-1.563c0,0-0.293-2.274,1.564-3.026c0,0,1.469,0.084,2.104,1.096
+		C63.088,53.546,60.65,55.814,60.65,55.814z"/>
+	<path fill="#333333" d="M62.334,54.492c-0.447,1.033-1.324,1.525-1.914,1.26c-0.592-0.262-0.711-1.344-0.189-2.354
+		c0.445-1.029,1.324-1.522,1.914-1.26C62.736,52.402,62.828,53.579,62.334,54.492z"/>
+	<path fill="#999999" d="M61.986,52.723c-0.438-0.224-1.031,0.139-1.396,0.879c-0.365,0.737-0.244,1.506,0.193,1.729
+		c0.436,0.222,1.031-0.142,1.396-0.878C62.469,53.691,62.424,52.943,61.986,52.723z M61.871,54.366
+		c-0.184,0.37-0.467,0.502-0.621,0.46c-0.23-0.063-0.203-0.475-0.047-0.745c0.158-0.271,0.469-0.502,0.623-0.46
+		C61.979,53.663,62.055,54,61.871,54.366z"/>
+	<path fill="#FFFFFF" d="M61.188,52.926c0,0,0.205,0.159,0.279,0.492l-0.104,0.077c0,0-0.125-0.45-0.281-0.492L61.188,52.926z"/>
+	
+		<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;0.1,0.1;0,0" repeatCount="indefinite" dur="1">
+		</animateTransform>
+</g>
+<image display="none" overflow="visible" enable-background="new    " width="91" height="90" xlink:href="../../../../../References/ambulansya.jpg"  transform="matrix(0.4888 0 0 0.4888 29.5938 34.5625)">
+</image>
+<path fill="#CCCCCC" d="M36.839,52.896c0,0-0.641-1.004-0.883-0.979c0,0-0.356,0.216-0.12,0.608l0.407,0.556l-0.215,0.252
+	l0.117,0.729L36.839,52.896z"/>
+<path fill="#EAEAEA" d="M40.896,44.945v0.958l-0.875,1.417l-3.792,6.25l-2.458,3.457v2.709l8.417,4.959l1.5-0.584
+	c0,0,0.208-2.416,1.875-3.584c0,0,1.375-0.791,1.917,1.5l11.375-6.582c0,0,0.375-2.959,2.082-3.668c0,0,1.666-0.625,1.959,1.541
+	l2.916-2.166l-0.416-10.5l-9.209-4.38L43.73,42.815L40.896,44.945z"/>
+<path fill="#233144" d="M39.688,48.611l-3.125,4.917c0,0,3.667,2.543,8.042,4.5l3.208-5.207L39.688,48.611z"/>
+<polygon fill="#233144" points="48.313,52.736 45.042,58.195 50.521,54.486 50.521,51.402 "/>
+<polygon fill="#FF0000" points="48.688,49.966 65.404,40.901 65.404,42.185 48.438,51.561 40.098,47.199 40.896,45.903 "/>
+<polygon fill="#FF0000" points="34.244,56.363 42.609,60.825 48.938,56.247 65.616,46.216 65.689,48.09 43.109,61.294 
+	42.906,62.561 41.891,63.027 33.771,58.436 33.771,57.027 "/>
+<path fill="#EAEAEA" stroke="#000000" stroke-miterlimit="10" d="M33.771,57.561"/>
+<path fill="#141414" d="M44.429,61.807l-2.132,0.879l-0.113-0.063l-2.869-1.549l0.576-0.655L35.5,57.95l0.109,1.094l-1.838-1.017
+	v1.709l8.417,4.959l1.5-0.584C43.688,64.111,43.766,63.027,44.429,61.807z"/>
+<path fill="#EAEAEA" d="M44.139,62.443"/>
+<polygon fill="#CECECE" points="42.297,62.686 42.473,61.67 39.891,60.419 39.314,61.074 "/>
+<polygon fill="#CECECE" points="33.771,57.027 35.5,57.95 35.609,59.044 33.771,58.027 "/>
+<polygon fill="#FF9D00" points="43.109,61.294 42.473,61.67 42.297,62.686 42.925,62.443 "/>
+<path fill="#FF0000" d="M35.609,59.044"/>
+<polygon fill="#141414" points="35.5,57.95 39.891,60.419 39.314,61.074 35.609,59.044 "/>
+<polygon fill="#EAEAEA" points="35.5,58.311 39.707,60.628 39.634,60.71 35.555,58.496 "/>
+<polygon fill="#EAEAEA" points="35.609,58.919 39.402,60.975 39.314,61.074 35.609,59.044 "/>
+<polygon fill="#EAEAEA" points="35.948,60.236 35.948,61.124 38.597,62.686 38.597,61.659 "/>
+<polygon fill="#003DFF" points="44.429,43.997 44.429,43.278 45.75,42.653 51.531,45.872 51.531,46.685 50.293,47.396 "/>
+<polygon fill="#FFFFFF" points="49.344,44.654 48.063,45.372 47.98,46.056 46.414,45.147 46.414,44.403 47.59,43.678 "/>
+<path fill="#FFFFFF" d="M51,45.945l-0.604,0.271l-0.604-0.271C49.792,45.945,50.146,46.341,51,45.945z"/>
+<path fill="#CCCCCC" d="M45.741,57.027c0,0,1.188,0.088,1.28,0.313c0,0-0.021,0.416-0.479,0.396l-0.682-0.094l-0.12,0.309
+	l-0.699,0.244L45.741,57.027z"/>
+<polygon fill="#EAEAEA" points="42.375,47.028 47.083,49.57 46.729,50.237 42.042,47.716 "/>
+<polygon fill="#FF0000" points="58.407,47.886 60.59,46.646 60.697,47.445 58.52,48.723 "/>
+<polygon fill="#FF0000" points="59.346,49.358 59.018,46.392 59.814,46.01 60.087,48.858 "/>
+<path fill="#416082" d="M46.667,52.841c0,0-4.377-1.729-9.063,0.729c0,0-0.025,0.113-0.666,0c0,0,4.354,2.896,7.292,3.988
+	C44.229,57.561,47.396,53.257,46.667,52.841z"/>
+<path fill="#416082" d="M50.266,51.872c0,0-1.891,0.703-3.922,4.938l0.25,0.219l3.672-2.609V51.872z"/>
+<path fill="#729DC4" d="M46.344,53.091c0,0-2.698,3.583-3.573,3.708l1.375,0.563C44.146,57.361,46.917,53.32,46.344,53.091z"/>
+<path fill="#729DC4" d="M50.042,52.25v2.2l-0.417,0.35C49.625,54.8,50.257,52.378,50.042,52.25z"/>
+<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;0.1,0.1;0,0" repeatCount="indefinite" dur="1">
+	</animateTransform>
+<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;0.1,0.1;0,0" repeatCount="indefinite" dur="1">
+	</animateTransform>
+<polygon fill="#141414" points="65.756,49.733 65.404,50 65.404,51.456 65.813,51.152 "/>
+<ellipse id="light2" opacity="0.6" fill="#4885FF" enable-background="new    " cx="45.769" cy="43.679" rx="3.365" ry="1.973">
+<animate  fill="remove" from="0.2" to="0" additive="replace" attributeName="opacity" calcMode="linear" begin="0.1s;light2.end" accumulate="none" restart="always" repeatCount="indefinite" dur="1" id="light1">
+	</animate>
+</ellipse>
+<ellipse id="light1" opacity="0.6" fill="#4885FF" enable-background="new    " cx="49.856" cy="46.01" rx="3.476" ry="2.039">
+<animate  fill="remove" from="0.2" to="0" additive="replace" attributeName="opacity" calcMode="linear" begin="0.2s;light1.end" accumulate="none" restart="always" repeatCount="indefinite" dur="1" id="light2">
+	</animate>
+</ellipse>
+</svg>

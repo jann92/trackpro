@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="35.677px" height="30.011px" viewBox="32.818 37.114 35.677 30.011" enable-background="new 32.818 37.114 35.677 30.011"
+	 xml:space="preserve">
+<g>
+	<g id="Tire_2_1_">
+		<path d="M44.484,66.896c0,0-1.34-0.252-2.015-1.66c0,0-0.311-2.424,1.667-3.226c0,0,1.56,0.091,2.238,1.166
+			C47.078,64.482,44.484,66.896,44.484,66.896z"/>
+		<path fill="#333333" d="M46.276,65.489c-0.475,1.1-1.41,1.622-2.038,1.342c-0.628-0.281-0.757-1.431-0.201-2.506
+			c0.474-1.097,1.409-1.621,2.037-1.343C46.703,63.268,46.803,64.52,46.276,65.489z"/>
+		<path fill="#999999" d="M45.906,63.605c-0.464-0.237-1.097,0.147-1.487,0.937c-0.389,0.785-0.258,1.603,0.206,1.838
+			c0.464,0.236,1.097-0.147,1.487-0.937C46.419,64.639,46.37,63.843,45.906,63.605z M45.783,65.355
+			c-0.195,0.394-0.497,0.535-0.661,0.49c-0.246-0.066-0.215-0.507-0.049-0.794c0.167-0.288,0.497-0.534,0.662-0.489
+			C45.898,64.605,45.978,64.964,45.783,65.355z"/>
+		<path fill="#FFFFFF" d="M45.055,63.82c0,0,0.218,0.173,0.297,0.527l-0.11,0.079c0,0-0.134-0.479-0.298-0.524L45.055,63.82z"/>
+		
+			<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;0.1,0.1;0,0" repeatCount="indefinite" dur="1">
+			</animateTransform>
+	</g>
+	<g id="Tire_2_3_">
+		<path d="M62.252,55.911c0,0-1.34-0.254-2.016-1.662c0,0-0.313-2.423,1.668-3.224c0,0,1.561,0.09,2.238,1.166
+			C64.846,53.495,62.252,55.911,62.252,55.911z"/>
+		<path fill="#333333" d="M64.043,54.503c-0.475,1.099-1.409,1.623-2.037,1.34c-0.629-0.278-0.757-1.43-0.201-2.506
+			c0.475-1.095,1.41-1.62,2.037-1.341C64.471,52.279,64.57,53.529,64.043,54.503z"/>
+		<path fill="#999999" d="M63.674,52.619c-0.465-0.238-1.098,0.146-1.486,0.936c-0.39,0.784-0.26,1.603,0.205,1.838
+			s1.1-0.147,1.486-0.935C64.188,53.65,64.139,52.855,63.674,52.619z M63.551,54.368c-0.195,0.396-0.496,0.534-0.66,0.489
+			c-0.246-0.065-0.217-0.504-0.05-0.793s0.497-0.535,0.661-0.489C63.666,53.62,63.746,53.979,63.551,54.368z"/>
+		<path fill="#FFFFFF" d="M62.822,52.835c0,0,0.219,0.17,0.298,0.524l-0.11,0.082c0,0-0.133-0.479-0.298-0.524L62.822,52.835z"/>
+		
+			<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;0.1,0.1;0,0" repeatCount="indefinite" dur="1">
+			</animateTransform>
+	</g>
+	
+		<image display="none" overflow="visible" enable-background="new    " width="202" height="172" xlink:href="8CAFD69C.jpg"  transform="matrix(0.202 0.0116 -0.0116 0.202 30.5933 32.6362)">
+	</image>
+	<g id="Body">
+		<path fill="#BCBCBC" d="M32.818,60.247l0.167-2.052l0.146-0.323l0.188-1.418l3.125-2.981l1.781-1.891c0,0-0.906-1.553-0.214-1.803
+			c0,0,0.777,0.379,0.464,1.504l1.969-2.286l1.503-1.125l16.985-10.75h0.986c0,0,5.295,3.5,6.848,5.813c0,0,1.053,2.063,0.99,4
+			l0.003,1.125c0,0,1.31,1.25,0.435,1.75l-3.004,2.375h-0.434c0,0-0.162-1.188-1.145-0.938c0,0-2.469,0.774-3.193,3.825
+			l-13.412,8.424c0,0-0.675-2.188-2.9,0c0,0-1.299,1-1.387,3.125l-0.752,0.498C41.966,67.12,36.318,65.979,32.818,60.247z"/>
+		<path fill="#191919" d="M33.318,56.454c0,0,2.515,5.16,8.112,6.519l0.701,0.397v1.512l1.071-0.19c0,0-0.483,1.177-0.483,1.933
+			l-0.752,0.166c0,0-0.981,0.041-2.814-0.875c0,0-4.208-1.918-6.333-5.875l0.167-2.084L33.318,56.454z"/>
+		<path fill="#191919" d="M36.693,53.563l4.083-4.48c0,0,3.958,4.154,6.792,5.203c0,0-2.375,4.713-2.625,4.963
+			c0,0-0.433,0.375-1.841,0C43.102,59.247,38.11,56.712,36.693,53.563z"/>
+		<path fill="#191919" d="M46.959,57.068l1.151-2.245l0.542-0.539l2.004-1.42c0,0,0.494,0.383,0.537,3.133l-2.719,1.875
+			c0,0-0.615-0.531-1.031-0.392c-0.416,0.141-0.049-0.112-0.215,0.026L46.959,57.068z"/>
+		<path fill="#191919" d="M52.275,51.785v0.336l0.25,2.702l0.209,0.25l6.711-4.122c0,0-0.11-3.166-0.516-3.458L52.275,51.785z"/>
+		<path fill="#191919" d="M59.445,47.321c0,0,0.529,2.551,0.473,3.25l6.482-3.958l0.262-0.537c0,0-0.469-2.255-1.053-2.588h-0.422
+			L59.445,47.321z"/>
+		<path fill="#6D6D6D" d="M34.506,58.93l-0.079,1.692c0,0,2.913,2.869,4.496,3.453l0.167-1.478
+			C39.089,62.6,36.193,60.846,34.506,58.93z"/>
+		<path fill="#EAEAEA" d="M33.131,57.872c0,0,0.688,1.596,0.938,1.721v0.541c0,0-0.854-1.229-1.083-1.938L33.131,57.872z"/>
+		<path fill="#EAEAEA" d="M39.089,63.779v0.396c0,0,1.937,0.854,2.771,0.793v-0.444C41.86,64.521,40.819,64.654,39.089,63.779z"/>
+		<polygon fill="#EAEAEA" points="41.152,63.134 41.152,63.986 41.966,64.075 41.966,63.604 		"/>
+		<polygon fill="#EAEAEA" points="33.256,56.968 33.631,57.3 33.517,57.872 33.256,57.872 		"/>
+		<path fill="#A8A8A8" d="M32.868,59.415c0,0,3.943,6.699,9.938,6.449l-0.088,0.924c0,0-0.588,1.256-4.296-1.082
+			c0,0-4.448-2.66-5.604-5.459L32.868,59.415z"/>
+		<path fill="#EAEAEA" stroke="#000000" stroke-width="0.1" stroke-miterlimit="10" d="M34.537,57.872c0,0,1.806-2.524,2.469-2.656"
+			/>
+		<path fill="#EAEAEA" stroke="#000000" stroke-width="0.1" stroke-miterlimit="10" d="M39.662,62.214c0,0,2.063-1.842,2.469-2.655"
+			/>
+		<path fill="none" stroke="#000000" stroke-width="0.1" stroke-miterlimit="10" d="M36.193,54.005c0,0,3.279,5.828,8.28,6.129"/>
+		<path fill="none" stroke="#000000" stroke-width="0.1" stroke-miterlimit="10" d="M45.631,59.716c0,0,1.188-2.543,1.438-2.646
+			l0.16,0.438c0,0,0.715-0.104,1.247,0.363v1.131l-0.156,0.213l-1.266-0.404L45.631,59.716z"/>
+		<line fill="none" stroke="#000000" stroke-width="0.1" stroke-miterlimit="10" x1="47.053" y1="58.811" x2="47.318" y2="57.48"/>
+		<path fill="none" stroke="#000000" stroke-width="0.1" stroke-miterlimit="10" d="M51.193,51.717c0,0,0.875,2.249,0.813,8.655"/>
+		<path fill="none" stroke="#000000" stroke-width="0.1" stroke-miterlimit="10" d="M46.616,59.089c0,0-0.344,2.17,0.57,3.82"/>
+		<path fill="none" stroke="#000000" stroke-width="0.1" stroke-miterlimit="10" d="M47.818,54.247c0,0,2.438-2.208,7.688-5.166
+			L65.6,42.654"/>
+		<path fill="none" stroke="#000000" stroke-width="0.1" stroke-miterlimit="10" d="M59.068,37.154c0,0,5.125,3.813,6.813,5.5
+			c0,0,1.344,2.219,1.469,4.625v2.656"/>
+		<polygon fill="none" stroke="#000000" stroke-width="0.1" stroke-miterlimit="10" points="51.756,55.919 51.193,56.454 
+			51.193,57.716 51.756,57.419 		"/>
+		<polygon opacity="0.8" fill="#F7F7F7" enable-background="new    " points="41.86,50.373 38.787,56.044 39.431,56.816 
+			42.287,50.811 		"/>
+		<polygon opacity="0.8" fill="#F7F7F7" enable-background="new    " points="49.943,53.596 49.254,57.335 50.005,56.816 
+			50.2,53.188 		"/>
+		<polygon opacity="0.8" fill="#F7F7F7" enable-background="new    " points="56.375,49.142 56.068,52.864 54.611,53.921 
+			55.617,49.63 		"/>
+		<polygon opacity="0.8" fill="#F7F7F7" enable-background="new    " points="62.916,45.005 62.712,48.866 63.732,48.242 
+			63.516,44.605 		"/>
+	</g>
+	
+		<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;0.1,0.1;0,0" repeatCount="indefinite" dur="1">
+		</animateTransform>
+	
+		<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;0.1,0.1;0,0" repeatCount="indefinite" dur="1">
+		</animateTransform>
+	<path d="M60.875,56.109"/>
+	
+		<animateTransform  type="translate" fill="remove" additive="replace" attributeName="transform" calcMode="linear" begin="0s" accumulate="none" attributeType="XML" restart="always" values="0,0;-0.3,0.2;0,0" repeatCount="indefinite" dur="0.5">
+		</animateTransform>
+</g>
+</svg>

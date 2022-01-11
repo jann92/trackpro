@@ -1,0 +1,54 @@
+﻿<div class="filter-search-status-top">
+    <div>
+        <div class="map-control" id="map-control">
+            <table class="table table-condensed table-bordered map-tools-container">
+                <tbody>
+                    <tr>
+                        <td class="width-50-percent">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td>
+                                        <input id="map-search-input" class="width-100-percent" ng-keyup="placeSearchChange($event)" ng-model="placeText" type="text" placeholder="Press enter to search Places and Address.." autocomplete="off">
+                                        <input id="map-search-input-history" style="display:none" class="width-100-percent" type="text" placeholder="Place and Address Search..." autocomplete="off">
+                                    </td>
+                                    <td><input type="checkbox" ng-change="toggleViewPolygon()" ng-model="showAllPolygons" id="cbx_overlay_zone" style="vertical-align:sub">&nbsp;&nbsp;All Zones</td>
+                                    <td><input type="checkbox" ng-change="toggleViewLandmarks()" ng-model="showAllLandmarks" id="cbx_overlay_landmarks" style="vertical-align:sub">&nbsp;&nbsp;All Landmarks</td>
+                                    <!-- <td><input type="checkbox" id="cbx_overlay_landmark" style="vertical-align:sub">&nbsp;&nbsp;Landmark</td>-->
+                                    <td><input type="checkbox" ng-model="mapView" ng-change="toggleMapView()" id="cbx_overlay_landmark" style="vertical-align:sub">&nbsp;&nbsp;Satelite View</td>
+                                    <!--<td id="TDmapSource"><input type="checkbox" ng-model="mapSource" ng-change="toggleMapSource()" id="cbx_map_source" style="vertical-align:sub">&nbsp;&nbsp;Open Street Map</td>-->
+                                    <td ng-hide="mapSource"><input type="checkbox" ng-model="trafficLayer" ng-change="showTraffic()" id="cbx_traffic_layer" style="vertical-align:sub">&nbsp;&nbsp;Traffic</td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="width-50-percent">
+                            <table class="table table-condensed">
+                                <tr>
+                                    <td><input type="checkbox" ng-model="showAllMarkers" ng-change="showAllAssetMarkers()" checked id="cbx_overlay_assets" style="vertical-align:sub">&nbsp;&nbsp;All Assets</td>
+                                    <td id="td-cbx-cluster"><input type="checkbox" ng-change="clusterAllAssetMarkers()" ng-model="clusterAllMarkers" id="cbx_overlay_cluster" style="vertical-align:sub;">&nbsp;&nbsp;Cluster</td>
+                                    <td><input type="checkbox" ng-change="setRefreshAssets()" ng-model="assetRefresh" id="cbx_overlay_interval" style="vertical-align:sub">&nbsp;&nbsp;Refresh</td>
+                                    <td id="search-asset-map-tools"><input class="width-100-percent" type="text" placeholder="Asset Search..." ng-click="searchAsset()" ng-model="ngModelOptionsSelected" ng-model-options="modelOptions" uib-typeahead="asset as (asset.Name + ' ('+asset.AssetID+')') for asset in filterAsset | filter:$viewValue | limitTo:10"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="place-list">
+                <table class="table table-bordered">
+                    <tr ng-repeat="place in PlaceListData">
+                        <td ng-click="placeClick(place)">
+                            <i class="fa fa-map-marker"></i>
+                            <a class="pointer">{{place.display_name}}</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <i class="fa filter-status-icon center-align-icon" ng-click="mapToggle()" ng-class="(mapContainer ? 'fa-caret-down':'fa-caret-up')"></i>
+    </div>
+</div>
+<script>
+    $('#cbx_overlay_label').change(function () {
+        $('.marker-label-container').toggle();
+    });
+</script>

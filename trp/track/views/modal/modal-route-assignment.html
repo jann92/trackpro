@@ -1,0 +1,118 @@
+﻿<div class="col-md-12" style="top: 20px;">
+    <script type="text/ng-template" id="routeAssignmentModal">
+        <div class="modal-header modal-list-header">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+            <h3 class="modal-title">Route Asset Assignment</h3>
+        </div>
+        <div class="modal-body modal-body-360px">
+            <div class="child-list">
+                <div ng-show="isRouteList">
+                    <!--<div ng-show="isLoading" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>-->
+                    <!--<div ng-show="isLoading" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>-->
+                    <div class="padding-10px">
+                        <input type="text" ng-show="UserRouteList.length > 0" ng-model="filterRoute" placeholder="filter route..." class="width-100-percent" />
+                    </div>
+                    <!--<div ng-show="isLoading == false" ng-repeat="cus in RouteAssignedAssetList">-->
+                    <div class="modal-parent-list">
+                        <table class="table table-condensed table-hover">
+                            <tbody>
+                                <tr class="cursor-pointer"
+                                    ng-repeat="UserRoute in UserRouteList | filter:filterRoute | orderBy: '+Name'"
+                                    ng-click="GetRouteAssignedList(UserRoute.RouteID)"
+                                    ng-class="{'trackpro-green' : UserRoute.RouteID == SelectedRouteID}">
+                                    <td class="right-align width-15-percent">{{$index +1}}</td>
+                                    <td class="left-align">{{UserRoute.Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div ng-show="!isRouteList">
+
+                    <div class="padding-10px">
+                        <input type="text" ng-model="filterAsset" placeholder="filter assets..." class="width-100-percent" />
+                    </div>
+                    <div class="modal-parent-list">
+                        <div ng-show="filtered.length === 0" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                        <div class="collapse-list" ng-repeat="cus in CustomerList">
+                            <h6><a class="fa fa-minus-circle summary-font-icon" id="Route-font-icon-{{cus.CustomerID}}" ng-click="viewAsset(cus.CustomerID)"></a> {{cus.CustomerName}} ({{filtered.length}})</h6>
+                            <div id="Route-{{cus.CustomerID}}">
+                                <table class="table table-condensed table-hover">
+                                    <tbody>
+                                        <tr ng-repeat="asset in filtered = (cus.AssetList | filter:filterAsset) | orderBy: '+AssetName'"
+                                            ng-class="{'trackpro-green' : asset.AssetID == SelectedAssetID}">
+                                            <td class="right-align col-xs-3">{{$index +1}}</td>
+                                            <td class="col-xs-9 pointer"
+                                                ng-click="getAssetAssignedRouteList(asset.AssetID)">
+                                                {{asset.Name}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="asset-list">
+                <div ng-show="isRouteList">
+                    <div ng-show="isLoading" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                    <input type="text" ng-show="RouteAssignedAssetList.length > 0" ng-model="filterAsset" placeholder="filter assets..." class="width-100-percent" />
+                    <div class="modal-oveflow">
+                        <div class="collapse-list" ng-repeat="cus in RouteAssignedAssetList | orderBy: '+CustomerName'">
+                            <h6><a class="fa fa-minus-circle summary-font-icon" id="Route-font-icon-{{cus.CustomerID}}" ng-click="viewAsset(cus.CustomerID)"></a> {{cus.CustomerName}} ({{filtered.length}})</h6>
+                            <div id="Route-{{cus.CustomerID}}">
+                                <table class="table table-condensed table-hover">
+                                    <tbody>
+                                        <tr ng-show="filtered.length > 0">
+                                            <td class="col-xs-3 center-align">Select All:</td>
+                                            <td class="col-xs-9"><input type="checkbox" ng-model="cus.CustomerID" ng-click="getSelectedAssetRoute(filtered, cus.CustomerID)" ></td>
+                                        </tr>
+                                        <tr ng-repeat="asset in filtered = (cus.AccountUserChildAssetList | filter:filterAsset) | orderBy: '+AssetName'">
+                                            <td class="col-xs-3 center-align"><input type="checkbox" ng-model="asset.IsAssigned" ng-click="toggleSelectAllAssetRoute(asset.IsAssigned, cus)" ></td>
+                                            <td class="col-xs-9">{{asset.AssetName}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+         
+                    <div class="modal-button">
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-left" title="Update" ng-click="toggleList()">Switch to Asset <i class="fa fa-exchange"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Close" ng-click="cancel()">Close <i class="fa fa-close"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Update" ng-click="UpdateRouteAssignment()" ng-show="RouteAssignedAssetList.length > 0">Update <i class="fa fa-save"></i></a>
+
+                    </div>
+                </div>
+                <div ng-show="!isRouteList">
+                    <div ng-show="isLoading" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                    <input type="text" ng-show="filterAssetRouteList.length > 0" ng-model="filterRoute" placeholder="filter Routes..." class="width-100-percent" />
+                    <div class="modal-oveflow">
+                        <table class="table table-condensed table-hover" ng-show="filterAssetRouteList.length > 0">
+                            <tbody>
+                                <tr ng-show="filterAssetRouteList.length > 0">
+                                    <td class="col-xs-3 center-align">Select All:</td>
+                                    <td class="col-xs-9"><input type="checkbox" ng-model="allSelected.Route" ng-click="getSelectedRoute(filterAssetRouteList, allSelected.Route)"></td>
+                                </tr>
+                                <tr class="cursor-pointer"
+                                    ng-repeat="UserRoute in filterAssetRouteList = (AssetAssignedRouteList | filter:filterRoute) | orderBy: '+Name'">
+                                    <td class="col-xs-3 center-align"><input type="checkbox" ng-model="UserRoute.IsAssigned" ng-click="toggleSelectAllAssetRouteList(UserRoute.IsAssigned)"></td>
+                                    <td class="col-xs-9">{{UserRoute.Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="center-align" ng-hide="SelectedAssetID">
+                            <h5><i class="fa fa-exclamation-triangle"></i> No selected Asset.</h5>
+                        </div>
+                    </div>
+                    <div class="modal-button">
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-left" title="Update" ng-click="toggleList()">Switch to Route <i class="fa fa-exchange"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Close" ng-click="cancel()">Close <i class="fa fa-close"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Update" ng-click="UpdateAssetAssignment(AssetAssignedRouteList)" ng-show="AssetAssignedRouteList.length > 0">Update <i class="fa fa-save"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>

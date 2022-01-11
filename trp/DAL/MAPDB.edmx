@@ -1,0 +1,531 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MAPDB_PHSGC_R01Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MAPDB_PHSGC_R01.dbo.AM_APIKeyGoogle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AM_APIKeyGoogle">
+          <Key>
+            <PropertyRef Name="IDAPI" />
+          </Key>
+          <Property Name="IDAPI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="APIKey" Type="varchar" MaxLength="5000" />
+          <Property Name="IsActive" Type="int" />
+          <Property Name="TotalUsage" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MAPDB_PHSGC_R01.dbo.AM_APIKeyGoogleLog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AM_APIKeyGoogleLog">
+          <Key>
+            <PropertyRef Name="IDLogApi" />
+          </Key>
+          <Property Name="IDLogApi" Type="decimal" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Lon" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Lat" Type="decimal" Precision="18" Scale="6" />
+          <Property Name="Location" Type="varchar(max)" />
+          <Property Name="APIKey" Type="varchar" MaxLength="5000" />
+          <Property Name="TimeUpdate" Type="datetime" />
+          <Property Name="IDRoad" Type="bigint" />
+          <Property Name="geom" Type="geography" />
+        </EntityType>
+        <EntityType Name="Barangays">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="2000" />
+          <Property Name="ADMIN_ID" Type="bigint" />
+          <Property Name="geom" Type="geography" />
+          <Property Name="Lon" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Lat" Type="decimal" Precision="18" Scale="8" />
+          <Property Name="Matrix_10" Type="int" />
+          <Property Name="DistrictName" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CITY_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="PROVINCE" Type="nvarchar" MaxLength="255" />
+          <Property Name="REGION" Type="nvarchar" MaxLength="255" />
+          <Property Name="CODE" Type="nvarchar" MaxLength="255" />
+          <Property Name="geom" Type="geography" />
+        </EntityType>
+        <EntityType Name="CoordinatesMatrix">
+          <Key>
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="longitude" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="latitude" Type="decimal" Precision="8" Scale="6" />
+          <Property Name="location" Type="varchar(max)" />
+          <Property Name="longitude_ceil" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="latitude_ceil" Type="decimal" Precision="8" Scale="6" />
+          <Property Name="longitude_floor" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="latitude_floor" Type="decimal" Precision="8" Scale="6" />
+        </EntityType>
+        <EntityType Name="Districts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="geom" Type="geography" />
+        </EntityType>
+        <EntityType Name="Matrix_1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Geom" Type="geography" />
+          <Property Name="Matrix_10" Type="int" />
+        </EntityType>
+        <EntityType Name="Matrix_10">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="geom" Type="geography" />
+          <Property Name="sgeom" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Road">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="geom" Type="geography" />
+          <Property Name="Lon" Type="decimal" Precision="18" Scale="7" />
+          <Property Name="Lat" Type="decimal" Precision="18" Scale="7" />
+          <Property Name="Matrix_10" Type="int" />
+          <Property Name="Barangay" Type="varchar(max)" />
+          <Property Name="Matrix_1" Type="int" />
+          <Property Name="Nama" Type="varchar(max)" />
+          <Property Name="Flaggoogle" Type="int" />
+          <Property Name="Flag" Type="int" />
+        </EntityType>
+        <EntityType Name="Roads">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="CLASS" Type="bigint" />
+          <Property Name="geom" Type="geography" />
+        </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="geom" Type="geography" />
+        </EntityType>
+        <Function Name="fn_ReverseGeocode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="longitude" Type="float" Mode="In" />
+          <Parameter Name="latitude" Type="float" Mode="In" />
+        </Function>
+        <Function Name="Get_Location" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="Lon" Type="float" Mode="In" />
+          <Parameter Name="Lat" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_GetLocation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Lon" Type="float" Mode="In" />
+          <Parameter Name="Lat" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertBarangay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar(max)" Mode="In" />
+          <Parameter Name="lINESTRING" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Lon" Type="float" Mode="In" />
+          <Parameter Name="Lat" Type="float" Mode="In" />
+          <Parameter Name="Matrix_10" Type="int" Mode="In" />
+          <Parameter Name="DistrictName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertMatrix1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="lINESTRING" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Matrix_10" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertMatrix10" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="lINESTRING" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertRoad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Name" Type="varchar(max)" Mode="In" />
+          <Parameter Name="lINESTRING" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Lon" Type="float" Mode="In" />
+          <Parameter Name="Lat" Type="float" Mode="In" />
+          <Parameter Name="Matrix_10" Type="int" Mode="In" />
+          <Parameter Name="Barangay" Type="varchar" Mode="In" />
+          <Parameter Name="Matrix_1" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_ReverseGeocodeCM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="latitude" Type="float" Mode="In" />
+          <Parameter Name="longitude" Type="float" Mode="In" />
+        </Function>
+        <EntityContainer Name="MAPDB_PHSGC_R01ModelStoreContainer">
+          <EntitySet Name="Barangays" EntityType="Self.Barangays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoordinatesMatrix" EntityType="Self.CoordinatesMatrix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Matrix_1" EntityType="Self.Matrix_1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Matrix_10" EntityType="Self.Matrix_10" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Road" EntityType="Self.Road" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roads" EntityType="Self.Roads" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AM_APIKeyGoogle" EntityType="Self.AM_APIKeyGoogle" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AM_APIKeyGoogle].[IDAPI] AS [IDAPI], 
+    [AM_APIKeyGoogle].[APIKey] AS [APIKey], 
+    [AM_APIKeyGoogle].[IsActive] AS [IsActive], 
+    [AM_APIKeyGoogle].[TotalUsage] AS [TotalUsage]
+    FROM [dbo].[AM_APIKeyGoogle] AS [AM_APIKeyGoogle]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AM_APIKeyGoogleLog" EntityType="Self.AM_APIKeyGoogleLog" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AM_APIKeyGoogleLog].[IDLogApi] AS [IDLogApi], 
+    [AM_APIKeyGoogleLog].[Lon] AS [Lon], 
+    [AM_APIKeyGoogleLog].[Lat] AS [Lat], 
+    [AM_APIKeyGoogleLog].[Location] AS [Location], 
+    [AM_APIKeyGoogleLog].[APIKey] AS [APIKey], 
+    [AM_APIKeyGoogleLog].[TimeUpdate] AS [TimeUpdate], 
+    [AM_APIKeyGoogleLog].[IDRoad] AS [IDRoad], 
+    [AM_APIKeyGoogleLog].[geom] AS [geom]
+    FROM [dbo].[AM_APIKeyGoogleLog] AS [AM_APIKeyGoogleLog]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MAPDB_PHSGC_R01Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Barangay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="ADMIN_ID" Type="Int64" />
+          <Property Name="geom" Type="Geography" />
+          <Property Name="Lon" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Lat" Type="Decimal" Precision="18" Scale="8" />
+          <Property Name="Matrix_10" Type="Int32" />
+          <Property Name="DistrictName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CITY_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PROVINCE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="REGION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CODE" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="geom" Type="Geography" />
+        </EntityType>
+        <EntityType Name="CoordinatesMatrix">
+          <Key>
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="address_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="longitude" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="latitude" Type="Decimal" Precision="8" Scale="6" />
+          <Property Name="location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="longitude_ceil" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="latitude_ceil" Type="Decimal" Precision="8" Scale="6" />
+          <Property Name="longitude_floor" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="latitude_floor" Type="Decimal" Precision="8" Scale="6" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="geom" Type="Geography" />
+        </EntityType>
+        <EntityType Name="Matrix_1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Geom" Type="Geography" />
+          <Property Name="Matrix_10" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Matrix_10">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="geom" Type="Geography" />
+          <Property Name="sgeom" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Road">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="geom" Type="Geography" />
+          <Property Name="Lon" Type="Decimal" Precision="18" Scale="7" />
+          <Property Name="Lat" Type="Decimal" Precision="18" Scale="7" />
+          <Property Name="Matrix_10" Type="Int32" />
+          <Property Name="Barangay" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Matrix_1" Type="Int32" />
+          <Property Name="Nama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Flaggoogle" Type="Int32" />
+          <Property Name="Flag" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Road1">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CLASS" Type="Int64" />
+          <Property Name="geom" Type="Geography" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="geom" Type="Geography" />
+        </EntityType>
+        <EntityType Name="AM_APIKeyGoogle">
+          <Key>
+            <PropertyRef Name="IDAPI" />
+          </Key>
+          <Property Name="IDAPI" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="APIKey" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Int32" />
+          <Property Name="TotalUsage" Type="Int32" />
+        </EntityType>
+        <EntityType Name="AM_APIKeyGoogleLog">
+          <Key>
+            <PropertyRef Name="IDLogApi" />
+          </Key>
+          <Property Name="IDLogApi" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Lon" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Lat" Type="Decimal" Precision="18" Scale="6" />
+          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="APIKey" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+          <Property Name="TimeUpdate" Type="DateTime" Precision="3" />
+          <Property Name="IDRoad" Type="Int64" />
+          <Property Name="geom" Type="Geography" />
+        </EntityType>
+        <EntityContainer Name="MAPDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Barangays" EntityType="Self.Barangay" />
+          <EntitySet Name="Cities" EntityType="Self.City" />
+          <EntitySet Name="CoordinatesMatrices" EntityType="Self.CoordinatesMatrix" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Matrix_1" EntityType="Self.Matrix_1" />
+          <EntitySet Name="Matrix_10" EntityType="Self.Matrix_10" />
+          <EntitySet Name="Roads" EntityType="Self.Road" />
+          <EntitySet Name="Roads1" EntityType="Self.Road1" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="AM_APIKeyGoogle" EntityType="Self.AM_APIKeyGoogle" />
+          <EntitySet Name="AM_APIKeyGoogleLog" EntityType="Self.AM_APIKeyGoogleLog" />
+          <FunctionImport Name="sp_GetLocation" ReturnType="Collection(String)">
+            <Parameter Name="Lon" Mode="In" Type="Double" />
+            <Parameter Name="Lat" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertBarangay">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="lINESTRING" Mode="In" Type="String" />
+            <Parameter Name="Lon" Mode="In" Type="Double" />
+            <Parameter Name="Lat" Mode="In" Type="Double" />
+            <Parameter Name="Matrix_10" Mode="In" Type="Int32" />
+            <Parameter Name="DistrictName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertMatrix1">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="lINESTRING" Mode="In" Type="String" />
+            <Parameter Name="Matrix_10" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertMatrix10">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="lINESTRING" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertRoad">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="lINESTRING" Mode="In" Type="String" />
+            <Parameter Name="Lon" Mode="In" Type="Double" />
+            <Parameter Name="Lat" Mode="In" Type="Double" />
+            <Parameter Name="Matrix_10" Mode="In" Type="Int32" />
+            <Parameter Name="Barangay" Mode="In" Type="String" />
+            <Parameter Name="Matrix_1" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ReverseGeocodeCM" ReturnType="Collection(String)">
+            <Parameter Name="latitude" Mode="In" Type="Double" />
+            <Parameter Name="longitude" Mode="In" Type="Double" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MAPDB_PHSGC_R01ModelStoreContainer" CdmEntityContainer="MAPDBEntities">
+          <EntitySetMapping Name="Barangays">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.Barangay">
+              <MappingFragment StoreEntitySet="Barangays">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ADMIN_ID" ColumnName="ADMIN_ID" />
+                <ScalarProperty Name="geom" ColumnName="geom" />
+                <ScalarProperty Name="Lon" ColumnName="Lon" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Matrix_10" ColumnName="Matrix_10" />
+                <ScalarProperty Name="DistrictName" ColumnName="DistrictName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.City">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CITY_NAME" ColumnName="CITY_NAME" />
+                <ScalarProperty Name="PROVINCE" ColumnName="PROVINCE" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="geom" ColumnName="geom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoordinatesMatrices">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.CoordinatesMatrix">
+              <MappingFragment StoreEntitySet="CoordinatesMatrix">
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="longitude_ceil" ColumnName="longitude_ceil" />
+                <ScalarProperty Name="latitude_ceil" ColumnName="latitude_ceil" />
+                <ScalarProperty Name="longitude_floor" ColumnName="longitude_floor" />
+                <ScalarProperty Name="latitude_floor" ColumnName="latitude_floor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.District">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="geom" ColumnName="geom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Matrix_1">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.Matrix_1">
+              <MappingFragment StoreEntitySet="Matrix_1">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Geom" ColumnName="Geom" />
+                <ScalarProperty Name="Matrix_10" ColumnName="Matrix_10" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Matrix_10">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.Matrix_10">
+              <MappingFragment StoreEntitySet="Matrix_10">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="geom" ColumnName="geom" />
+                <ScalarProperty Name="sgeom" ColumnName="sgeom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roads">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.Road">
+              <MappingFragment StoreEntitySet="Road">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="geom" ColumnName="geom" />
+                <ScalarProperty Name="Lon" ColumnName="Lon" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Matrix_10" ColumnName="Matrix_10" />
+                <ScalarProperty Name="Barangay" ColumnName="Barangay" />
+                <ScalarProperty Name="Matrix_1" ColumnName="Matrix_1" />
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+                <ScalarProperty Name="Flaggoogle" ColumnName="Flaggoogle" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roads1">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.Road1">
+              <MappingFragment StoreEntitySet="Roads">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="CLASS" ColumnName="CLASS" />
+                <ScalarProperty Name="geom" ColumnName="geom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="geom" ColumnName="geom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AM_APIKeyGoogle">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.AM_APIKeyGoogle">
+              <MappingFragment StoreEntitySet="AM_APIKeyGoogle">
+                <ScalarProperty Name="IDAPI" ColumnName="IDAPI" />
+                <ScalarProperty Name="APIKey" ColumnName="APIKey" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="TotalUsage" ColumnName="TotalUsage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AM_APIKeyGoogleLog">
+            <EntityTypeMapping TypeName="MAPDB_PHSGC_R01Model.AM_APIKeyGoogleLog">
+              <MappingFragment StoreEntitySet="AM_APIKeyGoogleLog">
+                <ScalarProperty Name="IDLogApi" ColumnName="IDLogApi" />
+                <ScalarProperty Name="Lon" ColumnName="Lon" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="APIKey" ColumnName="APIKey" />
+                <ScalarProperty Name="TimeUpdate" ColumnName="TimeUpdate" />
+                <ScalarProperty Name="IDRoad" ColumnName="IDRoad" />
+                <ScalarProperty Name="geom" ColumnName="geom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetLocation" FunctionName="MAPDB_PHSGC_R01Model.Store.sp_GetLocation" />
+          <FunctionImportMapping FunctionImportName="sp_InsertBarangay" FunctionName="MAPDB_PHSGC_R01Model.Store.sp_InsertBarangay" />
+          <FunctionImportMapping FunctionImportName="sp_InsertMatrix1" FunctionName="MAPDB_PHSGC_R01Model.Store.sp_InsertMatrix1" />
+          <FunctionImportMapping FunctionImportName="sp_InsertMatrix10" FunctionName="MAPDB_PHSGC_R01Model.Store.sp_InsertMatrix10" />
+          <FunctionImportMapping FunctionImportName="sp_InsertRoad" FunctionName="MAPDB_PHSGC_R01Model.Store.sp_InsertRoad" />
+          <FunctionImportMapping FunctionImportName="sp_ReverseGeocodeCM" FunctionName="MAPDB_PHSGC_R01Model.Store.sp_ReverseGeocodeCM" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

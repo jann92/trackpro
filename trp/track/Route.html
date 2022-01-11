@@ -1,0 +1,112 @@
+﻿<style type="text/css">
+    html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#map_canvas {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+</style>
+<html>
+<body onload="Init()">
+    <div id="map_canvas"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDo0t0o8zfI99eFl9mFFIBrnu_1FNkLxV0"></script>
+</body>
+</html>
+<script type="text/javascript">
+    var map, path = new google.maps.MVCArray(),
+  service = new google.maps.DirectionsService(),
+  shiftPressed = true,
+  poly;
+
+    google.maps.event.addDomListener(document, "keydown", function (e) {
+        shiftPressed = e.shiftKey;
+    });
+    google.maps.event.addDomListener(document, "keyup", function (e) {
+        shiftPressed = e.shiftKey;
+    });
+
+    function Init() {
+        var myOptions = {
+            zoom: 7,
+            center: new google.maps.LatLng(37.2008385157313, -93.2812106609344),
+            mapTypeId: google.maps.MapTypeId.ROAD,
+            mapTypeControlOptions: {
+                mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.HYBRID, google.maps.MapTypeId.SATELLITE]
+            },
+            //disableDoubleClickZoom: true,
+            //scrollwheel: false,
+            draggableCursor: "crosshair"
+        }
+
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+        var lineSymbol = {
+            path: 'M 0,-1 0,1',
+            strokeOpacity: 1,
+            scale: 2
+        };
+
+        poly = new google.maps.Polyline({
+            map: map,
+            strokeOpacity: 2,
+            //draggable: true,
+            //icons: [{
+            //            icon: lineSymbol,
+            //            offset: '0',
+            //            repeat: '20px'
+            //        }],
+       
+        });
+        google.maps.event.addListener(map, "click", function (evt) {
+            if (!shiftPressed || path.getLength() === 0) {
+                path.push(evt.latLng);
+                if (path.getLength() === 1) {
+                    poly.setPath(path);
+                  
+                }
+            } else {
+                service.route({
+                    origin: path.getAt(path.getLength() - 1),
+                    destination: evt.latLng,
+                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                }, function (result, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        for (var i = 0, len = result.routes[0].overview_path.length; i < len; i++) {
+                            path.push(result.routes[0].overview_path[i]);
+                        }
+
+                     
+
+                    } else {
+                        console.log("directions request failed:" + status);
+                        // create polyline
+                        path.push(evt.latLng);
+                    }
+                  
+                });
+            }
+            //animateLine(poly);
+        });
+    }
+
+    function animateLine(t) {
+        var count = 0;
+        window.setInterval(function () {
+            count = (count + 1) % 200;
+
+            var icons = t.get('icons');
+
+            icons[0].offset = (count / 2) + '%';
+            t.set('icons', icons);
+
+        }, 20);
+    }
+</script>

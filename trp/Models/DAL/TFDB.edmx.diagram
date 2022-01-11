@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8c8dfd6846f245aab6f3b5aab2c05866" Name="Diagram1">
+        <EntityTypeShape EntityType="TFDBModel.A_ActiveTag" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ActiveTracks" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CustomerInfo" Width="1.5" PointX="8.75" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ObjectInfo" Width="1.5" PointX="0.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ObjectPhoto" Width="1.5" PointX="13.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks" Width="1.5" PointX="13.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_01" Width="1.5" PointX="13.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_02" Width="1.5" PointX="15.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_03" Width="1.5" PointX="15.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_04" Width="1.5" PointX="8.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_05" Width="1.5" PointX="10.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_06" Width="1.5" PointX="15.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_07" Width="1.5" PointX="17.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_08" Width="1.5" PointX="17.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_09" Width="1.5" PointX="17.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_10" Width="1.5" PointX="5.75" PointY="20" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_11" Width="1.5" PointX="19.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_12" Width="1.5" PointX="19.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TrackTag" Width="1.5" PointX="19.75" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_ObjectType" Width="1.5" PointX="12.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_CustomerReports" Width="1.5" PointX="11" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Driver" Width="1.5" PointX="3.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Module" Width="1.5" PointX="21.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_ObjectDelivery" Width="1.5" PointX="6" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_ObjectDriver" Width="1.5" PointX="6" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_ReportTypes" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_SensorSetting" Width="1.5" PointX="3" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_SensorType" Width="1.5" PointX="0.75" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_SystemUser" Width="1.5" PointX="11.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_SystemUserObject" Width="1.5" PointX="21.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Tag" Width="1.5" PointX="11" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_UserSettings" Width="1.5" PointX="6" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_SysRole" Width="1.5" PointX="6.75" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_SysUser" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_SysUserVehicle" Width="1.5" PointX="21.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_UserRole" Width="1.5" PointX="9" PointY="3.25" IsExpanded="true" />
+        <AssociationConnector Association="TFDBModel.FK_A_ActiveTracks_A_ObjectInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Cust__Custo__18D6A699" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Tag__Custom__216BEC9A" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Obje__objec__1CA7377D" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Obje__Objec__1F83A428" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_SensorsettingsObjectID" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Cust__Repor__19CACAD2" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Obje__Drive__1E8F7FEF" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Obje__user___73A5ED41" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Syst__paren__17AD7836" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_User__UserI__2DE868C6" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_S_UserRole_S_SysRole" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_S_UserRole_S_SysUser" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.PGPS_DriverTag" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_EmailReports" Width="1.5" PointX="11" PointY="29.375" />
+        <AssociationConnector Association="TFDBModel.FK_PGPS_EmailReports_PGPS_ReportTypes" />
+        <AssociationConnector Association="TFDBModel.FK_PGPS_EmailReports_PGPS_ReportTypes1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

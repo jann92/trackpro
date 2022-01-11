@@ -1,0 +1,122 @@
+﻿html {
+    height: 100%;
+}
+
+.container {
+}
+
+.ver-link {
+    color: #ffffff !important;
+}
+
+.middel-align {
+    position: relative;
+    top: 30% !important;
+    -webkit-transform: translateY(-30%) !important;
+    -ms-transform: translateY(-30%) !important;
+    transform: translateY(-30%) !important;
+}
+
+.container {
+    border-radius: 25px;
+    min-width: 280px;
+    width: 50%;
+    padding: 0;
+}
+
+#error-container {
+    min-height: 20px;
+    color: #ffffff;
+    margin-bottom: 15px;
+    font: 13px "Segoe UI";
+}
+
+.parsley-custom-error-message {
+    font: 13px "Segoe UI";
+}
+
+
+body {
+    font: 13px "Segoe UI";
+    height: 100%;
+    /*background: radial-gradient(#dc6510 30%, #b94815 60%, #873009 100%);*/
+    background: radial-gradient(#22B573 30%, #06823f 60%, #064422 100%);
+}
+
+.force-center {
+    margin-right: auto !important;
+    margin-left: auto !important;
+    text-align: center !important;
+}
+
+.force-btn-width {
+    width: 100% !important;
+}
+
+#login-box {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 5%;
+    padding-left: 5%;
+}
+
+
+    #icon-logo {
+        min-width: 100px;
+        width: 30%;
+    }
+
+
+#icon-logo {
+    min-width: 150px;
+    width: 90%;
+}
+
+#title-logo {
+    min-width: 180px;
+    width: 100%;
+}
+
+#row-above {
+    margin-top: 10%;
+}
+
+@media(max-width: 768px) {
+    #icon-logo {
+        width: 200px;
+        
+    }
+}
+
+#input-server {
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 20px;
+    font-size: 12px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.footer-label {
+    color: #ffffff !important;
+    font: 12px "Segoe UI" !important;
+    white-space: nowrap;
+}
+
+.form-group {
+    position: relative;
+}
+
+
+
+
+
+
+

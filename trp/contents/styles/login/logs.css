@@ -1,0 +1,49 @@
+﻿html {
+    height: 100%;
+}
+
+body {
+    font: 13px "Segoe UI";
+    height: 100%;
+    /*background: radial-gradient(#696969 30%, #414141 60%, #1f1f1f 100%);*/
+    background: #ffffff;
+}
+
+
+.panel-gray{
+    border: #22B573 1px solid !important;
+    border-radius: 0px !important;  
+}
+
+.panel-gray .panel-heading {
+    border-radius: 0px !important;  
+    background: #22B573 !important;
+    color: #ffffff !important;
+    
+}
+.panel-gray .panel-body{
+    border-radius: 0px !important;  
+}
+
+.float-right{
+    float: right;
+}
+
+.btn{
+    border-radius: 0px !important;
+}
+
+.head{
+    background: #22B573;
+    text-align: center;
+}
+
+#title-logo{
+    width: 200px;
+}
+
+.back-link{
+    color: #ffffff !important;
+    margin-top: 6px;
+    margin-right: 10px;
+}

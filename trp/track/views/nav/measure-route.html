@@ -1,0 +1,76 @@
+﻿<div class="left-side-content-container" id="measure-route">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Measure Distance</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/7/distance'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <div class="pull-right export-file fade in" id="export-file-measure-route" ng-show="measureRouteList.length > 0">
+                <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x xls"></i>
+                        <strong class="fa-stack-1x file-type">XLS</strong>
+                    </span>
+                </button>
+                <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x csv"></i>
+                        <strong class="fa-stack-1x file-type">CSV</strong>
+                    </span>
+                </button>
+            </div>
+            <a class="btn btn-default export-panel" title="Export" ng-click="exportPanel()" ng-show="measureRouteList.length > 0">
+                <i class="fa fa-download export-awesome-alignment"></i>
+            </a>
+            <hr class="spacing-2px" />
+            <div>
+                <!-- Buttons Header -->
+                <table class="col-xs-12">
+                    <tr>
+                        <td>
+                            <span class="spacing-2px">
+                                <a class="btn btn-xs btn-default trackpro-green-btn" ng-click="straightRuler()">
+                                    <i class="fa fa-arrows-v"></i>&nbsp;{{straightRulerText}}
+                                </a>
+                                <button class="btn btn-xs btn-default trackpro-green-btn" ng-click="snapToRoad()" ng-disabled="rulerSnapMode">
+                                    <i class="fa fa-road"></i>&nbsp;{{snapToRoadText}}
+                                </button>
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <hr class="spacing" />
+    <div class="side-panel-menu-content-body-container">
+        <div class="side-panel-menu-content-body">
+            <div>
+                <!-- Tab panes -->
+                <table class="table table-condensed table-hover" id="trace-table">
+                    <thead>
+                        <tr>
+                            <td>#</td>
+                            <td>Distance(m)</td>
+                            <td>Accumulated(m)</td>
+                            <td>Latitude</td>
+                            <td>Longitude</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="mr in measureRouteList">
+                            <td>{{$index+1}}</td>
+                            <td class="right-align">{{mr.rulerlength | number:0}}</td>
+                            <td class="right-align">{{mr.accdistance | number:0}}</td>
+                            <td>{{mr.latitude}}</td>
+                            <td>{{mr.longitude}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="5">Total Distance: {{measureRouteList.total | number:0}}&nbsp;m</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

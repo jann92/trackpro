@@ -1,0 +1,211 @@
+﻿:root {
+  --red: #b00;
+  --blue: #4679bd;
+  --main-color: #22B573;
+}
+.filtered-status-panel-container {
+    position: absolute;
+    left: 35px;
+    bottom: -3px;
+    /*height: 82px;*/
+    /*z-index: 1000;*/
+    background: #FFF;
+    right: 35px;
+    border: 5px solid /*#22B573*/ var(--main-color);
+    z-index:999;
+}
+
+.filtered-status-panel-content {
+    width: 100%;
+}
+
+.filtered-status-table {
+    width: 100%;
+
+}
+
+.filtered-status-panel-legend {
+    height: 2px;
+    width: 15px;
+    margin: auto;
+}
+
+.filtered-status-value {
+    text-align: center;
+    font-size: 16px;
+    color: #000000;
+    padding-top: 0px;
+}
+
+.filtered-status {
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+    -webkit-box-orient: vertical;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
+@media screen and (min-width: 768px) {
+    .btn-filter {
+        border-radius: 0px !important;
+        background-color: #ffffff !important;
+        color: #000000;
+        border-top: none;
+        border-bottom: none;
+        display: inline-block;
+        padding: 1px 15px 5px !important;
+        font-size: 10px !important;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .btn-filter {
+        border-radius: 0px !important;
+        background-color: #ffffff !important;
+        color: #000000;
+        border-top: none;
+        border-bottom: none;
+        display: inline-block;
+        min-width: 8%;
+        max-width: 10%;
+        font-size: 10px !important;
+        padding-bottom: 5px;
+    }
+}
+
+.filtered-status-bar {
+    background: /*#22B573*/var(--main-color);
+    color: #FFF;
+}
+
+.filter-search-status-top {
+    position: absolute;
+    top: 35px;
+    z-index: 1048;
+    left: 38px;
+    right: 38px;
+}
+/*edit*/
+.filter-search-status-bottom {
+    position: absolute;
+    bottom: 79px;
+    z-index: 1000;
+    left: 38%;
+    right: 38%;
+}
+
+.filter-status-icon {
+    background: /*#22B573*/ var(--main-color);
+    border: 1px solid /*#22B573*/ var(--main-color);
+    width: 25px;
+    text-align: center;
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    cursor: pointer;
+    font-size: 15px;
+    color: #fff;
+}
+
+    .filter-status-icon:hover {
+        color: #000;
+    }
+
+.map-tools-container {
+    background: #fff;
+    text-align: center;
+}
+
+.map-control {
+    border: 2px solid /*#22B573*/ var(--main-color);
+    border-top: none;
+    display: none;
+}
+
+.cursor-bar {
+    width: 30%;
+    padding-left: 10px;
+    padding-top: 2px;
+}
+
+.center-align-icon {
+    position: relative;
+    left: 50%;
+    margin-left: -12px;
+}
+
+.map-tool-asset-icon {
+    /*position: absolute;
+    left: 25%;
+    top: 42px;*/
+    border-top: 1px solid #fff;
+    padding: 0px 18px 0px 18px;
+    border-left: 2px solid /*#22B573*/ var(--main-color);
+    border-right: 2px solid /*#22B573*/ var(--main-color);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom: 2px solid /*#22B573*/ var(--main-color);
+    background: #fff;
+    margin-top: -2px;
+}
+
+#search-asset-map-tools .dropdown-menu {
+    position: absolute;
+    top: 41px;
+    z-index: 1000;
+    display: block;
+    min-width: 295px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    font-size: 13px;
+    text-align: left;
+    background-color: #fff;
+    border: 2px solid /*rgb(0, 175, 80)*/ var(--main-color);
+    border-radius: 0;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+#search-asset-map-tools [uib-typeahead-popup].dropdown-menu {
+    display: block;
+    top: 42px !important;
+    right: 0px !important;
+}
+
+#search-asset-map-tools > .dropdown-menu > .active > a,
+#search-asset-map-tools > .dropdown-menu > .active > a:hover,
+#search-asset-map-tools > .dropdown-menu > .active > a:focus {
+    color: #fff;
+    text-decoration: none;
+    outline: 0;
+    background: /*#22B573*/ var(--main-color);
+}
+
+.dashboard-width {
+    width: 7.14% !important;
+}
+
+.loading-asset-info {
+    text-align: center;
+    position: absolute;
+    z-index: 9000;
+    background: rgb(255, 255, 255);
+    right: 0;
+    left: 0;
+    top: 2px;
+    bottom: -2px;
+    padding: 20px;
+    font-size: 14px;
+}

@@ -1,0 +1,182 @@
+﻿:root {
+  --red: #b00;
+  --blue: #4679bd;
+  --main-color: #22B573;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font: 11px "Segoe UI" !important;
+    background: #fff;
+}
+.head {
+    background: /*#22B573;*/ var(--main-color);
+    text-align: center;
+    height:30px;
+}
+.container{
+    margin: 20px auto;
+}
+.title-logo{
+    width: 150px;
+ 
+}
+.back-icon{
+    float: right;
+    margin: 5px;
+    color: #fff;
+    text-decoration: none !important;
+    border: 2px solid;
+    padding: 2px 7px;
+    font-weight: bold !important;
+}
+.back-icon:hover{
+    color:/*#22B573*/ var(--main-color);
+    background:#fff;
+    border-color:#fff;
+}
+.cards{
+    min-height: 60px;
+    margin: 5px auto;
+    background: #fff;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+    cursor:pointer;
+}
+
+
+.back{
+    padding: 10px 35px;
+}
+
+
+/* ---- grid ---- */
+
+.grid {
+  /*background: #EEE;*/
+  max-width: 100%;
+  padding:1.3vmin;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-item {
+    width: 33.1%;
+    height: 23vmin;
+    float: left;
+    border: 1px solid #333;
+    border-color: hsla(0, 0%, 60%, 0.5);
+    border-radius: 2px;
+    margin: 1px;
+    position: relative;
+}
+
+.grid-item--width2 { width: 390px; }
+.grid-item--width3 { width: 480px; }
+.grid-item--width4 { width: 640px; }
+
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }
+
+.counter-title {
+    float: right;
+    padding-right: 10px;
+    font-size: 2.6vmin;
+}
+
+.counter-value {
+    position:absolute;
+    right:0px;
+    bottom:0px;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.btn-green{
+    color: #fff;
+    background-color: /*#22b573*/ var(--main-color);
+    border-color: /*#22b573*/ var(--main-color);
+}
+
+.btn-green:hover {
+        color: #fff;
+        background-color: var(--main-color);
+        border-color: var(--main-color);
+    }
+
+.btn-active {
+    color: #fff !important;
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    opacity: 0.8
+}
+
+.panel-utilize {
+    width: 47%;
+    float: left;
+    margin: 10px 0px 0px 31px
+}
+
+.panel-distance {
+    width: 47%;
+    float: left;
+    margin: 10px 0px 0px 13px;
+}
+
+.green-border{
+    border-top-color: rgb(47, 160, 90, 0.5);
+    border-right-color: rgb(47, 160, 90, 0.5);
+    border-left-color:rgb(47, 160, 90, 0.5);
+    border-bottom:3px solid rgb(47, 160, 90);
+}
+
+.blue-border{
+    border-top-color:rgb(0, 51, 153, 0.5);
+    border-right-color:rgb(0, 51, 153, 0.5);
+    border-left-color:rgb(0, 51, 153, 0.5);
+    border-bottom:3px solid rgb(0, 51, 153) !important;
+}
+
+.red-border {
+    border-top-color: rgb(255, 0, 0, 0.5);
+    border-right-color: rgb(255, 0, 0, 0.5);
+    border-left-color: rgb(255, 0, 0, 0.5);
+    border-bottom:3px solid rgb(255, 0, 0) !important;
+}
+
+.icon-pgps-zone {
+    color: #000 !important;
+    font-size: 40px;
+    position: absolute;
+    margin: 4px;
+}
+
+.countdown-timer {
+    position: absolute;
+    right: 20px;
+    top: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff !important;
+}
+
+.countdown-timer a {
+     color: #fff !important;
+}
+
+.countdown-timer a:hover{
+    color: #fff !important;
+    cursor:pointer;
+}
+

@@ -1,0 +1,110 @@
+﻿html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font: 11px "Segoe UI" !important;
+    background: #ededed;
+}
+.head {
+    background: #22B573;
+    text-align: center;
+    height:30px;
+}
+.container{
+    margin: 20px auto;
+}
+.title-logo{
+    width: 150px;
+ 
+}
+.back-icon{
+    float: right;
+    margin: 5px;
+    color: #fff;
+    text-decoration: none !important;
+    border: 2px solid;
+    padding: 2px 7px;
+    font-weight: bold !important;
+}
+.back-icon:hover{
+    color:#22B573;
+    background:#fff;
+    border-color:#fff;
+}
+.cards{
+    min-height: 60px;
+    margin: 5px auto;
+    background: #fff;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.2);
+    cursor:pointer;
+}
+
+
+.back{
+    padding: 10px 35px;
+}
+
+
+/* ---- grid ---- */
+
+.grid {
+  /*background: #EEE;*/
+  max-width: 100%;
+  padding:1.3vmin;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+
+.grid-item {
+    width: 33%;
+    height: 23vmin;
+    float: left;
+    border: 1px solid #333;
+    border-color: hsla(0, 0%, 60%, 0.5);
+    border-radius: 2px;
+    margin: 1px;
+}
+
+.grid-item--width2 { width: 390px; }
+.grid-item--width3 { width: 480px; }
+.grid-item--width4 { width: 640px; }
+
+.grid-item--height2 { height: 200px; }
+.grid-item--height3 { height: 260px; }
+.grid-item--height4 { height: 360px; }
+
+.counter-title {
+    float: right;
+    padding-right: 10px;
+    font-size: 3vmin;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+.countdown-timer {
+    position: absolute;
+    right: 20px;
+    top: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff !important;
+}
+
+.countdown-timer a {
+     color: #fff !important;
+}
+
+.countdown-timer a:hover{
+    color: #fff !important;
+    cursor:pointer;
+}

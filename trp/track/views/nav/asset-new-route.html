@@ -1,0 +1,285 @@
+﻿<div class="right-side-content-container" id="asset-new-route">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Asset Routes</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/13/route'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+
+
+            <hr class="spacing-2px" />
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"
+                    ng-class="{'active' : SelectedAsset.AssetID != null}"><a class="nav-tabs-custom" role="tab" data-toggle="tab" data-target="#routeNewList">Selected Asset Routes</a></li>
+                <li role="presentation"
+                    ng-class="{'active' : SelectedAsset.AssetID == null}"
+                    style="float:right" class="active"><a class="nav-tabs-custom" role="tab" data-toggle="tab" data-target="#routeNewAll"><i class="fa fa-list"></i>&nbsp;All Routes</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="side-panel-menu-content-body-container">
+        <div class="side-panel-menu-content-body" style="overflow-y:auto;">
+            <div class="tab-content">
+                <div ng-class="{'active' : SelectedAsset.AssetID != null}" class="tab-pane" id="routeNewList">
+                    <div ng-hide="SelectedAsset.AssetID">
+                        <a class="btn btn-xs btn-default trackpro-green-btn" ng-click="openAssetList()">
+                            Please select an asset first.
+                        </a>
+                    </div>
+                    <div ng-show="SelectedAsset.AssetID != null">
+                        <table class="table table-hover table-condensed" ng-hide="RouteNewMode || RouteEditMode || RouteInfoMode">
+                            <thead>
+                                <tr>
+                                    <td colspan="6">
+                                        <span class="spacing-2px">
+                                            <a class="btn btn-xs btn-default trackpro-green-btn" style="float:left;" ng-click="newRoute('line')"><i class="fa fa-arrows-v"></i>&nbsp;Straight Line</a>
+                                            <a class="btn btn-xs btn-default trackpro-green-btn" style="float:left;margin-left:5px;" ng-click="newRoute('snap')"><i class="fa fa-road"></i>&nbsp;Snap to Road</a>
+                                        </span>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td colspan="6"><hr class="spacing-2px" /></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <input type="text" ng-model="searchAssetRoute" class="pull-right width-100-percent" placeholder="&nbsp;Search..." ng-show="AssetRouteList.length" />
+                                    </td>
+                                </tr>
+                                <tr ng-show="AssetRouteList.length > 0">
+                                    <td class="width-20-percent">Name</td>
+                                    <td class="width-10-percent">Distance(m)</td>
+                                    <td class="width-10-percent">Limit(kph)</td>
+                                    <td class="width-20-percent"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="route in AssetRouteList | orderBy: '+Name' | RouteFilter: searchAssetRoute" ng-class="{'trackpro-green-blur': route.RouteID === isClicked}">
+                                    <td class="width-20-percent">{{route.Name}}</td>
+                                    <td class="width-20-percent center-align" title="{{route.DistanceInMeters}}">{{route.DistanceInMeters | number:0}}</td>
+                                    <td class="width-20-percent center-align" title="{{route.SpeedLimitRoute}}">{{route.SpeedLimitRoute | number:0}}</td>
+                                    <td class="center-align width-20-percent">
+                                        <a title="Assign" ng-click="openRouteAssignment(route.RouteID)" ng-class="{'trackpro-green-blur': route.RouteID === isClicked}" class="clickable-link"><i class="fa fa-external-link"></i></a>&nbsp;&nbsp;&nbsp;
+                                        <a title="Pan to Map" ng-click="panRoute(route.RouteID)" ng-class="{'trackpro-green-blur': route.RouteID === isClicked}" class="clickable-link"><i class="fa fa-map-marker"></i></a>&nbsp;&nbsp;&nbsp;
+                                        <a title="Remove Route" ng-click="removeRoute(route)" ng-class="{'trackpro-green-blur': route.RouteID === isClicked}" class="clickable-link"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;&nbsp;
+                                        <a title="Edit Route" ng-click="editRoute(route)" ng-class="{'trackpro-green-blur': route.RouteID === isClicked}" class="clickable-link"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <form id="new-route-form-create">
+                            <table class="table table-condensed table-hover" ng-show="RouteNewMode">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="5">
+                                            <span class="pull-left">Name</span>
+                                            <div class="center-align">
+                                                <input type="text" placeholder="Desired route name..." class="width-100-percent" ng-model="RouteName" data-parsley-required data-parsley-minlength="5" maxlength="15" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-minlength-message="At least 5 characters." data-parsley-maxlength-message="15 characters only." data-parsley-pattern-message="Alphanumeric only." data-parsley-required-message="This field is required." data-parsley-errors-container="#newroute-name-error-new-container-all" data-parsley-whitespace="squish" /><br />
+                                                <span id="newroute-name-error-new-container-all"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <span class="">Speed Limit</span>
+                                            <div class="">
+                                                <input type="number" placeholder="" class="width-30-percent" ng-model="SpeedLimitRoute" data-parsley-maxlength="10" data-parsley-required data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-required-message="This field is required." data-parsley-errors-container="#newroute-speed-error-new-container-all" /> kph<br />
+                                                <span id="newroute-speed-error-new-container-all"></span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <button class="btn btn-xs trackpro-green width-100-percent pull-right" ng-click="startNewRoute()">
+                                                <i class="fa fa-map-marker"></i>&nbsp; {{routeText}}
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="5">
+                                            <span ng-show="Distance !== ''" class="pull-left">Distance &nbsp;&nbsp;</span>
+                                            <span ng-show="Distance !== ''">{{Distance}} </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" ng-click="cancelNewRoute()" value="Cancel" />
+                                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" style="float:right;" value="Save" ng-click="saveRoute()" />
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                        <div class="route-loading" ng-show="route_loading_edit"><h3 class="text-center"><i class="fa fa-spin fa-spinner"></i>&nbsp;Saving...</h3></div>
+                        <form id="new-route-form-update" ng-show="RouteEditMode">
+                            <table class="table table-condensed table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>
+                                            <input type="text" ng-model="EditRoute.Name" placeholder="desired route name..." data-parsley-required data-parsley-minlength="5" maxlength="15" data-parsley-minlength-message="At least 5 characters." data-parsley-pattern-message="Alphanumeric only." data-parsley-required-message="This field is required." data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-errors-container="#newroute-name-error-update-container" autocomplete="off" />
+                                            <span id="newroute-name-error-update-container"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Speed Limit</td>
+                                        <td>
+                                            <input type="number" placeholder="" class="width-30-percent" ng-model="EditRoute.SpeedLimitRoute" data-parsley-maxlength="10" data-parsley-required data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-required-message="This field is required." data-parsley-errors-container="#newroute-speed-error-update-container" /> kph<br />
+                                            <span id="newroute-speed-error-update-container"></span>
+                                        </td>
+                                    </tr>
+                                    <tr></tr>
+                                    <tr title="Assign the zone to one or more assets">
+                                        <td>Assign</td>
+                                        <td><a class="clickable-link" ng-click="openRouteAssignment(EditRoute.RouteID)"><i class="fa fa-external-link"></i></a></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" ng-click="cancelEditRoute(EditRoute.RouteID)" value="Cancel" />
+                                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" style="float:right;" value="Save" ng-click="updateRoute()" />
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+                <div ng-class="{'active' : SelectedAsset.AssetID == null}" role="tabpanel" class="tab-pane" id="routeNewAll">
+                    <table class="table table-hover table-condensed" ng-hide="RouteNewMode || RouteEditMode || RouteInfoMode">
+                        <thead>
+                            <tr>
+                                <td colspan="6">
+                                    <!--<input type="text" ng-model="searchAssetRoute" class="pull-right width-75-percent" placeholder="&nbsp;Search..." ng-show="AssetRouteList.length > 0" />-->
+                                    <span class="spacing-2px">
+                                        <a class="btn btn-xs btn-default trackpro-green-btn" style="float:left;" ng-click="newRoute('line')"><i class="fa fa-arrows-v"></i>&nbsp;Straight Line</a>
+                                        <a class="btn btn-xs btn-default trackpro-green-btn" style="float:left;margin-left:5px;" ng-click="newRoute('snap')"><i class="fa fa-road"></i>&nbsp;Snap to Road</a>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6"><hr class="spacing-2px"/></td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <input type="text" ng-model="searchUserRoute" class="pull-right width-100-percent" placeholder="&nbsp;Search..." ng-show="routeList.length" />
+                                </td>
+                            </tr>
+                            <tr ng-show="routeList.length > 0">
+                                <td class="width-20-percent">Name</td>
+                                <td class="width-10-percent">Distance(m)</td>
+                                <td class="width-10-percent">Limit(kph)</td>
+                                <td class="width-20-percent"></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="route in routeList | orderBy: '+Name' | RouteFilter: searchUserRoute" ng-class="{'trackpro-green-blur': route.RouteID === isClicked}">
+                                <td class="width-20-percent">{{route.Name}}</td>
+                                <td class="width-20-percent center-align" title="{{route.DistanceInMeters}}">{{route.DistanceInMeters | number:0}}</td>
+                                <td class="width-20-percent center-align" title="{{route.SpeedLimitRoute}}">{{route.SpeedLimitRoute | number:0}}</td>
+                                <td class="center-align width-20-percent">
+                                    <a title="Assign" ng-click="openRouteAssignment(route.RouteID)" ng-class="{'trackpro-green-blur': route.RouteID === isClicked}" class="clickable-link"><i class="fa fa-external-link"></i></a>&nbsp;&nbsp;&nbsp;
+                                    <a title="Pan to Map" ng-click="panRoute(route.RouteID)" ng-class="{'trackpro-green-blur': route.RouteID === isClicked}" class="clickable-link"><i class="fa fa-map-marker"></i></a>&nbsp;&nbsp;&nbsp;
+                                    <a title="Remove Route" ng-click="removeRoute(route)" ng-class="{'trackpro-green-blur': route.RouteID === isClicked}" class="clickable-link"><i class="fa fa-trash"></i></a>&nbsp;&nbsp;&nbsp;
+                                    <a title="Edit Route" ng-click="editRoute(route)" ng-class="{'trackpro-green-blur': route.RouteID === isClicked}" class="clickable-link"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <form id="new-route-form-all-create">
+                        <table class="table table-condensed table-hover" ng-show="RouteNewMode">
+                            <tbody>
+                                <tr>
+                                    <td colspan="5">
+                                        <span class="pull-left">Name</span>
+                                        <div class="center-align">
+                                            <input type="text" placeholder="Desired route name..." class="width-100-percent" ng-model="RouteName" data-parsley-required data-parsley-minlength="5" maxlength="15" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-minlength-message="At least 5 characters." data-parsley-maxlength-message="15 characters only." data-parsley-pattern-message="Alphanumeric only." data-parsley-required-message="This field is required." data-parsley-errors-container="#newroute-name-error-new-container-all" data-parsley-whitespace="squish" /><br />
+                                            <span id="newroute-name-error-new-container-all"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <span class="">Speed Limit</span>
+                                        <div class="">
+                                            <input type="number" placeholder="" class="width-30-percent" ng-model="SpeedLimitRoute" data-parsley-maxlength="10" data-parsley-required data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-required-message="This field is required." data-parsley-errors-container="#newroute-speed-error-new-container-all" /> kph<br />
+                                            <span id="newroute-speed-error-new-container-all"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <button class="btn btn-xs trackpro-green width-100-percent pull-right" ng-click="startNewRoute()">
+                                            <i class="fa fa-map-marker"></i>&nbsp; {{routeText}}
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <span ng-show="Distance !== ''" class="pull-left">Distance &nbsp;&nbsp;</span>
+                                        <span ng-show="Distance !== ''">{{Distance}} </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" ng-click="cancelNewRoute()" value="Cancel" />
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" style="float:right;" value="Save" ng-click="saveRoute()" />
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                    <div class="route-loading" ng-show="route_loading_edit"><h3 class="text-center"><i class="fa fa-spin fa-spinner"></i>&nbsp;Saving...</h3></div>
+                    <form id="new-route-form-all-update" ng-show="RouteEditMode">
+                        <table class="table table-condensed table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>
+                                        <input type="text" ng-model="EditRoute.Name" placeholder="desired route name..." data-parsley-required data-parsley-minlength="5" maxlength="15" data-parsley-minlength-message="At least 5 characters." data-parsley-pattern-message="Alphanumeric only." data-parsley-required-message="This field is required." data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-errors-container="#newroute-name-error-update-container-all" autocomplete="off" />
+                                        <span id="newroute-name-error-update-container-all"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Speed Limit</td>
+                                    <td>
+                                        <input type="number" placeholder="" class="width-30-percent" ng-model="EditRoute.SpeedLimitRoute" data-parsley-maxlength="10" data-parsley-required data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-required-message="This field is required." data-parsley-errors-container="#newroute-speed-error-update-container-all" /> kph<br />
+                                        <span id="newroute-speed-error-update-container-all"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    
+                                </tr>
+                                <tr title="Assign the zone to one or more assets">
+                                    <td>Assign</td>
+                                    <td><a class="clickable-link" ng-click="openRouteAssignment(EditRoute.RouteID)"><i class="fa fa-external-link"></i></a></td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" ng-click="cancelEditRoute(EditRoute.RouteID)" value="Cancel" />
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" style="float:right;" value="Save" ng-click="updateRoute()" />
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+
+                <div class="route-loading" ng-show="route_loading_delete"><h3 class="text-center"><i class="fa fa-spin fa-spinner"></i>&nbsp;Deleting...</h3></div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

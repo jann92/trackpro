@@ -1,0 +1,347 @@
+﻿<div class="left-side-content-container" id="asset-filter" style="width:580px !important;">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Filters</label>
+            <a href="{{helperUrl + '/helper/faq/#/trp/4/filter'}}" target="_blank" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <hr class="spacing-2px" />
+            <div>
+                <ul class="asset-filter-nav nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a class="nav-tabs-custom" data-toggle="tab" data-target=".asset-filter-tab">Status Filter</a></li>
+                    <!--<li role="presentation"><a class="nav-tabs-custom" data-toggle="tab" data-target=".zone-filter-tab" ng-controller="ZoneFilterController" ng-click="getInsideZone()">Zone Filter</a></li>-->
+                    <li role="presentation"><a class="nav-tabs-custom" data-toggle="tab" data-target=".zone-filter-tab">Zone Filter</a></li>
+                    <!--<li role="presentation"><a class="nav-tabs-custom" data-toggle="tab" data-target=".reminder-filter-tab">Reminders</a></li>-->
+                    <li role="presentation"><a class="nav-tabs-custom" data-toggle="tab" data-target=".type-filter-tab">Type Filter</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="side-panel-menu-content-body-container">
+        <div class="side-panel-menu-content-body" style="overflow-y:visible;width:580px !important;max-height:429px;">
+            <div class="tab-content">
+                <div class="tab-pane active asset-filter-tab" id="asset-filter-tab" ng-controller="AssetFilterController">
+                    <div class="export-panel-filter">
+                        <div class="pull-right export-file fade in" id="export-file-filter-asset" ng-show="filteredStatus.length != 0">
+                            <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')" ng-show="filteredStatus.length != 0">
+                                <span class="fa-stack">
+                                    <i class="fa fa-stack-1-6x xls" ng-class="{'fa-circle-o-notch fa-spin': exportXLSX === true,'fa-file': exportXLSX === false}"></i>
+                                    <strong class="fa-stack-1x file-type">XLS</strong>
+                                </span>
+                            </button>
+                            <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')" ng-show="filteredStatus.length != 0">
+                                <span class="fa-stack">
+                                    <i class="fa fa-stack-1-6x csv" ng-class="{'fa-circle-o-notch fa-spin': exportCSV === true,'fa-file': exportCSV === false}"></i>
+                                    <strong class="fa-stack-1x file-type">CSV</strong>
+                                </span>
+                            </button>
+                        </div>
+                        <a class="btn btn-default export-panel-button" title="Export" ng-click="exportPanel()" ng-show="filteredStatus.length != 0">
+                            <i class="fa fa-download export-awesome-alignment"></i>
+                        </a>
+                    </div>
+                    <div class="tablist-header" style="padding-bottom:6px !important;">
+                        <div class="width-17-percent pull-left">
+                            <select id="status-filter-dropdown" class="visible-lg" ng-model="selected" ng-options="list.status for list in assetStatus"></select>
+                            <select id="status-filter-dropdown" class="hidden-lg" ng-model="selectedMobile" ng-options="list.status for list in assetStatusMobile"></select>
+
+                        </div>
+                        <div class="width-80-percent pull-left">
+                            <a class="btn btn-xs btn-default trackpro-green-btn pull-left asset-button" ng-click="queryFilter()">Query</a>
+                        </div>
+                        <br />
+                        <input ng-show="filteredStatus.length != 0" type="text" ng-model="searchFilter" placeholder="&nbsp;Search..." class="width-100-percent margin-top-10px" />
+                        <br />
+                        <div id="history-loading-icon" ng-show="loading" class="center-align"><i class="fa fa-refresh fa-spin"></i>&nbsp; Loading</div>
+                    </div>
+                    <div class="tablist-body" style="max-height:360px !important;">
+
+                        <table class="table table-condensed separate group-panel-body normal-whitespace" id="asset-filter-table-export" style="display:none;" data-cols-width="4,40,20,30,30,10,10,10,10,10,60">
+                            <thead>
+                                <tr>
+                                    <td class="width-3-percent" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center">#</td>
+                                    <td class="width-10-percent" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center"><b>Name</b></td>
+                                    <td class="width-15-percent left-align" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center"><b>Time</b></td>
+                                    <td class="width-5-percent" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center"><b>Speed Course</b></td>
+                                    <td class="width-10-percent" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center" ng-hide="selected.id == 'Zone'"><b>Status</b></td>
+                                    <td class="width-5-percent" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center"><b>Fuel (L)</b></td>
+                                    <td class="width-5-percent" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center"><b>Temp 1(°C)</b></td>
+                                    <td class="width-5-percent" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center"><b>Temp 2(°C)</b></td>
+                                    <td class="width-5-percent" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center"><b>Sensor 1</b></td>
+                                    <td class="width-5-percent" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center"><b>Sensor 2</b></td>
+                                    <td class="width-10-percent" data-f-bold="true" data-b-a-s="thin" data-fill-color="c9dbff" data-a-h="center"><center><b>Location</b></center></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat-start="cus in customerList | filter: filterTable" ng-if="cus.assetFilterList.length > 0">
+                                    <td class="width-20-percent" colspan="11" style="font-weight:600;font-size:12px;" data-f-bold="true" data-b-a-s="thin">
+                                        {{cus.CustomerName}} ({{cus.assetFilterListExport.length}})
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="gps in (viewData.filtered = (cus.assetFilterListExport | MultipleFilter: searchFilter)) | orderBy: '+Name'" ng-click="panMarker(gps)" ng-class="{'trackpro-green-blur': gps.AssetID === isClicked}" class="pointer">
+                                    <td class="width-3-percent" data-t="n" data-b-a-s="thin">{{$index +1}}</td>
+                                    <td class="width-10-percent" data-b-a-s="thin">{{gps.Name}}</td>
+                                    <td class="width-15-percent" data-b-a-s="thin"><span style="white-space:pre-wrap;" data-a-h="center">{{(gps.GPSTime)}}</span></td>
+                                    <td class="width-5-percent" data-b-a-s="thin" data-a-h="center">{{gps.Speed +' kph, '+ gps.DirectionDegrees +'° '+ gps.DirectionCardinal}}</td>
+                                    <td class="width-10-percent" ng-hide="selected.id == 'Zone'" data-a-h="center" data-b-a-s="thin">{{gps.Status}}</td>
+                                    <td class="width-5-percent" data-t="n" data-b-a-s="thin" data-a-h="center">{{gps.Fuel <0 ? "N/A" : gps.Fuel}}</td>
+                                    <td class="center-align width-5-percent" data-b-a-s="thin" data-a-h="center">{{gps.Temperature1 <0 ? "N/A" : gps.Temperature1 }}</td>
+                                    <td class="center-align width-5-percent" data-b-a-s="thin" data-a-h="center">{{gps.Temperature2 <0 ? "N/A" : gps.Temperature2 }}</td>
+                                    <td class="center-align width-5-percent" data-b-a-s="thin" data-a-h="center">{{(gps.Sensor1) ? 'On':'Off'}}</td>
+                                    <td class="center-align width-5-percent" data-b-a-s="thin" data-a-h="center">{{(gps.Sensor2) ? 'On':'Off'}}</td>
+                                    <td class="center-align width-10-percent" data-b-a-s="thin">{{gps.Location}}</td>
+                                </tr>
+                                <tr ng-if="cus.assetFilterList.length > 0" ng-repeat-end data-exclude="true"></tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-condensed separate group-panel-body normal-whitespace" id="asset-filter-table">
+                            <thead>
+                                <tr>
+                                    <td class="width-3-percent">#</td>
+                                    <td class="width-10-percent"><b>Name</b></td>
+                                    <td class="width-15-percent left-align"><b>Time</b></td>
+                                    <td class="width-5-percent"><b>Speed Course</b></td>
+                                    <td class="width-10-percent" ng-hide="selected.id == 'Zone'"><b>Status</b></td>
+                                    <td class="width-5-percent"><b>Fuel (L)</b></td>
+                                    <td class="width-5-percent"><b>Temp 1(°C)</b></td>
+                                    <td class="width-5-percent"><b>Temp 2(°C)</b></td>
+                                    <td class="width-5-percent"><b>Sensor 1</b></td>
+                                    <td class="width-5-percent"><b>Sensor 2</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat-start="cus in customerList | filter: filterTable" ng-if="cus.assetFilterList.length > 0">
+                                    <td class="width-20-percent" colspan="10" style="font-weight:600;font-size:12px;">
+                                        {{cus.CustomerName}} ({{cus.assetFilterList.length}})
+                                    </td>
+                                </tr>
+                                <tr ng-repeat="gps in (viewData.filtered = (cus.assetFilterList | MultipleFilter: searchFilter)) | orderBy: '+Name'" ng-click="panMarker(gps)" ng-class="{'trackpro-green-blur': gps.AssetID === isClicked}" class="pointer">
+                                    <td class="width-3-percent">{{$index +1}}</td>
+                                    <td class="width-10-percent">{{gps.Name}}</td>
+                                    <td class="width-15-percent"><span style="white-space:pre-wrap;">{{(gps.GPSTime)}}</span></td>
+                                    <td class="width-5-percent">{{gps.Speed +' kph, '+ gps.DirectionDegrees +'° '+ gps.DirectionCardinal}}</td>
+                                    <td class="width-10-percent" ng-hide="selected.id == 'Zone'">{{gps.Status}}</td>
+                                    <td class="width-5-percent">{{gps.Fuel <0 ? "N/A" : gps.Fuel}}</td>
+                                    <td class="center-align width-5-percent">{{gps.Temperature1 <0 ? "N/A" : gps.Temperature1 }}</td>
+                                    <td class="center-align width-5-percent">{{gps.Temperature2 <0 ? "N/A" : gps.Temperature2 }}</td>
+                                    <td class="center-align width-5-percent">{{(gps.Sensor1) ? 'On':'Off'}}</td>
+                                    <td class="center-align width-5-percent">{{(gps.Sensor2) ? 'On':'Off'}}</td>
+                                </tr>
+                                <tr ng-if="cus.assetFilterList.length > 0" ng-repeat-end></tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="tab-pane zone-filter-tab" ng-controller="ZoneFilterController">
+                    <div class="export-panel-filter">
+                        <div class="pull-right export-file fade in" id="export-file-zone-asset" ng-show="ZoneAssetList.length > 0">
+                            <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')">
+                                <span class="fa-stack">
+                                    <i class="fa fa-file fa-stack-1-6x xls"></i>
+                                    <strong class="fa-stack-1x file-type">XLS</strong>
+                                </span>
+                            </button>
+                            <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')">
+                                <span class="fa-stack">
+                                    <i class="fa fa-file fa-stack-1-6x csv"></i>
+                                    <strong class="fa-stack-1x file-type">CSV</strong>
+                                </span>
+                            </button>
+                        </div>
+                        <a class="btn btn-default export-panel-button" title="Export" ng-click="exportPanel()" ng-show="ZoneAssetList.length > 0  && SelectedZone.id != 0">
+                            <i class="fa fa-download export-awesome-alignment"></i>
+                        </a>
+                    </div>
+                    <div class="tablist-header" style="padding-bottom:6px !important;">
+                        <div class="width-80-percent pull-right" style="padding-left:1%;">
+                            <a class="btn btn-xs btn-default trackpro-green-btn pull-left asset-button" ng-click="queryZoneFilter()">Query</a>
+                        </div>
+                        <div class="width-20-percent pull-left">
+                            <select id="zone-filter-dropdown" style="width:100%" ng-model="SelectedZone" ng-options="Zone.name for Zone in SelectZoneList"></select>
+                        </div>
+                        <br />
+                        <input type="text" ng-model="searchFilter" placeholder="&nbsp;Search..." class="margin-top-10px width-100-percent" ng-show="ZoneAssetList.length > 0" />
+                        <br />
+                        <div id="history-loading-icon" ng-show="loadingInsideZone" class="center-align"><i class="fa fa-refresh fa-spin"></i>&nbsp; Loading</div>
+                    </div>
+                    <div class="tablist-body" ng-show="ZoneAssetList.length > 0 && SelectedZone.ZoneID != 0 && !loadingInsideZone" style="max-height:360px !important;">
+                        <table class="table table-condensed separate">
+                            <thead>
+                                <tr>
+                                    <td class="width-3-percent">#</td>
+                                    <td class="width-10-percent"><b>Name</b></td>
+                                    <td class="width-15-percent left-align"><b>Time</b></td>
+                                    <td class="width-5-percent"><b>Speed Course</b></td>
+                                    <td class="width-10-percent"><b>Status</b></td>
+                                    <td class="width-5-percent"><b>Fuel (L)</b></td>
+                                    <td class="width-5-percent"><b>Temp 1(°C)</b></td>
+                                    <td class="width-5-percent"><b>Temp 2(°C)</b></td>
+                                    <td class="width-5-percent"><b>Sensor 1</b></td>
+                                    <td class="width-5-percent"><b>Sensor 2</b></td>
+                                    <td class="width-10-percent center-align"><b>Zone</b></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="object-item pointer" ng-repeat="gps in ZoneAssetList | MultipleFilter: searchFilter | orderBy: '+Name'" ng-click="panMarker(gps)" ng-class="{'trackpro-green-blur': gps.AssetID === isClicked}">
+                                    <td class="width-3-percent">{{$index +1}}</td>
+                                    <td class="width-10-percent">{{gps.Name}}</td>
+                                    <td class="width-15-percent"><span style="white-space:pre-wrap;">{{(gps.GPSTime)}}</span></td>
+                                    <td class="width-5-percent">{{gps.Speed +' kph, '+ gps.DirectionDegrees +'° '+ gps.DirectionCardinal}}</td>
+                                    <td class="width-10-percent" ng-hide="selected.id == 'Zone'">{{gps.Status}}</td>
+                                    <td class="width-5-percent">{{gps.Fuel <0 ? "N/A" : gps.Fuel}}</td>
+                                    <td class="center-align width-5-percent">{{gps.Temperature1 <0 ? "N/A" : gps.Temperature1 }}</td>
+                                    <td class="center-align width-5-percent">{{gps.Temperature2 <0 ? "N/A" : gps.Temperature2 }}</td>
+                                    <td class="center-align width-5-percent">{{(gps.Sensor1) ? 'On':'Off'}}</td>
+                                    <td class="center-align width-5-percent">{{(gps.Sensor2) ? 'On':'Off'}}</td>
+                                    <td class="center-align width-10-percent">{{gps.GeofenceName}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!--<div class="center-align" ng-show="ZoneAssetList.length === 0 && !loadingInsideZone ">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        &nbsp;No Results.
+                    </div>-->
+                    <!--<div class="center-align" ng-show="loadingInsideZone">
+                        <h5 class="text-center"><i class="fa fa-spin fa-spinner"></i>&nbsp;Loading all zones</h5>
+                    </div>-->
+                </div>
+                <div class="tab-pane type-filter-tab" ng-controller="AssetTypeFilterController">
+                    <div class="export-panel-filter">
+                        <div class="pull-right export-file fade in" id="export-type-filter-asset" ng-show="AssetList.length > 0">
+                            <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')">
+                                <span class="fa-stack">
+                                    <i class="fa fa-file fa-stack-1-6x xls"></i>
+                                    <strong class="fa-stack-1x file-type">XLS</strong>
+                                </span>
+                            </button>
+                            <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')">
+                                <span class="fa-stack">
+                                    <i class="fa fa-file fa-stack-1-6x csv"></i>
+                                    <strong class="fa-stack-1x file-type">CSV</strong>
+                                </span>
+                            </button>
+                        </div>
+                        <a class="btn btn-default export-panel-button" title="Export" ng-click="exportPanel()" ng-show="AssetList.length > 0">
+                            <i class="fa fa-download export-awesome-alignment"></i>
+                        </a>
+                    </div>
+                    <div class="tablist-header" style="padding-bottom:6px !important;">
+                        <div class="width-80-percent pull-right" style="padding-left:1%;">
+                            <a class="btn btn-xs btn-default trackpro-green-btn pull-left asset-button" ng-click="queryTypeFilter()">Query</a>
+                        </div>
+                        <div class="width-20-percent pull-left">
+                            <select class="width-100-percent" ng-model="selectedType" ng-options="assetType.Name for assetType in AssetTypeList"></select>
+                        </div>
+                        <br />
+                        <input type="text" ng-model="searchFilter" placeholder="&nbsp;Search..." class="margin-top-10px width-100-percent" ng-show="AssetList.length > 0" />
+                        <br />
+                        <div id="history-loading-icon" ng-show="loadingTypeFilter" class="center-align"><i class="fa fa-refresh fa-spin"></i>&nbsp; Loading</div>
+                    </div>
+                    <div class="tablist-body" ng-show="AssetList.length > 0 && !loadingTypeFilter" style="max-height:360px !important;">
+                        <table class="table table-condensed separate">
+                            <thead>
+                                <tr>
+                                    <td class="width-3-percent">#</td>
+                                    <td class="width-10-percent"><b>Name</b></td>
+                                    <td class="width-15-percent left-align"><b>Time</b></td>
+                                    <td class="width-5-percent"><b>Speed Course</b></td>
+                                    <td class="width-10-percent"><b>Status</b></td>
+                                    <td class="width-5-percent"><b>Fuel (L)</b></td>
+                                    <td class="width-5-percent"><b>Temp 1(°C)</b></td>
+                                    <td class="width-5-percent"><b>Temp 2(°C)</b></td>
+                                    <td class="width-5-percent"><b>Sensor 1</b></td>
+                                    <td class="width-5-percent"><b>Sensor 2</b></td>
+                                    <!--<td class="width-10-percent center-align"><b>Zone</b></td>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="object-item pointer" ng-repeat="gps in (viewData.filtered = (AssetList | MultipleFilter: searchFilter))  | orderBy: '+Name'" ng-click="panMarker(gps)" ng-class="{'trackpro-green-blur': gps.AssetID === isClicked}">
+                                    <td class="width-3-percent">{{$index +1}}</td>
+                                    <td class="width-10-percent">{{gps.Name}}</td>
+                                    <td class="width-15-percent"><span style="white-space:pre-wrap;">{{(gps.GPSTime)}}</span></td>
+                                    <td class="width-5-percent">{{gps.Speed +' kph, '+ gps.DirectionDegrees +'° '+ gps.DirectionCardinal}}</td>
+                                    <td class="width-10-percent" ng-hide="selected.id == 'Zone'">{{gps.Status1}}</td>
+                                    <td class="width-5-percent">{{gps.Fuel <0 ? "N/A" : gps.Fuel}}</td>
+                                    <td class="center-align width-5-percent">{{gps.Temperature1 <0 ? "N/A" : gps.Temperature1 }}</td>
+                                    <td class="center-align width-5-percent">{{gps.Temperature2 <0 ? "N/A" : gps.Temperature2 }}</td>
+                                    <td class="center-align width-5-percent">{{(gps.Sensor1) ? 'On':'Off'}}</td>
+                                    <td class="center-align width-5-percent">{{(gps.Sensor2) ? 'On':'Off'}}</td>
+                                    <!--<td class="center-align width-10-percent">{{gps.GeofenceName}}</td>-->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+
+                <div class="tab-pane reminder-filter-tab">
+
+                    <div class="export-panel-filter">
+                        <div class="pull-right export-file fade in" id="export-file-reminder-asset" ng-show="FilteredAssets.length > 0">
+                            <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')">
+                                <span class="fa-stack">
+                                    <i class="fa fa-file fa-stack-1-6x xls"></i>
+                                    <strong class="fa-stack-1x file-type">XLS</strong>
+                                </span>
+                            </button>
+                            <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')">
+                                <span class="fa-stack">
+                                    <i class="fa fa-file fa-stack-1-6x csv"></i>
+                                    <strong class="fa-stack-1x file-type">CSV</strong>
+                                </span>
+                            </button>
+                        </div>
+                        <a class="btn btn-default export-panel-button" title="Export" ng-click="exportPanel()" ng-show="FilteredAssets.length > 0">
+                            <i class="fa fa-download export-awesome-alignment"></i>
+                        </a>
+                    </div>
+                    <div class="tablist-header">
+                        <div class="width-65-percent pull-right">
+                            <input type="text" ng-model="searchFilter" placeholder="&nbsp;Search..." class="width-100-percent" ng-show="FilteredAssets.length > 0" />
+                        </div>
+                        <div class="width-30-percent pull-left">
+                            <select id="reminder-filter-dropdown" style="width:130px" ng-model="selectedReminder" ng-change="getStatusReminder(selectedReminder)" ng-options="reminder.status for reminder in RemindersList"></select>
+                        </div>
+                    </div>
+                    <div class="tablist-body" ng-show="FilteredAssets.length > 0">
+                        <table class="table table-condensed separate">
+                            <thead>
+                                <tr>
+                                    <td class="width-10-percent">#</td>
+                                    <td class="width-20-percent">Name</td>
+
+                                    <td class="width-20-percent">Reminder</td>
+                                    <td class="width-30-percent"></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="object-item pointer" ng-repeat="gps in FilteredAssets | MultipleFilter: searchFilter | orderBy: '+Name'" ng-click="panMarker(gps)" ng-class="{'trackpro-green': gps.AssetID === isClicked}">
+                                    <td class="width-10-percent">{{$index +1}}</td>
+                                    <td class="width-30-percent">{{gps.Name}}</td>
+                                    <td class="width-30-percent">
+                                        <span ng-class='(gps.isExpired) ? "red-expired" : "blue"'>{{gps.Reminder}}</span>
+                                    </td>
+                                    <td class="width-10-percent">
+                                        <div class="asset-icons">
+                                            <a class="fa fa-info" ng-click="setAsset(gps)" title="Asset Information"></a>
+                                            <a class="icon-pgps-zone small-icon" ng-click="viewZones(gps)" title="Zones"></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="center-align" ng-show="FilteredAssets.length === 0">
+                        <i class="fa fa-exclamation-triangle"></i>
+                        &nbsp;No Results.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

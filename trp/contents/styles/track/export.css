@@ -1,0 +1,106 @@
+﻿#export-menu {
+    position: absolute;
+    width: 250px;
+    z-index: 600;
+    top: 0;
+    left: 40px;
+    background: #ffffff;
+    border: 1px solid #aeaeae;
+}
+
+.export-summary {
+    font-size: 13px;
+    padding: 8px !important;
+}
+
+.export-summary-icon {
+    padding: 5px 0px !important;
+}
+
+.export-hide-col {
+    display: none;
+}
+
+
+.btn-export {
+    position: absolute;
+    top: 5px;
+    border-radius: 20px !important;
+    z-index: 100;
+    left: 1px;
+    width: 33px;
+    height: 33px;
+}
+
+.btn-type {
+    border-radius: 0 !important;
+    padding: 0;
+}
+
+    .btn-export:hover,
+    .btn-export:focus,
+    .btn-type:hover {
+        /*opacity: 0.8;*/
+        /*color: #22B573;*/
+    }
+
+.alignment {
+    margin: 0px 0px 0px -2.3px;
+}
+
+.file-type {
+    margin-top: .2em;
+    font-size: 0.7em;
+    color: #22B573 !important;
+}
+
+/*.xls,
+.csv {
+    color: #fff !important;
+}
+
+    .xls:hover,
+    .csv:hover {
+        color: #fc0 !important;
+    }*/
+
+.fa-stack-1-6x {
+    font-size: 1.6em;
+    padding: 1.8px 3.4px;
+}
+
+.export-panel {
+    position: relative;
+    top: 2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px !important;
+    z-index: 100;
+    float: right;
+    right: 5px;
+}
+
+.export-panel-filter {
+    position: absolute;
+    top: 7px;
+    right: 15px;
+    z-index: 100;
+    float: right;
+}
+
+.export-panel-button {
+    border-radius: 20px !important;
+    width: 30px;
+    height: 30px;
+}
+
+.export-awesome-alignment {
+    position: relative;
+    top: -1.3px;
+    left: -4.3px;
+}
+
+.export-file {
+    margin: 4px 15px 4px 4px;
+    display: none;
+}

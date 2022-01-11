@@ -1,0 +1,142 @@
+﻿<div ng-controller="ReminderFilterController">
+    <div class="right-side-content-container" id="notification" >
+        <div class="side-panel-menu-content-header-container">
+            <div class="side-panel-menu-content-header">
+                <label class="side-panel-menu-content-header-title">Notifications</label>
+                <a href="" target="_blank" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+                <a class="pointer font-15px" style="float:right;padding:8px;" title="{{isPopupText}}" ng-click="popupShowClick()"><i class="fa" ng-class="{'fa-eye': isPopupShow,'fa-eye-slash': !isPopupShow}"></i></a>
+                <!--<span ng-class="(isMute) ? 'fa fa-volume-off' : 'fa fa-volume-up'" title="{{soundText}}" class="font-11px cursor-pointer" ng-click="setAlertMute()"></span>-->
+                <hr class="spacing-2px" />
+                <div>
+                    <ul class="asset-filter-nav nav nav-tabs" role="tablist">
+                        <!--<li role="presentation" class="active"><a class="nav-tabs-custom" data-toggle="tab" data-target=".reminder-tab">Reminders</a></li>-->
+                        <li role="presentation" class="active"><a class="nav-tabs-custom" data-toggle="tab" data-target=".violations-tab">Violations</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+        <div class="side-panel-menu-content-body-container">
+            <div class="side-panel-menu-content-body" style="overflow-y:visible;">
+                <div class="tab-content">
+                    <div class="tab-pane reminder-tab" id="reminder-tab">
+                        <div class="export-panel-filter">
+                            <div class="pull-right export-file fade in" id="export-file-reminder-asset" ng-show="FilteredAssets.length > 0">
+                                <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')">
+                                    <span class="fa-stack">
+                                        <i class="fa fa-file fa-stack-1-6x xls"></i>
+                                        <strong class="fa-stack-1x file-type">XLS</strong>
+                                    </span>
+                                </button>
+                                <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')">
+                                    <span class="fa-stack">
+                                        <i class="fa fa-file fa-stack-1-6x csv"></i>
+                                        <strong class="fa-stack-1x file-type">CSV</strong>
+                                    </span>
+                                </button>
+                            </div>
+                            <a class="btn btn-default export-panel-button" title="Export" ng-click="exportPanel()" ng-show="FilteredAssets.length > 0">
+                                <i class="fa fa-download export-awesome-alignment"></i>
+                            </a>
+                        </div>
+                        <div class="tablist-header">
+                            <div class="width-65-percent pull-right">
+                                <input type="text" ng-model="searchFilter" placeholder="&nbsp;Search..." class="width-100-percent" ng-show="FilteredAssets.length > 0" />
+                            </div>
+                            <div class="width-30-percent pull-left">
+                                <select id="reminder-filter-dropdown" style="width:130px" ng-model="selectedReminder" ng-change="getStatusReminder(selectedReminder)" ng-options="reminder.status for reminder in RemindersList"></select>
+                            </div>
+                        </div>
+                        <div class="tablist-body" ng-show="FilteredAssets.length > 0">
+                            <table class="table table-condensed separate">
+                                <thead>
+                                    <tr>
+                                        <td class="width-10-percent">#</td>
+                                        <td class="width-15-percent">Name</td>
+                                        <!--<td class="width-20-percent center-align">Time</td>-->
+                                        <td class="width-20-percent">Reminder</td>
+                                        <td class="width-20-percent">Type</td>
+                                        <td class="width-30-percent"></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="object-item pointer" ng-repeat="gps in FilteredAssets | MultipleFilter: searchFilter | orderBy: '+Name'" ng-click="panMarker(gps)" ng-class="{'trackpro-green': gps.AssetID === isClicked}">
+                                        <td class="width-10-percent">{{$index +1}}</td>
+                                        <td class="width-15-percent">{{gps.Name}}</td>
+                                        <!--<td class="width-20-percent"><span style="white-space:Bpre-wrap;">{{(gps.GPSTime)}}</span></td>-->
+                                        <td class="width-30-percent">
+                                            <span ng-class='(gps.isExpired) ? "red-expired" : "blue"'>{{gps.Reminder}}</span>
+                                        </td>
+                                        <td class="width-20-percent">{{gps.Type}}</td>
+                                        <td class="width-10-percent">
+                                            <div class="asset-icons">
+                                                <a class="fa fa-crosshairs" ng-class="{'blinker blink-infinite':gps.focusOnMap}" title="{{getMessageFocus(gps.focusOnMap)}}" style="vertical-align: 0px !important;" ng-click="focusAssetMap(gps)"></a>
+                                                <a class="fa fa-info" ng-click="setAsset(gps)" title="Asset Information"></a>
+                                                <a class="icon-pgps-zone small-icon" ng-click="viewZones(gps)" title="Zones"></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="center-align" ng-show="FilteredAssets.length === 0">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            &nbsp;No Results.
+                        </div>
+                    </div>
+
+                    <div class="tab-pane active violations-tab" id="violations-tab">
+                        <div class="tablist-header">
+                            <div class="width-65-percent pull-right">
+                                <input type="text" ng-model="searchViolation" placeholder="&nbsp;Search..." class="width-100-percent" ng-show="FilteredAssets.length > 0" />
+                            </div>
+                            <div class="width-30-percent pull-left">
+                                <select id="reminder-filter-dropdown" style="width:130px" ng-model="selectedViolation" ng-change="getStatusViolation(selectedViolation)" ng-options="violation.status for violation in ViolationTypeList"></select>
+                            </div>
+                        </div>
+                        <div class="tablist-body" ng-show="ViolationList.length > 0">
+                            <table class="table table-condensed separate">
+                                <thead>
+                                    <tr>
+                                        <td class="width-10-percent">#</td>
+                                        <td class="width-15-percent">Name</td>
+                                        <td class="width-15-percent">GPS ID</td>
+                                        <td class="width-15-percent">Type</td>
+                                        <td class="width-30-percent"></td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="object-item pointer" ng-repeat="gps in ViolationList | NotifFilter: searchViolation | orderBy: '+Name'" ng-click="panMarker(gps)" ng-class="{'trackpro-green': gps.AssetID === isClicked}">
+
+                                        <td class="width-10-percent">{{$index +1}}</td>
+                                        <td class="width-15-percent">{{gps.Name}}</td>
+                                        <td class="width-15-percent">{{gps.AssetID}}</td>
+                                        <td class="width-15-percent">{{gps.ViolationStatus}}</td>
+                                        <td class="width-10-percent">
+                                            <div class="asset-icons">
+                                                <a class="fa fa-crosshairs" ng-class="{'blinker blink-infinite':gps.focusOnMap}" title="{{getMessageFocus(gps.focusOnMap)}}" style="vertical-align: 0px !important;" ng-click="focusAssetMap(gps)"></a>
+                                                <a class="fa fa-info" ng-click="setAsset(gps)" title="Asset Information"></a>
+                                                <a class="icon-pgps-zone small-icon" ng-click="viewZones(gps)" title="Zones"></a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+      
+
+    </div>
+    <div class="div-alerts-popup">
+        <ul id="ul-alert-notif">
+            <!--Pop-up Notifications-->
+
+        </ul>
+    </div>
+    
+</div>

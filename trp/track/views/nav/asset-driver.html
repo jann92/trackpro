@@ -1,0 +1,1170 @@
+﻿<div class="right-side-content-container" id="asset-driver">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Driver</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/18/driver'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <div class="pull-right export-file fade in" id="export-file-asset-driver" ng-show="activeTab == 'history' && historyDriverList.length > 0 && SelectedAsset.AssetID && DriverHistoryInfoMode == false">
+                <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x xls"></i>
+                        <strong class="fa-stack-1x file-type">XLS</strong>
+                    </span>
+                </button>
+                <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x csv"></i>
+                        <strong class="fa-stack-1x file-type">CSV</strong>
+                    </span>
+                </button>
+            </div>
+            <a class="btn btn-default export-panel" title="Export" ng-click="exportPanel()" ng-show="activeTab == 'history' && historyDriverList.length > 0 && SelectedAsset.AssetID && DriverHistoryInfoMode == false">
+                <i class="fa fa-download export-awesome-alignment"></i>
+            </a>
+            <hr class="spacing-2px" />
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" ng-click="setActiveTab('current')" class="active"><a class="nav-tabs-custom" role="tab" data-toggle="tab" data-target="#currentDriver">Current</a></li>
+                <li role="presentation" ng-click="setActiveTab('history')" class="pull-right"><a class="nav-tabs-custom" role="tab" data-toggle="tab" data-target="#historyDriver"><i class="fa fa-list"></i> History</a></li>
+                <!--<li role="presentation" ng-click="setActiveTab('simulate')"><a class="nav-tabs-custom" role="tab" data-toggle="tab" data-target="#simulateDriver">Simulate</a></li>-->
+                <!--<li role="presentation" ng-click="setActiveTab('all')" style="float:right;"><a class="nav-tabs-custom" role="tab" data-toggle="tab" data-target="#driverList"><i class="fa fa-list"></i>&nbsp;All Drivers</a></li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="side-panel-menu-content-body-container" style="overflow-y:auto;overflow-x:hidden;">
+        <div class="side-panel-menu-content-body" style="overflow-y:visible;">
+            <div class="center-align asset-loading" ng-show="activeLoading"><i class="fa fa-refresh fa-spin"></i>&nbsp; Loading...</div>
+            <div class="tab-content driver">
+                <div class="tab-pane active" id="currentDriver">
+                    <div ng-hide="SelectedAsset.AssetID">
+                        <a class="btn btn-xs btn-default trackpro-green-btn" ng-click="openAssetList()">
+                            Please select an asset first.
+                        </a>
+                    </div>
+                    <div ng-show="SelectedAsset.AssetID && activeLoading == false">
+                        <div ng-show="activeDriverList.length == 0 && DriverAssignedInfoMode == false"><span class="padding-5px">No Driver</span></div>
+                        <table class="tale table-condensed table-hover width-100-percent" ng-hide="DriverAssignedInfoMode || activeDriverList.length == 0">
+                            <tbody ng-repeat="activeDriver in activeDriverList | filter: searchActiveDriver">
+                                <tr>
+                                    <td class="width-10px">
+                                        <img class="label-icon" src="../../contents/driver/Name.png" />
+                                    </td>
+                                    <td>Driver Name</td>
+                                    <td ng-class="{'driver-not-allowed': activeDriver.isAssigned == false}">
+                                    {{activeDriver.DriverName}}<!--&nbsp;&nbsp;<span title="Not Available" ng-show="!activeDriver.IsAvailable && activeDriver.Schedule !== null" class="fa fa-ban"></span>-->
+                                    <a class="clickable-link fa fa-times pull-right" ng-click="removeCurrentActiveDriver(activeDriver)" title="Remove Driver"></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img class="label-icon" src="../../contents/driver/Name.png" />
+                                    </td>
+                                    <td>Tag</td>
+                                    <td>{{activeDriver.Code}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img class="label-icon" src="../../contents/images/track/asset-information/details/data_time.png" />
+                                    </td>
+                                    <td>Board Time</td>
+                                    <td>{{activeDriver.EventDateTime | date:'yyyy-MM-dd HH:mm'}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/License Number.png" class="label-icon" />
+                                    </td>
+                                    <td>License No.</td>
+                                    <td>{{activeDriver.LicenseNo}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/License Type.png" class="label-icon" />
+                                    </td>
+                                    <td>License Type</td>
+                                    <td>{{activeDriver.LicenseType}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Mobile Phone Number.png" class="label-icon" />
+                                    </td>
+                                    <td>Mobile No.</td>
+                                    <td>{{activeDriver.MobilePhoneNo}}</td>
+                                </tr>
+                                <!--<tr>
+                                    <td class="width-10px">
+                                        <img class="label-icon" src="../../contents/images/track/asset-information/details/data_time.png" />
+                                    </td>
+                                    <td>Schedule</td>
+                                    <td>{{activeDriver.Schedule}}</td>
+                                </tr>-->
+                            </tbody>
+                        </table>
+                        <div class="width-100-percent padding-5px" ng-hide="DriverAssignedInfoMode || DriverAssignedPaneEdit"><a class="btn btn-xs btn-default trackpro-green-btn width-100-percent" ng-click="openDriverAssetAssignment(searchActiveDriver)">Assign Drivers</a></div>
+                        <h5 ng-hide="DriverAssignedInfoMode || assignedDriverList.length === 0 || DriverAssignedPaneEdit">Assigned Drivers</h5>
+                        <table class="tale table-condensed table-hover width-100-percent" ng-hide="DriverAssignedInfoMode || assignedDriverList.length === 0 || DriverAssignedPaneEdit">
+                            <thead>
+                                <tr>
+                                    <td colspan="4">
+
+                                        <input type="text" ng-model="searchAssignedDriver" class="pull-right width-100-percent" placeholder="&nbsp;Search..." />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <div class="font-10px"><b>Total Assigned Drivers: &nbsp;</b>{{TotalAssignedDrivers}}</div>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                             
+                                <tr ng-repeat="assignDriver in assignedDriverList | filter: {DriverName: searchAssignedDriver}">
+                                    <td><span class="fa fa-id-card-o font-20px blue-anchor" ng-click="setActiveDriver(assignDriver)" ng-class="{'blue-active': assignDriver.ActivePair}" title="{{assignDriver.ActivePair ? 'Remove Active' : 'Set Active'}}"></span></td>
+                                    <td><span ng-class="{'blue': assignDriver.ActivePair}">{{assignDriver.DriverName}}</span></td>
+                                    <td><a ng-click="openAssignedDriverInfo(assignDriver)" title="Information" class="clickable-link"><i class="fa fa-info"></i></a></td>
+                                    <td><a ng-click="removeDriverAssign(assignDriver)" class="clickable-link" title="Remove Assignment"><i class="fa fa-times"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--<div ng-show="assignedDriverList.length == 0"><span class="padding-5px">No data.</span></div>-->
+                    </div>
+
+                    <div ng-show="DriverAssignedInfoMode && DriverAssignedPaneEdit == false">
+                        <table class="table table-hover table-condensed">
+                            <tr>
+                                <td colspan="3"><b>{{infoDriver.CustomerName}}</b></td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Name.png" class="label-icon" />
+                                </td>
+                                <td>Name</td>
+                                <td>{{infoDriver.Name}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Nickname.png" class="label-icon" />
+                                </td>
+                                <td>Nickname</td>
+                                <td>{{infoDriver.Nickname}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/License Number.png" class="label-icon" />
+                                </td>
+                                <td>License No.</td>
+                                <td>{{infoDriver.LicenseNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/License Type.png" class="label-icon" />
+                                </td>
+                                <td>License Type</td>
+                                <td>{{infoDriver.LicenseType}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/License Expiry Date.png" class="label-icon" />
+                                </td>
+                                <td>License Exp.</td>
+                                <td>{{infoDriver.LicenseExpiryDate | date : "yyyy-MM-dd"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Birthdate.png" class="label-icon" />
+                                </td>
+                                <td>Birthdate</td>
+                                <td>{{infoDriver.Birthdate | date : "yyyy-MM-dd"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Mobile Phone Number.png" class="label-icon" />
+                                </td>
+                                <td>Mobile Phone</td>
+                                <td>{{infoDriver.MobilePhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Address.png" class="label-icon" />
+                                </td>
+                                <td>Address</td>
+                                <td>{{infoDriver.Address}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Staff Number.png" class="label-icon" />
+                                </td>
+                                <td>Staff No.</td>
+                                <td>{{infoDriver.StaffNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Staff Type.png" class="label-icon" />
+                                </td>
+                                <td>Staff Type</td>
+                                <td>{{infoDriver.StaffType}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Hire Date.png" class="label-icon" />
+                                </td>
+                                <td>Hire Date</td>
+                                <td>{{infoDriver.Hiredate | date: "yyyy-MM-dd"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Home Landline.png" class="label-icon" />
+                                </td>
+                                <td>Home Phone</td>
+                                <td>{{infoDriver.HomePhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Office Landline.png" class="label-icon" />
+                                </td>
+                                <td>Office Phone</td>
+                                <td>{{infoDriver.OfficePhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Gender.png" class="label-icon" />
+                                </td>
+                                <td>Gender</td>
+                                <td>{{infoDriver.Gender}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Remarks.png" class="label-icon" />
+                                </td>
+                                <td>Remarks</td>
+                                <td>{{infoDriver.Remarks}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Emergency Name.png" class="label-icon" />
+                                </td>
+                                <td>Emergency Name</td>
+                                <td>{{infoDriver.EmergencyContactName}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Emergency Number.png" class="label-icon" />
+                                </td>
+                                <td>Emergency No.</td>
+                                <td>{{infoDriver.EmergencyContactPhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Status.png" class="label-icon" />
+                                </td>
+                                <td>Status</td>
+                                <td>{{infoDriver.Status}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Name.png" class="label-icon" />
+                                </td>
+                                <td>Tag</td>
+                                <td>{{infoDriver.Tag}}</td>
+                            </tr>
+                            <tfoot>
+                                <tr>
+                                    <td>
+                                        <!--<input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;margin-right:7px;" ng-click="cancelInfoAssignedDriver()" value="Back" />-->
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <!--<input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;margin-right:7px;" ng-click="openDriverEdit()()" value="Edit" />-->
+                                        <!--<a ng-click="openDriverAssignedEdit()" class="btn btn-xs btn-default trackpro-green-btn">Edit&nbsp;</a>-->
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;margin-right:7px;" ng-click="cancelInfoAssignedDriver()" value="Back" />
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <!--<form id="edit-driver-form">
+                        <table class="table table-hover table-condensed" ng-show="DriverAssignedPaneEdit">
+                            <tbody>
+                                <tr>
+                                    <td class="width-10px"></td>
+                                    <td>Customer</td>
+                                    <td>
+                                        <select class="width-65-percent"
+                                                data-parsley-error-message="Please select customer."
+                                                data-parsley-errors-container="#edit-driver-customer-error-container"
+                                                ng-model="edit_SelectedCustomer"
+                                                ng-options="stype.CustomerName for stype in customerList">
+                                            <option value="">Select</option>
+                                        </select><br />
+                                        <span id="edit-driver-customer-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img class="label-icon" src="../../contents/driver/Name.png" />
+                                    </td>
+                                    <td>Name</td>
+                                    <td>
+                                        <input type="text" ng-model="edit_Name" data-parsley-minlength="5" data-parsley-minlength-message="At least 5 characters." maxlength="50" data-parsley-required="true" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-pattern-message="Alphanumeric only." data-parsley-required-message="This field is required." data-parsley-errors-container="#edit-driver-name-error-container" />
+                                        <span id="edit-driver-name-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Nickname.png" class="label-icon" />
+                                    </td>
+                                    <td>Nickname</td>
+                                    <td>
+                                        <input type="text" maxlength="10" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-pattern-message="Alphanumeric only." data-parsley-errors-container="#edit-driver-nname-error-container" ng-model="edit_Nickname" /><br />
+                                        <span id="edit-nname-error-edit-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/License Number.png" class="label-icon" />
+                                    </td>
+                                    <td>License No.</td>
+                                    <td>
+                                        <input type="text" data-parsley-minlength="5" maxlength="20" data-parsley-required="true" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-pattern-message="Alphanumeric only." data-parsley-required-message="This field is required." data-parsley-errors-container="#edit-driver-licno-error-container" ng-model="edit_LicenseNo" /><br />
+                                        <span id="edit-driver-licno-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/License Type.png" class="label-icon" />
+                                    </td>
+                                    <td>License Type</td>
+                                    <td>
+                                        <select class="width-65-percent" required data-parsley-error-message="Please select license." data-parsley-errors-container="#edit-driver-lictype-error-container" ng-model="edit_LicenseType" ng-options="ltype.text for ltype in licenseTypeList">
+                                            <option value="">Select</option>
+                                        </select><br />
+                                        <span id="edit-driver-lictype-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/License Expiry Date.png" class="label-icon" />
+                                    </td>
+                                    <td>License Exp.</td>
+                                    <td><input type="text" class="btn btn-xs width-65-percent datepicker-white" ng-model="edit_LicenseExpiryDate" datenotime /></td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Birthdate.png" class="label-icon" />
+                                    </td>
+                                    <td>Birthdate</td>
+                                    <td><input type="text" class="btn btn-xs width-65-percent datepicker-white" ng-model="edit_Birthdate" nofuturedatepicker /></td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Mobile Phone Number.png" class="label-icon" />
+                                    </td>
+                                    <td>Mobile Phone</td>
+                                    <td>
+                                        <input type="text" data-parsley-required="true" data-parsley-type="number" data-parsley-required-message="This field is required." data-parsley-type-message="Numeric only." data-parsley-errors-container="#edit-driver-mobno-error-container" ng-model="edit_MobilePhoneNo" /><br />
+                                        <span id="edit-driver-mobno-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Address.png" class="label-icon" />
+                                    </td>
+                                    <td>Address</td>
+                                    <td><textarea ng-model="edit_Address"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Staff Number.png" class="label-icon" />
+                                    </td>
+                                    <td>Staff No.</td>
+                                    <td>
+                                        <input type="text" data-parsley-minlength="5" data-parsley-minlength-message="At least 5 characters." ng-model="edit_StaffNo" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-pattern-message="This field is alphanum only." data-parsley-errors-container="#edit-driver-stno-error-container" data-parsley-whitespace="squish" /><br />
+                                        <span id="edit-driver-stno-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Staff Type.png" class="label-icon" />
+                                    </td>
+                                    <td>Staff Type</td>
+                                    <td>
+                                        <select class="width-65-percent" data-parsley-error-message="Please select staff." data-parsley-errors-container="#edit-driver-stype-error-container" ng-model="edit_StaffType" ng-options="stype.text for stype in staffTypeList">
+                                            <option value="">Select</option>
+                                        </select><br />
+                                        <span id="edit-driver-stype-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Hire Date.png" class="label-icon" />
+                                    </td>
+                                    <td>Hire Date</td>
+                                    <td><input type="text" class="btn btn-xs width-65-percent datepicker-white" nofuturedatepicker ng-model="edit_Hiredate" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Home Landline.png" class="label-icon" />
+                                    </td>
+                                    <td>Home Phone</td>
+                                    <td>
+                                        <input type="text" ng-model="edit_HomePhoneNo" data-parsley-pattern="^(?=.*?[1-9])[0-9()-]+$" data-parsley-error-message="This field is invalid." data-parsley-errors-container="#edit-driver-hno-error-container" /><br />
+                                        <span id="edit-driver-hno-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Office Landline.png" class="label-icon" />
+                                    </td>
+                                    <td>Office Phone</td>
+                                    <td>
+                                        <input type="text" ng-model="edit_OfficePhoneNo" data-parsley-pattern="^(?=.*?[1-9])[0-9()-]+$" data-parsley-error-message="This field is invalid." data-parsley-errors-container="#edit-driver-ofno-error-container" /><br />
+                                        <span id="edit-driver-ofno-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Gender.png" class="label-icon" />
+                                    </td>
+                                    <td>Gender</td>
+                                    <td>
+                                        <span ng-repeat="gender in GenderList">
+                                            <input type="radio" ng-model="$parent.edit_Gender" ng-value="gender" />{{gender}}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Remarks.png" class="label-icon" />
+                                    </td>
+                                    <td>Remarks</td>
+                                    <td>
+                                        <textarea ng-model="edit_Remarks" minlength="5" maxlength="50" data-parsley-error-message="At least 5 characters." data-parsley-errors-container="#edit-driver-remarks-error-container"></textarea><br />
+                                        <span id="edit-driver-remarks-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Emergency Name.png" class="label-icon" />
+                                    </td>
+                                    <td>Emergency<br />Name</td>
+                                    <td>
+                                        <input type="text" ng-model="edit_EmergencyContactName" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-error-message="This field is alphanum only." data-parsley-errors-container="#edit-driver-ename-error-container" /><br />
+                                        <span id="edit-driver-ename-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Emergency Number.png" class="label-icon" />
+                                    </td>
+                                    <td>Emergency<br />No.</td>
+                                    <td>
+                                        <input type="text" ng-model="edit_EmergencyContactPhoneNo" data-parsley-type="number" data-parsley-error-message="Numeric only." data-parsley-errors-container="#edit-driver-emno-error-container" /><br />
+                                        <span id="edit-driver-emno-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Status.png" class="label-icon" />
+                                    </td>
+                                    <td>Status</td>
+                                    <td>
+                                        <select class="width-65-percent" ng-model="edit_Status" ng-options="stype.text for stype in statusTypeList">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Name.png" class="label-icon" />
+                                    </td>
+                                    <td>Tag</td>
+                                    <td>
+                                        <input type="text" ng-model="edit_Tag" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px"></td>
+                                    <td>Tag Type</td>
+                                    <td>
+                                        <select ng-model="edit_TagType" class="width-65-percent">
+                                            <option value="">Select</option>
+                                            <option value="Active">Active</option>
+                                            <option value="Passive">Passive</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" ng-click="cancelEditDriverAssigned()" value="Cancel" />
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" style="float:right;" value="Update" ng-click="updateDriver()" />
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>-->
+                </div>
+
+                <div class="tab-pane" id="driverList">
+                    <table class="table table-condensed table-hover" ng-hide="DriverNewMode || DriverInfoMode || DriverEditMode">
+                        <thead>
+                            <tr>
+                                <td colspan="6">
+                                    <div><a class="btn btn-xs btn-default trackpro-green-btn" style="float:left;" ng-click="newDriver()"><i class="fa fa-plus"></i>&nbsp;New Driver</a></div>
+                                    <input type="text" ng-model="searchDriver" class="pull-right width-75-percent" placeholder="&nbsp;Search..." />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Name</td>
+                                <td>Tag</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr ng-repeat="driver in DriverList | DriverFilter: searchDriver">
+                                <td>{{driver.Name}}</td>
+                                <td>{{driver.Tag}}</td>
+                                <td>
+                                    <a title="Assign" ng-click="openDriverAssetAssignment(driver)" class="clickable-link"><i class="fa fa-external-link"></i></a>&nbsp;&nbsp;&nbsp;
+                                    &nbsp;
+                                    <a title="Information" ng-click="openDriverInfo(driver)" class="clickable-link"><i class="fa fa-info"></i></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="route-loading" ng-show=""><h3 class="text-center"><i class="fa fa-spin fa-spinner"></i>&nbsp;Saving...</h3></div>
+                    <form id="new-driver-form" data-validate="parsley">
+                        <table class="table table-hover table-condensed" ng-show="DriverNewMode">
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td>Customer</td>
+                                    <td><select class="width-65-percent" ng-model="SelectedCustomer" ng-options="stype.CustomerName for stype in customerList"></select></td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img class="label-icon" src="../../contents/driver/Name.png" />
+                                    </td>
+                                    <td>Name</td>
+                                    <td>
+                                        <input type="text" ng-model="Name" data-parsley-required="true" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-minlength="3" data-parsley-minlength-message="At least 5 characters." data-parsley-pattern-message="Alphanumeric only." maxlength="50" data-parsley-required-message="This field is required." data-parsley-whitespace="squish" data-parsley-errors-container="#new-driver-name-error-container" /><br />
+                                        <span id="new-driver-name-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Nickname.png" class="label-icon" />
+                                    </td>
+                                    <td>Nickname</td>
+                                    <td><input type="text" ng-model="Nickname" data-parsley-minlength="5" maxlength="10" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-minlength-message="At least 5 characters." data-parsley-pattern-message="Alphanumeric only." data-parsley-whitespace="squish" data-parsley-errors-container="#new-driver-nname-error-containter" /><br />
+                                        <span id="new-driver-nname-error-containter"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/License Number.png" class="label-icon" />
+                                    </td>
+                                    <td>License No.</td>
+                                    <td><input type="text" ng-model="LicenseNo" data-parsley-minlength="5" maxlength="20" data-parsley-required="true" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-required-message="This field is required." data-parsley-minlength-message="At least 5 characters." data-parsley-pattern-message="Alphanumeric only." data-parsley-errors-container="#new-driver-licnum-error-container" data-parsley-whitespace="squish"/><br />
+                                        <span id="new-driver-licnum-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/License Type.png" class="label-icon" />
+                                    </td>
+                                    <td>License Type</td>
+                                    <td>
+                                        <select required data-parsley-error-message="Please select license." data-parsley-errors-container="#new-driver-lictype-error-container" class="width-65-percent" ng-model="LicenseType" ng-options="ltype.text for ltype in licenseTypeList">
+                                            <option value="">Select</option>
+                                        </select><br />
+                                        <span id="#new-driver-lictype-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/License Expiry Date.png" class="label-icon" />
+                                    </td>
+                                    <td>License Exp.</td>
+                                    <td>
+                                        <input type="button" class="btn btn-xs width-65-percent datepicker-white" datenotime ng-value="period.licenseexpirydate" ng-model="period.licenseexpirydate">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Birthdate.png" class="label-icon" />
+                                    </td>
+                                    <td>Birthdate</td>
+                                    <td>
+                                        <input type="button" class="btn btn-xs width-65-percent datepicker-white" nofuturedatepicker ng-value="period.birthdate" ng-model="period.birthdate">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Mobile Phone Number.png" class="label-icon" />
+                                    </td>
+                                    <td>Mobile Phone</td>
+                                    <td>
+                                        <input type="text" data-parsley-required="true" data-parsley-required-message="This field is required." data-parsley-type="number" maxlength="20" data-parsley-type-message="Numeric only." data-parsley-errors-container="#new-driver-mobno-error-container" ng-model="MobilePhoneNo" data/><br />
+                                        <span id="new-driver-mobno-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Address.png" class="label-icon" />
+                                    </td>
+                                    <td>Address</td>
+                                    <td>
+                                        <textarea ng-model="Address"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Staff Number.png" class="label-icon" />
+                                    </td>
+                                    <td>Staff No.</td>
+                                    <td><input type="text" ng-model="StaffNo" data-parsley-minlength="3" maxlength="20" data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-minlength-message="At least 5 characters." data-parsley-pattern-message="This field is alphanum only." data-parsley-errors-container="#new-driver-staffno-error-container" data-parsley-whitespace="squish"/><br />
+                                        <span id="new-driver-staffno-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Staff Type.png" class="label-icon" />
+                                    </td>
+                                    <td>Staff Type</td>
+                                    <td>
+                                        <select class="width-65-percent" ng-model="StaffType" ng-options="stype.text for stype in staffTypeList">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Hire Date.png" class="label-icon" />
+                                    </td>
+                                    <td>Hire Date</td>
+                                    <td><input type="button" class="btn btn-xs width-65-percent datepicker-white" nofuturedatepicker ng-value="period.hiredate" ng-model="period.hiredate" /></td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Home Landline.png" class="label-icon" />
+                                    </td>
+                                    <td>Home Phone</td>
+                                    <td><input data-parsley-pattern="^(?=.*?[1-9])[0-9()-]+$" data-parsley-error-message="This field is invalid." data-parsley-errors-container="#new-driver-hp-error-container" type="text" ng-model="HomePhoneNo" /><br />
+                                        <span id="new-driver-hp-error-container"></span>    
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Office Landline.png" class="label-icon" />
+                                    </td>
+                                    <td>Office Phone</td>
+                                    <td><input data-parsley-pattern="^(?=.*?[1-9])[0-9()-]+$" data-parsley-error-message="This field is invalid." data-parsley-errors-container="#new-driver-op-error-container" type="text" ng-model="OfficePhoneNo" /><br />
+                                        <span id="new-driver-op-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Gender.png" class="label-icon" />
+                                    </td>
+                                    <td>Gender</td>
+                                    <td>
+                                        <span ng-repeat="gender in GenderList">
+                                            <input type="radio" ng-model="$parent.Gender" ng-value="gender" />{{gender}}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Remarks.png" class="label-icon" />
+                                    </td>
+                                    <td>Remarks</td>
+                                    <td>
+                                        <textarea data-parsley-minlength="5" data-parsley-pattern="/^[a-zA-Z\s]*$/" data-parsley-pattern-message="Letters only." maxlength="50" ng-model="Remarks" data-parsley-errors-container="#new-driver-remarks-error-container" data-parsley-minlength-message="At least 5 characters."></textarea>
+                                        <br />
+                                        <span id="new-driver-remarks-error-container"></span>
+                                     </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Emergency Name.png" class="label-icon" />
+                                    </td>
+                                    <td>Emergency<br />Name</td>
+                                    <td><input type="text" ng-model="EmergencyContactName" data-parsley-minlength="5" maxlength="50" data-parsley-minlength-message="At least 5 characters." data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-pattern-message="Alphanumeric only." data-parsley-errors-container="#new-driver-emname-error-container" data-parsley-whitespace="squish"/><br />
+                                        <span id="new-driver-emname-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Emergency Number.png" class="label-icon" />
+                                    </td>
+                                    <td>Emergency<br />No.</td>
+                                    <td><input type="text" ng-model="EmergencyContactPhoneNo" data-parsley-type="number" data-parsley-error-message="Numeric only." data-parsley-errors-container="#new-driver-emno-error-container"/><br />
+                                        <span id="new-driver-emno-error-container"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Status.png" class="label-icon" />
+                                    </td>
+                                    <td>Status</td>
+                                    <td>
+                                        <select class="width-65-percent" ng-model="StatusType" ng-options="stype.text for stype in statusTypeList">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2"><input type="checkbox" ng-model="checktag" /> Add a tag</td>
+                                </tr>
+                                <tr ng-show="checktag">
+                                    <td class="width-10px">
+                                        <img class="label-icon" src="../../contents/driver/Name.png" />
+                                    </td>
+                                    <td>Tag Code</td>
+                                    <td><input type="text" ng-model="TagCode" /></td>
+                                </tr>
+                                <tr ng-show="checktag">
+                                    <td></td>
+                                    <td>Type</td>
+                                    <td>
+                                        <select class="width-65-percent" ng-model="TagType" ng-options="stype.text for stype in tagTypeList"></select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <!--<tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="width-30-percent">
+                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" value="Save" ng-click="saveDriver()" />
+                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn" ng-click="cancelNewDriver()" value="Cancel" />
+                        </td>
+                    </tr>-->
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" ng-click="cancelNewDriver()" value="Cancel" />
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" style="float:right;" value="Save" ng-click="saveDriver()" />
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+
+                    <div ng-show="DriverInfoMode">
+
+                        <table class="table table-hover table-condensed">
+                            <tr>
+                                <!--<td></td>
+                                <td>Customer</td>-->
+                                <td colspan="3"><b>{{infoDriver.CustomerName}}</b></td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Name.png" class="label-icon" />
+                                </td>
+                                <td>Name</td>
+                                <td>{{infoDriver.Name}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Nickname.png" class="label-icon" />
+                                </td>
+                                <td>Nickname</td>
+                                <td>{{infoDriver.Nickname}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/License Number.png" class="label-icon" />
+                                </td>
+                                <td>License No.</td>
+                                <td>{{infoDriver.LicenseNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/License Type.png" class="label-icon" />
+                                </td>
+                                <td>License Type</td>
+                                <td>{{infoDriver.LicenseType}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/License Expiry Date.png" class="label-icon" />
+                                </td>
+                                <td>License Exp.</td>
+                                <td>{{infoDriver.LicenseExpiryDate | date : "yyyy-MM-dd"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Birthdate.png" class="label-icon" />
+                                </td>
+                                <td>Birthdate</td>
+                                <td>{{infoDriver.Birthdate | date : "yyyy-MM-dd"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Mobile Phone Number.png" class="label-icon" />
+                                </td>
+                                <td>Mobile Phone</td>
+                                <td>{{infoDriver.MobilePhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Address.png" class="label-icon" />
+                                </td>
+                                <td>Address</td>
+                                <td>{{infoDriver.Address}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Staff Number.png" class="label-icon" />
+                                </td>
+                                <td>Staff No.</td>
+                                <td>{{infoDriver.StaffNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Staff Type.png" class="label-icon" />
+                                </td>
+                                <td>Staff Type</td>
+                                <td>{{infoDriver.StaffType}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Hire Date.png" class="label-icon" />
+                                </td>
+                                <td>Hire Date</td>
+                                <td>{{infoDriver.Hiredate | date: "yyyy-MM-dd"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Home Landline.png" class="label-icon" />
+                                </td>
+                                <td>Home Phone</td>
+                                <td>{{infoDriver.HomePhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Office Landline.png" class="label-icon" />
+                                </td>
+                                <td>Office Phone</td>
+                                <td>{{infoDriver.OfficePhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Gender.png" class="label-icon" />
+                                </td>
+                                <td>Gender</td>
+                                <td>{{infoDriver.Gender}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Remarks.png" class="label-icon" />
+                                </td>
+                                <td>Remarks</td>
+                                <td>{{infoDriver.Remarks}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Emergency Name.png" class="label-icon" />
+                                </td>
+                                <td>Emergency Name</td>
+                                <td>{{infoDriver.EmergencyContactName}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Emergency Number.png" class="label-icon" />
+                                </td>
+                                <td>Emergency No.</td>
+                                <td>{{infoDriver.EmergencyContactPhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Status.png" class="label-icon" />
+                                </td>
+                                <td>Status</td>
+                                <td>{{infoDriver.Status}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Name.png" class="label-icon" />
+                                </td>
+                                <td>Tag</td>
+                                <td>{{infoDriver.Tag}}</td>
+                            </tr>
+                            <tr ng-show="infoDriver.Tag != null">
+                                <td class="width-10px">
+                                </td>
+                                <td>Tag Type</td>
+                                <td>{{infoDriver.TagType}}</td>
+                            </tr>
+                            <tfoot>
+                                <tr>
+                                    <td>
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;margin-right:7px;" ng-click="cancelInfoDriver()" value="Back" />
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <!--<input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;margin-right:7px;" ng-click="openDriverEdit()()" value="Edit" />-->
+                                        <a ng-click="openDriverEdit()" class="btn btn-xs btn-default trackpro-green-btn">Edit&nbsp;</a>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                </div>
+
+                <div id="simulateDriver" class="tab-pane">
+                    <table class="table table-hover table-condensed">
+                        <tr>
+                            <td>
+                                <a class="btn btn-xs btn-default trackpro-green-btn" ng-click="simulateDriver()">
+                                    Simulate
+                                </a>
+                            </td>
+                            <td>
+                                <select class="width-65-percent" ng-model="selectedAsset" ng-options="stype.Name for stype in assetList"></select>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table table-hover table-condensed">
+                        <tr>
+                            <td>Coordinates</td>
+                            <td>{{selectedAsset.Longitude}}, {{selectedAsset.Latitude}}</td>
+                        </tr>
+                        <tr>
+                            <td>Speed</td>
+                            <td>{{selectedAsset.Speed}}</td>
+                        </tr>
+                        <tr>
+                            <td>Direction</td>
+                            <td>{{selectedAsset.DirectionDegrees}} {{selectedAsset.DirectionCardinal}}</td>
+                        </tr>
+                        <tr>
+                            <td>Board Time</td>
+                            <td>{{DateTimeNow | date: 'yyyy-MM-dd HH:mm Z'}}</td>
+                        </tr>
+                        <!--<tr>
+            <td>GPSTime</td>
+            <td>{{selectedAsset.GPSTime | date: 'yyyy-MM-dd HH:mm Z'}}</td>
+        </tr>-->
+                        <tr>
+
+                        <tr>
+                            <td>Fuel</td>
+                            <td><input type="number" ng-model="simulateFuel" value="1" /></td>
+                        </tr>
+                        <tr>
+                            <td>Tag</td>
+                            <td><input type="text" ng-model="simulateTag" /></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="historyDriver" class="tab-pane">
+                    <div ng-hide="SelectedAsset.AssetID">
+                        <a class="btn btn-xs btn-default trackpro-green-btn" ng-click="openAssetList()">
+                            Please select an asset first.
+                        </a>
+                    </div>
+                    <div ng-show="SelectedAsset.AssetID && DriverHistoryInfoMode == false">
+                        <div ng-hide="historyDriverList.length > 0">No History</div>
+                        <table class="tale table-condensed table-hover width-100-percent" ng-show="historyDriverList.length > 0">
+                            <thead>
+                                <tr>
+                                    <td colspan="4">
+                                        <input type="text" ng-model="searchHistoryDriver" class="pull-right width-100-percent" placeholder="&nbsp;Search..." />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Driver</td>
+                                    <td>Board Time</td>
+                                    <td>Location</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr ng-repeat="historyDriver in historyDriverList | filter: searchHistoryDriver">
+                                    <td>{{historyDriver.DriverName}}</td>
+                                    <td>{{historyDriver.BoardTime | date: 'yyyy-MM-dd HH:mm'}}</td>
+                                    <td title="{{historyDriver.Location}}">{{historyDriver.Location | limitTo: 20 }}{{historyDriver.Location.length > 20 ? '...' : ''}}</td>
+                                    <td title="Information"><a ng-click="openHistoryDriverInfo(historyDriver)"><i class="fa fa-info clickable-link"></i></a></td>
+                                    <td title="Pan on Map"><a ng-click="panDriver(historyDriver)"><i class="fa fa-map-marker clickable-link"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div ng-show="DriverHistoryInfoMode">
+                        <table class="table table-hover table-condensed">
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Name.png" class="label-icon" />
+                                </td>
+                                <td>Name</td>
+                                <td>{{infoDriver.Name}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Nickname.png" class="label-icon" />
+                                </td>
+                                <td>Nickname</td>
+                                <td>{{infoDriver.Nickname}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/License Number.png" class="label-icon" />
+                                </td>
+                                <td>License No.</td>
+                                <td>{{infoDriver.LicenseNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/License Type.png" class="label-icon" />
+                                </td>
+                                <td>License Type</td>
+                                <td>{{infoDriver.LicenseType}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/License Expiry Date.png" class="label-icon" />
+                                </td>
+                                <td>License Exp.</td>
+                                <td>{{infoDriver.LicenseExpiryDate | date : "yyyy-MM-dd"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Birthdate.png" class="label-icon" />
+                                </td>
+                                <td>Birthdate</td>
+                                <td>{{infoDriver.Birthdate | date : "yyyy-MM-dd"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Mobile Phone Number.png" class="label-icon" />
+                                </td>
+                                <td>Mobile Phone</td>
+                                <td>{{infoDriver.MobilePhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Address.png" class="label-icon" />
+                                </td>
+                                <td>Address</td>
+                                <td>{{infoDriver.Address}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Staff Number.png" class="label-icon" />
+                                </td>
+                                <td>Staff No.</td>
+                                <td>{{infoDriver.StaffNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Staff Type.png" class="label-icon" />
+                                </td>
+                                <td>Staff Type</td>
+                                <td>{{infoDriver.StaffType}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Hire Date.png" class="label-icon" />
+                                </td>
+                                <td>Hire Date</td>
+                                <td>{{infoDriver.Hiredate | date: "yyyy-MM-dd"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Home Landline.png" class="label-icon" />
+                                </td>
+                                <td>Home Phone</td>
+                                <td>{{infoDriver.HomePhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Office Landline.png" class="label-icon" />
+                                </td>
+                                <td>Office Phone</td>
+                                <td>{{infoDriver.OfficePhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Gender.png" class="label-icon" />
+                                </td>
+                                <td>Gender</td>
+                                <td>{{infoDriver.Gender}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Remarks.png" class="label-icon" />
+                                </td>
+                                <td>Remarks</td>
+                                <td>{{infoDriver.Remarks}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Emergency Name.png" class="label-icon" />
+                                </td>
+                                <td>Emergency Name</td>
+                                <td>{{infoDriver.EmergencyContactName}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Emergency Number.png" class="label-icon" />
+                                </td>
+                                <td>Emergency No.</td>
+                                <td>{{infoDriver.EmergencyContactPhoneNo}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Status.png" class="label-icon" />
+                                </td>
+                                <td>Status</td>
+                                <td>{{infoDriver.Status}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img src="../../contents/driver/Name.png" class="label-icon" />
+                                </td>
+                                <td>Tag</td>
+                                <td>{{infoDriver.Tag}}</td>
+                            </tr>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;margin-right:7px;" ng-click="canceInfoHistoryDriver()" value="Back" />
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

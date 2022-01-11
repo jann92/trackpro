@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ad08656571d84a7398876ff5765ed8dc" Name="Diagram1" ZoomLevel="53">
+        <EntityTypeShape EntityType="GEOFENCEDBModel.Geocoordinate" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEOFENCEDBModel.ObjectGeofence" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEOFENCEDBModel.PointOfInterest" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEOFENCEDBModel.PointOfInterestType" Width="1.5" PointX="3.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEOFENCEDBModel.Zone" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEOFENCEDBModel.ZoneType" Width="1.5" PointX="3.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GEOFENCEDBModel.GeofenceHistory" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <AssociationConnector Association="GEOFENCEDBModel.FK__PointOfIn__Point__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="GEOFENCEDBModel.FK__Zone__ZoneTypeId__21B6055D" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="GEOFENCEDBModel.GeofenceInfo" Width="1.5" PointX="3" PointY="21.75" />
+        <EntityTypeShape EntityType="GEOFENCEDBModel.Route" Width="1.5" PointX="3" PointY="13" />
+        <EntityTypeShape EntityType="GEOFENCEDBModel.Geofence" Width="1.5" PointX="0.75" PointY="11.25" />
+        <AssociationConnector Association="GEOFENCEDBModel.FK__Geocoordi__Geofe__117F9D94" />
+        <AssociationConnector Association="GEOFENCEDBModel.FK__GeofenceH__Geofe__69FBBC1F" />
+        <AssociationConnector Association="GEOFENCEDBModel.FK__GeofenceI__InfoI__6E8B6712" />
+        <AssociationConnector Association="GEOFENCEDBModel.FK__ObjectGeo__Geofe__0CBAE877" />
+        <AssociationConnector Association="GEOFENCEDBModel.FK__PointOfIn__Point__3B75D760" />
+        <AssociationConnector Association="GEOFENCEDBModel.FK__Route__RouteId__267ABA7A" />
+        <AssociationConnector Association="GEOFENCEDBModel.FK__Zone__ZoneId__1FCDBCEB" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,184 @@
+﻿<div class="col-md-12" style="top: 20px;">
+    <script type="text/ng-template" id="userSettingsModal">
+        <div class="modal-header modal-list-header">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+            <h3 class="modal-title">{{ControllerType}}</h3>
+        </div>
+        <div class="modal-body modal-body-360px" ng-show="ControllerType === 'Asset Assignment'">
+            <div class="child-list">
+                <div>
+                    <div class="padding-10px">
+                        <input type="text" ng-show="assignmentList.length > 0" ng-model="assignmentListTable" placeholder="&nbsp;Search user..." class="width-100-percent" />
+                    </div>
+                    <div class="modal-parent-list">
+                        <table class="table table-condensed table-hover">
+                            <tbody>
+                                <tr class="cursor-pointer"
+                                    ng-repeat="assignment in assignmentList | toArray:false | filter:assignmentListTable |orderBy: '+Username'"
+                                    ng-click="getAssetList(assignment.AccountID)"
+                                    ng-class="{'trackpro-green' : assignment.AccountID == accountID}">
+                                    <td class="right-align">{{$index +1}}</td>
+                                    <td class="left-align">{{assignment.Username}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="asset-list" ng-show="ControllerType === 'Asset Assignment'">
+                <input type="text" ng-show="AssignmentCustomerList.length > 0 && !isLoading" ng-model="AssignmentCustomerListTable" placeholder="&nbsp;Search assets..." class="width-100-percent" />
+                <div ng-show="isLoading" class="loading-details"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading...</div>
+                <div class="modal-oveflow" ng-show="!isLoading">
+                    <div class="collapse-list" ng-repeat="assetList in AssignmentCustomerList | toArray:false | orderBy: '+CustomerName'">
+                        <h6><a class="fa fa-plus-circle summary-font-icon active" id="user-font-icon-{{assetList.CustomerID}}" ng-click="viewAsset(assetList.CustomerID)"></a> {{assetList.CustomerName}} ({{filtered.length}})</h6>
+                        <div id="user-{{assetList.CustomerID}}" class="collapse">
+                            <table class="table table-condensed table-hover">
+                                <tbody>
+                                    <tr ng-show="filtered.length > 0">
+                                        <td class="col-xs-3 center-align">Select All:</td>
+                                        <td class="col-xs-9"><input type="checkbox" ng-model="assetList.isCustomerCheckAll" ng-click="getSelectedAssetList(filtered, assetList.isCustomerCheckAll)"></td>
+                                    </tr>
+                                    <tr ng-repeat="asset in filtered = (assetList.AccountUserChildAssetList | filter:AssignmentCustomerListTable) | orderBy: '+AssetName'">
+                                        <td class="col-xs-3 center-align"><input type="checkbox" ng-model="asset.IsAssigned" ng-click="toggleSelectAllAssetList(asset.IsAssigned, assetList)" ></td>
+                                        <td class="col-xs-9">{{asset.AssetName}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-button">
+                    <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Close" ng-click="cancel()">Close <i class="fa fa-close"></i></a>
+                    <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Update" ng-click="UpdateAssignmentAssetList(AssignmentCustomerList)">Update <i class="fa fa-save"></i></a>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="modal-body modal-body-420px" ng-show="ControllerType === 'Setup/Edit Reports via Email'">
+            <!--<div class="report-child-list">
+                <div>
+                    <div class="padding-10px">
+                        <input type="text" ng-show="customerList.length > 0" ng-model="customerListTable" placeholder="&nbsp;Search customer..." class="width-100-percent" />
+                    </div>
+                    <table class="table table-condensed table-hover">
+                        <tbody>
+                            <tr class="cursor-pointer" ng-repeat="customer in customerList | filter:customerListTable |orderBy: '+CustomerName'"
+                                ng-click="getAssetListEmail(customer)"
+                                ng-class="{'trackpro-green' : customer.CustomerID == customerID} ">
+                                <td></td>
+                                <td class="left-align">{{customer.CustomerName}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>-->
+            <!--<div class="email-list" ng-show="ControllerType === 'Setup/Edit Reports via Email'">
+                <label ng-show="assetList.length > 0">
+                    <i>Check boxes to enable automatic email notification.</i>
+                </label>
+                <input type="text" ng-show="assetList.length > 0" ng-model="assetListTable" placeholder="&nbsp;Search assets..." class="width-100-percent" />
+                <div class="modal-oveflow" style="height: 215px;">
+                    <div>
+                        <table class="table table-condensed table-hover">
+                            <tbody>
+                                <tr ng-show="assetList.length > 0">
+                                    <td class="col-xs-3 center-align">Select All:</td>
+                                    <td class="col-xs-9"><input type="checkbox" ng-model="allSelected.Email" ng-click="getSelectedEmail(filteredAssetList, allSelected.Email)" ></td>
+                                </tr>
+                                <tr ng-repeat="asset in filteredAssetList = (assetList | filter:assetListTable) |orderBy: '+Name'">
+                                    <td class="col-xs-3 center-align"><input type="checkbox" ng-model="asset.SendEmail" ng-click="toggleSelectAllEmail(asset.SendEmail)"></td>
+                                    <td class="col-xs-9">{{asset.Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="center-align" ng-hide="customerID">
+                            <h5><i class="fa fa-exclamation-triangle"></i> No selected customer.</h5>
+                        </div>
+                    </div>
+                </div>
+                <div ng-show="assetList.length > 0" class="padding-10px">
+                    <label class="width-100-percent pull-left left-align">
+                        Email Address <i class="fa fa-plus-circle pointer" ng-click="addInput()"></i>
+                    </label>
+
+                    <form id="emailnotif">
+                        <div ng-repeat="input in MultipleEmail">
+                            <input type="email" name="email" ng-model="input.InputEmail" placeholder="&nbsp;Email Address" style='width:246px;'
+                                   data-parsley-error-message="Invalid Email Address." data-parsley-errors-container="#zone-name-error-update-container" /> &nbsp;<i class="fa fa-close pointer" ng-click="removeInput($index)"></i>
+                            <div id="zone-name-error-update-container"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>-->
+            <div class="report-list">
+                <label>
+                    <i>Check boxes to assign report type.</i>
+                </label>
+                <input type="text"  ng-model="reportListTable" placeholder="&nbsp;Search Report..." class="width-100-percent" />
+                <div class="modal-oveflow" style="height: 295px;">
+                    <div>
+                        <table class="table table-condensed table-hover">
+                            <tbody>
+                                <tr>
+                                    <td class="col-xs-3 center-align">Select All:</td>
+                                    <td class="col-xs-9"><input type="checkbox" ng-model="allSelected.Reports" ng-click="getSelectedReports(filteredReportTypeList, allSelected.Reports)"></td>
+                                </tr>
+                                <tr ng-repeat="reports in filteredReportTypeList = (reportTypeList | filter:reportListTable) |orderBy: '+Name'">
+                                    <td class="col-xs-3 center-align"><input type="checkbox" ng-model="reports.isAssigned" ng-click="toggleSelectAllReports(reports.isAssigned)" ></td>
+                                    <td class="col-xs-9">{{reports.Name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--<div class="center-align" ng-hide="reportTypeList.length > 0">
+                            <h5><i class="fa fa-exclamation-triangle"></i> No Data Report.</h5>
+                        </div>-->
+                    </div>
+                </div>
+                <!--<div ng-show="assetList.length > 0" class="padding-10px">
+                    <div class="modal-button" style="margin-top:0px;">
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Close" ng-click="cancel()">Close <i class="fa fa-close"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Update" ng-click="UpdateCustomerEmailList(assetList, filteredReportTypeList, customerList)">Update <i class="fa fa-save"></i></a>
+                    </div>
+                </div>-->
+            </div>
+            <div class="frequency-list">
+                <label>
+                    <i>Choose frequency type to send email.</i>
+                </label>
+                <div class="modal-oveflow" style="height: 295px;">
+                    <div>
+                        <table class="table table-condensed table-hover">
+                            <tbody>
+                                
+                                <tr ng-repeat="freq in frequencyList">
+                                    <td class="col-xs-3 center-align"><input type="radio" name="frequency" value="{{freq.id}}" ng-model="selectedFrequency" ng-click="frequencyChange(freq.id)"></td>
+                                    <td class="col-xs-9">{{freq.name}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="email-list">
+                <label class="width-100-percent pull-left left-align margin-bottom-15px">
+                    Email Address <i class="fa fa-plus-circle pointer" ng-click="addInput()"></i>
+                </label>
+                <form id="emailnotif">
+                    <div ng-repeat="input in MultipleEmail">
+                        <input type="email" name="email" ng-model="input.InputEmail" maxlength="50" placeholder="&nbsp;Email Address" style='width:246px;'
+                               data-parsley-error-message="Invalid Email Address." data-parsley-errors-container="#user-settings-email-error-container" /> &nbsp;<i class="fa fa-close pointer" ng-click="removeInput($index)"></i>
+                        <div id="user-settings-email-error-container" style="position:absolute;bottom:200px;"></div>
+                    </div>
+                </form>
+                <div class="modal-button padding-10px" style="margin-top:0px;">
+                    <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Close" ng-click="cancel()">Close <i class="fa fa-close"></i></a>
+                    <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Update" ng-click="updateUserEmailList()">Update <i class="fa fa-save"></i></a>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>

@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7db63895b6c641db808bdf73df5c0295" Name="Diagram1">
+        <EntityTypeShape EntityType="TFDBModel.A_ActiveLocation" Width="1.5" PointX="17.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ActiveOdo" Width="1.5" PointX="15.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ActiveTag" Width="1.5" PointX="17.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ActiveTracks" Width="1.5" PointX="10" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ActiveUsage" Width="1.5" PointX="12.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Alarm" Width="1.5" PointX="19.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_AlarmDisposal" Width="1.5" PointX="2.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Arrive" Width="1.5" PointX="12.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Category" Width="1.5" PointX="4.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CrowdReport" Width="1.5" PointX="19.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CTICsrlog" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CTICsrs" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CTIInCall" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CTIOutCall" Width="1.5" PointX="5.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CTIRecord" Width="1.5" PointX="5.25" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CTITrunk" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CustomerInfo" Width="1.5" PointX="10.75" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CustomerUser" Width="1.5" PointX="20.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Departmentinfo" Width="1.5" PointX="17.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_DictDetail" Width="1.5" PointX="20.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_DictMaster" Width="1.5" PointX="20.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Discontent" Width="1.5" PointX="21.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_DriverInfo" Width="1.5" PointX="21.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Event" Width="1.5" PointX="22.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Feedback" Width="1.5" PointX="22.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_GeoReport" Width="1.5" PointX="17.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_GisUserLog" Width="1.5" PointX="22.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_HourReport" Width="1.5" PointX="23.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ICCard" Width="1.5" PointX="23.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ICLog" Width="1.5" PointX="23.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Information" Width="1.5" PointX="3.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_InstallInfo" Width="1.5" PointX="24.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Location" Width="1.5" PointX="5.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_LocationsReport" Width="1.5" PointX="7.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_MapGrid" Width="1.5" PointX="24.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_MapPositionInfo" Width="1.5" PointX="19.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_MapStreetInfo" Width="1.5" PointX="21.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_MDTArea" Width="1.5" PointX="23.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_MDTInfo" Width="1.5" PointX="25.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_MTCommand" Width="1.5" PointX="25.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ObjectInfo" Width="1.5" PointX="7.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ObjectPhoto" Width="1.5" PointX="25.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ObjRoad" Width="1.5" PointX="26.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ObjTag" Width="1.5" PointX="26.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Orders" Width="1.5" PointX="7.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Point" Width="1.5" PointX="26.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Receivables" Width="1.5" PointX="27.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Register" Width="1.5" PointX="12.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RegisterService" Width="1.5" PointX="14.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RegObject" Width="1.5" PointX="27.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RepairInfo" Width="1.5" PointX="27.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Road" Width="1.5" PointX="19.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Road_DataReport" Width="1.5" PointX="27.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Road_PlanStation" Width="1.5" PointX="28.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Road_PointReport" Width="1.5" PointX="28.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Road_PointTracks" Width="1.5" PointX="16.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Road_SpeedReport" Width="1.5" PointX="3.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Road_StationReport" Width="1.5" PointX="29.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Road_StationTracks" Width="1.5" PointX="29.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Road_Vehicle" Width="1.5" PointX="21.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RoadBranchData" Width="1.5" PointX="29.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RoadData" Width="1.5" PointX="23.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RoadInfo" Width="1.5" PointX="29.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RoadReport" Width="1.5" PointX="30.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RoadTracks" Width="1.5" PointX="0.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RxTx" Width="1.5" PointX="30.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Sale" Width="1.5" PointX="25.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_SendCar" Width="1.5" PointX="31.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Station" Width="1.5" PointX="31.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_StationInfo" Width="1.5" PointX="31.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_SubCenterInfo" Width="1.5" PointX="18.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_SubObjectinfo" Width="1.5" PointX="31.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_SueInfo" Width="1.5" PointX="31.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TaxiFee" Width="1.5" PointX="27.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TaxiInfo_day" Width="1.5" PointX="31.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TaxInfo" Width="1.5" PointX="32.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TaxiTracks" Width="1.5" PointX="33.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks" Width="1.5" PointX="33.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_01" Width="1.5" PointX="33.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_02" Width="1.5" PointX="20.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_03" Width="1.5" PointX="33.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_04" Width="1.5" PointX="29.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_05" Width="1.5" PointX="2.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_06" Width="1.5" PointX="4.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_07" Width="1.5" PointX="14.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_08" Width="1.5" PointX="22.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_09" Width="1.5" PointX="31.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_10" Width="1.5" PointX="33.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_11" Width="1.5" PointX="35.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_12" Width="1.5" PointX="35.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TrackTag" Width="1.5" PointX="35.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TripReport" Width="1.5" PointX="16.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_UpdateDBHistory" Width="1.5" PointX="35.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_UserLog" Width="1.5" PointX="35.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_VehicleTeamInfo" Width="1.5" PointX="35.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_WebGISRxTx" Width="1.5" PointX="35.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_WeekReport" Width="1.5" PointX="6.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_WhsOut" Width="1.5" PointX="8.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_WhsStock" Width="1.5" PointX="35.75" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.B_POI" Width="1.5" PointX="37.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.B_POIType" Width="1.5" PointX="37.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.B_SensorType" Width="1.5" PointX="37.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_capacityType" Width="1.5" PointX="37.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_CommandType" Width="1.5" PointX="37.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_CommChannel" Width="1.5" PointX="37.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_Credit_Level" Width="1.5" PointX="37.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_Customer_status" Width="1.5" PointX="37.75" PointY="23.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_Customer_Type" Width="1.5" PointX="24.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_DictDetail" Width="1.5" PointX="18" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_DictMaster" Width="1.5" PointX="15.75" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_DispatchFlag" Width="1.5" PointX="37.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_DriveCard_Type" Width="1.5" PointX="26.75" PointY="37.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_DriverStatus" Width="1.5" PointX="37.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_Employeedegree" Width="1.5" PointX="37.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_EmployeeType" Width="1.5" PointX="37.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_FinishFlag" Width="1.5" PointX="10.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_GISFlag" Width="1.5" PointX="37.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_GisUserLog" Width="1.5" PointX="39.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_GPSFlag" Width="1.5" PointX="39.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_HQGPS" Width="1.5" PointX="39.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_ICCardType" Width="1.5" PointX="39.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_InfoType" Width="1.5" PointX="39.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_InsureType" Width="1.5" PointX="39.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_MDTCompany" Width="1.5" PointX="39.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_ObjectBrand" Width="1.5" PointX="39.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_ObjectIcon" Width="1.5" PointX="39.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_ObjectStatus" Width="1.5" PointX="39.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_ObjectType" Width="1.5" PointX="39.75" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_OrderType" Width="1.5" PointX="39.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_OverFlag" Width="1.5" PointX="16.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_RepairType" Width="1.5" PointX="24.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_SendType" Width="1.5" PointX="26.75" PointY="40.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_ServiceRate" Width="1.5" PointX="41.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_ServiceType" Width="1.5" PointX="41.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_TempHour" Width="1.5" PointX="41.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_Tempkm" Width="1.5" PointX="6.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_Tempminute" Width="1.5" PointX="8.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_TempMonthDay" Width="1.5" PointX="41.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_TransType" Width="1.5" PointX="10.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.dtproperty" Width="1.5" PointX="41.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.Dyan_StagingLocationGateway" Width="1.5" PointX="41.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.HSE_LastCounterTime" Width="1.5" PointX="18.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.I_InfoContent" Width="1.5" PointX="41.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.I_InfoCustomDetail" Width="1.5" PointX="41.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.I_InfoCustomMaster" Width="1.5" PointX="41.75" PointY="27.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.I_InfoRxTmp" Width="1.5" PointX="28.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.I_InfoRxTx" Width="1.5" PointX="41.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.I_InfoTxTmp" Width="1.5" PointX="41.75" PointY="34.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.I_InfoTypeRate" Width="1.5" PointX="35.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.Ltfrb_ObjectInfo" Width="1.5" PointX="41.75" PointY="38.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Alerts" Width="1.5" PointX="41.75" PointY="41.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Application" Width="1.5" PointX="0.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_ApplicationModule" Width="1.5" PointX="2.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_AssetSchedule" Width="1.5" PointX="18" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Cannonball" Width="1.5" PointX="12.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_CannonballCheckpoint" Width="1.5" PointX="20.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Driver" Width="1.5" PointX="10.75" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_EmailReports" Width="1.5" PointX="30.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Leaderboard" Width="1.5" PointX="32.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Log" Width="1.5" PointX="37.75" PointY="42.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_MaintenanceActivity" Width="1.5" PointX="10" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_MaintenanceCategory" Width="1.5" PointX="18" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_MaintenanceType" Width="1.5" PointX="15.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Module" Width="1.5" PointX="43.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_ObjectDelivery" Width="1.5" PointX="43.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_ObjectDriver" Width="1.5" PointX="13" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_ReportTypes" Width="1.5" PointX="43.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Schedule" Width="1.5" PointX="15.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_SensorSetting" Width="1.5" PointX="13" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_SensorType" Width="1.5" PointX="10.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_SystemUser" Width="1.5" PointX="7.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_SystemUserObject" Width="1.5" PointX="14.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Tag" Width="1.5" PointX="13" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_TelegramConfig" Width="1.5" PointX="43.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_TelegramEvent" Width="1.5" PointX="43.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_Track_Cannonball" Width="1.5" PointX="43.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_UserFunction" Width="1.5" PointX="22.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_UserLogs" Width="1.5" PointX="24.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_RoleFun" Width="1.5" PointX="3" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_SysApp" Width="1.5" PointX="1.5" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_SysFun" Width="1.5" PointX="0.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_SysRole" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_SysUser" Width="1.5" PointX="0.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_SysUserVehicle" Width="1.5" PointX="43.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.S_UserRole" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.sysdiagram" Width="1.5" PointX="43.75" PointY="29.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.T_Customers" Width="1.5" PointX="43.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.T_Dispatch" Width="1.5" PointX="43.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.T_Grid" Width="1.5" PointX="43.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.T_Order" Width="1.5" PointX="43.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.T_PositionInfo" Width="1.5" PointX="4.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.T_RoadInfo" Width="1.5" PointX="6.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.T_SueInfo" Width="1.5" PointX="8.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.W_ErrorCode" Width="1.5" PointX="16.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.W_Role" Width="1.5" PointX="15" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.W_SysType" Width="1.5" PointX="12.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.W_UserInfo" Width="1.5" PointX="34.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.C30324680_20180807" Width="1.5" PointX="39.75" PointY="44.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.C30324680_20180813" Width="1.5" PointX="45.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.C30324680_20180815" Width="1.5" PointX="0.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ActiveTaxiFee" Width="1.5" PointX="45.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ActiveUsage_Backup_20191029" Width="1.5" PointX="10.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ActiveUsage_Backup_20191030" Width="1.5" PointX="45.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_AllUserFee" Width="1.5" PointX="45.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_BetweenStation" Width="1.5" PointX="18.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ChargingTable" Width="1.5" PointX="45.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CustomerAccept" Width="1.5" PointX="45.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_CustomerInput" Width="1.5" PointX="45.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_EmployeeInfo" Width="1.5" PointX="26.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Eventfromcyber3" Width="1.5" PointX="28.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_FeeIncome" Width="1.5" PointX="45.75" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_FeeManage" Width="1.5" PointX="45.75" PointY="33.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_FeePayout" Width="1.5" PointX="36.75" PointY="45.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_FeeRxTx" Width="1.5" PointX="45.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_OneUserFee" Width="1.5" PointX="45.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_ParkingReport" Width="1.5" PointX="12.75" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Reminder" Width="1.5" PointX="20.75" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RoadBranchInfo" Width="1.5" PointX="22.75" PointY="46.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_RoadObject" Width="1.5" PointX="47.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_StationRect" Width="1.5" PointX="2.75" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_StationTrack" Width="1.5" PointX="47.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.a_tempHour" Width="1.5" PointX="4.75" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tempkm" Width="1.5" PointX="47.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.a_tempminute" Width="1.5" PointX="47.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TempMonthDay" Width="1.5" PointX="47.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TempPrintByMonth" Width="1.5" PointX="14.75" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TempPrintByWeek" Width="1.5" PointX="47.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Tracks_09fromcyber" Width="1.5" PointX="47.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_TracksSatelit" Width="1.5" PointX="47.75" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_Warehouse" Width="1.5" PointX="47.75" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.A_WebGISRxTxNew" Width="1.5" PointX="47.75" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.AD_ADInfo" Width="1.5" PointX="47.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.C_CallCarCusInfo" Width="1.5" PointX="45.75" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_MapList" Width="1.5" PointX="47.75" PointY="47.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.D_SendFlag" Width="1.5" PointX="34.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.dyan_AlertEvent" Width="1.5" PointX="36.75" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.dyan_CustomerAlertReminder" Width="1.5" PointX="49.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.dyan_IdleCounter" Width="1.5" PointX="6.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.dyan_ParkingCounter" Width="1.5" PointX="49.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_ReportCustom" Width="1.5" PointX="8.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_UserReport" Width="1.5" PointX="10.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.W_Module" Width="1.5" PointX="15" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.W_UserRole" Width="1.5" PointX="49.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.PGPS_ObjectSettings" Width="1.5" PointX="49.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.V_ActivityPerCustomer" Width="1.5" PointX="16.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.V_AllData" Width="1.5" PointX="49.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.V_CekVersion" Width="1.5" PointX="30.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.V_GPSdata" Width="1.5" PointX="49.75" PointY="32.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.V_PGPS_CurrentObjectTracks" Width="1.5" PointX="49.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.V_PGPS_ObjectFullInfoList" Width="1.5" PointX="49.75" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.V_SueInfo" Width="1.5" PointX="2.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.V_TarikDataGPS" Width="1.5" PointX="18.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.V_TripPerCustomer" Width="1.5" PointX="20.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.V_UserRights" Width="1.5" PointX="22.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.v_vehiclecustomer" Width="1.5" PointX="45.75" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TFDBModel.vw_PGPS_Segment_Cannonball" Width="1.5" PointX="51.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="TFDBModel.FK_A_ActiveTracks_A_ObjectInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.fk_LogCsrID" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.fk_InCallTrunksID" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.fk_OutCallTrunksID" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.fk_RecordTrunksID" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Tag__Custom__2EDC8CFF" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Obje__Objec__571F8883" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_PGPS_SensorSetting_A_ObjectInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_D_DictDetail_D_DictMaster" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_PGPS_AssetSchedule_PGPS_Schedule" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Obje__Drive__5813ACBC" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_PGPS_MaintenanceActivity_PGPS_SystemUser" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_PGPS_MaintenanceCategory_PGPS_MaintenanceType" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Sens__senso__2B36194D" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK__PGPS_Syst__paren__7FB789C2" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_S_RoleFun_S_SysFun" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_S_RoleFun_S_SysRole" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_S_SysFun_S_SysApp" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_S_UserRole_S_SysRole" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_S_UserRole_S_SysUser" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_W_Role_W_SysType" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.FK_W_Module_W_SysType" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.A_CTICsrGrp" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.A_CTIExtInfo" ManuallyRouted="false" />
+        <AssociationConnector Association="TFDBModel.PGPS_DriverTag" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

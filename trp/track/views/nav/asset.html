@@ -1,0 +1,65 @@
+﻿<div class="left-side-content-container" id="asset">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Assets</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/3/asset'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <hr class="spacing-2px" />
+            <div>
+                <div class="search-assets" id="inp-search-assets">
+                    <input placeholder="Search..." type="text" ng-model="searchAssetList" id="inp-search-assets">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr class="spacing" />
+    <div class="side-panel-menu-content-body-container">
+        <div class="side-panel-menu-content-body">
+            <!--<div class="center-align asset-loading" ng-show="assetLoading"><i class="fa fa-refresh fa-spin"></i>&nbsp; Loading...</div>-->
+            <div class="collapse-list" ng-repeat="cus in customerList" ng-show="filtered.length > 0">
+                <div style="padding: 2px 2px 2px 0;" class="collapse-panel">
+                    <div class="trackpro-green customer-group-panel"><h5 class="margin-4px-vertical pointer" >
+                        <input class="pull-left" ng-show="filtered.length > 0" ng-click="showHideCustomerAsset(cus.CustomerID)" ng-model="cus.isChecked" type="checkbox" style="margin-top:3px;"/>&nbsp;
+                        <a class="fa fa-plus-circle summary-font-icon " ng-click="viewAsset(cus.CustomerID)"  id="asset-list-icon-{{cus.CustomerID}}"  style="float:right;margin:3px 8px 0px 0px;"></a> <span ng-click="viewAsset(cus.CustomerID)">{{cus.CustomerName}} ({{filtered.length}})</span></h5>
+                    </div>
+                    <div id="asset-list-{{cus.CustomerID}}" class="customer-content-body collapse">
+                        <table class="table table-condensed separate group-panel-body normal-whitespace" ng-repeat="asset in filtered = (cus.AssetList | byNameAssetIDCusName:searchAssetList)| orderBy: '+assetName' ">
+                            <tr  class="pointer" ng-class="{'trackpro-green-blur': asset.AssetID === isClicked}">
+                                <td class="focus-asset width-10-percent" ng-show="asset.focusOnMap"><center><i ng-show="asset.focusOnMap" class="fa fa-crosshairs blinker blink-infinite" style="font-size:15px; background-color:#fff !important;" title="Asset is in Focus"></i></center></td>
+                                <!--<td class="width-2-percent" ng-class="asset.color">{{$index +1 }}</td>-->
+                                <td ng-click="panMarker(asset)" class="width-10-percent asset-icon-td" style="padding-left:15px;">
+                                    <img ng-src="../../contents/map/Asset-menu/{{asset.TypeName}}.gif" class="asset-icons-svg" />
+                                </td>
+
+                                <td class="asset-name width-10px">
+                                    <!--<input type="checkbox" ng-model="asset.isChecked" ng-click="showHideAsset(asset.AssetID)"/>-->
+                                    <span ng-click="panMarker(asset)">{{asset.Name}}&nbsp;&nbsp;<span title="Not Available" ng-show="asset.IsBan && asset.Schedule !== null" class="fa fa-ban"></span></span>
+                                </td>
+                                <td ng-click="panMarker(asset)" class="asset-id width-20-percent"><span title="{{asset.AssetID}}">{{asset.AssetID}}</span></td>
+                                <td class="width-30-percent">
+                                    <div class="asset-icons">
+                                        <!--<a class="fa eye-icon" ng-click="toggleVehicle(asset);$event.stopPropagation();" title='{{getMessage(asset.showOnMap)}}' ng-class='(asset.showOnMap) ? "fa-eye" : "fa-eye-slash"'></a>-->
+                                        <a class="fa fa-info" ng-click="setAsset(asset)" title="Asset Information"></a>
+                                        <a class="fa fa-history" ng-click="viewhistory(asset)" title="Asset History"></a>
+                                        <a class="icon icon-pgps-zone small-icon color-black" ng-click="viewZones(asset)" title="Zones"></a>
+                                        <!--<a class="fa fa-flag" ng-click="viewZones(asset)" title="Zones"></a>-->
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </table>
+                        <div ng-show="cus.AssetList.length === 0">
+                            <span>
+                                <i class="fa fa-exclamation-triangle"></i> &nbsp;No Asset Found.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-align" ng-show="customerList.length === 0 && assetLoading === 'true'">
+                <i class="fa fa-exclamation-triangle"></i>
+                &nbsp;No Results.
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,63 @@
+﻿.fa-pulse, .fa-spin {
+    -webkit-filter: blur(0);
+}
+
+.loading-panel-server {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: rgba(29, 252, 109, 0.77);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+    text-align: center;
+    padding: 8px;
+}
+
+
+.loading-panel-login {
+    border-radius: 3px;
+    color:#fff;
+    background: rgb(4, 141, 67);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 6px;
+}
+
+.loading-panel div {
+}
+
+.loading-panel {
+    position: fixed;
+    top: 35px;
+    bottom: 5px;
+    left: 57px;
+    right: 8px;
+    background: #808080;
+    opacity: 0.8;
+    text-align: center;
+    vertical-align: middle;
+    z-index: 7000;
+}
+
+    .loading-panel div {
+        text-align: center;
+        display: inline-block;
+        height: 150px;
+        width: 400px;
+        -webkit-transform: translateY(100%);
+        -ms-transform: translateY(100%);
+        transform: translateY(100%);
+        z-index: 7000;
+        font-size: 5vw;
+        font-family: "System San Francisco Display Thin";
+    }
+
+.spinner {
+    font-size: 180px;
+}

@@ -1,0 +1,60 @@
+﻿app.controller('CounterController', ['$scope', '$localStorage', '$interval', 'AssetFactory', function ($scope, $localStorage, $interval, AssetFactory) {
+    $scope.AssetCounterList = [];
+    $scope.username = $localStorage.username;
+
+    angular.element(document).ready(function () {
+
+    
+        $scope.counterinterval;
+
+        $scope.getCounterList = function () {
+            AssetFactory.getAssetListCount(function (res) {
+                $scope.AssetCounterList = res;
+            }, function (err) {
+
+            });
+        }
+
+
+        $scope.getCounterList();
+
+        $scope.stopInterval = function () {
+            $interval.cancel($scope.counterinterval);
+        }
+
+        $scope.startInterval = function () {
+            $scope.stopInterval();
+            $scope.counterinterval = $interval($scope.getCounterList, 30000);
+        }
+
+        $scope.startInterval();
+
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10)
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = duration;
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var time = 5 * 60,
+                display = document.querySelector('#time');
+            startTimer(time, display);
+        };
+
+
+    });
+
+
+
+}]);

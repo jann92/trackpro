@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="Home">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>FleetPro: Home</title>
+    <link href="../../contents/styles/fontawesome/font-awesome.css" rel="stylesheet" />
+    <link href="../../contents/styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../contents/styles/common.css" rel="stylesheet" />
+    <!--<link href="../../contents/styles/fontawesome/font-awesome.min.css" rel="stylesheet" />-->
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">-->
+    <link href="../../contents/styles/pgps-icons/css/pgps-function-items.css" rel="stylesheet" />
+
+
+    <link href="../../contents/styles/track/home.css" rel="stylesheet" />
+</head>
+<body ng-controller="HomeController" style="overflow:hidden;">
+    <div class="head">
+        <img src="../../contents/images/login/fleetpro.svg" class="title-logo" />
+        <div class="countdown-timer">
+            <i class="fa fa-user"></i>
+            <label>{{username}}</label>&nbsp;
+            <a class="link-white" href="https://play.google.com/store/apps/details?id=com.philgps.android.trackmobile" title="Mobile Version" target="_blank">
+                <i class="fa fa-mobile-phone mobile-link"></i>&nbsp;mobile
+            </a>
+            <a class="link-white" href="" ng-click="logout()" title="Logout">
+                <i class="fa fa-sign-out"></i> logout
+            </a>
+        </div>
+    </div>
+
+
+    <div class="main-grid">
+        <div class="grid">
+
+            <div class="grid-row">
+
+                <div class="item card-1" ng-click="selectItem('fleetpro')">
+                    <div class="item-image">
+                        <img src="../../contents/images/products/fleetpro.jpg"/>
+                    </div>
+                    <div class="item-title" style="background-color:#22b573;">
+                        <span >Real Time Monitoring</span>
+                    </div>
+                </div>
+
+                <div class="item card-1" ng-click="selectItem('reports')" ng-show="Reports_Role.Read">
+                    <div class="item-image">
+                        <img src="../../contents/images/products/reportpro.png"/>
+                    </div>
+                    <div class="item-title" style="background-color:#279FDA;">
+                        <span>Reports</span>
+                    </div>
+                </div>
+
+                <div class="item card-1" ng-click="selectItem('maintenance')" ng-show="MaintenancePro_Role.Read">
+                    <div class="item-image">
+                        <img src="../../contents/images/products/maintenancepro.png"/>
+                    </div>
+                    <div class="item-title" style="background-color:#a1b8c4;">
+                        <span>Maintenance</span>
+                    </div>
+                </div>
+
+                <div class="item card-1" ng-click="selectItem('insights')" ng-show="InsightPro_Role.Read">
+                    <div class="item-image">
+                        <img src="../../contents/images/products/insightpro.png" />
+                    </div>
+                    <div class="item-title" style="background-color:#96bcb5;">
+                        <span>Analytics</span>
+                    </div>
+                </div>
+
+                <div class="item card-1" ng-click="selectItem('administration')" ng-show="FleetAdmin_Role.Read">
+                    <div class="item-image">
+                        <img src="../../contents/images/products/insightpro.png" />
+                    </div>
+                    <div class="item-title" style="background-color:#009688;">
+                        <span>Administration</span>
+                    </div>
+                </div>
+
+                <div class="item card-1" ng-click="selectItem('bkb')" ng-show="InsightPro_Role.Read">
+                    <div class="item-image">
+                        <img src="../../contents/images/products/insightpro.png" />
+                    </div>
+                    <div class="item-title" style="background-color:#0c3f93;">
+                        <span>BKB (Service Request)</span>
+                    </div>
+                </div>
+
+                <div class="item card-1" ng-click="selectItem('DHL')" ng-show="InsightPro_Role.Read">
+                    <div class="item-image">
+                        <img src="../../contents/images/products/insightpro.png" />
+                    </div>
+                    <div class="item-title" style="background-color:#fc0;">
+                        <span>DHL</span>
+                    </div>
+                </div>
+
+                <div class="item card-1" ng-click="selectItem('DP')" ng-show="InsightPro_Role.Read">
+                    <div class="item-image">
+                        <img src="../../contents/images/products/insightpro.png" />
+                    </div>
+                    <div class="item-title" style="background-color:#07567f;">
+                        <span>Metro Retail (DeliveryPro)</span>
+                    </div>
+                </div>
+              
+
+            </div>
+
+
+        </div>
+
+        <!--<div>
+            <footer class="main-footer">
+                Footer
+                <div class="c-logo">
+                    <span><center>© PHILGPS-INDOGPS-BRUGPS</center></span>
+                </div>
+            </footer>
+        </div>-->
+        <div class="c-logo">
+            <span>© PHILGPS-INDOGPS-BRUGPS</span>
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- JS Libraries Scripts -->
+    <script src="../../scripts/js-libs/jquery/jquery-2.2.3.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/angular.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/angular-route.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/ngStorage.js"></script>
+    <script src="../../scripts/js-libs/parsley/parsley.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/angular-filter.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/angular-animate.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/loading-bar.js"></script>
+    <script src="../../scripts/js-libs/angularjs/ui-bootstrap-tpls-1.3.2.min.js"></script>
+    <script src="../../scripts/js-libs/chartjs/chart.js"></script>
+    <script src="../../scripts/js-libs/chartjs/angular-chart.min.js"></script>
+    <script src="../../scripts/js-libs/moment/moment.min.js"></script>
+
+    <!--Services Script-->
+    <script src="../../scripts/modules/home-module.js"></script>
+    <script src="../../scripts/factories/asset-factory.js"></script>
+    <script src="../../scripts/factories/login-factory.js"></script>
+
+    <!-- Helper Script -->
+    <script src="../../scripts/helpers/StringHelpers.js"></script>
+    <script src="../../scripts/helpers/DateTimeHelper.js"></script>
+
+    <!--Controller Section-->
+    <script src="../../scripts/controllers/home-controller.js"></script>
+</body>
+</html>
+

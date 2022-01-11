@@ -1,0 +1,65 @@
+﻿<div class="left-side-content-container" id="nearest-asset">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Nearest Asset</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/6/asset'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <div class="pull-right export-file fade in" id="export-file-nearest-asset" ng-show="nearestAssetLists.length != 0">
+                <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')" ng-show="nearestAssetLists.length != 0">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x xls"></i>
+                        <strong class="fa-stack-1x file-type">XLS</strong>
+                    </span>
+                </button>
+                <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')" ng-show="nearestAssetLists.length != 0">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x csv"></i>
+                        <strong class="fa-stack-1x file-type">CSV</strong>
+                    </span>
+                </button>
+            </div>
+            <a class="btn btn-default export-panel" title="Export" ng-click="exportPanel()" ng-show="nearestAssetLists.length != 0">
+                <i class="fa fa-download export-awesome-alignment"></i>
+            </a>
+            <hr class="spacing-2px" />
+            <div>
+                <a class="btn btn-xs btn-default trackpro-green-btn" ng-click="getNearestAsset()">
+                    <i class="fa" ng-class='(nearestSearchText === "Search") ? "fa-search" : "fa-eraser"'></i>&nbsp;{{nearestSearchText}}
+                </a>
+                <select id="status-filter-dropdown" class="width-20-percent" ng-model="selected" ng-change="getNearestAsset(selected)"  ng-options="nearest.label for nearest in nearestAsset"></select>
+                <input type="text" placeholder="Search..." class="width-60-percent" style="vertical-align: -1px;" ng-model="searchFilter" ng-show="nearestAssetLists.length > 0" />
+
+            </div>
+        </div>
+    </div>
+    <!--<hr class="spacing" />-->
+    <div class="side-panel-menu-content-body-container">
+        <div class="side-panel-menu-content-body">
+            <div>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="list">
+                        <table class="table table-condensed table-striped separate normal-whitespace" ng-show="nearestAssetLists.length > 0">
+                            <thead>
+                                <tr>
+                                    <td>#</td>
+                                    <td>Asset</td>
+                                    <td>Distance(m)</td>
+                                    <td>Status</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="pointer" ng-repeat="na in nearestAssetLists | NearestAssetFilterArray: searchFilter | orderBy:'+Name'" ng-class="{'trackpro-green-blur': na.AssetID === isClicked}" ng-click="panMarker(na)">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{na.Name}}</td>
+                                    <td class="right-align">{{na.Distance}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                    <td>{{na.Status}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="new">pro</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

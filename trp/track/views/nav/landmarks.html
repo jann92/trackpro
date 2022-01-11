@@ -1,0 +1,141 @@
+﻿<div class="right-side-content-container" id="landmarks">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Landmarks</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/11/landmark'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <hr class="spacing-2px" />
+            <div id="landmark-tabs">
+                <!-- Nav tabs -->
+                <!-- role="tab" data-toggle="tab" data-target="#landmarkNew" -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a class="nav-tabs-custom" role="tab" data-toggle="tab" data-target="#landmarkList">All Landmarks</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<hr class="spacing" />-->
+    <div class="side-panel-menu-content-body-container">
+        <div class="side-panel-menu-content-body">
+            <div>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane  active" id="landmarkList">
+                        <table class="table table-hover table-condensed" ng-hide="LandmarkEditMode || LandmarkNewMode">
+                            <thead>
+                                <tr>
+                                    <td colspan="6">
+                                        <div><a class="btn btn-xs btn-default trackpro-green-btn" style="float:left;" ng-click="newLandmark()" ng-show="Landmarks_Role.Create"><i class="fa fa-plus"></i>&nbsp;New Landmark</a></div>
+                                        <input class="pull-right width-70-percent" type="text" ng-model="filterLandmark" placeholder="&nbsp;Search..." />
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <div class="font-10px"><b>Total Landmarks: &nbsp;</b>{{TotalLandmark}}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Name
+                                    </td>
+                                    <td>Type</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-show="UserLandmarkList.length === 0">
+                                    <td colspan="6">
+                                        No Landmarks.
+                                    </td>
+                                </tr>
+                            
+                                <tr ng-repeat="UserLandmark in UserLandmarkList | filter: filterLandmark" ng-class="{'trackpro-green-blur': UserLandmark.LandmarkID === isClicked}">
+                                    <td>
+                                        {{UserLandmark.Name}}
+                                    </td>
+                                    <td>{{UserLandmark.LandmarkTypeName}}</td>
+                                    <td class="right-align">
+                                        <a title="Pan to Map" ng-class="{'trackpro-green-blur': UserLandmark.LandmarkID === isClicked}" ng-click="panLandmark(UserLandmark)" ng-show="Landmarks_Role.Read"><i class="fa fa-map-marker clickable-link"></i></a>&nbsp;&nbsp;&nbsp;
+                                        <a title="Remove Landmark" ng-class="{'trackpro-green-blur': UserLandmark.LandmarkID === isClicked}" ng-click="deleteLandmark(UserLandmark)" ng-show="Landmarks_Role.Delete"><i class="fa fa-trash clickable-link"></i></a>&nbsp;&nbsp;&nbsp;
+                                        <a title="Edit Landmark" ng-class="{'trackpro-green-blur': UserLandmark.LandmarkID === isClicked}" ng-click="editLandmark(UserLandmark)" ng-show="Landmarks_Role.Update"><i class="fa fa-pencil clickable-link"></i></a>&nbsp;&nbsp;&nbsp;
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                        <div class="landmark-loading" ng-show="landmarkeditloading"><h3 class="text-center"><i class="fa fa-spin fa-spinner"></i>&nbsp;Saving...</h3></div>
+                        <form id="edit-landmark-form" ng-show="Landmarks_Role.Update">
+                            <table class="table table-condensed table-hover" ng-show="LandmarkEditMode && !landmarkeditloading">
+                                <tbody>
+                                    <tr>
+                                        <td>Name</td>
+
+                                        <td>
+                                            <input type="text" maxlength="50" ng-model="EditLandmark.Name" required data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-error-message="Field is required & alphanum only." data-parsley-errors-container="#edit-landmark-name-error-containter" placeholder="desired landmark name..." /><br />
+                                            <span id="edit-landmark-name-error-containter"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Type</td>
+                                        <td>
+                                            <select ng-model="EditLandmark.LandmarkTypeID"
+                                                    ng-options="landmarkType.LandmarkTypeID as landmarkType.Name for landmarkType in LandmarkTypeList"
+                                                    ng-init="EditLandmark.LandmarkTypeID = EditLandmark.LandmarkTypeID || LandmarkTypeList[0].LandmarkTypeID"></select>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" ng-click="cancelEditLandmark(EditLandmark.LandmarkID)" value="Cancel" />
+                                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" style="float:right;" ng-click="updateLandmark()" value="Save" />
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                        <div class="landmark-loading" ng-show="landmarknewloading"><h3 class="text-center"><i class="fa fa-spin fa-spinner"></i>&nbsp;Saving...</h3></div>
+                        <form id="new-landmark-form" ng-show="Landmarks_Role.Create">
+                            <table class="table table-condensed table-hover" ng-show="LandmarkNewMode && !landmarknewloading">
+                                <tbody>
+                                    <tr>
+                                        <td>Type</td>
+                                        <td>
+                                            <select ng-model="NewLandmark.LandmarkTypeID" ng-change="landmarkTypeChanged()"
+                                                    ng-options="landmarkType.LandmarkTypeID as landmarkType.Name for landmarkType in LandmarkTypeList"
+                                                    ng-init="NewLandmark.LandmarkTypeID = NewLandmark.LandmarkTypeID || LandmarkTypeList[0].LandmarkTypeID"></select>
+
+                                            <input type="button" class="btn btn-xs btn-default" ng-model="landmarkText" ng-value="landmarkText" ng-show="NewLandmark.LandmarkTypeID > 0" ng-click="startDrawing()" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>
+                                            <input type="text" maxlength="50" ng-model="NewLandmark.Name" required data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-error-message="Field is required & alphanum only." data-parsley-errors-container="#new-landmark-name-error-containter" placeholder="desired landmark name..." /><br />
+                                            <span id="new-landmark-name-error-containter"></span>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td>
+                                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" ng-click="cancelNewLandmark()" value="Cancel" />
+                                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" style="float:right;" ng-click="saveLandmark()" value="Save" />
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+       
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

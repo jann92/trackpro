@@ -1,0 +1,243 @@
+﻿:root {
+  --red: #b00;
+  --blue: #4679bd;
+  --main-color: #22B573;
+}
+
+.header {
+    height: 30px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 200;
+    padding: 0 35px 0 35px;
+}
+
+.header-logo {
+     height: 30px;
+    float: left;
+    margin-left: 6px;
+    margin-top: 0px;
+}
+
+.header-dhl-logo {
+    /*height: 20px;
+    float: left;
+    margin-left: 0px;
+    margin-top: 9px;*/
+    height: 90%;
+    margin-left: 12px;
+    margin-top: 6px;
+    float: left;
+}
+
+
+.header-asset{
+    position: absolute;
+    top: 10px;
+    color: #FFF;
+    text-align: center;
+    left: 50%;
+    /*margin-left: -55px;*/
+}
+.header-user {
+    height: 35px;
+    float: right;
+    margin-right: 10px;
+    color: #fff;
+    z-index: 89;
+    margin-top: 10px;
+}
+.header-user a{
+    text-decoration:none !important;
+}
+
+.mobile-link{
+    font-size: 17px;
+    vertical-align: -2px;
+}
+
+.link-white {
+    cursor: pointer;
+    color: #fff;
+    font: bolder;
+}
+
+    .link-white:hover {
+        cursor: pointer;
+        color: #000;
+        text-decoration: underline;
+        font: bolder;
+    }
+
+
+.left-side-panel-menu {
+    width: 35px;
+    height: 100%;
+    left: 0px;
+    height: 100%;
+    padding: 0px 0 0 0;
+    text-align: center;
+    position: fixed;
+    z-index: 1001;
+    background-color: #fff;
+}
+
+.right-side-panel-menu {
+    width: 35px;
+    height: 100%;
+    right: 0px;
+    height: 100%;
+    padding: 0px 0 0 0;
+    text-align: center;
+    position: fixed;
+    z-index: 95;
+    background-color: #fff;
+}
+
+/*Side Panel Menus*/
+
+/*Common*/
+.side-panel-menu-content {
+    height: 100%;
+    padding: 2px;
+}
+
+.side-panel-menu-content-header-container, .summary-left-panel-header-container {
+    background-color: #fff;
+    margin: 0px;
+    padding: 0px;
+}
+
+.side-panel-menu-content-header, .summary-left-panel-menu-content-header{
+    padding: 5px;
+}
+
+.side-panel-menu-content-header-title, .summary-panel-menu-content-header-title{
+    font-size: 16px;
+    padding: 5px 0 0 5px;
+    align-content: center;
+    vertical-align: central;
+    align-items: center;
+    text-align: center;
+    vertical-align: central;
+    color: #000 !important;
+}
+
+.side-panel-menu-content-body, .summary-panel-menu-content-body{
+    padding: 5px;
+    /*width: 343px;*/
+    /*width:370px;*/
+    width:385px;
+    max-height: 413px;
+    overflow-y: auto;
+    height: 10%;
+    margin:0px;
+    background-color:white;
+}
+.side-panel-absolute{
+    float: left;
+    background-color: #fff;    
+    position: fixed;
+    bottom: 80px;
+    /*top: 145px;*/
+    padding: 5px;
+    width: 385px;
+    overflow-y: auto;
+    top: 170px;
+}
+
+/*Left Side*/
+
+.left-side-panel-menu-container {
+    max-height: 100%;
+    position: fixed;
+    top: 33px;
+    left: 38px;
+    z-index: 1001;
+}
+
+.left-side-content-container {
+    display: none;
+    /*width: 343px;*/
+    /*width:370px;*/
+    width:385px;
+    background-color: #fff;
+    padding-bottom: 2px;
+}
+
+.export-assets {
+    float: right;
+    display: block;
+    margin-top: -1px;
+}
+
+.search-assets {
+    float: left;
+    display: block;
+}
+
+/*.group-panel {
+    background-color: rgba(0, 175, 80, 0.61);
+}*/
+
+    .group-panel label {
+        margin: 5px;
+    }
+
+#inp-search-assets {
+    /*width: 250px;*/
+    width: 100%;
+}
+
+
+/*Right Side*/
+
+.right-side-panel-menu-container {
+    max-height: 100%;
+    position: fixed;
+    right: 40px;
+    top: 35px;
+    z-index: 1000;
+}
+
+.right-side-content-container {
+    max-height: 558px;
+    display: none;
+    /*width: 343px;*/
+    width: 385px;
+    background-color: #fff;
+    position: absolute;
+    right: 0vh;
+    z-index: 100;
+}
+
+.nav-tabs-custom {
+    border-radius: 0px !important;
+    padding: 3px 7px !important;
+}
+
+ .pointer{
+    cursor:pointer;
+ }
+ select{
+     padding-bottom: 3px;
+ }
+ .asset-header-left{
+    position: absolute;
+    left: 51%;
+    top: 10px;
+    color: #fff;
+ }
+ .asset-header-right{
+    position: absolute;
+    right: 51%;
+    top: 10px;
+    color: /*#22B573;*/var(--main-color);
+ }
+ .asset-header-center{
+    position: absolute;
+    right: 47%;
+    top: 10px;
+    color: #fff;
+ }

@@ -1,0 +1,156 @@
+﻿:root {
+  --red: #b00;
+  --blue: #4679bd;
+  --main-color: #22B573;
+}
+
+
+.modal-list-header{
+    background: /*#22B573;*/ var(--main-color);
+    color: #fff;
+}
+.modal-body-360px{
+    height: 360px;
+}
+.modal-body-420px{
+    height: 420px;
+}
+.modal-content{
+    border: 1px solid /*#22B573*/var(--main-color) !important;
+    border-radius: 0 !important;
+}
+/*.child-list{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 25.1%;
+    float: left;
+    left: 0;
+    overflow-y:auto;    
+}*/
+.child-list{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 36%;
+    float: left;
+    left: 0;
+    /*overflow-y:auto;*/    
+}
+
+.report-child-list {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    float: left;
+    left: 0;
+    overflow-y: auto;
+    height: 419px;
+}
+
+.email-list {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    float: left;
+    right: 0%;
+    border-right: 2px solid /*#22B573;*/ var(--main-color);
+    padding: 10px;
+}
+
+.frequency-list{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    float: right;
+    left: 30%;
+    border-right: 2px solid /*#22B573;*/var(--main-color);
+    padding: 10px;
+}
+
+.report-list {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    float: left;
+    left: 0;
+    border-right: 2px solid /*#22B573;*/var(--main-color);
+    padding: 10px;
+}
+.asset-list{
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:64%;
+    float:right;
+    right:0;
+    border-left: 2px solid /*#22B573;*/var(--main-color);
+    padding:10px;
+}
+/*.asset-list{
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:75%;
+    float:right;
+    right:0;
+    border-left: 2px solid #22B573;
+    padding:20px;
+}*/
+
+.modal-oveflow{
+    overflow-y: auto;
+    height: 245px;
+    margin:5px;
+}
+
+.modal-oveflow-delivery{
+    overflow-y: auto;
+    height: 365px;
+    margin:5px;
+}
+
+.modal-button{
+    /*float:right;
+    margin: 20px;
+    width: 315px;*/
+
+    margin: 20px;
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    right: 0;
+}
+.modal-button a{
+    margin-right: 5px;
+}
+.modal-parent-list{
+    height: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin:5px;
+}
+#emailnotif{
+    height: 300px;
+    width: 322px;
+    overflow-y: auto;
+}
+.feedback .modal-dialog {
+    width: 635px !important;
+}
+
+/*-Alert Modal checklist-*/
+.alert-checkbox {
+    background-color: initial;
+    cursor: default;
+    -webkit-appearance: checkbox;
+    margin: 3px 3px 3px 4px;
+    padding: initial;
+    border: initial;
+    width: 25px;
+    height: 25px;
+}

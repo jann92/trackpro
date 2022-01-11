@@ -1,0 +1,288 @@
+﻿/*Main style for the web page*/
+html, body {
+    height: 100%;
+    font: 12px "Segoe UI" !important;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 0;
+    /*background-color: #ffffff;*/
+    background-color: #17700D;
+}
+
+@font-face {
+    font-family: 'System San Francisco Display Thin';
+    src: url('../fonts/System San Francisco Display Thin.ttf') format('truetype');
+}
+
+.center-align {
+    text-align: center;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.left-align {
+    text-align: left;
+}
+
+.x-large-font {
+    font-size: x-large;
+    font-weight: 700;
+}
+
+.large-font {
+    font-size: large;
+    font-weight: 700;
+}
+
+.pointer-cursor {
+    cursor: pointer;
+}
+
+.width-100-percent {
+    width: 100% !important;
+}
+
+.width-200-px {
+    width: 200px !important;
+}
+
+.width-150-px {
+    width: 150px !important;
+}
+
+/*Hyperlink Override*/
+a {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.table {
+    margin-bottom: 0px !important;
+}
+
+/*----------------------------------------------------------------------------------------------------*/
+/*Content Panel (Main Site Body)*/
+.content-panel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: 0px;
+    right: 0px;
+    padding: 30px 0px 0px 50px;
+}
+
+.content {
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+    padding: 5px 5px 5px;
+}
+/*End Content Panel*/
+/*----------------------------------------------------------------------------------------------------*/
+/*UI Tooltip Override*/
+.ui-tooltip {
+    background-color: #fff;
+    padding: 10px 20px;
+    color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 0 7px black;
+    border: none;
+}
+
+.ui-tabs-active {
+    background-color: rgba(35, 120, 163, 0.3);
+    color: #fff !important;
+}
+/*End UI Tooltip Override*/
+/*----------------------------------------------------------------------------------------------------*/
+/*Sub Menu Tab Control*/
+.sub-menu-tab-container {
+    position: fixed;
+    width: 100%;
+    top: 35px;
+    left: 52px;
+    z-index: 120;
+}
+
+.sub-menu-tab-strip {
+    border-top-right-radius: 0px !important;
+}
+
+.sub-menu-tab {
+    background-color: rgba(35, 120, 163, 1) !important;
+    color: #fff;
+    border: none;
+    border-top: none;
+    border-left: none;
+    height: 28px;
+    width: 100px;
+    border-top-right-radius: 0px !important;
+}
+/*End Sub Menu Tab Control*/
+/*----------------------------------------------------------------------------------------------------*/
+/*Other Overriding methods*/
+
+/*Bootstrap Table Override*/
+.table {
+    margin-bottom: 0px !important;
+}
+/*Bootstrap Button Override*/
+.btn {
+    border-radius: 0px !important;
+}
+
+.dashboard-col {
+    height: 100% !important;
+    padding: 0px !important;
+}
+/*Loading Icon*/
+.loading-icon {
+    color: #17700D !important;
+}
+/*Date Time Picker*/
+/*Table containing the picker*/
+
+    .picker-table tr #1, .picker-table tr #3 {
+        width: 125px !important;
+    }
+
+    .picker-table tr #2 {
+        width: 10px !important;
+    }
+/*Dropdown calendar*/
+.ui-datepicker {
+    /*font-family: "System San Francisco Display Thin";*/
+    top: 105px !important;
+    border-radius: 0;
+    background-color: #ffffff !important;
+}
+/*Header of the dropdown calendar*/
+.ui-widget-header {
+    border-radius: 0;
+    border: 1px solid #17700D !important;
+    background: #17700D !important;
+}
+/*Prvious and next month button*/
+.ui-datepicker-prev:hover, .ui-datepicker-next:hover {
+    /*border-radius: 0;
+    border: 1px solid #17700D!important;
+    background: #17700D!important;*/
+}
+/*Calendar days*/
+.ui-state-default {
+    color: #000000 !important;
+    background: #ffffff !important;
+    font-weight: 300 !important;
+}
+
+    .ui-state-default:hover {
+        /*border: 1px solid #17700D!important;
+        background: #d3d3d3 !important;*/
+    }
+
+.ui-state-highlight { /*Date Today*/
+    border: 1px solid #17700D!important;
+    background: #ffffff !important;
+    color: #17700D!important;
+}
+
+.ui-state-active {
+    border: 1px solid #17700D!important;
+    background: #17700D!important;
+    color: #ffffff !important;
+}
+
+.ui-state-focus {
+    border: 1px solid #ccc !important;
+}
+/*Time sliders*/
+/*Bar of the time slider*/
+.ui-slider {
+    border-radius: 0;
+    background-color: #17700D!important;
+}
+/*Handle for the time slider*/
+.ui-slider-handle {
+    border-radius: 0;    
+}
+/*Button of the dropdown calendar*/
+.ui-datepicker-buttonpane button {
+    border-radius: 0px !important;
+}
+
+input:not([type=submit]):not([type=file]):not([type=button]) {
+    border: 0.5px solid #888888;
+    padding: 2px !important;
+    background: rgba(255, 255, 255, 0.44) !important;
+    margin: 0 0 2px 0 !important;
+}
+/*Text box of the picker*/
+.datetimepicker {
+    width: 125px !important;
+    border: none !important;
+    text-align: center;
+    padding: 2px;
+    background: #ffffff;
+    margin: 0 0 2px 0;
+}
+/*Divider of start and end time picker*/
+.datetimepicker-mid {
+    width: 10px !important;
+    text-align: center;
+    border: none !important;
+    color: #000000;
+}
+
+.relative-position {
+    position: relative !important;
+}
+/*Alert and Loading*/
+#alert_placeholder {
+    /*display: block;*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.alert-custom {
+    border-radius: 0px;
+    position: relative;
+    margin: auto;
+    display: table;
+    z-index: 999000;
+    top: 40px;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.70);
+    font-family: "System San Francisco Display Thin";
+}
+.alert-custom hr{
+    margin: 0 !important;
+    border: 1px solid;
+}
+
+.alert-title {
+    font-size: 17px !important;
+}
+
+.alert-message {
+    font-size: 14px !important;
+}
+
+.disabled-menu{
+    background: #c1c1c1 !important;
+    cursor: not-allowed !important;
+}
+
+.disabled-txt{
+    color: #c1c1c1 !important;
+    cursor: not-allowed !important;
+}
+
+.type-icon-list{
+    height: 10px;
+}
+/*End Override*/
+/*----------------------------------------------------------------------------------------------------*/

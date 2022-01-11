@@ -1,0 +1,134 @@
+﻿<div class="filtered-status-panel-container" id="asset-filter-counter">
+    <div class="filtered-status-panel-content">
+        <div class="btn-group filtered-status">
+            <a class="btn btn-xs btn-filter black-border-bottom" ng-click="setStatus('Total')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'Total'}">
+                <label class="filtered-status-value" ng-cloak>{{total}}</label>
+                <br>
+                Total
+            </a>
+            <a class="btn btn-xs btn-filter black-border-bottom" ng-click="setStatus('Active')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'Active'}">
+                <label class="filtered-status-value" ng-cloak>{{active}}</label>
+                <br>
+                Active
+            </a>
+            <a class="btn btn-xs btn-filter grey-border-bottom" ng-click="setStatus('InActive')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'InActive'}">
+                <label class="filtered-status-value" ng-cloak>{{inactive}}</label>
+                <br>
+                Inactive
+            </a>
+
+            <a class="btn btn-xs btn-filter green-border-bottom" ng-click="setStatus('Driving')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'Driving'}">
+                <label class="filtered-status-value" id="lblDriving" ng-cloak>{{driving}}</label>
+                <br>
+                Driving
+            </a>
+            <a class="btn btn-xs btn-filter yellow-border-bottom" ng-click="setStatus('Idling')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'Idling'}">
+                <label class="filtered-status-value" ng-cloak>{{idling}}</label>
+                <br>
+                Idling
+            </a>
+            <a class="btn btn-xs btn-filter blue-border-bottom" ng-click="setStatus('Parking')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'Parking'}">
+                <label class="filtered-status-value" ng-cloak>{{parking}}</label>
+                <br>
+                Parking
+            </a>
+            <a class="btn btn-xs btn-filter red-border-bottom visible-lg alert-overspeed" ng-click="setStatus('OverSpeeding')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'OverSpeeding'}">
+
+                <label class="filtered-status-value" ng-cloak>{{overspeed}}</label>
+                <br>
+                OverSpeed
+            </a>
+            <a class="btn btn-xs btn-filter red-border-bottom visible-lg alert-overidle" ng-click="setStatus('OverIdle')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'OverIdle'}">
+
+                <label class="filtered-status-value" ng-cloak>{{overidling}}</label>
+                <br>
+                OverIdle
+            </a>
+            <a class="btn btn-xs btn-filter red-border-bottom visible-lg alert-overpark" ng-click="setStatus('OverPark')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'OverPark'}">
+
+                <label class="filtered-status-value" ng-cloak>{{overparking}}</label>
+                <br>
+                OverPark
+            </a>
+            <a class="btn btn-xs btn-filter red-border-bottom visible-lg alert-sos" ng-click="setStatus('SOS')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'SOS'}">
+
+                <label class="filtered-status-value" ng-cloak>{{sos}}</label>
+                <br>
+                SOS
+            </a>
+            <a class="btn btn-xs btn-filter red-border-bottom visible-lg alert-powercut" ng-click="setStatus('PowerCut')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'PowerCut'}">
+                <label class="filtered-status-value" ng-cloak>{{powercut}}</label>
+                <br>
+                Power Cut
+            </a>
+            <!--<a class="btn btn-xs btn-filter white-border-bottom visible-lg" ng-click="setStatus('GoZone')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'GoZone'}">
+                <label class="filtered-status-value">{{gozone}}</label>
+                <br>
+                Go Zone
+            </a>
+            <a class="btn btn-xs btn-filter white-border-bottom visible-lg" ng-click="setStatus('NoZone')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'NoZone'}">
+                <label class="filtered-status-value">{{nozone}}</label>
+                <br>
+                &nbsp;No Zone
+            </a>-->
+            <a class="btn btn-xs btn-filter red-border-bottom hidden-lg" ng-click="setStatus('Violations')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'Violations'}">
+                <label class="filtered-status-value" ng-cloak>{{violations}}</label>
+                <br>
+                Violations
+            </a>
+            <!--<a class="btn btn-xs btn-filter white-border-bottom visible-lg" ng-click="setStatus('Sensor1')" data-slidetoggle="filters" ng-show="Route" ng-class="{'btn-filter-active': statusName === 'Sensor1'}">
+                <label class="filtered-status-value">{{sensor1}}</label>
+                <br>
+                Sensor 1
+            </a>
+            <a class="btn btn-xs btn-filter white-border-bottom visible-lg" ng-click="setStatus('Sensor2')" data-slidetoggle="filters" ng-show="Route" ng-class="{'btn-filter-active': statusName === 'Sensor2'}">
+                <label class="filtered-status-value">{{sensor2}}</label>
+                <br>
+                Sensor 2
+            </a>-->
+            <!--<a class="btn btn-xs btn-filter white-border-bottom visible-lg" ng-show="Delivery_Role.Read" ng-click="setStatus('Delivery')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'Delivery'}">
+                <label class="filtered-status-value">{{deliveries}}</label>
+                <br />
+                Delivery
+            </a>-->
+
+            <!--<a class="btn btn-xs btn-filter red-border-bottom hidden-lg" ng-click="setStatus('Zone')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'Zone'}">
+                <label class="filtered-status-value">{{zone}}</label>
+                <br>
+                Zone
+            </a>-->
+            <!--<a class="btn btn-xs btn-filter white-border-bottom hidden-lg" ng-click="setStatus('All_Routes')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'All_Routes'}">
+                <label class="filtered-status-value">{{allroutes}}</label>
+                <br>
+                Routes
+            </a>-->
+            <a class="btn btn-xs btn-filter red-border-bottom hidden-lg" ng-click="setStatus('Alerts')" data-slidetoggle="filters" ng-class="{'btn-filter-active': statusName === 'Alerts'}">
+                <label class="filtered-status-value" ng-cloak>{{alerts}}</label>
+                <br>
+                Alerts
+            </a>
+        </div>
+
+        <div class="filtered-status-bar">
+            <table class="filtered-status-table">
+                <tbody>
+                    <tr>
+                        <td class="cursor-bar">
+                            <div class="left-align">
+                                <strong><i class="fa fa-location-arrow" style="font-size: 10px; "></i>&nbsp;<span class="cursor-coordinates">120.381, 14.4575</span></strong>
+                            </div>
+                        </td>
+                        <td style="width: 40%; text-align:center;">
+                            <span class="copyright">© 2020 PHILGPS - INDOGPS - BRUGPS</span>
+                        </td>
+                        <td class="cursor-bar">
+                            <div class="right-align">
+                                <strong><i class="fa fa-clock-o"></i>&nbsp;<span my-current-time="format"></span></strong>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

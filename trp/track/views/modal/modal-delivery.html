@@ -1,0 +1,40 @@
+﻿<div class="col-md-12" style="top: 20px;">
+    <script type="text/ng-template" id="deliveryModal">
+        <div class="modal-header modal-list-header">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+            <h3 class="modal-title">Delivery List</h3>
+        </div>
+        <div class="modal-body" style="height: 475px;">
+            <div>
+                <div ng-show="isLoading" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                <input type="text" ng-show="UnassignedDelivery.length > 0" ng-model="filterDelivery" placeholder="filter delivery..." class="width-100-percent" />
+                <div class="modal-oveflow-delivery">
+                    <table class="table table-condensed table-hover">
+                        <thead>
+                            <tr>
+                                <td class="col-xs-2 center-align">#</td>
+                                <td class="col-xs-2">Delivery&nbsp;No.</td>
+                                <td class="col-xs-2">Order&nbsp;No.</td>
+                                <td class="col-xs-2"></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="del in filtered = (UnassignedDelivery | filter:filterDelivery) | orderBy: '+oldDeliveryNumber'">
+                                <td class="col-xs-2 center-align">{{$index+1}}</td>
+                                <td class="col-xs-2">{{del.oldDeliveryNumber}}</td>
+                                <td class="col-xs-2">{{del.orderNumber}}</td>
+                                <td class="col-xs-2"><a class="fa fa-arrow-circle-o-right pointer" style="font-size: 15px;" ng-click="assignDelivery(del.oldDeliveryNumber)" title="Assign Delivery to Asset"></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="center-align" ng-hide="UnassignedDelivery.length > 0">
+                        <h5>No Data Found.</h5>
+                    </div>
+                </div>
+                <div class="modal-button">
+                    <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Close" ng-click="cancel()">Close <i class="fa fa-close"></i></a>                    
+                </div>
+            </div>
+        </div>
+    </script>
+</div>

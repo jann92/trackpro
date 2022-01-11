@@ -1,0 +1,128 @@
+﻿<div class="col-md-12" style="top: 20px;">
+    <script type="text/ng-template" id="driverAssetAssignmentModal">
+        <div class="modal-header modal-list-header">
+            <button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
+            <h3 class="modal-title">Driver Asset Assignment</h3>
+        </div>
+        <div class="modal-body modal-body-360px">
+            <div ng-show="isDriver">
+                <div class="child-list">
+                    <div>
+                        <div class="padding-10px">
+                            <input type="text" ng-show="driverList.length > 0" ng-model="driverFilter" placeholder="&nbsp;Search driver..." class="width-100-percent" />
+                            <br />
+                        </div>
+                        <div class="font-10px padding-left-3-percent"><b>Total Driver: </b>{{TotalDriver}}</div>
+                        <div class="modal-parent-list" style="max-height:300px !important;">
+                            <table class="table table-condensed table-hover">
+                                <tbody>
+                                    <tr class="cursor-pointer"
+                                        ng-repeat="driver in driverList | filter: driverFilter"
+                                        ng-class="{'trackpro-green' : driver.DriverID == selectedDriver}"
+                                        ng-click="getDriverAssignedAssetList(driver)">
+                                        <td class="right-align">{{$index +1}}</td>
+                                        <td class="left-align">{{driver.Name}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="asset-list">
+                    <div ng-show="customerList.length === 0" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                    <div ng-show="isLoadingAssets && customerList.length > 0" style="text-align:center;"><br /><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                    <div ng-show="!isLoadingAssets">
+                        <input type="text" ng-show="customerList.length > 0" ng-model="assetFilter" placeholder="&nbsp;Search asset..." class="width-100-percent" />
+                        <div class="right-align padding-5px font-10px" ng-show="customerList.length > 0"><span><b>Total Assigned Assets: </b>{{assignAssetCount}} / {{TotalAsset}}</span></div>
+                        <div class="modal-overflow" style="overflow-y:auto !important;height: 270px;">
+                            <div class="collapse-list" ng-repeat="cus in customerList | orderBy: '+CustomerName'">
+                                <h5><a class="fa fa-minus-circle summary-font-icon" id="driver-asset-modal-{{cus.CustomerID}}" ng-click="viewAsset(cus.CustomerID)"></a> {{cus.CustomerName}}({{assetFiltered.length}})</h5>
+                                <div id="driver-asset-{{cus.CustomerID}}" class="collapse-driver-asset">
+                                    <table class="table table-condensed table-hover">
+                                        <tbody>
+                                            <tr ng-show="customerList.length > 0">
+                                                <td class="col-xs-3 center-align">Select All:</td>
+                                                <td class="col-xs-9"><input type="checkbox" ng-model="cus.isCheck" ng-click="getSelected(cus.AssetList, cus.isCheck)"></td>
+                                            </tr>
+                                            <tr ng-repeat="asset in cus.AssetList | filter: assetFilter as assetFiltered"
+                                                ng-class="{'trackpro-green' : asset.AssetID == SelectedAssetID}">
+                                                <td class="right-align col-xs-3"><input type="checkbox" ng-model="asset.IsAssigned" ng-click="toggleSelectAll(cus.AssetList, cus)" /></td>
+                                                <td class="col-xs-9 pointer">
+                                                    {{asset.Name}}
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-button">
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-left" title="Switch" ng-click="toggleList()">Switch to Asset <i class="fa fa-exchange"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Close" ng-click="cancel()">Close <i class="fa fa-close"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Update" ng-click="UpdateDriverAssetAssignment(customerList)" ng-show="customerList.length > 0">Update <i class="fa fa-save"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="isAsset">
+                <div class="child-list">
+                    <div class="padding-10px">
+                        <input type="text" ng-show="customerList.length > 0" ng-model="assetFilter" placeholder="&nbsp;filter assets..." class="width-100-percent" />
+                    </div>
+                    <div class="modal-parent-list">
+                        <div ng-show="assetFiltered.length === 0" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                        <div class="collapse-list" ng-repeat="cus in customerList | orderBy: '+CustomerName'">
+                            <h6><a class="fa fa-minus-circle summary-font-icon" id="asset-driver-modal-{{cus.CustomerID}}" ng-click="viewAssetDriver(cus.CustomerID)"></a> {{cus.CustomerName}}({{assetFiltered.length}})</h6>
+                            <div id="asset-driver-{{cus.CustomerID}}" class="collapse in">
+                                <table class="table table-condensed table-hover">
+                                    <tbody>
+                                        <tr ng-repeat="asset in cus.AssetList | filter: assetFilter as assetFiltered"
+                                            ng-class="{'trackpro-green' : asset.AssetID == selectedAssetID}"
+                                            ng-click="getAssetAssignedDriverList(asset)">
+                                            <td class="right-align">{{$index+1}}</td>
+                                            <td class="col-xs-9 pointer">
+                                                {{asset.Name}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="asset-list">
+                    <div ng-show="isLoadingDrivers" style="text-align:center;"><br /><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                    <div ng-show="!isLoadingDrivers">
+                        <div class="modal-overflow" style="height: 255px;">
+                            <input type="text" ng-show="driverList.length > 0 && selectedAssetID != null" ng-model="driverFilter" placeholder="&nbsp;Search driver..." class="width-100-percent" />
+                            <div ng-show="driverList.length === 0" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                            <div class="center-align" ng-show="selectedAssetID == null">
+                                <h5><i class="fa fa-exclamation-triangle"></i> No selected Asset.</h5>
+                            </div>
+                            <div style="overflow-y:auto !important;max-height:280px;">
+                                <table class="table table-condensed table-hover" ng-show="selectedAssetID != null">
+                                    <tbody>
+                                        <tr ng-show="driverFiltered.length > 0">
+                                            <td class="col-xs-3 center-align">Select All:</td>
+                                            <td class="col-xs-9"><input type="checkbox" ng-model="allDriverIsCheck" ng-click="getSelectedDriver(driverFiltered, allDriverIsCheck)"></td>
+                                        </tr>
+                                        <tr class="cursor-pointer"
+                                            ng-repeat="driver in driverList | filter: driverFilter as driverFiltered">
+                                            <td class="right-align"><input type="checkbox" ng-model="driver.IsAssigned" /></td>
+                                            <td class="left-align">{{driver.Name}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-button">
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-left" title="Switch" ng-click="toggleList()">Switch to Driver <i class="fa fa-exchange"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Close" ng-click="cancel()">Close <i class="fa fa-close"></i></a>
+                        <a class="btn btn-default btn-xs trackpro-green-btn pull-right" title="Update" ng-click="UpdateAssetDriverAssignment(driverList)" ng-show="customerList.length > 0">Update <i class="fa fa-save"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>

@@ -1,0 +1,231 @@
+﻿<div>
+    <div class="header">
+        <img class="header-logo" src="../../contents/images/login/trackpro_logo.png" />
+        <!--<img class="header-logo" src="../../contents/images/login/fleetpro.svg" />-->
+        <!--<img class="header-dhl-logo" src="../../contents/images/login/gbklogowhite.png"/>-->
+        <div>
+            <div class="asset-header-right" ng-show="selectedAsset.length != 0">
+                <!--<input type="checkbox" ng-model="focusAsset" class="focus-asset" ng-click="focusAssetMap(selectedAsset)" />-->
+                <a title="{{getMessageFocus(selectedAsset.focusOnMap)}}" class="fa fa-crosshairs white-anchor" id="focusAssetMap" ng-click="focusAssetMap(selectedAsset)" ng-show="selectedAsset" ng-class="(selectedAsset.focusOnMap) ? 'blue': 'white'"> <label class="font-icon pointer">{{selectedAsset.Name}}</label></a>
+            </div>
+            <label class="header-asset" ng-show="selectedAsset.length != 0">|</label>
+            <div ng-class="selectedAsset.length != 0 ? 'asset-header-left' : 'asset-header-center'">
+                <a class="white-anchor cursor-pointer" ng-click="clearMap()" title="Clear Map">
+                    <label class="cursor-pointer">Clear Map</label>
+                    <i class="fa fa-map"></i>
+                </a>
+            </div>
+            <!--<div class="asset-header-left">
+                <label> {{selectedAsset.AssetID}}</label>
+                <a class="fa fa-times-circle white-anchor" ng-click="removeAsset(selectedAsset)"></a>
+            </div>-->
+        </div>
+        <span class="header-user">
+            <i class="fa fa-user"></i>
+            <label>{{username}}</label>&nbsp;
+            <a class="link-white" href=" https://play.google.com/store/apps/details?id=com.philgps.fleetprov2" title="Mobile Version" target="_blank">
+                <i class="fa fa-mobile-phone mobile-link"></i>&nbsp;mobile
+            </a>
+            <!--<a class="link-white" href="" ng-click="logout()" title="Logout">
+                <i class="fa fa-sign-out"></i> logout
+            </a>-->
+        </span>
+    </div>
+    <div ng-controller="NavController">
+        <div class="left-side-panel-menu">
+            <br />
+            <br />
+            <br />
+
+            <i class="icon icon-pgps-asset-list left-side-panel-menu-item" data-slidetoggle="asset" title="Assets" id="lspmi-asset" ng-show="Asset_Role.Read"></i>
+
+            <hr ng-show="AssetTracer_Role.Read" class="margin-top-10px margin-bottom-10px" />
+            <i class="icon icon-pgps-asset-tracer left-side-panel-menu-item" title="Asset Tracer" data-slidetoggle="asset-tracer" id="lspmi-asset-tracer" ng-show="AssetTracer_Role.Read"></i>
+
+            <hr ng-show="NearestAsset_Role.Read" class="margin-top-10px margin-bottom-10px" />
+            <i class="icon icon-pgps-nearest-asset left-side-panel-menu-item" data-slidetoggle="nearest-asset" title="Nearest Asset" ng-show="NearestAsset_Role.Read"></i>
+            <!--<i class="icon icon-pgps-zone left-side-panel-menu-item" title="Zone Filter" data-slidetoggle="zone-filter"></i>-->
+
+            <hr ng-show="MeasureRoute_Role.Read" class="margin-top-10px margin-bottom-10px" />
+            <i class="icon icon-pgps-measure-route left-side-panel-menu-item" title="Measure Distance" data-slidetoggle="measure-route" ng-show="MeasureRoute_Role.Read"></i>
+
+            <hr class="margin-top-10px margin-bottom-10px" ng-show="Asset_Role.Read" />
+            <a href="../../track/dashboard/index.html" target="_blank">
+                <i class="icon icon-pgps-dashboard left-side-panel-menu-item" data-slidetoggle="dashboard" title="Dashboard" id="lspmi-asset-dashboard" ng-click="updateModule('Dashboard')" ng-show="Asset_Role.Read"></i>
+            </a>
+
+            <!--<hr class="margin-top-10px margin-bottom-10px" ng-show="Asset_Role.Read" />
+            <i class="icon icon-pgps-counter left-side-panel-menu-item" data-slidetoggle="asset-counter" title="Asset Counter" id="lspmi-asset-counter" ng-click="updateModule('AssetCounter')" ng-show="Asset_Role.Read"></i>-->
+
+            <hr ng-show="AssetFilter_Role.Read" class="margin-top-10px margin-bottom-10px" />
+            <i class="icon icon-pgps-filter left-side-panel-menu-item" data-slidetoggle="asset-filter" title="Filters" id="lspmi-asset-filter" ng-show="AssetFilter_Role.Read"></i>
+
+            <hr ng-show="Reports_Role.Read" class="margin-top-10px margin-bottom-10px" />
+            <a href="{{TrackReportURL}}" target="_blank" class="icon icon-pgps-reports" title="Reportpro" ng-show="Reports_Role.Read"></a>
+
+            <hr ng-show="UserSettings_Role.Read" class="margin-top-10px margin-bottom-10px" />
+            <i class="icon icon-pgps-user-settings left-side-panel-menu-item" title="User Settings" id="lnk-activity" data-slidetoggle="user-settings" ng-show="UserSettings_Role.Read"></i>
+
+            <a class="pointer bug-found" title="Found a bug?" ng-click="showFeedback()"><strong><i class="fa fa-bug" style="font-size: 14px;position: absolute;bottom: 12px;left: 11px; "></i></strong></a>
+
+        </div>
+
+
+        <div class="right-side-panel-menu">
+            <br />
+            <br />
+            <br />
+
+            <i class="icon icon-pgps-asset-info right-side-panel-menu-item" data-slidetoggle="asset-information" title="Asset Information" id="rspmi-asset-information" ng-show="Asset_Role.Read" ng-click="updateModule('AssetInformation')"></i>
+            <hr class="margin-top-10px margin-bottom-10px" />
+
+            <i class="icon icon-pgps-history right-side-panel-menu-item" data-slidetoggle="asset-history" title="Asset History" id="rspmi-asset-history" ng-click="hasClass()"></i>
+            <hr class="margin-top-10px margin-bottom-10px" />
+
+            <i class="icon icon-pgps-landmark right-side-panel-menu-item" title="Landmarks" data-slidetoggle="landmarks" ng-click="hasClass()"></i>
+            <hr class="margin-top-10px margin-bottom-10px" ng-show="Zone_Role.Read" />
+
+
+            <i class="icon icon-pgps-zone right-side-panel-menu-item" data-slidetoggle="zones" title="Zones" id="rspmi-zones" ng-click="updateModule('AssetZones')"></i>
+
+            <!--<i class="icon icon-pgps-routes right-side-panel-menu-item" title="Routes" data-slidetoggle="asset-route" ng-click="updateModule('AssetRoute')"></i>
+            <hr ng-show="Delivery_Role.Read" />-->
+
+            <hr class="margin-top-10px margin-bottom-10px" ng-show="Zone_Role.Read" />
+            <i class="icon icon-pgps-routes right-side-panel-menu-item" title="Routes" data-slidetoggle="asset-new-route" ng-click="updateModule('AssetRoute')"></i>
+
+            <hr class="margin-top-10px margin-bottom-10px" ng-show="Delivery_Role.Read" />
+            <i class="icon icon-pgps-delivery right-side-panel-menu-item" title="Delivery" data-slidetoggle="asset-delivery" ng-show="Delivery_Role.Read" ng-click="updateModule('AssetDelivery')"></i>
+
+            <hr class="margin-top-10px margin-bottom-10px" ng-show="Driver_Role.Read" />
+            <i class="icon icon-pgps-driver right-side-panel-menu-item" title="Driver" data-slidetoggle="asset-driver" ng-show="Driver_Role.Read" ng-click="updateModule('AssetDriver')"></i>
+
+            <hr class="margin-top-10px margin-bottom-10px" ng-show="InsightPro_Role.Read" />
+            <a href="{{InsightProURL}}" target="_blank" class="icon icon-pgps-insightpro" title="InsightPro" ng-show="InsightPro_Role.Read"></a>
+
+
+            <hr class="margin-top-10px margin-bottom-10px" ng-show="MaintenancePro_Role.Read" />
+            <a href="{{MaintenanceProURL}}" target="_blank" class="icon icon-pgps_maintenance" title="MaintenancePro" ng-show="MaintenancePro_Role.Read"></a>
+
+
+            <hr class="margin-top-10px margin-bottom-10px" />
+            <div>
+                <span class="badge badge-red" ng-click="notifBadgeClick()" ng-show="notifbadge && notifbadgecount > 0">{{notifbadgecount}}</span>
+                <i class="icon fa fa-exclamation-circle right-side-panel-menu-item" title="Notifications" data-slidetoggle="notification" ng-click="notifBadgeClick()"></i>
+            </div>
+            <!--<hr />
+            <i class="icon fa fa-exclamation-circle right-side-panel-menu-item" title="News Feed" data-slidetoggle="news-feed" ng-click="hasClass()"></i>-->
+            <!--<a class="pointer bug-found" title="{{soundText}}" ng-click="setAlertMute()"><strong><i ng-class="(isMute) ? 'fa fa-volume-off' : 'fa fa-volume-up'" style="font-size: 14px;position: absolute;bottom: 12px;left: 11px; "></i></strong></a>-->
+
+            <a class="pointer bug-found " title="{{soundText}}" ng-click="setAlertMute()"><strong><img class="alert-icon" ng-src="{{alertImageURL}}" /></strong></a>
+
+        </div>
+    </div>
+
+    <!--<i class="fa fa-caret-up summary-icon center-align-icon" ng-click="summaryToggle()"></i>-->
+
+    <div class="left-side-panel-menu-container">
+        <div class="side-panel-menu-content">
+            <!--assetList-->
+            <asset ng-controller="AssetController"></asset>
+
+            <!--filters-->
+            <asset-filter></asset-filter>
+
+            <!--counter-->
+            <asset-counter ng-controller="AssetCounterController"></asset-counter>
+
+            <!--Asset Tracer-->
+            <asset-tracer ng-controller="AssetTracerController"></asset-tracer>
+
+            <!--Nearest Asset-->
+            <nearest-asset ng-controller="NearestAssetController"></nearest-asset>
+
+            <!--Measure Route-->
+            <measure-route ng-controller="MeasureRouteController"></measure-route>
+
+            <!--userSettings-->
+            <user-settings ng-controller="UserSettingsController"></user-settings>
+
+        </div>
+    </div>
+
+    <!--Filter Search Status Top-->
+    <map-tools ng-controller="MapToolsController"></map-tools>
+    <!--Summary Bottom-->
+    <!--<customer-summary ng-controller="SummaryController"></customer-summary>-->
+    <!--Asset Filter Counter-->
+    <asset-filter-counter ng-controller="AssetFilterCounterController"></asset-filter-counter>
+
+
+    <div class="right-side-panel-menu-container">
+        <div class="right-panel-menu-content">
+            <!--assetDetails-->
+            <asset-information ng-controller="AssetInformationController" ng-show="Asset_Role.Read"></asset-information>
+
+            <!--Asset History-->
+            <asset-history ng-controller="AssetHistoryController"></asset-history>
+
+
+            <!--Route-->
+            <asset-route ng-controller="AssetRouteController"></asset-route>
+
+            <!--New Route-->
+            <asset-new-route ng-controller="AssetNewRouteController"></asset-new-route>
+
+            <!--Zone List-->
+            <!--<zone-filter ng-controller="ZoneFilterController"></zone-filter>-->
+            <!--Landmarks-->
+            <landmarks ng-controller="LandmarksController" ng-show="Landmarks_Role.Read"></landmarks>
+
+            <!--Zone-->
+            <zones ng-controller="ZonesController" ng-show="Zone_Role.Read"></zones>
+
+            <!--Asset Delivery-->
+            <asset-delivery ng-controller="AssetDeliveryController" ng-show="Delivery_Role.Read"></asset-delivery>
+
+            <!--Asset Driver-->
+            <asset-driver ng-controller="AssetDriverController" ng-show="Driver_Role.Read"></asset-driver>
+
+            <!--Notifications-->
+            <alert-notification ng-controller="NotificationsController"></alert-notification>
+
+            <!--News Feed-->
+            <!--<news-feed ng-controller="NewsFeedController"></news-feed>-->
+        </div>
+    </div>
+
+</div>
+<div id="alert_placeholder"></div>
+<script>
+    $('.left-side-panel-menu-item').click(function () {
+
+        document.getElementById('history-map-canvas').style.display = "block";
+        if ($(this).hasClass('side-panel-menu-item-active')) {
+            $('.left-side-panel-menu-item').removeClass('side-panel-menu-item-active active-icon');
+            $('.left-side-content-container').hide("slide");
+        }
+        else {
+            $('.left-side-panel-menu-item').removeClass('side-panel-menu-item-active active-icon');
+            $('.left-side-content-container').hide("slide");
+            $(this).addClass('side-panel-menu-item-active active-icon');
+            var target = $(this).attr('data-slidetoggle');
+            $('#' + target).show("slide");
+        }
+    });
+
+    $('.right-side-panel-menu-item').click(function () {
+        if ($(this).hasClass('side-panel-menu-item-active')) {
+            $('.right-side-panel-menu-item').removeClass('side-panel-menu-item-active active-icon');
+            $('.right-side-content-container').hide("slide");
+        }
+        else {
+            $('.right-side-panel-menu-item').removeClass('side-panel-menu-item-active active-icon');
+            $('.right-side-content-container').hide("slide");
+            $(this).addClass('side-panel-menu-item-active active-icon');
+            var target = $(this).attr('data-slidetoggle');
+            $('#' + target).show("slide");
+        }
+    });
+
+</script>

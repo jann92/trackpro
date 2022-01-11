@@ -1,0 +1,197 @@
+﻿
+:root {
+    --red: #b00;
+    --blue: #4679bd;
+    --main-color: #22B573;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font: 11px "Segoe UI" !important;
+    background: #f5f5f5;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.head {
+    background: /*#22B573;*/ var(--main-color);
+    text-align: center;
+    height: 35px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.container {
+    margin: 20px auto;
+}
+
+.title-logo {
+    width: 150px;
+}
+
+h1 {
+    color: #222;
+    text-align: center;
+}
+
+/* The Grid */
+
+.main-grid{
+    overflow-y:visible !important;
+    max-height: 95%;
+    overflow-x:hidden;
+}
+
+.grid {
+    width: 100%;
+    display: table;
+    border-collapse: separate;
+    border-spacing: 40px;
+    padding: 0;
+    position: relative;
+    top: -30px;
+    left:1%;
+}
+
+.grid-row {
+    width: 100%;
+    display: table;
+    table-layout: fixed;
+    margin: 0 0 -20px 0;
+    height:100px !important;
+}
+
+.item {
+    display: table-cell;
+    background: #fff;
+    padding: 0;
+    cursor: pointer;
+    position:relative;
+}
+
+.item-title {
+    font-size: 20px;
+    position: absolute;
+    bottom: -2px;
+    width: 100%;
+    padding: 5px;
+    color: #fff;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.item-image{
+    padding:3px;
+}
+
+    .item-image img {
+        width: 50%;
+        margin: 20px;
+    }
+
+.main-footer {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 3% 50px;
+    margin-top: 0px;
+    bottom: 0px;
+    position:absolute;
+}
+
+
+@media screen and (max-width: 800px) {
+    .card-1 {
+        width: 45% !important;
+        margin: 2% 2% 0 0 !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .grid-row {
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+
+    .item {
+        display: block;
+        width: 100%;
+        margin: 0 0 5px 0;
+    }
+
+    .card-1 {
+        width: 100% !important;
+        margin: 2% 0 0 0 !important;
+    }
+
+    .head{
+        text-align:left !important;
+    }
+}
+
+
+
+.card-1 {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    width:30%;
+    float:left;
+    margin-left:2%;
+    margin-bottom:2%;
+
+}
+
+.card-1:hover {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    -webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+     transform: scale(0.9);
+}
+
+
+.c-logo {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    right: 0px;
+    color: #fff;
+    font-size: 13px;
+    background-color: #1c8e5b;
+    height: 27px;
+}
+
+.c-logo span{
+    position:relative;
+    top:5px;
+}
+
+
+.countdown-timer {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff !important;
+}
+
+.countdown-timer a {
+    color: #fff !important;
+}
+
+.countdown-timer a:hover {
+    color: #fff !important;
+    cursor: pointer;
+}

@@ -1,0 +1,102 @@
+﻿html, body {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font: 12px 'Segoe UI';
+    overflow: hidden;
+}
+
+@media(min-width: 601px) {
+    body {
+        background: #22B573 url('../../images/login/trackpro_new.png') no-repeat bottom left;
+    }
+}
+
+@media(max-width: 600px) {
+    body {
+        background: #22B573 url('../../images/login/trackpro_new.png') no-repeat bottom center;
+    }
+}
+
+@media(min-width: 601px) {
+    .login-panel {
+        width: 300px;
+        position: absolute;
+        right: 20%;
+        top: 30%;
+        text-align: center;
+    }
+}
+
+@media(max-width: 600px) {
+    .login-panel {
+        width: 300px;
+        margin: auto;
+        margin-top: 40%;
+        text-align: center;
+    }
+}
+
+.login-logo {
+    width: 300px;
+}
+
+.login-txt {
+    margin: 2px 0px;
+    width: 276px;
+    background: #22B573;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #fff;
+    color: #fff !important;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+.login-sel {
+    margin: 2px 0px;
+    width: 300px;
+    background: #22B573;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #fff;
+    color: #fff !important;    
+    font-size: 15px;
+}
+
+#error-container{
+    margin: 2px 0px;
+    width: 276px;
+    background: #22B573;    
+    color: #fff !important;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+.login-btn {
+    margin: 2px 0px;
+    width: 300px;
+    background: #fff;
+    border: 2px solid #22B573;
+    color: #22B573;
+    padding: 5px 10px;
+    font-size: 15px;
+}
+
+.version {
+    width: 300px;
+    text-align: right;
+    color: #fff;
+}
+
+.copyright {    
+    background: #22B573;
+    position: absolute;
+    text-align: right;
+    bottom: 5px;
+    right: 10px;
+    color: #fff;
+}

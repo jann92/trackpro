@@ -1,0 +1,591 @@
+﻿
+<div class="right-side-content-container" id="asset-information">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Asset Information</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/9/asset'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <hr class="spacing-2px" />
+            <div>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs asset-info-nav" role="tablist">
+                    <li role="presentation" class="active center-align" style="width:16.6% !important;"><a ng-click="assetInfoTabClick('Details')" class="nav-tabs-custom" data-target="#details" data-toggle="tab">Details</a></li>
+                    <!--<li role="presentation"><a class="nav-tabs-custom" data-target="#sensors" data-toggle="tab" ng-show="Sensors_Role.Read">Sensors</a></li>-->
+                    <li role="presentation" class="center-align" style="width:16.6% !important;"><a ng-click="assetInfoTabClick('Camera')" class="nav-tabs-custom" data-target="#camera" data-toggle="tab" ng-show="Camera_Role.Read">Camera</a></li>
+                    <li role="presentation" class="center-align" style="width:16.6% !important;"><a ng-click="assetInfoTabClick('Weather')" class="nav-tabs-custom" data-target="#weather" data-toggle="tab" ng-show="Weather_Role.Read">Weather</a></li>
+                    <li role="presentation" class="center-align" style="width:16.6% !important;"><a ng-click="assetInfoTabClick('Settings')" class="nav-tabs-custom" data-target="#settings" data-toggle="tab" ng-show="Asset_Role.Update">Settings</a></li>
+                    <li role="presentation" class="center-align" style="width:16.6% !important;"><a ng-click="assetInfoTabClick('Driver')" class="nav-tabs-custom" data-target="#driver" data-toggle="tab" ng-show="Driver_Role.Read">Driver</a></li>
+                    <li id="delivery" role="presentation" style="width:16.6% !important;" class="center-align" ng-show="Delivery_Role.Read"><a ng-click="assetInfoTabClick('Delivery')" class="nav-tabs-custom" data-target="#delivery-tab" data-toggle="tab">Delivery</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<hr class="spacing" />-->
+    <div class="side-panel-menu-content-body-container">
+        <div class="side-panel-menu-content-body" style="padding-top:0px;overflow-y:hidden;max-height:490px !important;">
+            <div>
+                <!-- Loading -->
+                <div ng-show="AssetGPSInformation.Invalid" style="text-align:center;">No data</div>
+                <div ng-show="AssetGPSInformation.AssetID == null && isLoading == false">
+                    <a class="btn btn-xs btn-default trackpro-green-btn" ng-click="openAssetList()">
+                        Please select an asset first.
+                    </a>
+                </div>
+
+                <!--<div ng-show="AssetGPSInformation.AssetID == null && isLoading == false" style="text-align:center;"><i class="fa fa-exclamation-triangle"></i>&nbsp;No asset selected.</div>-->
+                <!-- Tab panes -->
+                <div class="tab-content asset-info-tab-content" ng-show="AssetGPSInformation.AssetID != null && isLoading == false && !AssetGPSInformation.Invalid">
+                    <div class="tab-pane active" id="details">
+                        <div ng-show="isLoading" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                        <table class="table table-condensed table-hover" id="asset-information-details">
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/name.png" />
+                                </td>
+                                <td class="width-100px">Customer</td>
+
+                                <td>{{AssetGPSInformation.CustomerName}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/name.png" />
+                                </td>
+                                <td class="width-100px">Name</td>
+                                <td>{{AssetGPSInformation.Name}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/asset_id.png" />
+                                </td>
+                                <td>GPS ID</td>
+                                <td>{{AssetGPSInformation.AssetID}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/data_time.png" />
+                                </td>
+                                <td>
+                                    Date Time <br />
+                                </td>
+                                <td><span style="white-space:pre-wrap;">{{AssetGPSInformation.GPSTime}}</span></td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/speed.png" />
+                                </td>
+                                <td>Speed-Course</td>
+                                <td>{{AssetGPSInformation.Speed}} kph, {{AssetGPSInformation.DirectionDegrees}}° {{AssetGPSInformation.DirectionCardinal}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/location.png" />
+                                </td>
+                                <td>Location</td>
+                                <td>
+                                    <span class="location-ellipsis" title="{{AssetGPSInformation.Location}}">
+                                        {{AssetGPSInformation.Location}}
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/status.png" />
+                                </td>
+                                <td>Status</td>
+                                <td>{{AssetGPSInformation.Status1}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/status.png" />
+                                </td>
+                                <td>Alert</td>
+                                <td>{{AssetGPSInformation.AlertStatus}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/sim.png" />
+                                </td>
+                                <td>SIM No.</td>
+                                <td>{{AssetGPSInformation.SIMNumber}}</td>
+                            </tr>
+                            <!--<tr>
+                                <td class="width-10px">
+
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/direction.png" />
+                                </td>
+                                <td>Direction</td>
+                                <td>{{AssetGPSInformation.DirectionDegrees}} {{AssetGPSInformation.DirectionCardinal}}</td>
+
+                            </tr>-->
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/coordinates.png" />
+                                </td>
+                                <td>Coordinates</td>
+                                <td>{{AssetGPSInformation.Latitude + ', ' + AssetGPSInformation.Longitude}}</td>
+
+                            </tr>
+
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/odometer.png" />
+                                </td>
+                                <td>Odometer</td>
+                                <td>{{AssetGPSInformation.Odometer == "" ? "0" : AssetGPSInformation.Odometer | number:0   }} km</td>
+                            </tr>
+                            <tr ng-show="AssetGPSInformation.Schedule != null">
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/data_time.png" />
+                                </td>
+                                <td>Restrictions</td>
+                                <td>{{AssetGPSInformation.Schedule}}</td>
+                            </tr>
+                            <tr ng-show="Sensors_Role.Read">
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/sensors/fuel.png" />
+                                </td>
+                                <td>Fuel</td>
+                                <td>{{AssetGPSInformation.Fuel < 0 || AssetGPSInformation.Fuel == null ? "N/A" : AssetGPSInformation.Fuel + " L"}}</td>
+                            </tr>
+                            <tr ng-show="Sensors_Role.Read">
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/sensors/temperature_1.png" />
+                                </td>
+                                <td>Temperature 1</td>
+                                <td>{{AssetGPSInformation.Temperature1 < 0 ? "N/A" :  AssetGPSInformation.Temperature1 + " °C"}}</td>
+                            </tr>
+                            <tr ng-show="Sensors_Role.Read">
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/sensors/temperature_2.png" />
+                                </td>
+                                <td>Temperature 2</td>
+                                <td>{{AssetGPSInformation.Temperature2 < 0 ? "N/A" : AssetGPSInformation.Temperature2 + " °C"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/statuses.svg" />
+                                </td>
+                                <td>Ignition</td>
+                                <td>
+                                    <button ng-class="{'on-text-button': AssetGPSInformation.Ignition == true, 'off-text-button': AssetGPSInformation.Ignition == false}">
+                                        <span>{{AssetGPSInformation.Ignition| on_off}}</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr ng-show="Sensors_Role.Read">
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/statuses.svg" />
+                                </td>
+                                <td>{{Sensor1Label}}</td>
+                                <td>
+                                    <button ng-class="{'on-text-button': AssetGPSInformation.Sensor1 == true, 'off-text-button': AssetGPSInformation.Sensor1 == false}">
+                                        <span>{{AssetGPSInformation.Sensor1| on_off}}</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr ng-show="Sensors_Role.Read">
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/statuses.svg" />
+                                </td>
+                                <td>{{Sensor2Label}}</td>
+                                <td>
+                                    <button ng-class="{'on-text-button': AssetGPSInformation.Sensor2 == true, 'off-text-button': AssetGPSInformation.Sensor2 == false}">
+                                        <span>{{AssetGPSInformation.Sensor2| on_off}}</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/statuses.svg" />
+                                </td>
+                                <td>Power Cut</td>
+                                <td>
+                                    <button ng-class="{'on-red-text-button': AssetGPSInformation.PowerCut == true, 'off-text-button': AssetGPSInformation.PowerCut == false}">
+                                        <span>{{AssetGPSInformation.PowerCut| on_off}}</span>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/details/statuses.svg" />
+                                </td>
+                                <td>SOS</td>
+                                <td>
+                                    <button ng-class="{'on-red-text-button': AssetGPSInformation.SOS == true, 'off-text-button': AssetGPSInformation.SOS == false}">
+                                        <span>{{AssetGPSInformation.SOS| on_off}}</span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="sensors">
+                        <table class="table table-condensed table-hover">
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/sensors/fuel.png" />
+                                </td>
+                                <td>Fuel</td>
+                                <td>{{AssetGPSInformation.Fuel < 0 || AssetGPSInformation.Fuel == null ? "N/A" : AssetGPSInformation.Fuel + " L"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/sensors/temperature_1.png" />
+                                </td>
+                                <td>Temperature 1</td>
+                                <td>{{AssetGPSInformation.Temperature1 < 0 ? "N/A" :  AssetGPSInformation.Temperature1 + " °C"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/sensors/temperature_2.png" />
+                                </td>
+                                <td>Temperature 2</td>
+                                <td>{{AssetGPSInformation.Temperature2 < 0 ? "N/A" : AssetGPSInformation.Temperature2 + " °C"}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/sensors/sensor_1.png" />
+                                </td>
+                                <td>Sensor 1</td>
+                                <td>{{AssetGPSInformation.Status.Sensor1| on_off}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/sensors/sensor_2.png" />
+                                </td>
+                                <td>Sensor 2</td>
+                                <td>{{AssetGPSInformation.Status.Sensor2| on_off}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="camera">
+                        <div ng-show="CameraInformation.ImageUrl != null">
+                            <div ng-show="CameraInformation.ImageUrl != null">
+                                <div style="min-height:235px;" uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+                                    <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" active="slide.id">
+                                        <img src="{{slide.Image}}" style="margin:auto; width:100%">
+                                        <h6 class="image-date">{{slide.RevTime | date: 'yyyy-MM-dd HH:mm:ss'}}</h6>
+                                    </div>
+                                </div>
+                                <div class="thumb-container ">
+                                    <a href="" class="thumb-control-left fa fa-chevron-left" ng-click="prevPage()"></a>
+                                    <div class="thumb-image-container">
+                                        <div class="thumb-images" ng-repeat="slide in showThumbnails track by slide.id">
+                                            <img ng-src="{{slide.Image}}" class="thumb-blur" ng-click="setActive(slide.id)" ng-class="{'thumb-active': slide.id == active}">
+                                        </div>
+                                    </div>
+                                    <a href="" class="thumb-control-right fa fa-chevron-right" ng-click="nextPage()"></a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div ng-show="CameraInformation.ImageUrl == null">
+                            <h5 class="center-align">No Image Found.</h5>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="weather">
+                        <div ng-show="loadWeather" style="text-align:center;"><i class="fa fa-refresh fa-spin"></i>&nbsp;Loading</div>
+                        <div class="center-align" ng-show="loadWeatherError">Failed to load weather information.</div>
+                        <table class="table table-condensed table-hover" ng-show="WeatherInformation.CloudCover">
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/weather/weather.svg" />
+                                </td>
+                                <td>Description</td>
+                                <td>
+                                    <!--<img class="label-icon" src="{{WeatherInformation.IconURL}} " />&nbsp;-->
+                                    {{WeatherInformation.Description}}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/weather/cloud_cover.png" />
+                                </td>
+                                <td>Cloud Cover</td>
+                                <td>{{WeatherInformation.CloudCover + ' %'}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/weather/temperature_ground.png" />
+                                </td>
+                                <td>Temperature</td>
+                                <td>{{WeatherInformation.TemperatureGround + ' °C'}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/weather/pressure.png" />
+                                </td>
+                                <td>Pressure</td>
+                                <td>{{WeatherInformation.Pressure + ' bar'}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/weather/humidity.png" />
+                                </td>
+                                <td>Humidity</td>
+
+                                <td>{{WeatherInformation.Humidity + ' %'}}</td>
+                            </tr>
+                            <tr>
+                                <td class="width-10px">
+                                    <img class="label-icon" src="../../contents/images/track/asset-information/weather/precipitation.png" />
+                                </td>
+                                <td>Precipitation</td>
+                                <td>{{WeatherInformation.Precipitation + ' mm'}}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane" id="settings">
+                        <form id="asset-update-settings-form" ng-submit="updateAssetSettings(AssetSettings)">
+                            <table class="table table-condensed table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/settings/asset_id.png" />
+                                        </td>
+                                        <td>GPS ID</td>
+                                        <td>{{AssetSettings.AssetID }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/settings/sim.png" />
+                                        </td>
+                                        <td>SIM No.</td>
+                                        <td>
+                                            <span>{{AssetSettings.SIMNumber}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/settings/name.png" />
+                                        </td>
+                                        <td>Name</td>
+                                        <td>
+                                            <input class="width-60-percent font-11px" type="text" ng-show="Asset_Role.Update" ng-model="AssetSettings.Name" ng-change="assetSettingsChange()" data-parsley-required="true" data-parsley-required-message="This field is required." data-parsley-errors-container="#asset-settings-name-error-container" />
+                                            <span id="asset-settings-name-error-container"></span>
+                                            <span ng-show="!Asset_Role.Update">{{AssetSettings.Name}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/settings/asset_type.png" />
+                                        </td>
+                                        <td>Type</td>
+                                        <td>
+                                            <!--<select ng-model="selected" ng-change="getStatus(selected)" ng-options="list.status for list in assetStatus"></select>-->
+                                            <select class="width-60-percent font-11px" ng-model="AssetSettings.TypeID"
+                                                    ng-options="assetType.AssetTypeID as assetType.Name for assetType in AssetTypeList"
+                                                    ng-init="AssetSettings.TypeID = AssetSettings.TypeID || AssetTypeList[0].AssetTypeID"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/settings/fuel.png" />
+                                        </td>
+                                        <td>Fuel Ratio</td>
+                                        <td>
+                                            <input class="font-11px width-60-percent" type="text" data-parsley-pattern="/^\d*\.?\d*$/" ng-show="Asset_Role.Update" ng-model="AssetSettings.FuelRatio" />
+                                            <span ng-show="!Asset_Role.Update">{{AssetSettings.FuelRatio}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/settings/fuel.png" />
+                                        </td>
+                                        <td>Fuel Type</td>
+                                        <td>
+                                            <select class="font-11px width-60-percent" ng-model="AssetSettings.FuelTypeID"
+                                                    ng-options="fuelType.FuelTypeID as fuelType.Name for fuelType in FuelTypeList"
+                                                    ng-init="AssetSettings.FuelTypeID = AssetSettings.FuelTypeID || FuelTypeList[0].FuelTypeID"></select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/details/odometer.png" />
+                                        </td>
+                                        <td>Vehicle Model</td>
+                                        <td>
+                                            <input type="text" class="font-11-px width-60-percent" data-parsley-pattern="/^\d*\.?\d*$/" ng-show="Asset_Role.Update" ng-model="AssetSettings.VehicleModel" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/details/odometer.png" />
+                                        </td>
+                                        <td>Vehicle Brand</td>
+                                        <td>
+                                            <input type="text" class="font-11-px width-60-percent" ng-show="Asset_Role.Update" ng-model="AssetSettings.VehicleBrand" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/details/odometer.png"/>
+                                        </td>
+                                        <td>Vehicle Odometer</td>
+                                        <td>
+                                            <input type="text" class="font-11-px width-60-percent" type="text" data-parsley-pattern="/^\d*\.?\d*$/" ng-show="Asset_Role.Update" ng-model="AssetSettings.ObjectOdometer"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/settings/asset_type.png" />
+                                        </td>
+                                        <td>Registration</td>
+                                        <td>
+                                            <input type="text" style="font-size:11px !important;" class="font-11px left-align btn btn-xs width-60-percent datepicker-white" datenotime ng-model="AssetSettings.Registration" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/settings/asset_type.png" />
+                                        </td>
+                                        <td>Insurance</td>
+                                        <td>
+                                            <input type="text" style="font-size:11px !important;" class="font-11px left-align btn btn-xs width-60-percent datepicker-white" datenotime ng-model="AssetSettings.Insurance" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/settings/asset_type.png" />
+                                        </td>
+                                        <td>Permit</td>
+                                        <td>
+                                            <input type="text" style="font-size:11px !important;" class="font-11px left-align btn btn-xs width-60-percent datepicker-white" datenotime ng-model="AssetSettings.Permit" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/settings/asset_type.png" />
+                                        </td>
+                                        <td>Service</td>
+                                        <td>
+                                            <input type="text" style="font-size:11px !important;" class="font-11px left-align btn btn-xs width-60-percent datepicker-white" datenotime ng-model="AssetSettings.Service" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/details/odometer.png" />
+                                        </td>
+                                        <td>Service Odometer</td>
+                                        <td>
+                                            <input class="width-60-percent font-10px" data-parsley-type="number" ng-model="AssetSettings.ServiceOdo" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="width-10px">
+                                            <img class="label-icon" src="../../contents/images/track/asset-information/details/data_time.png" />
+                                        </td>
+                                        <td>Restrictions</td>
+                                        <td>
+                                            <!--{{AssetSettings.Schedule}}&nbsp;&nbsp;<a><span class="fa fa-edit font-10px cursor-pointer"></span></a>-->
+                                            <div id="list1" class="schedule-dropdown-check-list" tabindex="100">
+                                                <span class="anchor">{{Schedule}}</span>
+                                                <ul id="scheditems" class="scheditems">
+                                                    <li><input type="checkbox" name="assetSchedCheckbox" id="Sun" value="1" onchange="schedCheckBoxChange()"/>Sunday </li>
+                                                    <li><input type="checkbox" name="assetSchedCheckbox" id="Mon" value="2" onchange="schedCheckBoxChange()"/>Monday</li>
+                                                    <li><input type="checkbox" name="assetSchedCheckbox" id="Tue" value="4" onchange="schedCheckBoxChange()"/>Tuesday </li>
+                                                    <li><input type="checkbox" name="assetSchedCheckbox" id="Wed" value="8" onchange="schedCheckBoxChange()"/>Wednesday</li>
+                                                    <li><input type="checkbox" name="assetSchedCheckbox" id="Thu" value="16" onchange="schedCheckBoxChange()"/>Thursday</li>
+                                                    <li><input type="checkbox" name="assetSchedCheckbox" id="Fri" value="32" onchange="schedCheckBoxChange()"/>Friday</li>
+                                                    <li><input type="checkbox" name="assetSchedCheckbox" id="Sat" value="64" onchange="schedCheckBoxChange()"/>Saturday</li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td ng-show="Asset_Role.Update">
+                                            <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;margin-left:5px;" ng-show="resetbutton" ng-click="resetButtonClick()" value="Reset" />
+                                            <input type="submit" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" value="Save" />
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </form>
+                    </div>
+                    <div role="tabpanel" id="driver" class="tab-pane">
+                        <table class="tale table-condensed table-hover width-100-percent">
+                            <tr ng-show="DriverInformation.CurrentDriver == 'No Driver'">
+                                <td>No Driver</td>
+                            </tr>
+                            <tbody ng-hide="DriverInformation.CurrentDriver == 'No Driver'">
+                                <tr>
+                                    <td class="width-10px">
+                                        <img class="label-icon" src="../../contents/driver/Name.png" />
+                                    </td>
+                                    <td>Driver Name</td>
+                                    <td ng-class="{'driver-not-allowed': DriverInformation.isDriverAllowed == false}">{{DriverInformation.CurrentDriver}}&nbsp;&nbsp;<span title="Not Available" ng-show="!DriverInformation.isDriverAvailable && DriverInformation.DriverSchedule !== null" class="fa fa-ban"></span></td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img class="label-icon" src="../../contents/images/track/asset-information/details/data_time.png" />
+                                    </td>
+                                    <td>Board Time</td>
+                                    <td>{{DriverInformation.BoardTime}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/License Number.png" class="label-icon" />
+                                    </td>
+                                    <td>License No.</td>
+                                    <td>{{DriverInformation.LicenseNo}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/License Type.png" class="label-icon" />
+                                    </td>
+                                    <td>License Type</td>
+                                    <td>{{DriverInformation.LicenseType}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img src="../../contents/driver/Mobile Phone Number.png" class="label-icon" />
+                                    </td>
+                                    <td>Mobile No.</td>
+                                    <td>{{DriverInformation.MobilePhoneNo}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="width-10px">
+                                        <img class="label-icon" src="../../contents/images/track/asset-information/details/data_time.png" />
+                                    </td>
+                                    <td>Schedule</td>
+                                    <td>{{DriverInformation.DriverSchedule}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" id="delivery-tab" class="tab-pane">
+                        <table class="table table-condensed table-hover width-100-percent">
+                            <tr ng-show="DeliveryInformation.length == 0">
+                                <td>No Delivery</td>
+                            </tr>
+                            <tr ng-show="DeliveryInformation.length > 0">
+                                <td>#</td>
+                                <td>Delivery No.</td>
+                                <td>Order No.</td>
+                                <td>Start Time</td>
+                            </tr>
+                            <tr ng-show="DeliveryInformation.length > 0">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr ng-repeat="Delivery in DeliveryInformation">
+                                <td class="width-10px">{{$index + 1}}</td>
+                                <td>{{Delivery.oldDeliveryNumber}}</td>
+                                <td>{{Delivery.orderNumber}}</td>
+                                <td>{{Delivery.start_datetime}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

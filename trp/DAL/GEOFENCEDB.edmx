@@ -1,0 +1,1273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GEOFENCEDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CannonballGF">
+          <Key>
+            <PropertyRef Name="CannonballGfID" />
+          </Key>
+          <Property Name="CannonballGfID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GeofenceId" Type="int" />
+          <Property Name="GeofenceOrder" Type="int" />
+          <Property Name="isActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Geocoordinate">
+          <Key>
+            <PropertyRef Name="GeocoordinateId" />
+          </Key>
+          <Property Name="GeocoordinateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Longitude" Type="float" Nullable="false" />
+          <Property Name="Latitude" Type="float" Nullable="false" />
+          <Property Name="GeofenceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Geofence">
+          <Key>
+            <PropertyRef Name="GeofenceId" />
+          </Key>
+          <Property Name="GeofenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Geom" Type="geography" Nullable="false" />
+          <Property Name="ParkZone" Type="bit" Nullable="false" />
+          <Property Name="NotAllowedZone" Type="bit" Nullable="false" />
+          <Property Name="AllowedZone" Type="bit" Nullable="false" />
+          <Property Name="OutOfZone" Type="bit" Nullable="false" />
+          <Property Name="SpeedLimitZone" Type="bit" Nullable="false" />
+          <Property Name="SpeedLimitInMph" Type="float" Nullable="false" />
+          <Property Name="TimeBased" Type="bit" Nullable="false" />
+          <Property Name="TimeBasedStart" Type="datetime" Nullable="false" />
+          <Property Name="TimeBasedEnd" Type="datetime" Nullable="false" />
+          <Property Name="Color" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="Consignee" Type="varchar" MaxLength="50" />
+          <Property Name="GeofenceType" Type="int" />
+          <Property Name="Remarks" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="GeofenceInfo">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="int" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ObjectGeofence">
+          <Key>
+            <PropertyRef Name="ObjectGeofenceId" />
+          </Key>
+          <Property Name="ObjectGeofenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GeofenceId" Type="int" Nullable="false" />
+          <Property Name="ObjectId" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PointOfInterest">
+          <Key>
+            <PropertyRef Name="PointOfInterestId" />
+          </Key>
+          <Property Name="PointOfInterestId" Type="int" Nullable="false" />
+          <Property Name="RadiusInMeters" Type="float" Nullable="false" />
+          <Property Name="PointOfInterestTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PointOfInterestType">
+          <Key>
+            <PropertyRef Name="PointOfInterestTypeId" />
+          </Key>
+          <Property Name="PointOfInterestTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="RouteId" />
+          </Key>
+          <Property Name="RouteId" Type="int" Nullable="false" />
+          <Property Name="DistanceInMeters" Type="float" Nullable="false" />
+          <Property Name="BufferSizeInMeters" Type="float" Nullable="false" />
+          <Property Name="StartLatitude" Type="float" />
+          <Property Name="StartLongitude" Type="float" />
+          <Property Name="EndLatitude" Type="float" />
+          <Property Name="EndLongitude" Type="float" />
+          <Property Name="StartLocation" Type="varchar" MaxLength="100" />
+          <Property Name="EndLocation" Type="varchar" MaxLength="100" />
+          <Property Name="StartDatetime" Type="datetime" />
+          <Property Name="EndDatetime" Type="datetime" />
+          <Property Name="Type" Type="bit" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="ZoneId" />
+          </Key>
+          <Property Name="ZoneId" Type="int" Nullable="false" />
+          <Property Name="AreaInMeters" Type="float" Nullable="false" />
+          <Property Name="ZoneTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ZoneType">
+          <Key>
+            <PropertyRef Name="ZoneTypeId" />
+          </Key>
+          <Property Name="ZoneTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Cannonbal__Geofe__531856C7">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CannonballGF" Type="Self.CannonballGF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="CannonballGF">
+              <PropertyRef Name="GeofenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Geocoordi__Geofe__117F9D94">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Geocoordinate" Type="Self.Geocoordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="Geocoordinate">
+              <PropertyRef Name="GeofenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GeofenceI__InfoI__6E8B6712">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GeofenceInfo" Type="Self.GeofenceInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="GeofenceInfo">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ObjectGeo__Geofe__0CBAE877">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ObjectGeofence" Type="Self.ObjectGeofence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="ObjectGeofence">
+              <PropertyRef Name="GeofenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PointOfIn__Point__3B75D760">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PointOfInterest" Type="Self.PointOfInterest" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="PointOfInterest">
+              <PropertyRef Name="PointOfInterestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PointOfIn__Point__3D5E1FD2">
+          <End Role="PointOfInterestType" Type="Self.PointOfInterestType" Multiplicity="1" />
+          <End Role="PointOfInterest" Type="Self.PointOfInterest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PointOfInterestType">
+              <PropertyRef Name="PointOfInterestTypeId" />
+            </Principal>
+            <Dependent Role="PointOfInterest">
+              <PropertyRef Name="PointOfInterestTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Route__RouteId__267ABA7A">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="Route">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zone__ZoneId__1FCDBCEB">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Zone" Type="Self.Zone" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="Zone">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zone__ZoneTypeId__21B6055D">
+          <End Role="ZoneType" Type="Self.ZoneType" Multiplicity="1" />
+          <End Role="Zone" Type="Self.Zone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZoneType">
+              <PropertyRef Name="ZoneTypeId" />
+            </Principal>
+            <Dependent Role="Zone">
+              <PropertyRef Name="ZoneTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_getGeofenceName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="geofence_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_getGeofenceSpeedLimit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="geofence_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="fn_GetGeoJSON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="geo" Type="geography" Mode="In" />
+        </Function>
+        <Function Name="fn_isInsideGeofence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="longitude" Type="float" Mode="In" />
+          <Parameter Name="latitude" Type="float" Mode="In" />
+          <Parameter Name="objectid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_isOnRoute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="longitude" Type="float" Mode="In" />
+          <Parameter Name="latitude" Type="float" Mode="In" />
+          <Parameter Name="objectid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_isOutsideGeofence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="longitude" Type="float" Mode="In" />
+          <Parameter Name="latitude" Type="float" Mode="In" />
+          <Parameter Name="objectid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_isSpeedingInsideGeofence" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="longitude" Type="float" Mode="In" />
+          <Parameter Name="latitude" Type="float" Mode="In" />
+          <Parameter Name="objectid" Type="varchar" Mode="In" />
+          <Parameter Name="speed" Type="float" Mode="In" />
+        </Function>
+        <Function Name="fn_pgps_isOnRoute" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="longitude" Type="float" Mode="In" />
+          <Parameter Name="latitude" Type="float" Mode="In" />
+          <Parameter Name="objectid" Type="varchar" Mode="In" />
+          <Parameter Name="gpstime" Type="datetime" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="RouteID" Type="int" />
+                <Property Name="IsOnRoute" Type="bit" />
+                <Property Name="StartDateTime" Type="datetime" />
+                <Property Name="EndDateTime" Type="datetime" />
+                <Property Name="RouteSched" Type="varchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_pgps_isOnRoute_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="longitude" Type="float" Mode="In" />
+          <Parameter Name="latitude" Type="float" Mode="In" />
+          <Parameter Name="objectid" Type="varchar" Mode="In" />
+          <Parameter Name="gpstime" Type="datetime" Mode="In" />
+          <Parameter Name="routeid" Type="int" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="RouteID" Type="int" />
+                <Property Name="IsOnRoute" Type="bit" />
+                <Property Name="StartDateTime" Type="datetime" />
+                <Property Name="EndDateTime" Type="datetime" />
+                <Property Name="RouteSched" Type="varchar" MaxLength="50" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="fn_Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="stringToSplit" Type="varchar(max)" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="Name" Type="nvarchar" MaxLength="500" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
+        <Function Name="sp_getDistanceToNextZone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="zoneid" Type="int" Mode="In" />
+          <Parameter Name="longitude" Type="float" Mode="In" />
+          <Parameter Name="latitude" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_IosGetZone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sUserName" Type="varchar" Mode="In" />
+          <Parameter Name="userId" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_pgps_count_assets_inside_zone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_pgps_get_assetlist_inside_by_zone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="geofenceid" Type="int" Mode="In" />
+          <Parameter Name="allowed" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_pgps_get_assets_inside_list_based_zone_type" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="account_id" Type="int" Mode="In" />
+          <Parameter Name="allowed" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_pgps_get_assets_inside_list_based_zone_type_ios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="account_id" Type="int" Mode="In" />
+          <Parameter Name="geoId" Type="int" Mode="In" />
+          <Parameter Name="allowed" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_pgps_get_assets_inside_list_based_zone_type_ios_2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="account_id" Type="int" Mode="In" />
+          <Parameter Name="allowed" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_pgps_get_assets_inside_zone_type" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="allowed" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_PGPS_get_object_zone_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ObjectID" Type="varchar" Mode="In" />
+          <Parameter Name="Take" Type="varchar" Mode="In" />
+          <Parameter Name="Page" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_PGPS_get_object_zone_list_filtered" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ObjectID" Type="varchar" Mode="In" />
+          <Parameter Name="Take" Type="varchar" Mode="In" />
+          <Parameter Name="Page" Type="int" Mode="In" />
+          <Parameter Name="Filter" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_PGPS_get_user_route_list_status" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="account_id" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_PGPS_get_user_zone_list" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ParentID" Type="int" Mode="In" />
+          <Parameter Name="Take" Type="varchar" Mode="In" />
+          <Parameter Name="Page" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_PGPS_get_user_zone_list_filtered" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+          <Parameter Name="ParentID" Type="int" Mode="In" />
+          <Parameter Name="Take" Type="varchar" Mode="In" />
+          <Parameter Name="Filter" Type="varchar" Mode="In" />
+          <Parameter Name="Page" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_PGPS_get_zones_single_geojson" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GeofenceID" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="GEOFENCEDBModelStoreContainer">
+          <EntitySet Name="CannonballGF" EntityType="Self.CannonballGF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Geocoordinate" EntityType="Self.Geocoordinate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Geofence" EntityType="Self.Geofence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GeofenceInfo" EntityType="Self.GeofenceInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ObjectGeofence" EntityType="Self.ObjectGeofence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PointOfInterest" EntityType="Self.PointOfInterest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PointOfInterestType" EntityType="Self.PointOfInterestType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Route" EntityType="Self.Route" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zone" EntityType="Self.Zone" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ZoneType" EntityType="Self.ZoneType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cannonbal__Geofe__531856C7" Association="Self.FK__Cannonbal__Geofe__531856C7">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="CannonballGF" EntitySet="CannonballGF" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Geocoordi__Geofe__117F9D94" Association="Self.FK__Geocoordi__Geofe__117F9D94">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="Geocoordinate" EntitySet="Geocoordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GeofenceI__InfoI__6E8B6712" Association="Self.FK__GeofenceI__InfoI__6E8B6712">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="GeofenceInfo" EntitySet="GeofenceInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ObjectGeo__Geofe__0CBAE877" Association="Self.FK__ObjectGeo__Geofe__0CBAE877">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="ObjectGeofence" EntitySet="ObjectGeofence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PointOfIn__Point__3B75D760" Association="Self.FK__PointOfIn__Point__3B75D760">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="PointOfInterest" EntitySet="PointOfInterest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PointOfIn__Point__3D5E1FD2" Association="Self.FK__PointOfIn__Point__3D5E1FD2">
+            <End Role="PointOfInterestType" EntitySet="PointOfInterestType" />
+            <End Role="PointOfInterest" EntitySet="PointOfInterest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Route__RouteId__267ABA7A" Association="Self.FK__Route__RouteId__267ABA7A">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="Route" EntitySet="Route" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zone__ZoneId__1FCDBCEB" Association="Self.FK__Zone__ZoneId__1FCDBCEB">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="Zone" EntitySet="Zone" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zone__ZoneTypeId__21B6055D" Association="Self.FK__Zone__ZoneTypeId__21B6055D">
+            <End Role="ZoneType" EntitySet="ZoneType" />
+            <End Role="Zone" EntitySet="Zone" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GEOFENCEDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="fn_pgps_isOnRoute_Result">
+          <Property Name="RouteID" Type="Int32" />
+          <Property Name="IsOnRoute" Type="Boolean" />
+          <Property Name="StartDateTime" Type="DateTime" />
+          <Property Name="EndDateTime" Type="DateTime" />
+          <Property Name="RouteSched" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="fn_pgps_isOnRoute_2_Result">
+          <Property Name="RouteID" Type="Int32" />
+          <Property Name="IsOnRoute" Type="Boolean" />
+          <Property Name="StartDateTime" Type="DateTime" />
+          <Property Name="EndDateTime" Type="DateTime" />
+          <Property Name="RouteSched" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </ComplexType>
+        <ComplexType Name="fn_Split_Result">
+          <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <EntityType Name="CannonballGF">
+          <Key>
+            <PropertyRef Name="CannonballGfID" />
+          </Key>
+          <Property Name="CannonballGfID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GeofenceId" Type="Int32" />
+          <Property Name="GeofenceOrder" Type="Int32" />
+          <Property Name="isActive" Type="Boolean" />
+          <NavigationProperty Name="Geofence" Relationship="Self.FK__Cannonbal__Geofe__531856C7" FromRole="CannonballGF" ToRole="Geofence" />
+        </EntityType>
+        <EntityType Name="Geocoordinate">
+          <Key>
+            <PropertyRef Name="GeocoordinateId" />
+          </Key>
+          <Property Name="GeocoordinateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Longitude" Type="Double" Nullable="false" />
+          <Property Name="Latitude" Type="Double" Nullable="false" />
+          <Property Name="GeofenceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Geofence" Relationship="Self.FK__Geocoordi__Geofe__117F9D94" FromRole="Geocoordinate" ToRole="Geofence" />
+        </EntityType>
+        <EntityType Name="Geofence">
+          <Key>
+            <PropertyRef Name="GeofenceId" />
+          </Key>
+          <Property Name="GeofenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Geom" Type="Geography" Nullable="false" />
+          <Property Name="ParkZone" Type="Boolean" Nullable="false" />
+          <Property Name="NotAllowedZone" Type="Boolean" Nullable="false" />
+          <Property Name="AllowedZone" Type="Boolean" Nullable="false" />
+          <Property Name="OutOfZone" Type="Boolean" Nullable="false" />
+          <Property Name="SpeedLimitZone" Type="Boolean" Nullable="false" />
+          <Property Name="SpeedLimitInMph" Type="Double" Nullable="false" />
+          <Property Name="TimeBased" Type="Boolean" Nullable="false" />
+          <Property Name="TimeBasedStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TimeBasedEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Color" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="Consignee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GeofenceType" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CannonballGF" Relationship="Self.FK__Cannonbal__Geofe__531856C7" FromRole="Geofence" ToRole="CannonballGF" />
+          <NavigationProperty Name="Geocoordinate" Relationship="Self.FK__Geocoordi__Geofe__117F9D94" FromRole="Geofence" ToRole="Geocoordinate" />
+          <NavigationProperty Name="GeofenceInfo" Relationship="Self.FK__GeofenceI__InfoI__6E8B6712" FromRole="Geofence" ToRole="GeofenceInfo" />
+          <NavigationProperty Name="ObjectGeofence" Relationship="Self.FK__ObjectGeo__Geofe__0CBAE877" FromRole="Geofence" ToRole="ObjectGeofence" />
+          <NavigationProperty Name="PointOfInterest" Relationship="Self.FK__PointOfIn__Point__3B75D760" FromRole="Geofence" ToRole="PointOfInterest" />
+          <NavigationProperty Name="Route" Relationship="Self.FK__Route__RouteId__267ABA7A" FromRole="Geofence" ToRole="Route" />
+          <NavigationProperty Name="Zone" Relationship="Self.FK__Zone__ZoneId__1FCDBCEB" FromRole="Geofence" ToRole="Zone" />
+        </EntityType>
+        <EntityType Name="GeofenceInfo">
+          <Key>
+            <PropertyRef Name="InfoID" />
+          </Key>
+          <Property Name="InfoID" Type="Int32" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Geofence" Relationship="Self.FK__GeofenceI__InfoI__6E8B6712" FromRole="GeofenceInfo" ToRole="Geofence" />
+        </EntityType>
+        <EntityType Name="ObjectGeofence">
+          <Key>
+            <PropertyRef Name="ObjectGeofenceId" />
+          </Key>
+          <Property Name="ObjectGeofenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GeofenceId" Type="Int32" Nullable="false" />
+          <Property Name="ObjectId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Geofence" Relationship="Self.FK__ObjectGeo__Geofe__0CBAE877" FromRole="ObjectGeofence" ToRole="Geofence" />
+        </EntityType>
+        <EntityType Name="PointOfInterest">
+          <Key>
+            <PropertyRef Name="PointOfInterestId" />
+          </Key>
+          <Property Name="PointOfInterestId" Type="Int32" Nullable="false" />
+          <Property Name="RadiusInMeters" Type="Double" Nullable="false" />
+          <Property Name="PointOfInterestTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Geofence" Relationship="Self.FK__PointOfIn__Point__3B75D760" FromRole="PointOfInterest" ToRole="Geofence" />
+          <NavigationProperty Name="PointOfInterestType" Relationship="Self.FK__PointOfIn__Point__3D5E1FD2" FromRole="PointOfInterest" ToRole="PointOfInterestType" />
+        </EntityType>
+        <EntityType Name="PointOfInterestType">
+          <Key>
+            <PropertyRef Name="PointOfInterestTypeId" />
+          </Key>
+          <Property Name="PointOfInterestTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PointOfInterest" Relationship="Self.FK__PointOfIn__Point__3D5E1FD2" FromRole="PointOfInterestType" ToRole="PointOfInterest" />
+        </EntityType>
+        <EntityType Name="Route">
+          <Key>
+            <PropertyRef Name="RouteId" />
+          </Key>
+          <Property Name="RouteId" Type="Int32" Nullable="false" />
+          <Property Name="DistanceInMeters" Type="Double" Nullable="false" />
+          <Property Name="BufferSizeInMeters" Type="Double" Nullable="false" />
+          <Property Name="StartLatitude" Type="Double" />
+          <Property Name="StartLongitude" Type="Double" />
+          <Property Name="EndLatitude" Type="Double" />
+          <Property Name="EndLongitude" Type="Double" />
+          <Property Name="StartLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EndLocation" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="StartDatetime" Type="DateTime" Precision="3" />
+          <Property Name="EndDatetime" Type="DateTime" Precision="3" />
+          <Property Name="Type" Type="Boolean" />
+          <NavigationProperty Name="Geofence" Relationship="Self.FK__Route__RouteId__267ABA7A" FromRole="Route" ToRole="Geofence" />
+        </EntityType>
+        <EntityType Name="Zone">
+          <Key>
+            <PropertyRef Name="ZoneId" />
+          </Key>
+          <Property Name="ZoneId" Type="Int32" Nullable="false" />
+          <Property Name="AreaInMeters" Type="Double" Nullable="false" />
+          <Property Name="ZoneTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Geofence" Relationship="Self.FK__Zone__ZoneId__1FCDBCEB" FromRole="Zone" ToRole="Geofence" />
+          <NavigationProperty Name="ZoneType" Relationship="Self.FK__Zone__ZoneTypeId__21B6055D" FromRole="Zone" ToRole="ZoneType" />
+        </EntityType>
+        <EntityType Name="ZoneType">
+          <Key>
+            <PropertyRef Name="ZoneTypeId" />
+          </Key>
+          <Property Name="ZoneTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Zone" Relationship="Self.FK__Zone__ZoneTypeId__21B6055D" FromRole="ZoneType" ToRole="Zone" />
+        </EntityType>
+        <Association Name="FK__Cannonbal__Geofe__531856C7">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CannonballGF" Type="Self.CannonballGF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="CannonballGF">
+              <PropertyRef Name="GeofenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Geocoordi__Geofe__117F9D94">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Geocoordinate" Type="Self.Geocoordinate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="Geocoordinate">
+              <PropertyRef Name="GeofenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GeofenceI__InfoI__6E8B6712">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="GeofenceInfo" Type="Self.GeofenceInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="GeofenceInfo">
+              <PropertyRef Name="InfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ObjectGeo__Geofe__0CBAE877">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ObjectGeofence" Type="Self.ObjectGeofence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="ObjectGeofence">
+              <PropertyRef Name="GeofenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PointOfIn__Point__3B75D760">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PointOfInterest" Type="Self.PointOfInterest" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="PointOfInterest">
+              <PropertyRef Name="PointOfInterestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Route__RouteId__267ABA7A">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="Route">
+              <PropertyRef Name="RouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zone__ZoneId__1FCDBCEB">
+          <End Role="Geofence" Type="Self.Geofence" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Zone" Type="Self.Zone" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Geofence">
+              <PropertyRef Name="GeofenceId" />
+            </Principal>
+            <Dependent Role="Zone">
+              <PropertyRef Name="ZoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PointOfIn__Point__3D5E1FD2">
+          <End Role="PointOfInterestType" Type="Self.PointOfInterestType" Multiplicity="1" />
+          <End Role="PointOfInterest" Type="Self.PointOfInterest" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PointOfInterestType">
+              <PropertyRef Name="PointOfInterestTypeId" />
+            </Principal>
+            <Dependent Role="PointOfInterest">
+              <PropertyRef Name="PointOfInterestTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Zone__ZoneTypeId__21B6055D">
+          <End Role="ZoneType" Type="Self.ZoneType" Multiplicity="1" />
+          <End Role="Zone" Type="Self.Zone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ZoneType">
+              <PropertyRef Name="ZoneTypeId" />
+            </Principal>
+            <Dependent Role="Zone">
+              <PropertyRef Name="ZoneTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GEOFENCEDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CannonballGF" EntityType="Self.CannonballGF" />
+          <EntitySet Name="Geocoordinate" EntityType="Self.Geocoordinate" />
+          <EntitySet Name="Geofence" EntityType="Self.Geofence" />
+          <EntitySet Name="GeofenceInfo" EntityType="Self.GeofenceInfo" />
+          <EntitySet Name="ObjectGeofence" EntityType="Self.ObjectGeofence" />
+          <EntitySet Name="PointOfInterest" EntityType="Self.PointOfInterest" />
+          <EntitySet Name="PointOfInterestType" EntityType="Self.PointOfInterestType" />
+          <EntitySet Name="Route" EntityType="Self.Route" />
+          <EntitySet Name="Zone" EntityType="Self.Zone" />
+          <EntitySet Name="ZoneType" EntityType="Self.ZoneType" />
+          <AssociationSet Name="FK__Cannonbal__Geofe__531856C7" Association="Self.FK__Cannonbal__Geofe__531856C7">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="CannonballGF" EntitySet="CannonballGF" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Geocoordi__Geofe__117F9D94" Association="Self.FK__Geocoordi__Geofe__117F9D94">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="Geocoordinate" EntitySet="Geocoordinate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GeofenceI__InfoI__6E8B6712" Association="Self.FK__GeofenceI__InfoI__6E8B6712">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="GeofenceInfo" EntitySet="GeofenceInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ObjectGeo__Geofe__0CBAE877" Association="Self.FK__ObjectGeo__Geofe__0CBAE877">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="ObjectGeofence" EntitySet="ObjectGeofence" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PointOfIn__Point__3B75D760" Association="Self.FK__PointOfIn__Point__3B75D760">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="PointOfInterest" EntitySet="PointOfInterest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Route__RouteId__267ABA7A" Association="Self.FK__Route__RouteId__267ABA7A">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="Route" EntitySet="Route" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zone__ZoneId__1FCDBCEB" Association="Self.FK__Zone__ZoneId__1FCDBCEB">
+            <End Role="Geofence" EntitySet="Geofence" />
+            <End Role="Zone" EntitySet="Zone" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PointOfIn__Point__3D5E1FD2" Association="Self.FK__PointOfIn__Point__3D5E1FD2">
+            <End Role="PointOfInterestType" EntitySet="PointOfInterestType" />
+            <End Role="PointOfInterest" EntitySet="PointOfInterest" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Zone__ZoneTypeId__21B6055D" Association="Self.FK__Zone__ZoneTypeId__21B6055D">
+            <End Role="ZoneType" EntitySet="ZoneType" />
+            <End Role="Zone" EntitySet="Zone" />
+          </AssociationSet>
+          <FunctionImport Name="fn_pgps_isOnRoute" IsComposable="true" ReturnType="Collection(GEOFENCEDBModel.fn_pgps_isOnRoute_Result)">
+            <Parameter Name="longitude" Mode="In" Type="Double" />
+            <Parameter Name="latitude" Mode="In" Type="Double" />
+            <Parameter Name="objectid" Mode="In" Type="String" />
+            <Parameter Name="gpstime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="fn_pgps_isOnRoute_2" IsComposable="true" ReturnType="Collection(GEOFENCEDBModel.fn_pgps_isOnRoute_2_Result)">
+            <Parameter Name="longitude" Mode="In" Type="Double" />
+            <Parameter Name="latitude" Mode="In" Type="Double" />
+            <Parameter Name="objectid" Mode="In" Type="String" />
+            <Parameter Name="gpstime" Mode="In" Type="DateTime" />
+            <Parameter Name="routeid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="fn_Split" IsComposable="true" ReturnType="Collection(GEOFENCEDBModel.fn_Split_Result)">
+            <Parameter Name="stringToSplit" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_getDistanceToNextZone" ReturnType="Collection(Double)">
+            <Parameter Name="zoneid" Mode="In" Type="Int32" />
+            <Parameter Name="longitude" Mode="In" Type="Double" />
+            <Parameter Name="latitude" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_IosGetZone">
+            <Parameter Name="sUserName" Mode="In" Type="String" />
+            <Parameter Name="userId" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_pgps_count_assets_inside_zone" ReturnType="Collection(Int32)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_pgps_get_assetlist_inside_by_zone" ReturnType="Collection(GEOFENCEDBModel.sp_pgps_get_assetlist_inside_by_zone_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="geofenceid" Mode="In" Type="Int32" />
+            <Parameter Name="allowed" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_pgps_get_assets_inside_list_based_zone_type" ReturnType="Collection(GEOFENCEDBModel.sp_pgps_get_assets_inside_list_based_zone_type_Result)">
+            <Parameter Name="account_id" Mode="In" Type="Int32" />
+            <Parameter Name="allowed" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_pgps_get_assets_inside_list_based_zone_type_ios">
+            <Parameter Name="account_id" Mode="In" Type="Int32" />
+            <Parameter Name="geoId" Mode="In" Type="Int32" />
+            <Parameter Name="allowed" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_pgps_get_assets_inside_list_based_zone_type_ios_2">
+            <Parameter Name="account_id" Mode="In" Type="Int32" />
+            <Parameter Name="allowed" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_pgps_get_assets_inside_zone_type" ReturnType="Collection(GEOFENCEDBModel.sp_pgps_get_assets_inside_zone_type_Result)">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="allowed" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PGPS_get_object_zone_list" ReturnType="Collection(GEOFENCEDBModel.sp_PGPS_get_object_zone_list_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ObjectID" Mode="In" Type="String" />
+            <Parameter Name="Take" Mode="In" Type="String" />
+            <Parameter Name="Page" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PGPS_get_object_zone_list_filtered" ReturnType="Collection(GEOFENCEDBModel.sp_PGPS_get_object_zone_list_filtered_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ObjectID" Mode="In" Type="String" />
+            <Parameter Name="Take" Mode="In" Type="String" />
+            <Parameter Name="Page" Mode="In" Type="Int32" />
+            <Parameter Name="Filter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PGPS_get_user_route_list_status" ReturnType="Collection(GEOFENCEDBModel.sp_PGPS_get_user_route_list_status_Result)">
+            <Parameter Name="account_id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PGPS_get_user_zone_list" ReturnType="Collection(GEOFENCEDBModel.sp_PGPS_get_user_zone_list_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ParentID" Mode="In" Type="Int32" />
+            <Parameter Name="Take" Mode="In" Type="String" />
+            <Parameter Name="Page" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PGPS_get_user_zone_list_filtered" ReturnType="Collection(GEOFENCEDBModel.sp_PGPS_get_user_zone_list_filtered_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="ParentID" Mode="In" Type="Int32" />
+            <Parameter Name="Take" Mode="In" Type="String" />
+            <Parameter Name="Filter" Mode="In" Type="String" />
+            <Parameter Name="Page" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_PGPS_get_zones_single_geojson" ReturnType="Collection(String)">
+            <Parameter Name="GeofenceID" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_pgps_get_assetlist_inside_by_zone_Result">
+          <Property Type="String" Name="ObjectID" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ObjectRegNum" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="CustomerID" Nullable="true" />
+          <Property Type="String" Name="CustomerName" Nullable="true" MaxLength="200" />
+          <Property Type="DateTime" Name="GPSTime" Nullable="true" Precision="23" />
+          <Property Type="String" Name="TypeName" Nullable="true" MaxLength="500" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longitude" Nullable="true" />
+          <Property Type="Int32" Name="Odometer" Nullable="true" />
+          <Property Type="Double" Name="Fuel" Nullable="true" />
+          <Property Type="Double" Name="Temperature1" Nullable="true" />
+          <Property Type="Double" Name="Temperature2" Nullable="true" />
+          <Property Type="Double" Name="Sensor1" Nullable="true" />
+          <Property Type="Double" Name="Sensor2" Nullable="true" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="250" />
+          <Property Type="Double" Name="Speed" Nullable="true" />
+          <Property Type="Int32" Name="Direction" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="GeofenceName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_pgps_get_assets_inside_list_based_zone_type_Result">
+          <Property Type="String" Name="AssetID" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="GPSTime" Nullable="true" Precision="23" />
+          <Property Type="Decimal" Name="Latitude" Nullable="true" Precision="18" Scale="6" />
+          <Property Type="Decimal" Name="Longitude" Nullable="true" Precision="18" Scale="6" />
+          <Property Type="Int32" Name="Odometer" Nullable="true" />
+          <Property Type="Decimal" Name="Fuel" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Temperature1" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Decimal" Name="Temperature2" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Int32" Name="Sensor1" Nullable="false" />
+          <Property Type="Int32" Name="Sensor2" Nullable="false" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="Speed" Nullable="true" Precision="9" Scale="2" />
+          <Property Type="Int32" Name="Direction" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="GeofenceName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_pgps_get_assets_inside_zone_type_Result">
+          <Property Type="String" Name="ObjectID" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="ObjectRegNum" Nullable="true" MaxLength="250" />
+          <Property Type="DateTime" Name="GPSTime" Nullable="true" Precision="23" />
+          <Property Type="Double" Name="Latitude" Nullable="true" />
+          <Property Type="Double" Name="Longitude" Nullable="true" />
+          <Property Type="Int32" Name="Odometer" Nullable="true" />
+          <Property Type="Double" Name="Fuel" Nullable="true" />
+          <Property Type="Double" Name="Temperature1" Nullable="true" />
+          <Property Type="Double" Name="Temperature2" Nullable="true" />
+          <Property Type="Double" Name="Sensor1" Nullable="true" />
+          <Property Type="Double" Name="Sensor2" Nullable="true" />
+          <Property Type="String" Name="Location" Nullable="true" MaxLength="250" />
+          <Property Type="Double" Name="Speed" Nullable="true" />
+          <Property Type="Int32" Name="Direction" Nullable="true" />
+          <Property Type="String" Name="Status" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="GeofenceName" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_PGPS_get_object_zone_list_Result">
+          <Property Type="String" Name="Color" Nullable="false" MaxLength="8" />
+          <Property Type="Boolean" Name="Allowed" Nullable="false" />
+          <Property Type="Boolean" Name="OutOfZone" Nullable="false" />
+          <Property Type="Boolean" Name="Enabled" Nullable="false" />
+          <Property Type="String" Name="ZoneName" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="SpeedLimitInMph" Nullable="false" />
+          <Property Type="Int32" Name="ZoneID" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Geometry" Nullable="true" />
+          <Property Type="Double" Name="AreaInMeters" Nullable="true" />
+          <Property Type="Int32" Name="ZoneTypeID" Nullable="true" />
+          <Property Type="String" Name="ZoneTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="54" />
+          <Property Type="Boolean" Name="Share" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_PGPS_get_object_zone_list_filtered_Result">
+          <Property Type="Double" Name="AreaInMeters" Nullable="true" />
+          <Property Type="Int32" Name="ZoneTypeID" Nullable="true" />
+          <Property Type="String" Name="ZoneTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="16" />
+          <Property Type="Boolean" Name="Allowed" Nullable="true" />
+          <Property Type="Boolean" Name="OutOfZone" Nullable="true" />
+          <Property Type="Boolean" Name="Enabled" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="SpeedLimitInMph" Nullable="true" />
+          <Property Type="Int32" Name="ZoneID" Nullable="true" />
+          <Property Type="Boolean" Name="Share" Nullable="true" />
+          <Property Type="String" Name="Geometry" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_PGPS_get_user_route_list_status_Result">
+          <Property Type="String" Name="ObjectID" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="IsOnRoute" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_PGPS_get_user_zone_list_Result">
+          <Property Type="String" Name="Color" Nullable="false" MaxLength="7" />
+          <Property Type="Boolean" Name="Allowed" Nullable="false" />
+          <Property Type="Boolean" Name="Enabled" Nullable="false" />
+          <Property Type="String" Name="ZoneName" Nullable="false" MaxLength="50" />
+          <Property Type="Double" Name="SpeedLimitInMph" Nullable="false" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="ZoneID" Nullable="false" />
+          <Property Type="String" Name="Geometry" Nullable="true" />
+          <Property Type="Double" Name="AreaInMeters" Nullable="true" />
+          <Property Type="Int32" Name="ZoneTypeID" Nullable="true" />
+          <Property Type="String" Name="ZoneTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="54" />
+          <Property Type="Boolean" Name="Share" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_PGPS_get_user_zone_list_filtered_Result">
+          <Property Type="Double" Name="AreaInMeters" Nullable="true" />
+          <Property Type="Int32" Name="ZoneTypeID" Nullable="true" />
+          <Property Type="String" Name="ZoneTypeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Color" Nullable="true" MaxLength="16" />
+          <Property Type="Boolean" Name="Allowed" Nullable="true" />
+          <Property Type="Boolean" Name="OutOfZone" Nullable="true" />
+          <Property Type="Boolean" Name="Enabled" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="SpeedLimitInMph" Nullable="true" />
+          <Property Type="Int32" Name="UserID" Nullable="true" />
+          <Property Type="Int32" Name="ZoneID" Nullable="true" />
+          <Property Type="String" Name="Geometry" Nullable="true" />
+          <Property Type="Boolean" Name="Share" Nullable="true" />
+          <Property Type="String" Name="Remarks" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GEOFENCEDBModelStoreContainer" CdmEntityContainer="GEOFENCEDBEntities">
+          <EntitySetMapping Name="CannonballGF">
+            <EntityTypeMapping TypeName="GEOFENCEDBModel.CannonballGF">
+              <MappingFragment StoreEntitySet="CannonballGF">
+                <ScalarProperty Name="CannonballGfID" ColumnName="CannonballGfID" />
+                <ScalarProperty Name="GeofenceId" ColumnName="GeofenceId" />
+                <ScalarProperty Name="GeofenceOrder" ColumnName="GeofenceOrder" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geocoordinate">
+            <EntityTypeMapping TypeName="GEOFENCEDBModel.Geocoordinate">
+              <MappingFragment StoreEntitySet="Geocoordinate">
+                <ScalarProperty Name="GeocoordinateId" ColumnName="GeocoordinateId" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="GeofenceId" ColumnName="GeofenceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Geofence">
+            <EntityTypeMapping TypeName="GEOFENCEDBModel.Geofence">
+              <MappingFragment StoreEntitySet="Geofence">
+                <ScalarProperty Name="GeofenceId" ColumnName="GeofenceId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Geom" ColumnName="Geom" />
+                <ScalarProperty Name="ParkZone" ColumnName="ParkZone" />
+                <ScalarProperty Name="NotAllowedZone" ColumnName="NotAllowedZone" />
+                <ScalarProperty Name="AllowedZone" ColumnName="AllowedZone" />
+                <ScalarProperty Name="OutOfZone" ColumnName="OutOfZone" />
+                <ScalarProperty Name="SpeedLimitZone" ColumnName="SpeedLimitZone" />
+                <ScalarProperty Name="SpeedLimitInMph" ColumnName="SpeedLimitInMph" />
+                <ScalarProperty Name="TimeBased" ColumnName="TimeBased" />
+                <ScalarProperty Name="TimeBasedStart" ColumnName="TimeBasedStart" />
+                <ScalarProperty Name="TimeBasedEnd" ColumnName="TimeBasedEnd" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Consignee" ColumnName="Consignee" />
+                <ScalarProperty Name="GeofenceType" ColumnName="GeofenceType" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GeofenceInfo">
+            <EntityTypeMapping TypeName="GEOFENCEDBModel.GeofenceInfo">
+              <MappingFragment StoreEntitySet="GeofenceInfo">
+                <ScalarProperty Name="InfoID" ColumnName="InfoID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ObjectGeofence">
+            <EntityTypeMapping TypeName="GEOFENCEDBModel.ObjectGeofence">
+              <MappingFragment StoreEntitySet="ObjectGeofence">
+                <ScalarProperty Name="ObjectGeofenceId" ColumnName="ObjectGeofenceId" />
+                <ScalarProperty Name="GeofenceId" ColumnName="GeofenceId" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PointOfInterest">
+            <EntityTypeMapping TypeName="GEOFENCEDBModel.PointOfInterest">
+              <MappingFragment StoreEntitySet="PointOfInterest">
+                <ScalarProperty Name="PointOfInterestId" ColumnName="PointOfInterestId" />
+                <ScalarProperty Name="RadiusInMeters" ColumnName="RadiusInMeters" />
+                <ScalarProperty Name="PointOfInterestTypeId" ColumnName="PointOfInterestTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PointOfInterestType">
+            <EntityTypeMapping TypeName="GEOFENCEDBModel.PointOfInterestType">
+              <MappingFragment StoreEntitySet="PointOfInterestType">
+                <ScalarProperty Name="PointOfInterestTypeId" ColumnName="PointOfInterestTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Route">
+            <EntityTypeMapping TypeName="GEOFENCEDBModel.Route">
+              <MappingFragment StoreEntitySet="Route">
+                <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+                <ScalarProperty Name="DistanceInMeters" ColumnName="DistanceInMeters" />
+                <ScalarProperty Name="BufferSizeInMeters" ColumnName="BufferSizeInMeters" />
+                <ScalarProperty Name="StartLatitude" ColumnName="StartLatitude" />
+                <ScalarProperty Name="StartLongitude" ColumnName="StartLongitude" />
+                <ScalarProperty Name="EndLatitude" ColumnName="EndLatitude" />
+                <ScalarProperty Name="EndLongitude" ColumnName="EndLongitude" />
+                <ScalarProperty Name="StartLocation" ColumnName="StartLocation" />
+                <ScalarProperty Name="EndLocation" ColumnName="EndLocation" />
+                <ScalarProperty Name="StartDatetime" ColumnName="StartDatetime" />
+                <ScalarProperty Name="EndDatetime" ColumnName="EndDatetime" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zone">
+            <EntityTypeMapping TypeName="GEOFENCEDBModel.Zone">
+              <MappingFragment StoreEntitySet="Zone">
+                <ScalarProperty Name="ZoneId" ColumnName="ZoneId" />
+                <ScalarProperty Name="AreaInMeters" ColumnName="AreaInMeters" />
+                <ScalarProperty Name="ZoneTypeId" ColumnName="ZoneTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ZoneType">
+            <EntityTypeMapping TypeName="GEOFENCEDBModel.ZoneType">
+              <MappingFragment StoreEntitySet="ZoneType">
+                <ScalarProperty Name="ZoneTypeId" ColumnName="ZoneTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="GEOFENCEDBModel.Store.fn_pgps_isOnRoute" FunctionImportName="fn_pgps_isOnRoute">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.fn_pgps_isOnRoute_Result">
+                <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+                <ScalarProperty Name="IsOnRoute" ColumnName="IsOnRoute" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="RouteSched" ColumnName="RouteSched" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="GEOFENCEDBModel.Store.fn_pgps_isOnRoute_2" FunctionImportName="fn_pgps_isOnRoute_2">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.fn_pgps_isOnRoute_2_Result">
+                <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+                <ScalarProperty Name="IsOnRoute" ColumnName="IsOnRoute" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+                <ScalarProperty Name="RouteSched" ColumnName="RouteSched" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="GEOFENCEDBModel.Store.fn_Split" FunctionImportName="fn_Split">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.fn_Split_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_getDistanceToNextZone" FunctionName="GEOFENCEDBModel.Store.sp_getDistanceToNextZone" />
+          <FunctionImportMapping FunctionImportName="sp_IosGetZone" FunctionName="GEOFENCEDBModel.Store.sp_IosGetZone" />
+          <FunctionImportMapping FunctionImportName="sp_pgps_count_assets_inside_zone" FunctionName="GEOFENCEDBModel.Store.sp_pgps_count_assets_inside_zone" />
+          <FunctionImportMapping FunctionImportName="sp_pgps_get_assetlist_inside_by_zone" FunctionName="GEOFENCEDBModel.Store.sp_pgps_get_assetlist_inside_by_zone">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.sp_pgps_get_assetlist_inside_by_zone_Result">
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="ObjectRegNum" ColumnName="ObjectRegNum" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="GPSTime" ColumnName="GPSTime" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Odometer" ColumnName="Odometer" />
+                <ScalarProperty Name="Fuel" ColumnName="Fuel" />
+                <ScalarProperty Name="Temperature1" ColumnName="Temperature1" />
+                <ScalarProperty Name="Temperature2" ColumnName="Temperature2" />
+                <ScalarProperty Name="Sensor1" ColumnName="Sensor1" />
+                <ScalarProperty Name="Sensor2" ColumnName="Sensor2" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="GeofenceName" ColumnName="GeofenceName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_pgps_get_assets_inside_list_based_zone_type" FunctionName="GEOFENCEDBModel.Store.sp_pgps_get_assets_inside_list_based_zone_type">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.sp_pgps_get_assets_inside_list_based_zone_type_Result">
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GPSTime" ColumnName="GPSTime" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Odometer" ColumnName="Odometer" />
+                <ScalarProperty Name="Fuel" ColumnName="Fuel" />
+                <ScalarProperty Name="Temperature1" ColumnName="Temperature1" />
+                <ScalarProperty Name="Temperature2" ColumnName="Temperature2" />
+                <ScalarProperty Name="Sensor1" ColumnName="Sensor1" />
+                <ScalarProperty Name="Sensor2" ColumnName="Sensor2" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="GeofenceName" ColumnName="GeofenceName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_pgps_get_assets_inside_list_based_zone_type_ios" FunctionName="GEOFENCEDBModel.Store.sp_pgps_get_assets_inside_list_based_zone_type_ios" />
+          <FunctionImportMapping FunctionImportName="sp_pgps_get_assets_inside_list_based_zone_type_ios_2" FunctionName="GEOFENCEDBModel.Store.sp_pgps_get_assets_inside_list_based_zone_type_ios_2" />
+          <FunctionImportMapping FunctionImportName="sp_pgps_get_assets_inside_zone_type" FunctionName="GEOFENCEDBModel.Store.sp_pgps_get_assets_inside_zone_type">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.sp_pgps_get_assets_inside_zone_type_Result">
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="ObjectRegNum" ColumnName="ObjectRegNum" />
+                <ScalarProperty Name="GPSTime" ColumnName="GPSTime" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Odometer" ColumnName="Odometer" />
+                <ScalarProperty Name="Fuel" ColumnName="Fuel" />
+                <ScalarProperty Name="Temperature1" ColumnName="Temperature1" />
+                <ScalarProperty Name="Temperature2" ColumnName="Temperature2" />
+                <ScalarProperty Name="Sensor1" ColumnName="Sensor1" />
+                <ScalarProperty Name="Sensor2" ColumnName="Sensor2" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Speed" ColumnName="Speed" />
+                <ScalarProperty Name="Direction" ColumnName="Direction" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="GeofenceName" ColumnName="GeofenceName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_PGPS_get_object_zone_list" FunctionName="GEOFENCEDBModel.Store.sp_PGPS_get_object_zone_list">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.sp_PGPS_get_object_zone_list_Result">
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Allowed" ColumnName="Allowed" />
+                <ScalarProperty Name="OutOfZone" ColumnName="OutOfZone" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="SpeedLimitInMph" ColumnName="SpeedLimitInMph" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Geometry" ColumnName="Geometry" />
+                <ScalarProperty Name="AreaInMeters" ColumnName="AreaInMeters" />
+                <ScalarProperty Name="ZoneTypeID" ColumnName="ZoneTypeID" />
+                <ScalarProperty Name="ZoneTypeName" ColumnName="ZoneTypeName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Share" ColumnName="Share" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_PGPS_get_object_zone_list_filtered" FunctionName="GEOFENCEDBModel.Store.sp_PGPS_get_object_zone_list_filtered">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.sp_PGPS_get_object_zone_list_filtered_Result">
+                <ScalarProperty Name="AreaInMeters" ColumnName="AreaInMeters" />
+                <ScalarProperty Name="ZoneTypeID" ColumnName="ZoneTypeID" />
+                <ScalarProperty Name="ZoneTypeName" ColumnName="ZoneTypeName" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Allowed" ColumnName="Allowed" />
+                <ScalarProperty Name="OutOfZone" ColumnName="OutOfZone" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SpeedLimitInMph" ColumnName="SpeedLimitInMph" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="Share" ColumnName="Share" />
+                <ScalarProperty Name="Geometry" ColumnName="Geometry" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_PGPS_get_user_route_list_status" FunctionName="GEOFENCEDBModel.Store.sp_PGPS_get_user_route_list_status">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.sp_PGPS_get_user_route_list_status_Result">
+                <ScalarProperty Name="ObjectID" ColumnName="ObjectID" />
+                <ScalarProperty Name="IsOnRoute" ColumnName="IsOnRoute" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_PGPS_get_user_zone_list" FunctionName="GEOFENCEDBModel.Store.sp_PGPS_get_user_zone_list">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.sp_PGPS_get_user_zone_list_Result">
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Allowed" ColumnName="Allowed" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="ZoneName" ColumnName="ZoneName" />
+                <ScalarProperty Name="SpeedLimitInMph" ColumnName="SpeedLimitInMph" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="Geometry" ColumnName="Geometry" />
+                <ScalarProperty Name="AreaInMeters" ColumnName="AreaInMeters" />
+                <ScalarProperty Name="ZoneTypeID" ColumnName="ZoneTypeID" />
+                <ScalarProperty Name="ZoneTypeName" ColumnName="ZoneTypeName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Share" ColumnName="Share" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_PGPS_get_user_zone_list_filtered" FunctionName="GEOFENCEDBModel.Store.sp_PGPS_get_user_zone_list_filtered">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GEOFENCEDBModel.sp_PGPS_get_user_zone_list_filtered_Result">
+                <ScalarProperty Name="AreaInMeters" ColumnName="AreaInMeters" />
+                <ScalarProperty Name="ZoneTypeID" ColumnName="ZoneTypeID" />
+                <ScalarProperty Name="ZoneTypeName" ColumnName="ZoneTypeName" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Allowed" ColumnName="Allowed" />
+                <ScalarProperty Name="OutOfZone" ColumnName="OutOfZone" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SpeedLimitInMph" ColumnName="SpeedLimitInMph" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ZoneID" ColumnName="ZoneID" />
+                <ScalarProperty Name="Geometry" ColumnName="Geometry" />
+                <ScalarProperty Name="Share" ColumnName="Share" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_PGPS_get_zones_single_geojson" FunctionName="GEOFENCEDBModel.Store.sp_PGPS_get_zones_single_geojson" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,213 @@
+﻿<div class="right-side-content-container" id="asset-delivery">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Delivery</label>
+            <a href="{{helperUrl + '/helper/faq/#/trp/14/delivery'}}" target="_blank" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <div ng-show="completedDeliveryList.length > 0 && isShowCompleteDeliveryExport" class="pull-right export-file fade in" id="export-file-asset-delivery">
+                <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x xls"></i>
+                        <strong class="fa-stack-1x file-type">XLS</strong>
+                    </span>
+                </button>
+                <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')">
+                    <span class="fa-stack">
+                        <i class="fa fa-file fa-stack-1-6x csv"></i>
+                        <strong class="fa-stack-1x file-type">CSV</strong>
+                    </span>
+                </button>
+            </div>
+            <a ng-show="completedDeliveryList.length > 0 && isShowCompleteDeliveryExport" class="btn btn-default export-panel" title="Export" ng-click="exportPanel()">
+                <i class="fa fa-download export-awesome-alignment"></i>
+            </a>
+            <hr class="spacing-2px" />
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"
+                    ng-class="{'active' : SelectedAsset.AssetID != null}"><a ng-click="deliveryTabClick()" class="nav-tabs-custom" role="tab" data-toggle="tab" data-target="#deliveryList">Delivery List</a></li>
+                <li role="presentation"
+                    ng-class="{'active' : SelectedAsset.AssetID == null}"
+                    style="float:right" class="active"><a ng-click="completeDeliveryTabClick()" class="nav-tabs-custom" role="tab" data-toggle="tab" data-target="#completedDelivery"><i class="fa fa-list"></i>&nbsp;Completed Delivery</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="side-panel-menu-content-body-container">
+        <div class="side-panel-menu-content-body" style="overflow-y:visible;">
+            <div class="tab-content">
+                <div ng-class="{'active' : SelectedAsset.AssetID != null}"
+                     class="tab-pane" id="deliveryList" style="overflow-y:auto;max-height:335px;">
+                    <div ng-hide="SelectedAsset.AssetID">
+                        <a class="btn btn-xs btn-default trackpro-green-btn" ng-click="openAssetList()">
+                            Please select an asset first.
+                        </a>
+                    </div>
+                    <div ng-show="currentLoading" class="center-align"><i class="fa fa-refresh fa-spin"></i>&nbsp; Loading...</div>
+                    <table class="table table-hover table-condensed" ng-hide="AddDeliveryMode || EditDeliveryMode || currentLoading">
+                        <thead>
+                            <tr ng-show="SelectedAsset.AssetID">
+                                <td colspan="6">
+                                    <div ng-show="Delivery_Role.Create"><a class="btn btn-xs btn-default trackpro-green-btn" style="float:left;" ng-click="addDelivery()"><i class="fa fa-plus"></i>&nbsp;Add Delivery</a></div>
+                                    <input class="pull-right width-75-percent" type="text" ng-model="filterDelivery" placeholder="&nbsp;Search..." />
+                                </td>
+                            </tr>
+                            <tr ng-show="TotalDeliveries > 0">
+                                <td><div class="font-10px"><b>Total Delivery: &nbsp;</b>{{TotalDeliveries}}</div></td>
+                            </tr>
+                            <tr ng-show="objectDeliveryList.length > 0">
+                                <td>Delivery No.</td>
+                                <td>Order No.</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="delivery in objectDeliveryList | filter : filterDelivery">
+                                <td class="width-25-percent">{{delivery.oldDeliveryNumber}}</td>
+                                <td class="width-25-percent">{{delivery.orderNumber == null ? '--' : delivery.orderNumber}}</td>
+                                <td class="width-10-percent"><a ng-click="startDelivery(delivery)"><i class="fa clickable-link" ng-class='(delivery.started) ? "fa-stop" : "fa-play"' title='{{(delivery.started) ? "Complete Delivery for " + delivery.oldDeliveryNumber : "Start Delivery for " + delivery.oldDeliveryNumber}}'></i></a></td>
+                                <td class="width-10-percent"><a ng-click="(delivery.started) ?  cancelDelivery(delivery): editDelivery(delivery)" ng-show="(delivery.started) ? Delivery_Role.Delete : Delivery_Role.Update"><i class="fa clickable-link" ng-class='(delivery.started) ? "fa-close" : "fa-pencil"' title='{{(delivery.started) ? "Cancel Delivery": "Edit Delivery"}}'></i></a></td>
+                                <td class="width-10-percent"><a ng-click="(removeDelivery(delivery))" title="Remove Delivery"><i class="fa clickable-link fa-trash"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <form id="deliver-new-form" ng-submit="saveDelivery()">
+                        <table class="table table-condensed table-hover" ng-show="AddDeliveryMode">
+                            <tbody>
+                                <tr>
+                                    <td style="width:75px;"><span class="pull-left">Delivery No.</span></td>
+                                    <td>
+                                        <div class="center-align">
+                                            <input type="text" class="width-90-percent" ng-model="DeliveryNumber"
+                                                   data-parsley-required
+                                                   data-parsley-pattern="/^[-/A-Za-z\d\s]+$/"
+                                                   data-parsley-pattern-message="Alphanumeric only."
+                                                   data-parsley-trigger="keyup"
+                                                   data-parsley-minlength="5" data-parsley-maxlength="100"
+                                                   data-parsley-minlength-message="You need to enter at least a 5 character"
+                                                   data-parsley-maxlength-message="Maximum of 100 characters only" data-parsley-errors-container="#deliver-name-error-new-container" />
+                                            <span id="deliver-name-error-new-container"></span>
+                                        </div>
+                                    </td>
+                                    <td><a class="clickable-link" ng-click="accessModal()"><i class="fa fa-search-plus"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:75px;"><span class="pull-left">Order No.</span></td>
+                                    <td>
+                                        <div class="center-align">
+                                            <input type="text" class="width-90-percent" ng-model="OrderNumber"
+                                                   data-parsley-required
+                                                   data-parsley-pattern="/^[-/A-Za-z\d\s]+$/"
+                                                   data-parsley-pattern-message="Alphanumeric only."
+                                                   data-parsley-trigger="keyup"
+                                                   data-parsley-minlength="5" data-parsley-maxlength="100"
+                                                   data-parsley-minlength-message="You need to enter at least a 5 character"
+                                                   data-parsley-maxlength-message="Maximum of 100 characters only" data-parsley-errors-container="#order-name-error-new-container" />
+                                            <span id="order-name-error-new-container"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="6">
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" ng-click="cancelNewDelivery()" value="Cancel" />
+                                        <input type="submit" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" style="float:right;" value="Save" />
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+
+                    <form id="deliver-edit-form" ng-submit="updateDelivery()">
+                        <table class="table table-condensed table-hover" ng-show="EditDeliveryMode">
+                            <tbody>
+                                <tr>
+                                    <td style="width:75px;"><span class="pull-left">Delivery No.</span></td>
+                                    <td>
+                                        <div class="center-align">
+                                            <input type="text" placeholder="Desired name" class="width-100-percent" ng-model="editDeliveryDetails.newDeliveryNumber"
+                                                   data-parsley-required
+                                                   data-parsley-required-message="This field is required." data-parsley-errors-container="#deliver-name-error-edit-container"
+                                                   data-parsley-pattern="/^[A-Za-z\d\s]+$/"
+                                                   data-parsley-minlength="5" data-parsley-maxlength="100"
+                                                   data-parsley-minlength-message="You need to enter at least a 5 character"
+                                                   data-parsley-maxlength-message="Maximum of 100 characters only"
+                                                   data-parsley-pattern-message="Alphanumeric only." />
+                                            <span id="deliver-name-error-edit-container"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="width:75px;"><span class="pull-left">Order No.</span></td>
+                                    <td>
+                                        <div class="center-align">
+                                            <input type="text" class="width-100-percent" ng-model="editDeliveryDetails.newOrderNumber"
+                                                   data-parsley-required
+                                                   data-parsley-pattern="/^[-/A-Za-z\d\s]+$/"
+                                                   data-parsley-pattern-message="Alphanumeric only."
+                                                   data-parsley-trigger="keyup"
+                                                   data-parsley-minlength="5" data-parsley-maxlength="100"
+                                                   data-parsley-minlength-message="You need to enter at least a 5 character"
+                                                   data-parsley-maxlength-message="Maximum of 100 characters only" data-parsley-errors-container="#order-name-error-new-container" />
+                                            <span id="order-name-error-new-container"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="button" class="btn btn-xs btn-default trackpro-green-btn" style="float:right;" ng-click="cancelEditDelivery()" value="Cancel" />
+                                        <input type="submit" class="btn btn-xs btn-default trackpro-green-btn padding-right-2px" style="float:right;" value="Update" />
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </form>
+                </div>
+                <div role="tabpanel"
+                     ng-class="{'active' : SelectedAsset.AssetID == null}"
+                     class="tab-pane" id="completedDelivery" style="overflow-y:auto;max-height:335px;">
+                    <div ng-hide="SelectedAsset.AssetID">
+                        <a class="btn btn-xs btn-default trackpro-green-btn" ng-click="openAssetList()">
+                            Please select an asset first.
+                        </a>
+                    </div>
+                    <div ng-show="isLoading" class="center-align"><i class="fa fa-refresh fa-spin"></i>&nbsp; Loading...</div>
+                    <table class="table table-hover table-condensed" ng-show="true">
+                        <thead>
+                            <tr ng-show="TotalCompleteDeliveries > 0">
+                                <td colspan="3">
+                                    <input type="text" ng-model="filterCompleteDelivery" class="pull-right width-100-percent" placeholder="&nbsp;Search..." />
+                                </td>
+                            </tr>
+                            <tr ng-show="TotalCompleteDeliveries > 0">
+                                <td colspan="3"><div class="font-10px"><b>Total Delivery: &nbsp;</b>{{TotalCompleteDeliveries}}</div></td>
+                            </tr>
+                            <tr ng-show="completedDeliveryList.length > 0">
+                                <td>Delivery&nbsp;No.</td>
+                                <td>Order&nbsp;No.</td>
+                                <td>Started</td>
+                                <td>Completed</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="delivery in completedDeliveryList | filter: filterCompleteDelivery">
+                                <td class="width-35-percent">{{delivery.oldDeliveryNumber}}</td>
+                                <td class="width-35-percent">{{delivery.orderNumber == null ? '--' : delivery.orderNumber}}</td>
+                                <td class="width-20-percent"><span style="white-space:pre-wrap;">{{delivery.start_datetime == null ? ' ' : delivery.start_datetime | date : 'yyyy-MM-dd HH:mm'}}</span></td>
+                                <td class="width-15-percent"><span style="white-space:pre-wrap;">{{delivery.end_datetime == null ? ' ' : delivery.end_datetime| date : 'yyyy-MM-dd HH:mm'}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--<div class="center-align" ng-show="completedDeliveryList.length === 0">
+                            <h5>No Data Found.</h5>
+                        </div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

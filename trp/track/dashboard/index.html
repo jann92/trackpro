@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="Dashboard">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>FleetPro: Dashboard</title>
+    <link href="../../contents/styles/fontawesome/font-awesome.css" rel="stylesheet" />
+    <link href="../../contents/styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../contents/styles/common.css" rel="stylesheet" />
+    <!--<link href="../../contents/styles/fontawesome/font-awesome.min.css" rel="stylesheet" />-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="../../contents/styles/pgps-icons/css/pgps-function-items.css" rel="stylesheet" />
+
+    <link href="../../contents/styles/dashboard.css" rel="stylesheet" />
+</head>
+<body ng-controller="DashboardController" style="overflow:hidden;">
+
+    <div class="head">
+        <img src="../../contents/images/login/fleetpro.svg" class="title-logo" />
+        <div class="countdown-timer">
+            <i class="fa fa-user"></i>
+            <label>{{username}}</label>&nbsp;
+            <a  title="Countdown timer to refresh">
+                <i class="fa fa-clock-o"></i>
+                <span id="time"></span>
+            </a>
+        </div>
+    </div>
+    <div>
+        <div class="grid div-counter" ng-cloak>
+            <div class="grid-item grid-item black-border-bottom">
+                <div>
+                    <!--<span class="fa fa-truck" style="position: absolute;font-size: 40px;margin: 8px;"></span>-->
+                    <img src="../../contents/images/dashboard/asset.svg" style="position:absolute;margin:8px;width:45px;" />
+                </div>
+                <span class="counter-title">Total Assets</span>
+                <span class="font-8vmin pull-right counter-value">{{VehicleCounterList.Total}}&nbsp;</span>
+            </div>
+            <div class="grid-item green-border">
+                <div>
+                    <!--<span class="fas fa-truck-moving" style="position: absolute;font-size: 40px;margin: 8px;"></span>-->
+                    <img src="../../contents/images/dashboard/asset-moving.svg" style="position:absolute;margin:8px;width:60px;" />
+                </div>
+                <span class="counter-title">Moving Assets</span>
+                <span class="font-8vmin pull-right counter-value">{{VehicleCounterList.Drive}}&nbsp;</span>
+            </div>
+            <div class="grid-item grid-item blue-border">
+                <div>
+                    <span class="icon icon-pgps-zone" style="color:black !important;"></span>
+                </div>
+                <span class="counter-title">Assets In Zones</span>
+                <span class="font-8vmin pull-right counter-value">{{VehicleCounterList.InPool}}&nbsp;</span>
+            </div>
+            <!--<div class="grid-item red-border">
+                <div>
+                    <span class="fa fa-wrench" style="position:absolute;font-size:30px;margin:8px;"></span>
+                </div>
+                <span class="counter-title">Assets Need Maintenance</span>
+                <span class="font-8vmin pull-right counter-value">0&nbsp;</span>
+            </div>-->
+            <!--<div class="grid-item red-border">
+                <div>
+                    <span class="fas fa-file-alt" style="position:absolute;font-size:30px;margin:8px;"></span>
+                </div>
+                <span class="counter-title">Permits need Renewal</span>
+                <span class="font-9vmin pull-right counter-value">0&nbsp;</span>
+            </div>-->
+        </div>
+    </div>
+
+    <div class="panel panel-default panel-utilize">
+        <div class="panel-heading" style="font-weight:600;">Fleet Utilization</div>
+        <div class="panel-body">
+            <div>
+                <br />
+                <canvas class="chart chart-line ng-isolate-scope"
+                        chart-data="line_data"
+                        chart-labels="line_labels"
+                        chart-colors="line_colors"
+                        chart-options="line_options"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default panel-distance">
+        <div class="panel-heading" style="font-weight:600;">Top Vehicles by Distance Driven</div>
+        <div class="panel-body" style="padding-top:8px;">
+            <div>
+                <center>
+                    <div class="btn-group btn-group-xs">
+                        <button type="button" class="btn btn-green" ng-click="setVehicleDistance('yesterday')" ng-class="{'btn-active': vehdistanceactive == 'yesterday' }">Yesterday</button>
+                        <button type="button" class="btn btn-green" ng-click="setVehicleDistance('week')" ng-class="{'btn-active': vehdistanceactive == 'week' }">Last 7 days</button>
+                        <button type="button" class="btn btn-green" ng-click="setVehicleDistance('month')" ng-class="{'btn-active': vehdistanceactive == 'month' }">Last 30 days</button>
+                    </div>
+                </center>
+                <canvas id="horizontal" class="chart chart-horizontal-bar ng-isolate-scope"
+                        chart-data="data"
+                        chart-labels="labels"
+                        chart-colors="colors"
+                        chart-options="options"></canvas>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- JS Libraries Scripts -->
+    <script src="../../scripts/js-libs/jquery/jquery-2.2.3.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/angular.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/angular-route.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/ngStorage.js"></script>
+    <script src="../../scripts/js-libs/parsley/parsley.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/angular-filter.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/angular-animate.min.js"></script>
+    <script src="../../scripts/js-libs/angularjs/loading-bar.js"></script>
+    <script src="../../scripts/js-libs/angularjs/ui-bootstrap-tpls-1.3.2.min.js"></script>
+    <script src="../../scripts/js-libs/chartjs/chart.js"></script>
+    <script src="../../scripts/js-libs/chartjs/angular-chart.min.js"></script>
+    <script src="../../scripts/js-libs/moment/moment.min.js"></script>
+
+
+    <!--Services Script-->
+    <script src="../../scripts/modules/dashboard-module.js"></script>
+    <script src="../../scripts/factories/asset-factory.js"></script>
+
+    <!-- Helper Script -->
+    <script src="../../scripts/helpers/StringHelpers.js"></script>
+    <script src="../../scripts/helpers/DateTimeHelper.js"></script>
+
+    <!--Controller Section-->
+    <script src="../../scripts/controllers/dashboard-controller.js"></script>
+
+    <script type="text/javascript">
+        document.documentElement.style.setProperty('--main-color', '#22b573');
+    </script>
+</body>
+</html>

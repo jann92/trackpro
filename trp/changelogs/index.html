@@ -1,0 +1,157 @@
+﻿
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href="../contents/styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="../contents/styles/changelogs/changelogs.css" rel="stylesheet" />
+    <link href="../contents/styles/fontawesome/font-awesome.min.css" rel="stylesheet" />
+    <script src="../scripts/js-libs/jquery/jquery-2.2.3.min.js"></script>
+    <script src="../scripts/js-libs/bootstrap/bootstrap.min.js"></script>
+    <title>Changelogs</title>
+</head>
+<body>
+    <div class="head">
+        <img src="../contents/images/login/trackpro_logo.png" class="title-logo" />
+        <span class="header-user">
+            <a class="fa fa-angle-left back-icon" href="../track/login/">
+                &nbsp;back
+            </a>
+        </span>        
+    </div>
+    <div class="container" id="card-container"></div>
+    <script>
+        var loop = [
+
+            {
+                'Revision': [
+                    'KML Exports (Tracer,History,Summary)',
+                    'SP for Summary by AssetIDs',
+                    'Fix Export issues',
+                    'Remove route module',
+                    'Icon Alignment on road.'
+                ],
+                'Version': 'Version 24.57.57.31',
+                'id': 1,
+                'date': '(2017-02-20)'
+            },
+              {
+                  'Revision': [
+                      'Driver Module.',
+                      'Alerts Module',
+                      'Sound Notification - User settings.',
+                      'Fixing Exports.',
+                      'SP for Asset History',
+                      'Remove 5 minutes from Asset Tracer',
+                      'Add Icons on left border status in Asset List',
+                      'Forgot Password Email bug fix'
+                  ],
+                  'Version': 'Version 19.52.52.31 ',
+                  'id': 2,
+                  'date': '(2016-12-16)'
+              },
+            {
+                'Revision': [
+                    'Parking and Idling Bug Fixed.',
+                    'Change Layout of Forgot Password Module.',
+                    'Asset status information add label last report if inactive.',
+                    'Export on Route.',
+                ],
+                'Version': 'Version 15.44.44.31 ',
+                'id': 3,
+                'date': '(2016-09-17)'
+            },
+            {
+                'Revision': [
+                    'DateTime in History Asset InfoWindow.',
+                    'Fixed Asset Icon History Bugs.',
+                    'Date Time Range for History Redundant data.',
+                    'DateTime Picker Bugs in History.',
+                    'Fixed Asset History Plot Markers'
+                ],
+                'Version': 'Version 15.40.40.31 ',
+                'id': 4,
+                'date': '(2016-08-15)'
+            },
+            {
+                'Revision': [
+                    'Map Function : Traffic color indicators not showing on satellite view.  - Done',
+                    'Map Cluster: Cluster disappears on selecting an asset. - Done',
+                    'Filters : Asset Search Not Working Right. - Done',
+                    'Measure Distance : Put limit on number of markers/distance being measured to 10, Put Accumulated Distance and Put Total Distance. - Done',
+                    'History: Redundant Data must Display Latest Redundant Data, Time/Calendar Button/Logo is cropped, Remove Active/Inactive in Status and Time Up/Down Button does not work sometimes. - Done',
+                    'Landmark: Delete Button not working on newly added landmark, Alert Prompt upon delete. - Done',
+                    'Zones: Alert Prompt upon delete, Update Button not working, Go to List on All Zones upon saving new zone, Add Please Select Asset Button and Delete Button not working. - Done',
+                    'Routes: No Search Field. - Done '
+                ],
+                'Version': 'Version 15.35.35.31 ',
+                'id': 5,
+                'date': '(2016-08-05)'
+            },
+            {
+                'Revision': [
+                    'Login bug fixed.',
+                    'Date time Label fixed.',
+                    'Temperature Sensor fixed no negative value.',
+                    'Nearest Asset added unit.',
+                    'Measure Route added decimal and fixed bugs.',
+                    'Minor UI label fixed',
+                    'Zones creation selection updated and fixed bugs.',
+                ],
+                'Version': 'Version 7.22.22.18 ',
+                'id': 6,
+                'date': '(2016-07-29)'
+            },
+            {
+                'Revision': [
+                    'Added new asset images .',
+                ],
+                'Version': 'Version 4.9.8.5 ',
+                'id': 7,
+                'date': '(2016-07-22)'
+            },
+            {
+                'Revision': [
+                    'Added eye icon (visibility of vehicle).',
+                    'Added E-mail Notification on User Settings.',
+                    'New features on zone assignment asset you can now choose both asset assignment or zone assignment.',
+                    'Track Pro mobile can now be downloaded in Track Pro 3 Web Version. Located at upper right header.',
+                    'Added System roles.',
+                    'Asset Assignment (Customer list are now collapsible).'
+                ],
+                'Version': 'Version 3.8.8.4 ',
+                'id': 8,
+                'date': '(2016-07-20)'
+            },
+            {
+                'Revision': [
+                    'Added traffic button at the map tools (top bar). This button disappears if OSM is selected',
+                    'Satellite view now works for OSM',
+                    'Updated login page with new design'
+                ],
+                'Version': 'Version 3.4.4.1 ',
+                'id': 9,
+                'date': '(2016-06-22)'
+            },
+        ];
+        var temp = '';
+        $.each(loop, function (e, i) {
+
+            temp += '<div class="cards pointer" data-toggle="collapse" data-target="#' + i.id + '"><label style="margin: 22px;">' + i.Version + i.date + '</label>';
+            if (i.id == 1) {
+                temp += '<div class="back collapse in" id=' + i.id + '>';
+            } else {
+                temp += '<div class="back collapse" id=' + i.id + '>';
+            }
+            temp += '<ul class="version-details">'
+            $.each(i.Revision, function (d, o) {
+                temp += '<li>' + o + '</li>';
+            });
+            temp += '</ul>';
+            temp += '</div></div>';
+
+        });
+        $('#card-container').html(temp);
+
+    </script>
+</body>
+</html>

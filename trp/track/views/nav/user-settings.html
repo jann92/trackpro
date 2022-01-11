@@ -1,0 +1,172 @@
+﻿<div class="left-side-content-container" id="user-settings">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">User Settings</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/8/user'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <hr class="spacing-2px" />
+            <div>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active width-30-percent"><a class="nav-tabs-custom center-align" aria-expanded="true" data-target="#account-settings" data-toggle="tab">Account Settings</a></li>
+                    <li role="presentation" class="width-30-percent"><a class="nav-tabs-custom center-align" aria-expanded="true" data-target="#email-notif" data-toggle="tab">Reports Setting</a></li>
+                    <li role="presentation" class="width-30-percent"><a class="nav-tabs-custom center-align" aria-expanded="true" data-target="#asset-assignment" data-toggle="tab" ng-show="AssetAssignment_Role.Read">Asset Assignment</a></li>                    
+                </ul>
+            </div>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="account-settings">
+                    <div class="spacing-10px">
+                        <form id="password-settings" ng-submit="changePassword()" ng-show="UserSettings_Role.Read" autocomplete="off">
+                            <h5 style="font-size: 13px;padding-left: 5px;">Change Password</h5>
+                            <table class="table table-condensed table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>Current Password</td>
+                                        <td>
+                                            <input type="text" style="display:none" />
+                                            <input type="password" name="password" ng-model="password" data-parsley-required data-parsley-error-message="This field is required." data-parsley-errors-container="#password-error-container" autocomplete="off" />
+                                            <div id="password-error-container"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>New Password</td>
+                                        <td>
+                                            <input type="password" name="newPassword" id="newPassword" ng-model="newPassword" ng-change="passwordStrengthChange()" data-parsley-required data-parsley-required-message="This field is required." data-parsley-errors-container="#new-password-error-container" autocomplete="off" />
+                                            <!--<input type="password" name="newPassword" id="newPassword" ng-model="newPassword" ng-change="passwordStrengthChange()" data-parsley-required data-parsley-pattern="/^[A-Za-z\d\s]+$/" data-parsley-required-message="This field is required." data-parsley-pattern-message="This field is alphanumeric only." data-parsley-errors-container="#new-password-error-container" autocomplete="off" />-->
+                                            <div id="new-password-error-container"></div>
+                                            <ul class="parsley-errors-list" ng-class="{'filled' : passwordStrength != null, '' : passwordStrength == null, 'success-text': passwordStrength >= 3}">
+                                                <li class="parsley-required" ng-show="passwordStrength < 3">Password is weak.</li>
+                                                <li class="parsley-required" ng-show="passwordStrength >= 3">Strong Password</li>
+                                            </ul>
+                                            <div class="strength-meter" style="float:left;width:120px;">
+                                                <div class="strength-meter-fill" data-strength="{{passwordStrength}}"></div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Confirm Password</td>
+                                        <td>
+                                            <input type="password" name="confirmPassword" id="confirmPassword" data-parsley-equalto="#newPassword" ng-model="confirmPassword" data-parsley-required data-parsley-error-message="Confirm Password not match." data-parsley-errors-container="#confirm-password-error-container" autocomplete="off" />
+                                            <div id="confirm-password-error-container"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="right">
+                                            <button type="submit" class="btn btn-xs btn-default trackpro-green-btn"><i class="fa fa-save"></i>&nbsp;&nbsp;Update</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                    <div class="spacing-0px">
+                        <form id="email-settings" ng-submit="changeEmail()" ng-show="UserSettings_Role.Read">
+                            <h5 style="font-size: 13px;padding-left: 5px;">Email Setting</h5>
+                            <span style="font-size:10px;margin-left:20px;">This Email will be used for recovering your account.</span>
+                            <table class="table table-condensed table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>Email</td>
+                                        <td>
+                                            <input type="email" name="email" data-parsley-required data-parsley-type="email" data-parsley-error-message="Please input valid email." data-parsley-errors-container="#email-error-container" ng-model="userEmail" class="width-80-percent" />
+                                            <div id="email-error-container"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="right">
+                                            <button type="submit" class="btn btn-xs btn-default trackpro-green-btn"><i class="fa fa-save"></i>&nbsp;&nbsp;Update </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+
+                    <div class="spacing-0px">
+                        <form id="sensorlabel-settings" ng-submit="changeSensorLabels()" ng-show="UserSettings_Role.Read">
+                            <h5 style="font-size: 13px;padding-left: 5px;">Sensor Labels</h5>
+                            <span style="font-size:10px;margin-left:20px;">Set custom sensor labels.</span>
+                            <table class="table table-condensed table-hover">
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td>Sensor 1</td>
+                                        <td>
+                                            <input type="text" name="sensor1" ng-model="Sensor1Label" class="width-80-percent" maxlength="15"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td>Sensor 2</td>
+                                        <td>
+                                            <input type="text" name="sensor1" ng-model="Sensor2Label" class="width-80-percent" maxlength="15"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td align="right">
+                                            <button type="submit" class="btn btn-xs btn-default trackpro-green-btn"><i class="fa fa-save"></i>&nbsp;&nbsp;Update </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="tab-pane" id="asset-assignment">
+                    <div class="spacing-10px center-align">
+                        <button class="btn btn-default btn-xs trackpro-green-btn" ng-click="openAssignment('lg')" ng-show="UserSettings_Role.Read">Edit Asset Assignment</button>                       
+                    </div>
+                </div>
+                <div class="tab-pane" id="email-notif">
+                    <table class="table-hover table table-condensed">
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><b>Reports</b></td>
+                                <td><button class="btn btn-default btn-xs trackpro-green-btn" ng-click="openEmailNotification('lg')" ng-show="UserSettings_Role.Read">Setup/Edit Reports via Email</button></td>
+                            </tr>
+                            <!--<tr ng-show="Alerts">
+                                <td><b>Sound Notification</b></td>
+                                <td></td>-->
+                                <!--<td>
+                                    <div class="paper-toggle">
+                                        <input type="checkbox" id="wifi" name="wifi" class="switch" ng-model="notifall" ng-click="checkAllNotification(notificationTypes,notifall)"  />
+                                        <label for="wifi"></label>
+                                    </div>
+                                </td>-->
+                            <!--</tr>-->
+                        </tbody>
+                    </table>
+                    <!--<table class="table-hover table table-condensed" ng-show="Alerts">
+                        <tbody>
+                            <tr>
+                                <td class="width-15-percent"></td>
+                                <td class="width-25-percent">All</td>
+                                <td><input type="checkbox" ng-model="notifall" ng-click="checkAllNotification(notificationTypes,notifall)" /></td>
+                            </tr>
+                            <tr ng-repeat="notif in notificationTypes">
+                                <td class="width-15-percent"></td>
+                                <td class="width-25-percent">{{notif.Name}}</td>
+                                <td><input type="checkbox" value="{{notif.RoleValue}}" ng-model="notif.isCheck" ng-change="checkboxNotifChange()" /></td>
+                            </tr>
+                        </tbody>
+                    </table>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

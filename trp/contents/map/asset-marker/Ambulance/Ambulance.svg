@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+
+	 <style type="text/css">
+	  .arrow{fill:{{statusColor}};display:{{arrowDisplay}}}
+	  .hourglass{fill:{{hourglassColor}};display:{{hourglassDisplay}}}
+    .parking{display:{{parkingDisplay}};fill:{{parkingColor}}}
+	 </style>
+	}
+
+
+<g display="none">
+	<path id="smoke_2" display="inline" fill="#666766" d="M66.838,48.515c0.199,0.299-0.301,0.599-0.301,0.599c0.5,0.602,0,1,0,1
+		c-0.199,0.301-0.898,0-0.898,0c-0.199,0.602-0.801,0.5-0.801,0.5c-0.699,0-0.602-0.6-0.602-0.6c-0.604-0.101-0.5-0.5-0.5-0.5
+		c0-0.3,0.602-0.3,0.602-0.3c-0.699-0.301-0.5-0.801-0.5-0.801c0.199-0.6,1-0.199,1-0.199c0.699-0.601,1.199,0.199,1.199,0.199
+		C66.338,47.914,66.838,48.515,66.838,48.515z	">
+<animateTransform  type="translate" fill="remove" attributeName="transform" dur="1" calcMode="linear" restart="always" values="0,0;2,-2" begin="0s" additive="replace" repeatCount="indefinite" accumulate="none" attributeType="XML">
+			</animateTransform>
+		
+			<animate  fill="remove" to="0" attributeName="opacity" dur="1" calcMode="linear" restart="always" begin="0.5s" additive="replace" repeatCount="indefinite" accumulate="none" from="1">
+			</animate>
+	</path>
+	<path id="smoke_1" display="inline" fill="#999999" d="M65.539,49.414c0.102,0.199-0.199,0.4-0.199,0.4c0.301,0.399,0,0.6,0,0.6
+		c-0.102,0.199-0.5,0-0.5,0c-0.102,0.4-0.5,0.301-0.5,0.301c-0.4,0-0.4-0.4-0.4-0.4c-0.396-0.1-0.299-0.301-0.299-0.301
+		c0-0.199,0.299-0.199,0.299-0.199c-0.5-0.2-0.299-0.5-0.299-0.5c0.104-0.399,0.604-0.1,0.604-0.1c0.396-0.301,0.694,0.1,0.694,0.1
+		C65.238,49.113,65.539,49.414,65.539,49.414z	">
+<animateTransform  type="translate" fill="remove" attributeName="transform" dur="0.5" calcMode="linear" restart="always" values="0,0;1,-1" begin="0s" additive="replace" repeatCount="indefinite" accumulate="none" attributeType="XML">
+			</animateTransform>
+		
+			<animate  fill="remove" to="0" attributeName="opacity" dur="1" calcMode="linear" restart="always" begin="0.5s" additive="replace" repeatCount="indefinite" accumulate="none" from="1">
+			</animate>
+	</path>
+</g>
+<g id="Tire_2_1_">
+	<path d="M43.995,64.827c0,0-1.259-0.237-1.893-1.562c0,0-0.292-2.276,1.566-3.029c0,0,1.465,0.084,2.103,1.097
+		C46.432,62.559,43.995,64.827,43.995,64.827z"/>
+	<path fill="#333333" d="M45.678,63.505c-0.446,1.033-1.324,1.522-1.915,1.261c-0.59-0.265-0.711-1.345-0.188-2.354
+		c0.445-1.03,1.324-1.523,1.914-1.262C46.08,61.417,46.174,62.594,45.678,63.505z"/>
+	<path fill="#999999" d="M45.331,61.734c-0.436-0.229-1.03,0.14-1.397,0.88c-0.366,0.737-0.242,1.506,0.193,1.728
+		c0.436,0.223,1.031-0.139,1.397-0.881C45.813,62.705,45.767,61.958,45.331,61.734z M45.215,63.379
+		c-0.184,0.37-0.467,0.503-0.621,0.461c-0.231-0.063-0.202-0.476-0.046-0.744c0.157-0.271,0.466-0.504,0.622-0.462
+		C45.323,62.674,45.398,63.011,45.215,63.379z"/>
+	<path fill="#FFFFFF" d="M44.531,61.938c0,0,0.205,0.162,0.279,0.494l-0.103,0.075c0,0-0.126-0.45-0.28-0.493L44.531,61.938z"/>
+	
+		<animateTransform  type="translate" fill="remove" attributeName="transform" dur="1" calcMode="linear" restart="always" values="0,0;0.1,0.1;0,0" begin="0s" additive="replace" repeatCount="indefinite" accumulate="none" attributeType="XML">
+		</animateTransform>
+</g>
+<g id="Tire_2_3_">
+	<path d="M59.65,55.814c0,0-1.258-0.237-1.896-1.563c0,0-0.293-2.274,1.564-3.026c0,0,1.469,0.084,2.104,1.096
+		C62.088,53.546,59.65,55.814,59.65,55.814z"/>
+	<path fill="#333333" d="M61.334,54.492c-0.447,1.033-1.324,1.525-1.914,1.26c-0.592-0.262-0.711-1.344-0.189-2.354
+		c0.445-1.029,1.324-1.522,1.914-1.26C61.736,52.402,61.828,53.579,61.334,54.492z"/>
+	<path fill="#999999" d="M60.986,52.723c-0.438-0.224-1.031,0.139-1.396,0.879c-0.365,0.737-0.244,1.506,0.193,1.729
+		c0.436,0.222,1.031-0.142,1.396-0.878C61.469,53.691,61.424,52.943,60.986,52.723z M60.871,54.366
+		c-0.184,0.37-0.467,0.502-0.621,0.46c-0.23-0.063-0.203-0.475-0.047-0.745c0.158-0.271,0.469-0.502,0.623-0.46
+		C60.979,53.663,61.055,54,60.871,54.366z"/>
+	<path fill="#FFFFFF" d="M60.188,52.926c0,0,0.205,0.159,0.279,0.492l-0.104,0.077c0,0-0.125-0.45-0.281-0.492L60.188,52.926z"/>
+	
+		<animateTransform  type="translate" fill="remove" attributeName="transform" dur="1" calcMode="linear" restart="always" values="0,0;0.1,0.1;0,0" begin="0s" additive="replace" repeatCount="indefinite" accumulate="none" attributeType="XML">
+		</animateTransform>
+</g>
+<image display="none" overflow="visible" enable-background="new    " width="91" height="90" xlink:href="../../../../../References/ambulansya.jpg"  transform="matrix(0.4888 0 0 0.4888 29.5938 34.5625)">
+</image>
+<path fill="#CCCCCC" d="M35.839,52.896c0,0-0.641-1.004-0.883-0.979c0,0-0.356,0.216-0.12,0.608l0.407,0.556l-0.215,0.252
+	l0.117,0.729L35.839,52.896z"/>
+<path fill="#EAEAEA" d="M39.896,44.945v0.958l-0.875,1.417l-3.792,6.25l-2.458,3.457v2.709l8.417,4.959l1.5-0.584
+	c0,0,0.208-2.416,1.875-3.584c0,0,1.375-0.791,1.917,1.5l11.375-6.582c0,0,0.375-2.959,2.082-3.668c0,0,1.666-0.625,1.959,1.541
+	l2.916-2.166l-0.416-10.5l-9.209-4.38L42.73,42.815L39.896,44.945z"/>
+<path fill="#233144" d="M38.688,48.611l-3.125,4.917c0,0,3.667,2.543,8.042,4.5l3.208-5.207L38.688,48.611z"/>
+<polygon fill="#233144" points="47.313,52.736 44.042,58.195 49.521,54.486 49.521,51.402 "/>
+<polygon fill="#FF0000" points="47.688,49.966 64.404,40.901 64.404,42.185 47.438,51.561 39.098,47.199 39.896,45.903 "/>
+<polygon fill="#FF0000" points="33.244,56.363 41.609,60.825 47.938,56.247 64.616,46.216 64.689,48.09 42.109,61.294 
+	41.906,62.561 40.891,63.027 32.771,58.436 32.771,57.027 "/>
+<path fill="#EAEAEA" stroke="#000000" stroke-miterlimit="10" d="M32.771,57.561"/>
+<path fill="#141414" d="M43.429,61.807l-2.132,0.879l-0.113-0.063l-2.869-1.549l0.576-0.655L34.5,57.95l0.109,1.094l-1.838-1.017
+	v1.709l8.417,4.959l1.5-0.584C42.688,64.111,42.766,63.027,43.429,61.807z"/>
+<path fill="#EAEAEA" d="M43.139,62.443"/>
+<polygon fill="#CECECE" points="41.297,62.686 41.473,61.67 38.891,60.419 38.314,61.074 "/>
+<polygon fill="#CECECE" points="32.771,57.027 34.5,57.95 34.609,59.044 32.771,58.027 "/>
+<polygon fill="#FF9D00" points="42.109,61.294 41.473,61.67 41.297,62.686 41.925,62.443 "/>
+<path fill="#FF0000" d="M34.609,59.044"/>
+<polygon fill="#141414" points="34.5,57.95 38.891,60.419 38.314,61.074 34.609,59.044 "/>
+<polygon fill="#EAEAEA" points="34.5,58.311 38.707,60.628 38.634,60.71 34.555,58.496 "/>
+<polygon fill="#EAEAEA" points="34.609,58.919 38.402,60.975 38.314,61.074 34.609,59.044 "/>
+<polygon fill="#EAEAEA" points="34.948,60.236 34.948,61.124 37.597,62.686 37.597,61.659 "/>
+<polygon fill="#003DFF" points="43.429,43.997 43.429,43.278 44.75,42.653 50.531,45.872 50.531,46.685 49.293,47.396 "/>
+<polygon fill="#FFFFFF" points="48.344,44.654 47.063,45.372 46.98,46.056 45.414,45.147 45.414,44.403 46.59,43.678 "/>
+<path fill="#FFFFFF" d="M50,45.945l-0.604,0.271l-0.604-0.271C48.792,45.945,49.146,46.341,50,45.945z"/>
+<path fill="#CCCCCC" d="M44.741,57.027c0,0,1.188,0.088,1.28,0.313c0,0-0.021,0.416-0.479,0.396l-0.682-0.094l-0.12,0.309
+	l-0.699,0.244L44.741,57.027z"/>
+<polygon fill="#EAEAEA" points="41.375,47.028 46.083,49.57 45.729,50.237 41.042,47.716 "/>
+<polygon fill="#FF0000" points="57.407,47.886 59.59,46.646 59.697,47.445 57.52,48.723 "/>
+<polygon fill="#FF0000" points="58.346,49.358 58.018,46.392 58.814,46.01 59.087,48.858 "/>
+<path fill="#416082" d="M45.667,52.841c0,0-4.377-1.729-9.063,0.729c0,0-0.025,0.113-0.666,0c0,0,4.354,2.896,7.292,3.988
+	C43.229,57.561,46.396,53.257,45.667,52.841z"/>
+<path fill="#416082" d="M49.266,51.872c0,0-1.891,0.703-3.922,4.938l0.25,0.219l3.672-2.609V51.872z"/>
+<path fill="#729DC4" d="M45.344,53.091c0,0-2.698,3.583-3.573,3.708l1.375,0.563C43.146,57.361,45.917,53.32,45.344,53.091z"/>
+<path fill="#729DC4" d="M49.042,52.25v2.2l-0.417,0.35C48.625,54.8,49.257,52.378,49.042,52.25z"/>
+<animateTransform  type="translate" fill="remove" attributeName="transform" dur="1" calcMode="linear" restart="always" values="0,0;0.1,0.1;0,0" begin="0s" additive="replace" repeatCount="indefinite" accumulate="none" attributeType="XML">
+	</animateTransform>
+<animateTransform  type="translate" fill="remove" attributeName="transform" dur="1" calcMode="linear" restart="always" values="0,0;0.1,0.1;0,0" begin="0s" additive="replace" repeatCount="indefinite" accumulate="none" attributeType="XML">
+	</animateTransform>
+<polygon fill="#141414" points="64.756,49.733 64.404,50 64.404,51.456 64.813,51.152 "/>
+<ellipse id="light2" opacity="0.6" fill="#4885FF" enable-background="new    " cx="44.769" cy="43.679" rx="3.365" ry="1.973">
+<animate  fill="remove" to="0" attributeName="opacity" dur="1" calcMode="linear" restart="always" begin="0.1s;light2.end" additive="replace" repeatCount="indefinite" accumulate="none" from="0.2" id="light1">
+	</animate>
+</ellipse>
+<ellipse id="light1" opacity="0.6" fill="#4885FF" enable-background="new    " cx="48.856" cy="46.01" rx="3.476" ry="2.039">
+<animate  fill="remove" to="0" attributeName="opacity" dur="1" calcMode="linear" restart="always" begin="0.2s;light1.end" additive="replace" repeatCount="indefinite" accumulate="none" from="0.2" id="light2">
+	</animate>
+</ellipse>
+<g id="Direction">
+	<g transform="rotate({{angle}} 50 50)">
+		<polygon id="arrow" class="arrow" opacity="0.7" enable-background="new    " points="59.7,31.4 50.8,24 41.9,31.3 41.9,35.4 42,35.4 50.8,28.1 
+			59.3,35.4 59.7,35.4 		">
+		
+			<animate  fill="remove" attributeName="opacity" dur="0.5s" calcMode="linear" restart="always" values="0.5; 0" begin="0s;anim_arrow3.end" additive="replace" accumulate="none" id="anim_arrow1">
+			</animate>
+		</polygon>
+		<polygon id="arrow2" class="arrow" opacity="0.7" enable-background="new    " points="59.8,26.4 50.9,19 42,26.4 42,30.4 42.1,30.4 50.9,23.2 
+			59.4,30.4 59.8,30.4 		">
+		
+			<animate  fill="remove" attributeName="opacity" dur="0.5s" calcMode="linear" restart="always" values="0.5; 0" begin="anim_arrow1.end" additive="replace" accumulate="none" id="anim_arrow2">
+			</animate>
+		</polygon>
+		<polygon id="arrow3" class="arrow" opacity="0.7" enable-background="new    " points="59.9,21.4 51,14.1 42.1,21.4 42.1,25.5 42.2,25.5 
+			51,18.2 59.5,25.5 59.9,25.5 		">
+		
+			<animate  fill="remove" attributeName="opacity" dur="0.5s" calcMode="linear" restart="always" values="0.5; 0" begin="anim_arrow2.end" additive="replace" accumulate="none" id="anim_arrow3">
+			</animate>
+		</polygon>
+	</g>
+</g>
+<path id="parking" class="parking" d="M53.154,17.552l-9.925,0.146l-4.863,8.393l5.061,8.247l9.925-0.146l4.863-8.393L53.154,17.552z M49.126,30.557
+	c-0.078,0.056-0.208,0.083-0.39,0.083h-0.21H45.77h-0.16c-0.148,0-0.263-0.031-0.344-0.093c-0.08-0.062-0.12-0.15-0.12-0.265
+	c0-0.188,0.082-0.313,0.247-0.372c0.136-0.05,0.216-0.081,0.238-0.093c0.022-0.011,0.046-0.037,0.071-0.079
+	c0.049-0.073,0.074-0.189,0.074-0.351v-6.885c0-0.16-0.025-0.277-0.074-0.351c-0.025-0.041-0.049-0.067-0.071-0.079
+	c-0.022-0.012-0.103-0.042-0.238-0.093c-0.165-0.06-0.247-0.184-0.247-0.371c0-0.115,0.04-0.203,0.12-0.266
+	c0.081-0.062,0.195-0.093,0.344-0.093h0.16h2.751v8.082c0,0.179,0.03,0.307,0.092,0.385c0.033,0.046,0.064,0.075,0.093,0.086
+	c0.029,0.012,0.124,0.04,0.285,0.086c0.197,0.051,0.296,0.177,0.296,0.379C49.286,30.388,49.232,30.483,49.126,30.557z
+	 M52.02,25.805c-0.279,0.444-0.672,0.772-1.176,0.983c-0.416,0.17-1.016,0.255-1.799,0.255v-0.736
+	c0.178-0.046,0.303-0.094,0.374-0.145c0.072-0.051,0.136-0.128,0.188-0.233c0.087-0.18,0.13-0.42,0.13-0.723v-2.201
+	c0-0.215-0.014-0.376-0.043-0.481c-0.029-0.105-0.087-0.201-0.173-0.289c-0.12-0.128-0.28-0.208-0.482-0.24v-0.743
+	c0.849,0,1.477,0.09,1.879,0.269c0.466,0.206,0.834,0.522,1.105,0.949c0.275,0.437,0.414,0.97,0.414,1.604
+	C52.438,24.777,52.299,25.355,52.02,25.805z"/>
+<path id="Idle" class="hourglass" d="M53.133,17.539l-9.926,0.173l-4.841,8.392l5.084,8.247l9.901-0.146l4.863-8.433L53.133,17.539z M49.528,30.516
+	l-2.625,0.005c0,0-0.5,0.019-0.516-0.293c0,0-0.031-0.281,0.375-0.391c0,0,0.234,0.016,0.25-0.453l-0.031-5.906
+	c0,0,0.047-0.266-0.359-0.344c0,0-0.268-0.109-0.235-0.391c0,0,0.11-0.172,0.329-0.25h3.125c0,0,0.328,0.031,0.344,0.281
+	c0,0,0.031,0.313-0.313,0.359c0,0-0.359,0.109-0.266,0.656l-0.031,5.641c0,0,0.031,0.422,0.328,0.438c0,0,0.361,0.063,0.282,0.484
+	C50.186,30.353,50.091,30.555,49.528,30.516z"/>
+</svg>

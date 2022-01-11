@@ -1,0 +1,200 @@
+﻿<div class="right-side-content-container" id="asset-history">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">History</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/10/asset'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <div class="pull-right export-file fade in" id="export-file-history" ng-show="history.length != 0">
+                <button class="btn btn-default btn-type btn-xs" title="Export to Excel" ng-click="exportFile('xlsx')">
+                    <span class="fa-stack">
+                        <i class="fa fa-stack-1-6x xls" ng-class="{'fa-circle-o-notch fa-spin': exportXLSX === true,'fa-file': exportXLSX === false}"></i>
+                        <strong class="fa-stack-1x file-type" ng-show="!exportXLSX">XLS</strong>
+                    </span>
+                </button>
+                <button class="btn btn-default btn-type btn-xs" title="Export to CSV" ng-click="exportFile('csv')">
+                    <span class="fa-stack">
+                        <i class="fa fa-stack-1-6x csv" ng-class="{'fa-circle-o-notch fa-spin': exportCSV === true,'fa-file': exportCSV === false}"></i>
+                        <strong class="fa-stack-1x file-type" ng-show="!exportCSV">CSV</strong>
+                    </span>
+                </button>
+                <button class="btn btn-default btn-type btn-xs" title="Export to KML" ng-click="exportToKML()">
+                    <span class="fa-stack">
+                        <i class="fa fa-stack-1-6x csv" ng-class="{'fa-circle-o-notch fa-spin': exportKML === true,'fa-file': exportKML === false}"></i>
+                        <strong class="fa-stack-1x file-type" ng-show="!exportKML">KML</strong>
+                    </span>
+                </button>
+            </div>
+            <a class="btn btn-default export-panel" title="Export" ng-click="exportPanel()" ng-show="history.length != 0">
+                <i class="fa fa-download export-awesome-alignment"></i>
+            </a>
+            <hr class="spacing-2px" />
+            <div style="position: relative;" ng-show="hasAsset">
+                <table class="table table-condensed table-hover">
+                    <tr>
+                        <td style="padding-right:0px;">
+                            <div class="history-from-to">Fr</div>
+                            <span class="spacing-2px">
+                                <input type="button" class="btn btn-xs trackpro-green" dateleft ng-value="period.start" ng-model="period.start">
+                            </span>
+                        </td>
+                        <td style="padding-left:0px;">
+                            <div class="history-from-to">To</div><span class="spacing-2px">
+                                <input type="button" class="btn btn-xs trackpro-green" dateright ng-value="period.end" ng-model="period.end">
+                            </span>
+                        </td>
+                        <td>
+                            <select ng-model="selectedHistoryDayOption" ng-options="h.value for h in historyDayOptions" ng-change="historyDayChange()">
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="left-align" ng-show="!hasAsset">
+                <a class="btn btn-xs btn-default trackpro-green-btn " ng-click="openAssetList()">
+                    Please select an asset first.
+                </a>
+            </div>
+
+            <div ng-show="hasAsset">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist" style="margin-top: 4px;">
+                    <li role="presentation" class="active"><a class="nav-tabs-custom" data-target="#history" data-toggle="tab">History</a></li>
+                    <li role="presentation"><a class="nav-tabs-custom" data-target="#downloads" data-toggle="tab">Downloads</a></li>
+                </ul>
+            </div>
+          
+        </div>
+    </div>
+
+    <div class="side-panel-menu-content-body-container">
+        <div  class="tab-content asset-info-tab-content">
+            <div class="tab-pane active" id="history">
+                <div ng-show="hasAsset" class="side-panel-body-padding">
+                    <strong style="vertical-align: -5px;">{{assetName}}</strong>
+                    <a class="btn btn-xs btn-default trackpro-green-btn pull-right asset-button" ng-click="playbackhistory()" ng-show="history.length != 0 && isPlayHistory === false"><i class="fa fa-play"></i>&nbsp;{{playButton}}</a>
+                    <a class="btn btn-xs btn-default trackpro-green-btn pull-right asset-button" ng-click="clearHistory()" ng-show="history.length != 0">Clear</a>
+                    <a class="btn btn-xs btn-default trackpro-green-btn pull-right asset-button" ng-show="history.length == 0" ng-click="queryHistory()">Query</a>
+                    <input type="text" ng-model="filterHistory" placeholder="&nbsp;Search..." class="history-search" ng-show="history.length != 0">
+                </div>
+                <div style="background-color:#fff;">
+                    <div ng-class='(history.length > 0) ? "side-panel-absolute" : "side-panel-menu-content-body"' class="history-window" style="float:left; background-color:#fff;">
+                        <div class="object-panel" id="export-history">
+                            <div id="history-loading-icon" ng-show="loading" class="center-align"><i class="fa fa-refresh fa-spin"></i>&nbsp; Loading</div>
+                            <div ng-show="history.length !== 0">
+                                <table class="table table-hover table-condensed separate normal-whitespace">
+                                    <thead>
+                                        <tr>
+                                            <td>#</td>
+                                            <td class="width-40-percent center-align">Time</td>
+                                            <!--<td></td>-->
+                                            <td class="width-25-percent center-align">Speed-Course</td>
+                                            <!--<td class="width-40-percent">Location</td>-->
+                                            <td class="center-align">Status</td>
+                                            <!--<td class="center-align">Location</td>-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="playback in history | orderBy:'GPSTime':reverse | filter : filterHistory" ng-click="panMarker(playback)" style="cursor:pointer;">
+                                            <td class="width-10-percent" ng-class="statusColor(playback.Status)">{{$index +1}}</td>
+                                            <td class="width-40-percent center-align"><span style="white-space:pre-wrap;">{{playback.GPSTime}}</span></td>
+                                            <td class="width-25-percent center-align">{{playback.Speed}} kph, {{playback.DirectionDegrees}} {{playback.DirectionCardinal}}</td>
+                                            <!--<td class="width-40-percent" title="{{playback.Location}}">{{playback.Location | limitTo: 20 }}{{playback.Location.length > 20 ? '...' : ''}}</td>-->
+                                            <!--<td>{{playback.Speed + ' ' + playback.Direction}} kph</td>-->
+                                            <td class="center-align">{{playback.Status}}</td>
+                                           <!-- <td class="center-align" ng-attr-title="{{playback.location}}"><i class="fa fa-map-marker-alt"></i></td>-->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div ng-show="hasAsset && !error && history.length === 0" style="text-align:center;">
+                                Select a date range above and click the 'Query' button
+                            </div>
+                            <div ng-show="error" class="center-align">
+                                <i class="fa fa-exclamation-triangle"></i>
+                                &nbsp;No Results Found.
+                            </div>
+                        </div>
+                    </div>
+                    <!--asset history export-->
+                    <table id="asset-history-table-export" style="display:none;" data-cols-width="4,40,20,20,20,20,25,25,20,60">
+                        <thead>
+                            <tr>
+                                <td data-b-a-s="thin" data-f-bold="true" data-a-h="center" data-fill-color="c9dbff">#</td>
+                                <td data-b-a-s="thin" data-f-bold="true" data-a-h="center" data-fill-color="c9dbff">Name</td>
+                                <td data-b-a-s="thin" data-f-bold="true" data-a-h="center" data-fill-color="c9dbff">Latitude</td>
+                                <td data-b-a-s="thin" data-f-bold="true" data-a-h="center" data-fill-color="c9dbff">Longitude</td>
+                                <td data-b-a-s="thin" data-f-bold="true" data-a-h="center" data-fill-color="c9dbff">Speed Course</td>
+                                <td data-b-a-s="thin" data-f-bold="true" data-a-h="center" data-fill-color="c9dbff">GPS Time</td>
+                                <td data-b-a-s="thin" data-f-bold="true" data-a-h="center" data-fill-color="c9dbff">Status</td>
+                                <td data-b-a-s="thin" data-f-bold="true" data-a-h="center" data-fill-color="c9dbff">Fuel</td>
+                                <td data-b-a-s="thin" data-f-bold="true" data-a-h="center" data-fill-color="c9dbff">Odometer (km)</td>
+                                <td data-b-a-s="thin" data-f-bold="true" data-a-h="center" data-fill-color="c9dbff">Location</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="export in exportArray">
+                                <td data-b-a-s="thin" data-a-h="center">{{$index + 1}}</td>
+                                <td data-b-a-s="thin" data-a-h="center">{{export.Name}}</td>
+                                <td data-b-a-s="thin" data-a-h="center">{{export.Latitude}}</td>
+                                <td data-b-a-s="thin" data-a-h="center">{{export.Longitude}}</td>
+                                <td data-b-a-s="thin" data-a-h="center">{{export.SpeedCourse}}</td>
+                                <td data-b-a-s="thin" data-a-h="center">{{export.GPSTime}}</td>
+                                <td data-b-a-s="thin" data-a-h="center">{{export.Status}}</td>
+                                <td data-b-a-s="thin" data-a-h="center">{{export.Fuel}}</td>
+                                <td data-b-a-s="thin" data-a-h="center">{{export.Odometer}}</td>
+                                <td data-b-a-s="thin" data-a-h="center">{{export.Location}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--Downloads-->
+            <div class="tab-pane" id="downloads">
+                <div class="tbl-abs">
+                    <div ng-show="hasAsset" class="side-panel-body-padding">
+                        <strong style="vertical-align: -5px;">{{assetName}}</strong>
+                        <a class="btn btn-xs trackpro-green-btn pull-right asset-button" ng-click="downloadDailyCSV()">Query</a>
+                    </div>
+                    <div>
+                        <div class="tbl-fixed">
+                            <center>
+                                <table ng-show="hasAsset && DownloadsList.length > 0" id="download-list" class="table table-striped table-bordered width-80-percent">
+                                    <thead>
+                                        <tr>
+                                            <th class="center-align width-10-percent">#</th>
+                                            <th class="center-align width-90-percent">File</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="file in DownloadsList">
+                                            <td class="right-align">
+                                                {{$index+1}}
+                                            </td>
+                                            <td class="center-align">
+                                                <a href="{{file.URL}}" title="Download" download target="_blank"><i class="fa fa-download"></i> {{file.Date}}</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </center>
+                        </div>
+                    </div>
+
+                    <div ng-show="hasAsset" style="text-align:center;margin:5px;padding-bottom:3px;">
+                        Select a date range above and click the 'Query' button
+                    </div>
+
+                </div>
+            </div>
+            </div>
+    </div>
+
+</div>
+<div id="historyMap" ng-show="hasAsset && history.length > 0">
+    <div class="history-container-map">
+        <!--<div style="position:absolute;top:0px;right:0px;z-index:999;"><a class="btn btn-default" ng-click="fullScreen()" title="Full Screen"><i class="fa fa-expand"></i></a></div>-->
+        <div id="history-map-canvas">
+
+        </div>
+    </div>
+</div>

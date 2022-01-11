@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="100px" viewBox="0 0 100 100"   style="enable-background:new 0 0 100 100;" xml:space="preserve">
+<style type="text/css">
+	.st0{opacity:0.5;fill:{{circle_color}};}
+	.st1{fill:#999999;}
+	.st2{fill:#C4C4C4;}
+	.st3{fill:#444444;}
+	.st4{fill:#003366;}
+	.st5{fill:#006699;}
+	.st6{fill:#A8A8A8;}
+	.st7{fill:#E0E0E0;}
+	.st8{fill:#353535;}
+	.st9{fill:none;}
+	.st10{fill:#13FF00;}
+	.st11{fill:#666666;}
+</style>
+    <g transform="rotate({{angle}} 50 50)">
+<circle class="st0" cx="30.584" cy="55.003" r="29.562">
+<animate  accumulate="none" additive="replace" attributeName="opacity" begin="0.5s" calcMode="linear" dur="1" fill="remove" from="1" repeatCount="indefinite" restart="always" values="0.5; 0">
+	</animate>
+</circle>
+<title>Truck - Idle</title>
+<path class="st1" d="M18.734,5.7c0,0,0.9-5.3,8.2-4.6l7.6-0.1c0,0,6.9-0.8,8.1,4.3l-0.7,3.1c0.2,1.5,0.2,3.1,0.1,4.6
+	c0.5,0.3,0.7,0.9,0.6,1.5c0,0,4.3,1.4,2.8,2.1c0,0-0.4,0.3-3.7-0.7l-0.4,1l0.9,1.4l0.8,0.9l0.1,6.1l-1.6,1.9h-21.2l-1.6-1.7v-6.1
+	l0.7-1.3l0.9-1.1l-0.6-0.9l-3,0.6c0,0-2.2-0.6,2.3-1.8c-0.1-0.5,0-1,0.2-1.4c-0.2-1.7-0.3-3.4-0.1-5.1L18.734,5.7z"/>
+<polygon class="st1" points="16.334,29.1 16.334,91.3 18.034,92.4 43.634,92.4 45.134,91.1 45.134,29.1 44.034,28 17.634,28 "/>
+<polygon class="st2" points="22.934,19.3 22.934,24.9 23.834,25 38.434,25 39.334,24.9 39.334,19.3 38.634,19.2 23.634,19.2 "/>
+<polygon class="st3" points="15.334,34.9 16.334,34.9 16.434,43.2 15.334,43.2 "/>
+<rect x="45.134" y="34.9" class="st3" width="1.2" height="8.3"/>
+<rect x="15.334" y="45.6" class="st3" width="1.1" height="8.5"/>
+<rect x="45.134" y="45.6" class="st3" width="1.2" height="8.5"/>
+<polygon class="st3" points="15.334,68.6 15.334,76.9 16.334,76.9 16.434,68.6 "/>
+<rect x="45.134" y="68.6" class="st3" width="1.2" height="8.3"/>
+<rect x="45.234" y="79.2" class="st3" width="1.1" height="8.7"/>
+<rect x="15.334" y="79.2" class="st3" width="1.1" height="8.7"/>
+<rect x="20.134" y="27.2" class="st3" width="21.8" height="0.8"/>
+<path class="st4" d="M41.934,26.2l1-1.3v-5.2l-0.5-1l-0.5,0.6c0,0,1,4.8,0,6V26.2z"/>
+<path class="st4" d="M20.134,26.2l-1.1-1.3v-5.2l0.6-1l0.6,0.6c0,0-1,4.8,0,6v0.9H20.134z"/>
+<path class="st3" d="M19.434,15.1l-0.4-0.8l0.8-0.8l0.3,1l0.4,1.1l0.3-0.4v-3.1c0,0,10.3-3.8,20.1,0l-0.3,3l0.5,0.4l0.8-1.9l0.8,0.7
+	l-0.5,0.5l-0.4,1.1l-0.4,1c-6.6-1.8-13.6-1.8-20.3-0.1l-0.8,0.2l-0.6-0.9L19.434,15.1z"/>
+<path class="st4" d="M19.634,15.1l-0.4-0.8l0.6-0.6l0.3,1.2l0.4,1l0.5-0.6v-3c0,0,10-3.9,19.8-0.1l-0.2,3l0.7,0.6l0.8-1.9l0.6,0.5
+	l-0.5,0.4l-0.3,0.7l-0.6,1.3c-6.6-1.8-13.5-1.8-20-0.1l-0.9,0.2l-0.6-0.8L19.634,15.1z"/>
+<path class="st3" d="M18.734,5.7c0,0,0.5-5.1,8.2-4.6l-0.5,1.3l-1-0.1l-0.5-0.4c0,0-3.7-1.8-5.9,4L18.734,5.7z"/>
+<path class="st3" d="M42.734,5.3c0,0-0.4-4.7-9-4.3l0.6,1.2l1.2-0.1l0.5-0.4c0,0,3.9-1.5,6.4,3.8L42.734,5.3z"/>
+<path class="st5" d="M21.834,12.4l0.3,3.9c5.9-1.4,12.1-1.4,18,0l0.4-3.7C40.434,12.6,32.834,9,21.834,12.4z"/>
+<path class="st6" d="M38.334,12.1c0.6,0.1,1.2,0.3,1.7,0.6l-0.4,3.2C39.634,15.9,40.034,12.4,38.334,12.1z"/>
+<path class="st7" d="M25.334,2.2c0,0-3.9,0.4-5.2,2.4c-0.3-0.1-0.5-0.4-0.5-0.8c1.3-1.7,3.4-2.7,5.5-2.6L25.334,2.2z"/>
+<path class="st7" d="M35.534,2.1c0,0,4.2-0.1,5.5,1.9c0.3-0.2,0.4-0.5,0.4-0.8c-1.5-1.5-3.6-2.2-5.7-2.1L35.534,2.1z"/>
+<path class="st8" d="M23.134,2.9c0,0-0.1,5.9,1,8.2C24.134,11.1,22.734,8.5,23.134,2.9z"/>
+<path class="st8" d="M37.734,2.4c0,0,0.1,5.9-1.3,8.2C36.434,10.6,38.234,8,37.734,2.4z"/>
+<path class="st9" d="M26.634-6.5c-0.8,0.8-1.5,1.6-2.2,2.4C25.034-5,25.734-5.8,26.634-6.5z"/>
+<path class="st10" d="M22.334-0.9L22.334-0.9c0,0,9.3-7.8,18.5,0.9C31.634-8.7,22.334-0.9,22.334-0.9z"/>
+
+<g>
+	<rect x="18.667" y="31.465" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.652" y="34.279" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.704" y="37.179" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.693" y="40.132" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.678" y="42.945" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.73" y="45.845" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.707" y="48.669" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.691" y="51.482" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.743" y="54.382" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.733" y="57.335" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.717" y="60.149" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.769" y="63.049" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.746" y="65.835" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.73" y="68.649" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.782" y="71.549" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.772" y="74.502" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.756" y="77.315" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.808" y="80.215" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.808" y="82.949" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.808" y="85.762" class="st2" width="24.607" height="1.75"/>
+	<rect x="18.808" y="88.495" class="st2" width="24.607" height="1.75"/>
+</g>
+      </g>
+</svg>

@@ -1,0 +1,2963 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FFB7C941-73A4-4E5A-B072-18AA225186F6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Philgps_WebAPI</RootNamespace>
+    <AssemblyName>Philgps_WebAPI</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>true</IncludeIisSettings>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GeoJSON">
+      <HintPath>packages\GeoJSON.2.0.0\lib\net45\GeoJSON.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core">
+      <HintPath>packages\Microsoft.AspNet.SignalR.Core.2.1.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb">
+      <HintPath>packages\Microsoft.AspNet.SignalR.SystemWeb.2.1.2\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin">
+      <HintPath>packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors">
+      <HintPath>packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types">
+      <HintPath>packages\Microsoft.SqlServer.Types.11.0.2\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Cors">
+      <HintPath>packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Philgps_WebAPI.dll" />
+    <Content Include="bin\Philgps_WebAPI.dll.config" />
+    <Content Include="bin\Philgps_WebAPI.pdb" />
+    <Content Include="changelogs\index.html" />
+    <Content Include="contents\driver\Address.png" />
+    <Content Include="contents\driver\Birthdate.png" />
+    <Content Include="contents\driver\Driver.png" />
+    <Content Include="contents\driver\Emergency Name.png" />
+    <Content Include="contents\driver\Emergency Number.png" />
+    <Content Include="contents\driver\Gender.png" />
+    <Content Include="contents\driver\Hire Date.png" />
+    <Content Include="contents\driver\Home Landline.png" />
+    <Content Include="contents\driver\License Expiry Date.png" />
+    <Content Include="contents\driver\License Number.png" />
+    <Content Include="contents\driver\License Type.png" />
+    <Content Include="contents\driver\Mobile Phone Number.png" />
+    <Content Include="contents\driver\Name.png" />
+    <Content Include="contents\driver\Nickname.png" />
+    <Content Include="contents\driver\Office Landline.png" />
+    <Content Include="contents\driver\Remarks.png" />
+    <Content Include="contents\driver\Staff Number.png" />
+    <Content Include="contents\driver\Staff Type.png" />
+    <Content Include="contents\driver\Status.png" />
+    <Content Include="contents\fonts\fontawesome-webfont.svg" />
+    <Content Include="contents\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="contents\images\alerts\Alert2.svg" />
+    <Content Include="contents\images\alerts\Alert2_off.svg" />
+    <Content Include="contents\images\alerts\bell.svg" />
+    <Content Include="contents\images\alerts\bell_off.svg" />
+    <Content Include="contents\images\common\dhl_logo.png" />
+    <Content Include="contents\images\common\favicon.ico" />
+    <Content Include="contents\images\common\go_zone.svg" />
+    <Content Include="contents\images\common\no_zone.svg" />
+    <Content Include="contents\images\common\trackpro_logo_white_s.png" />
+    <Content Include="contents\images\dashboard\asset.svg" />
+    <Content Include="contents\images\dashboard\asset-moving.svg" />
+    <Content Include="contents\images\login\Cloud.svg" />
+    <Content Include="contents\images\login\fleetpro.svg" />
+    <Content Include="contents\images\login\gbklogowhite.png" />
+    <Content Include="contents\images\login\login_asset_animated.svg" />
+    <Content Include="contents\images\login\login_truck_animated %282%29.svg" />
+    <Content Include="contents\images\login\login_truck_animated.svg" />
+    <Content Include="contents\images\login\Satellite.svg" />
+    <Content Include="contents\images\login\trackpro_logo.png" />
+    <Content Include="contents\images\login\trackpro_new.png" />
+    <Content Include="contents\images\login\trackpro_s.png" />
+    <Content Include="contents\images\login\Truck-100x100.svg" />
+    <Content Include="contents\images\osm\circle-green.png" />
+    <Content Include="contents\images\products\deliverypro.png" />
+    <Content Include="contents\images\products\fleetpro.png" />
+    <Content Include="contents\images\products\insightpro.png" />
+    <Content Include="contents\images\products\maintenancepro.png" />
+    <Content Include="contents\images\products\reportpro.png" />
+    <Content Include="contents\images\products\vesselpro.png" />
+    <Content Include="contents\images\track\asset-information\details\asset_id.png" />
+    <Content Include="contents\images\track\asset-information\details\coordinates.png" />
+    <Content Include="contents\images\track\asset-information\details\direction.png" />
+    <Content Include="contents\images\track\asset-information\details\fuel.png" />
+    <Content Include="contents\images\track\asset-information\details\data_time.png" />
+    <Content Include="contents\images\track\asset-information\details\location.png" />
+    <Content Include="contents\images\track\asset-information\details\name.png" />
+    <Content Include="contents\images\track\asset-information\details\odometer.png" />
+    <Content Include="contents\images\track\asset-information\details\sim.png" />
+    <Content Include="contents\images\track\asset-information\details\statuses.svg" />
+    <Content Include="contents\images\track\asset-information\details\speed.png" />
+    <Content Include="contents\images\track\asset-information\details\status.png" />
+    <Content Include="contents\images\track\asset-information\sensors.png" />
+    <Content Include="contents\images\track\asset-information\sensors\fuel.png" />
+    <Content Include="contents\images\track\asset-information\sensors\sensor_1.png" />
+    <Content Include="contents\images\track\asset-information\sensors\sensor_2.png" />
+    <Content Include="contents\images\track\asset-information\sensors\temperature_1.png" />
+    <Content Include="contents\images\track\asset-information\sensors\temperature_2.png" />
+    <Content Include="contents\images\track\asset-information\settings\asset_id.png" />
+    <Content Include="contents\images\track\asset-information\settings\asset_type.png" />
+    <Content Include="contents\images\track\asset-information\settings\fuel.png" />
+    <Content Include="contents\images\track\asset-information\settings\name.png" />
+    <Content Include="contents\images\track\asset-information\settings\sim.png" />
+    <Content Include="contents\images\track\asset-information\weather\weather.svg" />
+    <Content Include="contents\images\track\map\asset-marker\route\endpoint.svg" />
+    <Content Include="contents\images\track\map\asset-marker\route\startpoint.svg" />
+    <Content Include="contents\images\track\map\landmarks\Bus Station.png" />
+    <Content Include="contents\images\track\map\landmarks\Drop Off.png" />
+    <Content Include="contents\images\track\map\landmarks\Garage.png" />
+    <Content Include="contents\images\track\map\landmarks\Gas Station.png" />
+    <Content Include="contents\images\track\map\landmarks\Government Office.png" />
+    <Content Include="contents\images\track\map\landmarks\Home Office.png" />
+    <Content Include="contents\images\track\map\landmarks\Home.png" />
+    <Content Include="contents\images\track\map\landmarks\Hospital.png" />
+    <Content Include="contents\images\track\map\landmarks\Lighthouse.png" />
+    <Content Include="contents\images\track\map\landmarks\Money Changer.png" />
+    <Content Include="contents\images\track\map\landmarks\Office.png" />
+    <Content Include="contents\images\track\map\landmarks\Parking Lot.png" />
+    <Content Include="contents\images\track\map\landmarks\Port.png" />
+    <Content Include="contents\images\track\map\landmarks\Repair Shop.png" />
+    <Content Include="contents\images\track\map\landmarks\Shipyard.png" />
+    <Content Include="contents\images\track\map\landmarks\Store.png" />
+    <Content Include="contents\images\track\map\landmarks\Toll Gate.png" />
+    <Content Include="contents\images\track\map\landmarks\Train Station.png" />
+    <Content Include="contents\images\track\map\landmarks\Ware House.png" />
+    <Content Include="contents\images\track\side-panel-menu\app_settings.png" />
+    <Content Include="contents\images\track\side-panel-menu\asset_assignment.png" />
+    <Content Include="contents\images\track\side-panel-menu\asset_info.png" />
+    <Content Include="contents\images\track\side-panel-menu\asset_list.png" />
+    <Content Include="contents\images\track\side-panel-menu\asset_route%2850x50%29.png" />
+    <Content Include="contents\images\track\side-panel-menu\asset_route_new.png" />
+    <Content Include="contents\images\track\side-panel-menu\asset_settings.png" />
+    <Content Include="contents\images\track\side-panel-menu\change_password.png" />
+    <Content Include="contents\images\track\side-panel-menu\delivery.png" />
+    <Content Include="contents\images\track\side-panel-menu\filter.png" />
+    <Content Include="contents\images\track\side-panel-menu\info_bar.png" />
+    <Content Include="contents\images\track\side-panel-menu\manage_landmarks.png" />
+    <Content Include="contents\images\track\side-panel-menu\marine_data.png" />
+    <Content Include="contents\images\track\side-panel-menu\marine_info.png" />
+    <Content Include="contents\images\track\side-panel-menu\nearest_asset.png" />
+    <Content Include="contents\images\track\side-panel-menu\route_history.png" />
+    <Content Include="contents\images\track\side-panel-menu\ruler.png" />
+    <Content Include="contents\images\track\side-panel-menu\territorial_zoning.png" />
+    <Content Include="contents\images\track\asset-information\weather\cloud_cover.png" />
+    <Content Include="contents\images\track\asset-information\weather\humidity.png" />
+    <Content Include="contents\images\track\asset-information\weather\precipitation.png" />
+    <Content Include="contents\images\track\asset-information\weather\pressure.png" />
+    <Content Include="contents\images\track\asset-information\weather\temperature_ground.png" />
+    <Content Include="contents\images\track\asset-information\weather\temperature_water.png" />
+    <Content Include="contents\images\track\asset-information\weather\water_current.png" />
+    <Content Include="contents\images\track\asset-information\weather\wave.png" />
+    <Content Include="contents\images\track\asset-information\weather\wave_period.png" />
+    <Content Include="contents\images\track\asset-information\weather\wind.png" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\ambulance.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Ambulance_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Barge_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\bulldozer.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\bulldozer_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\bulldozer_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\bulldozer_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\bulldozer_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\bulldozer_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Bulldozer_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Bus_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Cargo_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Overspeed_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Overspeed_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Overspeed_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Overspeed_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Overspeed_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Overspeed_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Overspeed_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Overspeed_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\car_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Car_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\crane_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Crane_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\excavator_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Excavator_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus.gif" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\Medium Bus_gif\medium bus_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Overspeed_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Overspeed_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Overspeed_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Overspeed_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Overspeed_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Overspeed_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Overspeed_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Overspeed_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Medium-Bus_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\mini bus_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\Mini Bus_gif\minibus.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_Overspeed_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_Overspeed_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_Overspeed_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_Overspeed_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_Overspeed_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_Overspeed_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_Overspeed_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_Overspeed_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Mini-Bus_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\mixer_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Mixer_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\monitor\ship.png" />
+    <Content Include="contents\map\asset-marker-gif\monitor\ship_xs.png" />
+    <Content Include="contents\map\asset-marker-gif\monitor\ship_xs_ani.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Overspeed_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Overspeed_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Overspeed_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Overspeed_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Overspeed_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Overspeed_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Overspeed_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Overspeed_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\motorcycle_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Motorcycle_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\multicab_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Multicab_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\panels\asset_settings.png" />
+    <Content Include="contents\map\asset-marker-gif\panels\manage_poi.png" />
+    <Content Include="contents\map\asset-marker-gif\panels\nearest_asset.png" />
+    <Content Include="contents\map\asset-marker-gif\panels\set_route.png" />
+    <Content Include="contents\map\asset-marker-gif\panels\territorial_zoning.png" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\passenger ferry_gif\passenger ferry.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\passenger.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Passenger_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\people_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\People_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\pickuptrack_gif\pickuptruck.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\police_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Police_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\School-Bus_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Ship_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Sports-Car_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\tanker_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Tanker_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\taxi_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Taxi_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailer truck_parking_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\trailer truck_gif\trailertruck.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Overspeed_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Overspeed_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Overspeed_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Overspeed_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Overspeed_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Overspeed_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Overspeed_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Overspeed_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Trailer_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Trailer_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck\truck _NE_xs.png" />
+    <Content Include="contents\map\asset-marker-gif\truck\truck_E_xs.png" />
+    <Content Include="contents\map\asset-marker-gif\truck\truck_NE_xs.png" />
+    <Content Include="contents\map\asset-marker-gif\truck\truck_NW_xs.png" />
+    <Content Include="contents\map\asset-marker-gif\truck\truck_N_xs.png" />
+    <Content Include="contents\map\asset-marker-gif\truck\truck_SE_xs.png" />
+    <Content Include="contents\map\asset-marker-gif\truck\truck_SW_xs.png" />
+    <Content Include="contents\map\asset-marker-gif\truck\truck_S_xs.png" />
+    <Content Include="contents\map\asset-marker-gif\truck\truck_W_xs.png" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_alert_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_alert_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_alert_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_alert_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_alert_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_alert_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_alert_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_alert_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_driving_e.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_driving_n.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_driving_ne.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_driving_nw.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_driving_s.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_driving_se.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_driving_sw.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_driving_w.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_idling.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_idling_alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_inactive.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Left_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Left_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Overspeed_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Overspeed_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Overspeed_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Overspeed_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Overspeed_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Overspeed_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Overspeed_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Overspeed_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_parking _alert.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\truck_parking.svg" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Right_Center.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_Right_Idle.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Truck_W.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_top\3DTruck_smoke_E.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_top\3DTruck_smoke_N.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_top\3DTruck_smoke_NE.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_top\3DTruck_smoke_NW.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_top\3DTruck_smoke_S.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_top\3DTruck_smoke_SE.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_top\3DTruck_smoke_SW.gif" />
+    <Content Include="contents\map\asset-marker-gif\truck_top\3DTruck_smoke_W.gif" />
+    <Content Include="contents\map\asset-marker\Ambulance\Ambulance.svg" />
+    <Content Include="contents\map\asset-marker\Bulldozer\Bulldozer.svg" />
+    <Content Include="contents\map\asset-marker\car\Car.svg" />
+    <Content Include="contents\map\asset-marker\car\Car2.svg" />
+    <Content Include="contents\map\asset-marker\Crane\Crane.svg" />
+    <Content Include="contents\map\asset-marker\Excavator\Excavator.svg" />
+    <Content Include="contents\map\asset-marker\medium bus\Medium Bus.svg" />
+    <Content Include="contents\map\asset-marker\Mini Bus\Mini bus.svg" />
+    <Content Include="contents\map\asset-marker\Mixer Truck\Mixer Truck.svg" />
+    <Content Include="contents\map\asset-marker\Motorcycle\Motorcycle.svg" />
+    <Content Include="contents\map\asset-marker\Multicab\Multicab.svg" />
+    <Content Include="contents\map\asset-marker\Passenger Ferry\Passenger Ferry.svg" />
+    <Content Include="contents\map\asset-marker\people\People.svg" />
+    <Content Include="contents\map\asset-marker\Pickup Truck\Pickup Truck.svg" />
+    <Content Include="contents\map\asset-marker\Police\Police.svg" />
+    <Content Include="contents\map\asset-marker\Tanker Vessel\Tanker Vessel.svg" />
+    <Content Include="contents\map\asset-marker\taxi\Taxi.svg" />
+    <Content Include="contents\map\asset-marker\trailer truck\Trailer Truck.svg" />
+    <Content Include="contents\map\asset-marker\trailer truck\Trailer Truck1.svg" />
+    <Content Include="contents\map\asset-marker\trailer truck\Trailer Truck2.svg" />
+    <Content Include="contents\map\asset-marker\truck\Truck.svg" />
+    <Content Include="contents\map\asset-marker\truck\Truck2.svg" />
+    <Content Include="contents\map\Asset-menu\ambulance.gif" />
+    <Content Include="contents\map\Asset-menu\Ambulance.svg" />
+    <Content Include="contents\map\Asset-menu\bulldozer.gif" />
+    <Content Include="contents\map\Asset-menu\Bulldozer.svg" />
+    <Content Include="contents\map\Asset-menu\car.gif" />
+    <Content Include="contents\map\Asset-menu\Car.svg" />
+    <Content Include="contents\map\Asset-menu\crane.gif" />
+    <Content Include="contents\map\Asset-menu\Crane.svg" />
+    <Content Include="contents\map\Asset-menu\excavator.gif" />
+    <Content Include="contents\map\Asset-menu\Excavator.svg" />
+    <Content Include="contents\map\Asset-menu\medium bus.gif" />
+    <Content Include="contents\map\Asset-menu\Mediun Bus.svg" />
+    <Content Include="contents\map\Asset-menu\Mediun-Bus.svg" />
+    <Content Include="contents\map\Asset-menu\mini bus.gif" />
+    <Content Include="contents\map\Asset-menu\Mini bus.svg" />
+    <Content Include="contents\map\Asset-menu\Mixer Truck.svg" />
+    <Content Include="contents\map\Asset-menu\mixer.gif" />
+    <Content Include="contents\map\Asset-menu\Mixer.svg" />
+    <Content Include="contents\map\Asset-menu\motorcycle.gif" />
+    <Content Include="contents\map\Asset-menu\Motorcycle.svg" />
+    <Content Include="contents\map\Asset-menu\multicab.gif" />
+    <Content Include="contents\map\Asset-menu\Multicab.svg" />
+    <Content Include="contents\map\Asset-menu\passenger ferry.gif" />
+    <Content Include="contents\map\Asset-menu\people.gif" />
+    <Content Include="contents\map\Asset-menu\People.svg" />
+    <Content Include="contents\map\Asset-menu\pickup truck.gif" />
+    <Content Include="contents\map\Asset-menu\Pickup Truck.svg" />
+    <Content Include="contents\map\Asset-menu\police.gif" />
+    <Content Include="contents\map\Asset-menu\Police.svg" />
+    <Content Include="contents\map\Asset-menu\tanker.gif" />
+    <Content Include="contents\map\Asset-menu\taxi.gif" />
+    <Content Include="contents\map\Asset-menu\Taxi.svg" />
+    <Content Include="contents\map\Asset-menu\trailer truck.gif" />
+    <Content Include="contents\map\Asset-menu\Trailer Truck.svg" />
+    <Content Include="contents\map\Asset-menu\truck.gif" />
+    <Content Include="contents\map\Asset-menu\Truck.svg" />
+    <Content Include="contents\map\infobox\tipbox.gif" />
+    <Content Include="contents\map\osm\leaflet\leaflet.css" />
+    <Content Include="contents\map\osm\leaflet\leaflet.draw.css" />
+    <Content Include="contents\map\osm\leaflet\leaflet.label.css" />
+    <Content Include="contents\map\osm\leaflet\MarkerCluster.css" />
+    <Content Include="contents\map\osm\leaflet\MarkerCluster.Default.css" />
+    <Content Include="contents\map\osm\osm.css" />
+    <Content Include="contents\sound\alert-alarm.mp3" />
+    <Content Include="contents\sound\alert-alarm2.mp3" />
+    <Content Include="contents\sound\alert-alarm3.mp3" />
+    <Content Include="contents\styles\angularjs\ADM-dateTimePicker.min.css" />
+    <Content Include="contents\styles\angularjs\angularjs-datetime-picker.css" />
+    <Content Include="contents\styles\angularjs\loading-bar.css" />
+    <Content Include="contents\styles\bootstrap\bootstrap-theme.css" />
+    <Content Include="contents\styles\bootstrap\bootstrap-theme.min.css" />
+    <Content Include="contents\styles\bootstrap\bootstrap.css" />
+    <Content Include="contents\styles\bootstrap\bootstrap.min.css" />
+    <Content Include="contents\styles\changelogs\changelogs.css" />
+    <Content Include="contents\styles\common.css" />
+    <Content Include="contents\styles\counter.css" />
+    <Content Include="contents\styles\dashboard.css" />
+    <Content Include="contents\styles\fontawesome\fa-brands.css" />
+    <Content Include="contents\styles\fontawesome\fa-brands.min.css" />
+    <Content Include="contents\styles\fontawesome\fa-regular.css" />
+    <Content Include="contents\styles\fontawesome\fa-regular.min.css" />
+    <Content Include="contents\styles\fontawesome\fa-solid.css" />
+    <Content Include="contents\styles\fontawesome\fa-solid.min.css" />
+    <Content Include="contents\styles\fontawesome\font-awesome.css" />
+    <Content Include="contents\styles\fontawesome\font-awesome.min.css" />
+    <Content Include="contents\styles\fontawesome\fontawesome-all.css" />
+    <Content Include="contents\styles\fontawesome\fontawesome-all.min.css" />
+    <Content Include="contents\styles\fontawesome\fontawesome.css" />
+    <Content Include="contents\styles\fontawesome\fontawesome.min.css" />
+    <Content Include="contents\styles\google\gmaps-labels.css" />
+    <Content Include="contents\styles\grid.css" />
+    <Content Include="contents\styles\jquery-ui\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="contents\styles\jquery-ui\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="contents\styles\jquery-ui\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="contents\styles\jquery-ui\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="contents\styles\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="contents\styles\jquery-ui\jquery-ui-timepicker.css" />
+    <Content Include="contents\styles\jquery-ui\jquery-ui.css" />
+    <Content Include="contents\styles\jquery-ui\jquery-ui.min.css" />
+    <Content Include="contents\styles\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="contents\styles\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="contents\styles\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="contents\styles\jquery-ui\jquery-ui.theme.min.css" />
+    <Content Include="contents\styles\jquery-ui\jquery.mCustomScrollbar.min.css" />
+    <Content Include="contents\styles\loading-panel.css" />
+    <Content Include="contents\styles\login\login-card.css" />
+    <Content Include="contents\styles\login\login-new.css" />
+    <Content Include="contents\styles\login\login.css" />
+    <Content Include="contents\styles\login\logs.css" />
+    <Content Include="contents\styles\parsley\parsley.css" />
+    <Content Include="contents\styles\pgps-icons\css\pgps-function-items.css" />
+    <Content Include="contents\styles\pgps-icons\fonts\pgps-function-items.svg" />
+    <Content Include="contents\styles\pgps-icons\fonts\trackpro.svg" />
+    <Content Include="contents\styles\trackmytruck.css" />
+    <Content Include="contents\styles\track\asset-information.css" />
+    <Content Include="contents\styles\track\carousel.css" />
+    <Content Include="contents\styles\track\dashboard.css" />
+    <Content Include="contents\styles\track\export.css" />
+    <Content Include="contents\styles\track\home.css" />
+    <Content Include="contents\styles\track\index.css" />
+    <Content Include="contents\styles\track\modal.css" />
+    <Content Include="contents\styles\track\nav.css" />
+    <Content Include="contents\styles\track\summary.css" />
+    <Content Include="contents\styles\track\track.css" />
+    <Content Include="DAL\GEOFENCEDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GEOFENCEDB.edmx</DependentUpon>
+      <LastGenOutput>GEOFENCEDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\GEOFENCEDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GEOFENCEDB.edmx</DependentUpon>
+      <LastGenOutput>GEOFENCEDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\MAPDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MAPDB.edmx</DependentUpon>
+      <LastGenOutput>MAPDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\MAPDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MAPDB.edmx</DependentUpon>
+      <LastGenOutput>MAPDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\SERVERDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SERVERDB.edmx</DependentUpon>
+      <LastGenOutput>SERVERDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\SERVERDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SERVERDB.edmx</DependentUpon>
+      <LastGenOutput>SERVERDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\TFDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TFDB.edmx</DependentUpon>
+      <LastGenOutput>TFDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\TFDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TFDB.edmx</DependentUpon>
+      <LastGenOutput>TFDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="Global.asax" />
+    <Content Include="Index.html" />
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\msvcr100.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x64\SqlServerSpatial110.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\msvcr100.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="packages\Microsoft.SqlServer.Types.11.0.2\nativeBinaries\x86\SqlServerSpatial110.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\controllers\asset-counter-controller.js" />
+    <Content Include="scripts\controllers\asset-delivery-controller.js" />
+    <Content Include="scripts\controllers\asset-driver-controller.js" />
+    <Content Include="scripts\controllers\asset-new-route-controller.js" />
+    <Content Include="scripts\controllers\asset-route-controller.js" />
+    <Content Include="scripts\controllers\asset-type-filter-controller.js" />
+    <Content Include="scripts\controllers\counter-controller.js" />
+    <Content Include="scripts\controllers\dashboard-controller.js" />
+    <Content Include="scripts\controllers\delivery-modal-controller .js" />
+    <Content Include="scripts\controllers\driver-asset-modal-controller.js" />
+    <Content Include="scripts\controllers\feedback-modal-controller.js" />
+    <Content Include="scripts\controllers\home-controller.js" />
+    <Content Include="scripts\controllers\map-tools-controller.js" />
+    <Content Include="scripts\controllers\asset-tracer-controller.js" />
+    <Content Include="scripts\controllers\measure-route-controller.js" />
+    <Content Include="scripts\controllers\nav-controller.js" />
+    <Content Include="scripts\controllers\news-feed-controller.js" />
+    <Content Include="scripts\controllers\notifications-controller.js" />
+    <Content Include="scripts\controllers\reminder-filter-controller.js" />
+    <Content Include="scripts\controllers\route-modal-controller.js" />
+    <Content Include="scripts\controllers\trackmytruck-controller.js" />
+    <Content Include="scripts\controllers\user-settings-modal-controller.js" />
+    <Content Include="scripts\controllers\user-settings-controller.js" />
+    <Content Include="scripts\controllers\nearest-asset-controller.js" />
+    <Content Include="scripts\controllers\zone-filter-controller.js" />
+    <Content Include="scripts\controllers\landmarks-controller.js" />
+    <Content Include="scripts\controllers\zones-controller.js" />
+    <Content Include="scripts\controllers\summary-controller.js" />
+    <Content Include="scripts\controllers\asset-filter-counter-controller.js" />
+    <Content Include="scripts\controllers\asset-information-controller.js" />
+    <Content Include="scripts\controllers\map-controller.js" />
+    <Content Include="scripts\controllers\asset-history-controller.js" />
+    <Content Include="scripts\controllers\asset-filter-controller.js" />
+    <Content Include="scripts\controllers\login-controller.js" />
+    <Content Include="scripts\controllers\asset-controller.js" />
+    <Content Include="scripts\controllers\zones-modal-controller.js" />
+    <Content Include="scripts\factories\driver-factory.js" />
+    <Content Include="scripts\factories\map-factory.js" />
+    <Content Include="scripts\factories\map-history-factory.js" />
+    <Content Include="scripts\factories\delivery-factory.js" />
+    <Content Include="scripts\factories\notification-factory.js" />
+    <Content Include="scripts\factories\routes-factory.js" />
+    <Content Include="scripts\factories\user-settings-factory.js" />
+    <Content Include="scripts\factories\asset-history-factory.js" />
+    <Content Include="scripts\factories\asset-information-factory.js" />
+    <Content Include="scripts\factories\asset-filter-factory.js" />
+    <Content Include="scripts\factories\landmarks-factory.js" />
+    <Content Include="scripts\factories\zones-factory.js" />
+    <Content Include="scripts\factories\common-factory.js" />
+    <Content Include="scripts\factories\login-factory.js" />
+    <Content Include="scripts\helpers\DateTimeHelper.js" />
+    <Content Include="scripts\helpers\DownloadHelper.js" />
+    <Content Include="scripts\helpers\mapHelper.js" />
+    <Content Include="scripts\helpers\StringHelpers.js" />
+    <Content Include="contents\map\asset-marker-gif\ambulance_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\barge_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\bulldozer_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\bus_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\cargo_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\car_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\crane_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\excavator_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\medium_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\mini_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\mixer_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\monitor\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\motorcycle_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\multicab_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\panels\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\passenger_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\people_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\police_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\school_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\ship_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\sports_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\tanker_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\taxi_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\trailer_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\trailer_truck_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\truck\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\truck_gif\Thumbs.db" />
+    <Content Include="contents\map\asset-marker-gif\truck_top\Thumbs.db" />
+    <Content Include="contents\styles\pgps-icons\fonts\trackpro.eot" />
+    <Content Include="contents\styles\pgps-icons\fonts\trackpro.ttf" />
+    <Content Include="contents\styles\pgps-icons\fonts\trackpro.woff" />
+    <Content Include="contents\styles\pgps-icons\fonts\pgps-function-items.eot" />
+    <Content Include="contents\styles\pgps-icons\fonts\pgps-function-items.ttf" />
+    <Content Include="contents\styles\pgps-icons\fonts\pgps-function-items.woff" />
+    <Content Include="contents\fonts\fontawesome-webfont.eot" />
+    <Content Include="contents\fonts\fontawesome-webfont.ttf" />
+    <Content Include="contents\fonts\fontawesome-webfont.woff" />
+    <Content Include="contents\fonts\fontawesome-webfont.woff2" />
+    <Content Include="contents\fonts\FontAwesome.otf" />
+    <Content Include="contents\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="contents\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="contents\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="contents\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="packages.config" />
+    <EntityDeploy Include="DAL\SERVERDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SERVERDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DAL\SERVERDB.edmx.diagram">
+      <DependentUpon>SERVERDB.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="DAL\TFDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TFDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DAL\TFDB.edmx.diagram">
+      <DependentUpon>TFDB.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="DAL\MAPDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MAPDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DAL\MAPDB.edmx.diagram">
+      <DependentUpon>MAPDB.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="DAL\GEOFENCEDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GEOFENCEDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DAL\GEOFENCEDB.edmx.diagram">
+      <DependentUpon>GEOFENCEDB.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\prf1.pubxml" />
+    <None Include="Properties\PublishProfiles\prf_trackpro2.pubxml" />
+    <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\jquery-1.10.2.js" />
+    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="scripts\jquery.signalR-2.1.2.js" />
+    <Content Include="scripts\jquery.signalR-2.1.2.min.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-animate.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-animate.min.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-aria.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-aria.min.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-filter.min.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-local-storage.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-mocks.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-resource.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-resource.min.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-route.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-route.min.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-sanitize.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-sanitize.min.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-tablescroll.js" />
+    <Content Include="scripts\js-libs\angularjs\angular-touch.min.js" />
+    <Content Include="scripts\js-libs\angularjs\angular.js" />
+    <Content Include="scripts\js-libs\angularjs\angular.min.js" />
+    <Content Include="scripts\js-libs\angularjs\angularjs-datetime-picker.min.js" />
+    <Content Include="scripts\js-libs\angularjs\loading-bar.js" />
+    <Content Include="scripts\js-libs\angularjs\ng-csv.js" />
+    <Content Include="scripts\js-libs\angularjs\ng-csv.min.js" />
+    <Content Include="scripts\js-libs\angularjs\ng-infinite-scroll.min.js" />
+    <Content Include="scripts\js-libs\angularjs\ngStorage.js" />
+    <Content Include="scripts\js-libs\angularjs\ui-bootstrap-tpls-1.3.2.min.js" />
+    <Content Include="scripts\js-libs\bootstrap\bootstrap.js" />
+    <Content Include="scripts\js-libs\bootstrap\bootstrap.min.js" />
+    <Content Include="scripts\js-libs\chartjs\angular-chart.min.js" />
+    <Content Include="scripts\js-libs\chartjs\chart.js" />
+    <Content Include="scripts\js-libs\datetimepicker\ADM-dateTimePicker.min.js" />
+    <Content Include="scripts\js-libs\google\circle.js" />
+    <Content Include="scripts\js-libs\google\control.js" />
+    <Content Include="scripts\js-libs\google\control.min.js" />
+    <Content Include="scripts\js-libs\google\gmaps-labels.js" />
+    <Content Include="scripts\js-libs\google\google-history-map.js" />
+    <Content Include="scripts\js-libs\google\google-map.js" />
+    <Content Include="scripts\js-libs\google\google-marker-with-label.js" />
+    <Content Include="scripts\js-libs\google\infobox.js" />
+    <Content Include="scripts\js-libs\google\jsts.js" />
+    <Content Include="scripts\js-libs\google\maplabel.min.js" />
+    <Content Include="scripts\js-libs\google\marker.js" />
+    <Content Include="scripts\js-libs\google\marker_cluster.js" />
+    <Content Include="scripts\js-libs\google\overlay-label.js" />
+    <Content Include="scripts\js-libs\google\polygon.js" />
+    <Content Include="scripts\js-libs\google\polyline.js" />
+    <Content Include="scripts\js-libs\google\xmlwriter.js" />
+    <Content Include="scripts\js-libs\jquery-export\.gitignore" />
+    <Content Include="scripts\js-libs\jquery-export\alasql\alasql.min.js" />
+    <Content Include="scripts\js-libs\jquery-export\alasql\xlsx.core.min.js" />
+    <Content Include="scripts\js-libs\jquery-export\canvg\canvg.js" />
+    <Content Include="scripts\js-libs\jquery-export\canvg\canvg.min.js" />
+    <Content Include="scripts\js-libs\jquery-export\html2canvas\canvas2image.js" />
+    <Content Include="scripts\js-libs\jquery-export\html2canvas\html2canvas.js" />
+    <Content Include="scripts\js-libs\jquery-export\jquery.base64.js" />
+    <Content Include="scripts\js-libs\jquery-export\json2xls.js" />
+    <Content Include="scripts\js-libs\jquery-export\jspdf\jspdf.js" />
+    <Content Include="scripts\js-libs\jquery-export\jspdf\jspdf.min.js" />
+    <Content Include="scripts\js-libs\jquery-export\jspdf\libs\base64.js" />
+    <Content Include="scripts\js-libs\jquery-export\jspdf\libs\sprintf.js" />
+    <Content Include="scripts\js-libs\jquery-export\libs\FileSaver\FileSaver.min.js" />
+    <Content Include="scripts\js-libs\jquery-export\libs\html2canvas\html2canvas.min.js" />
+    <Content Include="scripts\js-libs\jquery-export\libs\jsPDF-AutoTable\jspdf.plugin.autotable.js" />
+    <Content Include="scripts\js-libs\jquery-export\libs\jsPDF-AutoTable\LICENSE.txt" />
+    <Content Include="scripts\js-libs\jquery-export\libs\jsPDF\jspdf.min.js" />
+    <Content Include="scripts\js-libs\jquery-export\libs\jsPDF\MIT-LICENSE.txt" />
+    <Content Include="scripts\js-libs\jquery-export\table-to-json-master\jquery.tabletojson.js" />
+    <Content Include="scripts\js-libs\jquery-export\tableExport\tableExport.js" />
+    <Content Include="scripts\js-libs\jquery-export\tableExport\tableExport.min.js" />
+    <Content Include="scripts\js-libs\jquery-export\tableExport\tableExport_old.js" />
+    <Content Include="scripts\js-libs\jquery-export\test\icons\csv.png" />
+    <Content Include="scripts\js-libs\jquery-export\test\icons\json.png" />
+    <Content Include="scripts\js-libs\jquery-export\test\icons\pdf.png" />
+    <Content Include="scripts\js-libs\jquery-export\test\icons\png.png" />
+    <Content Include="scripts\js-libs\jquery-export\test\icons\sql.png" />
+    <Content Include="scripts\js-libs\jquery-export\test\icons\txt.png" />
+    <Content Include="scripts\js-libs\jquery-export\test\icons\word.png" />
+    <Content Include="scripts\js-libs\jquery-export\test\icons\xls.png" />
+    <Content Include="scripts\js-libs\jquery-export\test\icons\xml.png" />
+    <Content Include="scripts\js-libs\jquery-export\test\index.html" />
+    <Content Include="scripts\js-libs\jquery-signalr\jquery.signalR-2.1.2.js" />
+    <Content Include="scripts\js-libs\jquery-signalr\jquery.signalR-2.1.2.min.js" />
+    <Content Include="scripts\js-libs\jquery-ui\jquery-ui-timpicker.js" />
+    <Content Include="scripts\js-libs\jquery-ui\jquery-ui.js" />
+    <Content Include="scripts\js-libs\jquery-ui\jquery-ui.min.js" />
+    <Content Include="scripts\js-libs\jquery-ui\jquery.mCustomScrollbar.min.js" />
+    <Content Include="scripts\js-libs\jquery-ui\jquery.mousewheel-3.0.6.js" />
+    <Content Include="scripts\js-libs\jquery-ui\jquery.mousewheel.js" />
+    <Content Include="scripts\js-libs\jquery\flexslider\angular-flexslider.js" />
+    <Content Include="scripts\js-libs\jquery\flexslider\flexslider.css" />
+    <Content Include="scripts\js-libs\jquery\flexslider\fonts\flexslider-icon.svg" />
+    <Content Include="scripts\js-libs\jquery\flexslider\images\bg_play_pause.png" />
+    <Content Include="scripts\js-libs\jquery\flexslider\jquery.flexslider-min.js" />
+    <Content Include="scripts\js-libs\jquery\flexslider\jquery.flexslider.js" />
+    <Content Include="scripts\js-libs\jquery\jquery-2.2.3.js" />
+    <Content Include="scripts\js-libs\jquery\jquery-2.2.3.min.js" />
+    <Content Include="scripts\js-libs\jquery\jquery.stickytableheaders.js" />
+    <Content Include="scripts\js-libs\moment\moment-precise-range.js" />
+    <Content Include="scripts\js-libs\moment\moment.min.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\buffer\turf-buffer.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\drawpoly\draw.circle.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\drawpoly\draw.feature.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\drawpoly\draw.marker.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\drawpoly\draw.polygon.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\drawpoly\draw.polyline.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\drawpoly\draw.rectangle.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\drawpoly\draw.simpleshape.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\editpoly\edit.circle.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\editpoly\edit.poly.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\editpoly\edit.rectangle.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\editpoly\edit.simpleshape.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\ext\Geometry.Util.Js" />
+    <Content Include="scripts\js-libs\osm\leaflet\ext\LatLng.Util.Js" />
+    <Content Include="scripts\js-libs\osm\leaflet\ext\LineUtil.Intersect.Js" />
+    <Content Include="scripts\js-libs\osm\leaflet\ext\Polygon.Intersect.Js" />
+    <Content Include="scripts\js-libs\osm\leaflet\ext\Polyline.Intersect.Js" />
+    <Content Include="scripts\js-libs\osm\leaflet\ext\tooltip.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\ext\TouchEvents.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\geocode\l.control.geosearch.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\geocode\l.geosearch.provider.esri.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\geocode\l.geosearch.provider.google.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\images\marker-icon.png" />
+    <Content Include="scripts\js-libs\osm\leaflet\images\marker-shadow.png" />
+    <Content Include="scripts\js-libs\osm\leaflet\jquery-2.1.4.min.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\leaflet-src.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\leaflet.control.draw.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\leaflet.draw.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\leaflet.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\leaflet.label.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\marker-cluster\leaflet.markercluster.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\marker-rotate\marker-rotate.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\routing\routing.draw.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\routing\routing.edit.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\routing\routing.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\routing\routing.storage.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\routing\util\lineutil.snapping.js" />
+    <Content Include="scripts\js-libs\osm\leaflet\routing\util\marker.snapping.js" />
+    <Content Include="scripts\js-libs\osm\library\circle.js" />
+    <Content Include="scripts\js-libs\osm\library\cluster.js" />
+    <Content Include="scripts\js-libs\osm\library\marker.js" />
+    <Content Include="scripts\js-libs\osm\library\markerIcon.js" />
+    <Content Include="scripts\js-libs\osm\library\osm-history-maps.js" />
+    <Content Include="scripts\js-libs\osm\library\osm-map.js" />
+    <Content Include="scripts\js-libs\osm\library\polygon.js" />
+    <Content Include="scripts\js-libs\osm\library\polyline.js" />
+    <Content Include="scripts\js-libs\parsley\parsley.js" />
+    <Content Include="scripts\js-libs\parsley\parsley.min.js" />
+    <Content Include="scripts\js-libs\stringjs\string.js" />
+    <Content Include="scripts\js-libs\svg\snap.svg-min.js" />
+    <Content Include="scripts\js-libs\svg\snap.svg.js" />
+    <Content Include="scripts\modules\counter-module.js" />
+    <Content Include="scripts\modules\dashboard-module.js" />
+    <Content Include="scripts\modules\home-module.js" />
+    <Content Include="scripts\modules\login-module.js" />
+    <Content Include="scripts\modules\monitor-module.js" />
+    <Content Include="scripts\factories\asset-factory.js" />
+    <Content Include="scripts\modules\trackmytruck-module.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="track\counter\Index.html" />
+    <Content Include="track\dashboard\index.html" />
+    <Content Include="track\home\index.html" />
+    <Content Include="track\index.html" />
+    <Content Include="track\login\index.html" />
+    <Content Include="track\monitor\index.html" />
+    <Content Include="track\Route.html" />
+    <Content Include="track\trackmyasset.html" />
+    <Content Include="track\views\modal\modal-delivery.html" />
+    <Content Include="track\views\modal\modal-driver-asset.html" />
+    <Content Include="track\views\modal\modal-feedback.html" />
+    <Content Include="track\views\modal\modal-forgotpassword.html" />
+    <Content Include="track\views\modal\modal-route-assignment.html" />
+    <Content Include="track\views\modal\modal-user-settings.html" />
+    <Content Include="track\views\modal\modal-zones-assignment.html" />
+    <Content Include="track\views\nav\asset-counter.html" />
+    <Content Include="track\views\nav\asset-delivery.html" />
+    <Content Include="track\views\nav\asset-driver.html" />
+    <Content Include="track\views\nav\asset-new-route.html" />
+    <Content Include="track\views\nav\asset-route.html" />
+    <Content Include="track\views\nav\map-tools.html" />
+    <Content Include="track\views\nav\asset-tracer.html" />
+    <Content Include="track\views\nav\measure-route.html" />
+    <Content Include="track\views\nav\nearest-asset.html" />
+    <Content Include="track\views\nav\landmarks.html" />
+    <Content Include="track\views\nav\news-feed.html" />
+    <Content Include="track\views\nav\notifications.html" />
+    <Content Include="track\views\summary\customer-summary.html" />
+    <Content Include="track\views\nav\zones.html" />
+    <Content Include="track\views\nav\asset-information.html" />
+    <Content Include="track\views\nav\asset.html" />
+    <Content Include="track\views\nav\asset-filter-counter.html" />
+    <Content Include="track\views\nav\asset-history.html" />
+    <Content Include="track\views\nav\asset-filter.html" />
+    <Content Include="track\views\nav\nav.html" />
+    <Content Include="track\views\nav\user-settings.html" />
+    <Content Include="track\views\nav\zone-filter.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="contents\styles\track\blink-div.css" />
+    <Compile Include="Controllers\Account\AccountController.cs" />
+    <Compile Include="Controllers\Dashboard\DashboardController.cs" />
+    <Compile Include="Controllers\Delivery\DeliveryController.cs" />
+    <Compile Include="Controllers\Geofence\GeofenceController.cs" />
+    <Compile Include="Controllers\History\HistoryController.cs" />
+    <Compile Include="Controllers\Map\MapController.cs" />
+    <Compile Include="Controllers\ServerController.cs" />
+    <Compile Include="Controllers\Track\TrackController.cs" />
+    <Compile Include="Controllers\Weather\WeatherController.cs" />
+    <Compile Include="DAL\AD_ADInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AM_APIKeyGoogle.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\AM_APIKeyGoogleLog.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ActiveLocation.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ActiveOdo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ActiveTag.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ActiveTaxiFee.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ActiveTracks.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ActiveUsage.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ActiveUsage_Backup_20191029.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ActiveUsage_Backup_20191030.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Alarm.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_AlarmDisposal.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_AllUserFee.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Arrive.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_BetweenStation.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Category.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ChargingTable.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CrowdReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CTICsrlog.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CTICsrs.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CTIInCall.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CTIOutCall.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CTIRecord.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CTITrunk.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CustomerAccept.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CustomerInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CustomerInput.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_CustomerUser.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Departmentinfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_DictDetail.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_DictMaster.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Discontent.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_DriverInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_EmployeeInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Event.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Eventfromcyber3.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Feedback.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_FeeIncome.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_FeeManage.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_FeePayout.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_FeeRxTx.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_GeoReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_GisUserLog.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_HourReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ICCard.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ICLog.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Information.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_InstallInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Location.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_LocationsReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_MapGrid.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_MapPositionInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_MapStreetInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_MDTArea.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_MDTInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_MTCommand.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ObjectInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ObjectPhoto.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ObjRoad.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ObjTag.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_OneUserFee.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Orders.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_ParkingReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Point.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Receivables.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Register.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RegisterService.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RegObject.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Reminder.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RepairInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Road.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RoadBranchData.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RoadBranchInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RoadData.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RoadInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RoadObject.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RoadReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RoadTracks.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Road_DataReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Road_PlanStation.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Road_PointReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Road_PointTracks.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Road_SpeedReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Road_StationReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Road_StationTracks.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Road_Vehicle.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_RxTx.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Sale.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_SendCar.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Station.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_StationInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_StationRect.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_StationTrack.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_SubCenterInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_SubObjectinfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_SueInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_TaxiFee.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_TaxiInfo_day.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_TaxInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_TaxiTracks.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\a_tempHour.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tempkm.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\a_tempminute.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_TempMonthDay.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_TempPrintByMonth.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_TempPrintByWeek.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_TracksSatelit.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_01.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_02.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_03.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_04.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_05.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_06.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_07.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_08.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_09.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_09fromcyber.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_10.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_11.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Tracks_12.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_TrackTag.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_TripReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_UpdateDBHistory.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_UserLog.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_VehicleTeamInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_Warehouse.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_WebGISRxTx.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_WebGISRxTxNew.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_WeekReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_WhsOut.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\A_WhsStock.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Barangay.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\B_POI.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\B_POIType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\B_SensorType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\C30324680_20180807.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\C30324680_20180813.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\C30324680_20180815.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CannonballGF.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\City.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\CoordinatesMatrix.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\C_CallCarCusInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\District.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\dtproperty.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\dt_getpropertiesbyid_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\dt_getpropertiesbyid_u_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\dyan_AlertEvent.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\dyan_CustomerAlertReminder.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\dyan_IdleCounter.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\dyan_ParkingCounter.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Dyan_StagingLocationGateway.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_capacityType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_CommandType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_CommChannel.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_Credit_Level.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_Customer_status.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_Customer_Type.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_DictDetail.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_DictMaster.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_DispatchFlag.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_DriveCard_Type.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_DriverStatus.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_Employeedegree.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_EmployeeType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_FinishFlag.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_GISFlag.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_GisUserLog.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_GPSFlag.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_HQGPS.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_ICCardType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_InfoType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_InsureType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_MapList.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_MDTCompany.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_ObjectBrand.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_ObjectIcon.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_ObjectStatus.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_ObjectType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_OrderType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_OverFlag.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_RepairType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_SendFlag.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_SendType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_ServiceRate.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_ServiceType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_TempHour.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_Tempkm.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_Tempminute.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_TempMonthDay.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\D_TransType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\fn_pgps_get_alerts_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\fn_pgps_isOnRoute_2_Result.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\fn_pgps_isOnRoute_Result.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\fn_Split_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Geocoordinate.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Geofence.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\GEOFENCEDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GEOFENCEDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\GEOFENCEDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\GEOFENCEDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GEOFENCEDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\GeofenceInfo.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\HSE_LastCounterTime.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\I_InfoContent.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\I_InfoCustomDetail.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\I_InfoCustomMaster.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\I_InfoRxTmp.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\I_InfoRxTx.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\I_InfoTxTmp.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\I_InfoTypeRate.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Ltfrb_ObjectInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\MAPDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MAPDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\MAPDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\MAPDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MAPDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Matrix_1.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Matrix_10.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ObjectGeofence.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Alerts.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Application.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_ApplicationModule.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_AssetSchedule.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Cannonball.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_CannonballCheckpoint.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Driver.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_EmailReports.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Leaderboard.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Log.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_MaintenanceActivity.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_MaintenanceCategory.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_MaintenanceType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Module.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_ObjectDelivery.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_ObjectDriver.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_ObjectSettings.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Protocol.cs" />
+    <Compile Include="DAL\PGPS_ProtocolLogs.cs" />
+    <Compile Include="DAL\PGPS_ReportCustom.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_ReportTypes.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Schedule.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_SensorSetting.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_SensorType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_SystemUser.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_SystemUserObject.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Tag.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_TelegramConfig.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_TelegramEvent.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_Track_Cannonball.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_UserFunction.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_UserLogs.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PGPS_UserReport.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PointOfInterest.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\PointOfInterestType.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Road.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Road1.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Route.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SERVERDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SERVERDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SERVERDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SERVERDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SERVERDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SERVERDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spDyanDelprophilGetVehicle_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spDyanGetActiveGps_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spDyanGetEventHourly_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spDyanGetGeoEventHourly_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spDyanGetTracksHourly_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetAllRoadIDAndRoadName_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetAllUserFee_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetHistoryGPSData_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetOneUserFee_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetRoadData_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetRoadHistoryDataByVehicleSIMAndTime_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetRoadIDAndRoadNamebyVehicleNo_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetRoadPlanTime_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetRoadStationTracksByVehicleNoAndTime_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SpGetVehicleByRoadID_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetVehiclePlanTimeByVehicleNoAndTime_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spGetVehicleRoadPlanInfoByVehicleNoAndTTime_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\splitstring_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\spQuerySueInfo_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SpTestWithParam_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SpTest_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_Account_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_AndroGetPoi_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_AndroGetTracks_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_CustomerSet_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_CusType_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_helpdiagrams_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_ObjReg_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_OutputMonthReport_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_OutputWeekReport_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_AccountInformation_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_cam_asset_information_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_cam_asset_photo_history_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_cannonball_getAllSegment_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_cannonball_getRankings_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_cannonball_updateASL_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_GetCounterByUserID_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_GetFuelHistory_Staging_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_getObjectInfoList_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_getObjectRoles_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_getObjectSensorSetting_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_GetTempHistory_Staging_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_GetTrackHistory_Staging_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_GetVehicleDistance_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_GetVehicleUtili_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_active_list_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_get_assetlist_inside_by_zone_Result.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_get_assets_inside_list_based_zone_type_Result.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_get_assets_inside_zone_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_get_assets_inside_zone_type_Result.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_active_list_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_alert_notif_list_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_count_list_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_filter_list_export_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_filter_list_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_information1_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_information2_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_information_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_information_Result1.cs" />
+    <Compile Include="DAL\sp_PGPS_get_asset_list_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_location_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_map_new_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_map_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_notif_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_popup_information1_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_popup_information_new_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_popup_information_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_settings_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_type_list_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_asset_violation_list_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_get_gps_activity_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_pgps_get_ObjectDelivery_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_object_zone_list_filtered_Result.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_object_zone_list_Result.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_roles_list_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_summary_info_assetid_bckup_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_summary_info_assetid_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_summary_info_group_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_summary_info_sysuser_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_user_route_list_status_Result.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_user_zone_list_filtered_Result.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_get_user_zone_list_Result.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_history_summary_new_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_history_summary_old_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_history_summary_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_history_summary_sat_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_history_summary_test_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_telegram_alerts_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_track_asset_by_assetid_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_track_asset_by_assetname_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_TRP_GetCurrentActiveDriver_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_TRP_getHistoryDriverList_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_PGPS_TRP_getUserChildAssignmentList_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\SP_PGPS_UPDATE_MAINTENANCE_ODO_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_Search_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_SysRoll_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_SysUserSearch_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_UserValidateOperate_Result.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\State.cs">
+      <DependentUpon>MAPDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sysdiagram.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\S_RoleFun.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\S_SysApp.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\S_SysFun.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\S_SysRole.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\S_SysUser.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\S_SysUserVehicle.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\S_UserRole.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TFDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TFDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TFDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TFDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TFDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\T_Customers.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\T_Dispatch.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\T_Grid.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\T_Order.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\T_PositionInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\T_RoadInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\T_SueInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\vw_PGPS_Segment_Cannonball.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_ActivityPerCustomer.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_AllData.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_CekVersion.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_GPSdata.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_PGPS_CurrentObjectTracks.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_PGPS_ObjectFullInfoList.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_SueInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_TarikDataGPS.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_TripPerCustomer.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\V_UserRights.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\v_vehiclecustomer.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\WebServerConfiguration.cs">
+      <DependentUpon>SERVERDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\WebServers.cs">
+      <DependentUpon>SERVERDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\W_ErrorCode.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\W_Module.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\W_Role.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\W_SysType.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\W_UserInfo.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\W_UserRole.cs">
+      <DependentUpon>TFDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Zone.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ZoneType.cs">
+      <DependentUpon>GEOFENCEDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Extensions\Extensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\DbGeographyGeoJsonConverter .cs" />
+    <Compile Include="Helpers\MOBILE\Converter.cs" />
+    <Compile Include="Helpers\GEOCODING\GeoCoder.cs" />
+    <Compile Include="Helpers\GEOCODING\GeoCodeResult.cs" />
+    <Compile Include="Helpers\GEOCODING\SignUrl.cs" />
+    <Compile Include="Helpers\GEOFENCEDB\GEOFENCEDBHelpers.cs" />
+    <Compile Include="Helpers\MAPDB\MAPDBHelpers.cs" />
+    <Compile Include="Helpers\MOBILE\MobileHelper.cs" />
+    <Compile Include="Helpers\PhilgpsAuthorizationProvider.cs" />
+    <Compile Include="Helpers\PhilgpsUserRepository.cs" />
+    <Compile Include="Helpers\RequestHandler.cs" />
+    <Compile Include="Helpers\SERVERDB\SERVERDBHelpers.cs" />
+    <Compile Include="Helpers\TFDB\TFDBHelpers.cs" />
+    <Compile Include="Helpers\Utilities.cs" />
+    <Compile Include="Helpers\WorldWeatherOnline\LocalWeather.cs" />
+    <Compile Include="Helpers\WorldWeatherOnline\LocationSearch.cs" />
+    <Compile Include="Helpers\WorldWeatherOnline\MarineWeather.cs" />
+    <Compile Include="Helpers\WorldWeatherOnline\PastWeather.cs" />
+    <Compile Include="Helpers\WorldWeatherOnline\PremiumAPI.cs" />
+    <Compile Include="Helpers\WorldWeatherOnline\TimeZone.cs" />
+    <Compile Include="Hubs\TrackHub.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Asset.cs" />
+    <Compile Include="Models\Driver.cs" />
+    <Compile Include="Models\Geofence\GeoCoordinate.cs" />
+    <Compile Include="Models\Geofence\Landmark.cs" />
+    <Compile Include="Models\Geofence\Route.cs" />
+    <Compile Include="Models\Geofence\Zone.cs" />
+    <Compile Include="Models\Mobile\CustomerMobile.cs" />
+    <Compile Include="Models\Mobile\TrackMobile.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Server.cs" />
+    <Compile Include="Models\Track\Customer.cs" />
+    <Compile Include="Models\Track\Delivery.cs" />
+    <Compile Include="Models\Track\DriverTag.cs" />
+    <Compile Include="Models\Track\Notification.cs" />
+    <Compile Include="Models\Track\Report.cs" />
+    <Compile Include="Models\Track\Status.cs" />
+    <Compile Include="Models\Track\Track.cs" />
+    <Compile Include="Models\Track\UserSettings.cs" />
+    <Compile Include="Models\UserVehicle.cs" />
+    <Compile Include="Models\Weather\Marine.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scripts\js-libs\angularjs\angular-aria.min.js.map" />
+    <Content Include="scripts\js-libs\angularjs\angular-resource.min.js.map" />
+    <Content Include="scripts\js-libs\angularjs\angular-route.min.js.map" />
+    <Content Include="scripts\js-libs\angularjs\angular-sanitize.min.js.map" />
+    <Content Include="scripts\js-libs\angularjs\angular.min.js.map" />
+    <Content Include="scripts\js-libs\jquery-export\bower.json" />
+    <Content Include="scripts\js-libs\jquery-export\libs\FileSaver\LICENSE.md" />
+    <Content Include="scripts\js-libs\jquery-export\libs\html2canvas\LICENSE" />
+    <Content Include="scripts\js-libs\jquery-export\README.md" />
+    <Content Include="scripts\js-libs\jquery-export\test\icons\Thumbs.db" />
+    <Content Include="scripts\js-libs\jquery-export\tools\minify2.py" />
+    <Content Include="scripts\js-libs\jquery-export\tools\minify3.py" />
+    <Content Include="scripts\js-libs\parsley\parsley.js.map" />
+    <Content Include="scripts\js-libs\parsley\parsley.min.js.map" />
+    <Content Include="scripts\js-libs\jquery\flexslider\flexslider.less" />
+    <Content Include="scripts\js-libs\jquery\flexslider\fonts\flexslider-icon.eot" />
+    <Content Include="scripts\js-libs\jquery\flexslider\fonts\flexslider-icon.ttf" />
+    <Content Include="scripts\js-libs\jquery\flexslider\fonts\flexslider-icon.woff" />
+    <Content Include="scripts\jquery-1.10.2.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="scripts\js-libs\bootstrap-datetimepicker\" />
+    <Folder Include="SqlServerTypes\x64\" />
+    <Folder Include="SqlServerTypes\x86\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61060</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61016/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>http://localhost:61016/</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

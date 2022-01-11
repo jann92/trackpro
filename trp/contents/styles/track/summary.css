@@ -1,0 +1,134 @@
+﻿:root {
+  --red: #b00;
+  --blue: #4679bd;
+  --main-color: #22B573;
+}
+
+.summary-container {
+    position: absolute;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.88);
+    bottom: -35px;
+    width: 100%;
+    display: none;
+    height: 100%;
+}
+
+.summary-icon {
+    background: /*#22B573;*/var(--main-color);
+    border: 1px solid /*#22B573;*/var(--main-color);
+    width: 25px;
+    text-align: center;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    cursor: pointer;
+    font-size: 15px;
+    color: #fff;
+    position: absolute;
+    z-index: 1030;
+    bottom: 82px;
+}
+
+    .summary-icon:hover {
+        color: #000;
+    }
+
+.summary-control {
+    border: 2px solid /*#22B573;*/var(--main-color);
+    border-bottom: none;
+    display: none;
+    height: 100%;
+}
+
+.summary-div {
+    text-align: center;
+    width: 100%;
+}
+
+.left-side-panel-summary {
+    width: 35px;
+    height: 100%;
+    height: 100%;
+    padding: 0px 0 0 0;
+    text-align: center;
+    position: fixed;
+    z-index: 95;
+    background-color: #fff;
+}
+
+.summary-table-container {
+    position: absolute;
+    left: 35px;
+    border: 5px solid /*#22B573;*/var(--main-color);
+    right: 35px;
+    bottom: 110px;
+    top: 0;
+    overflow-x: auto;
+}
+
+.summary-content {
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    bottom: 0;
+    top: 35px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.filter-summary {
+    position: absolute;
+    right: 5px;
+    left: 78%;
+}
+
+.summary-left-side-content-container {
+    position: absolute;
+    top: 35px;
+    left: 55px;
+    z-index: 2000;
+    max-height: 485px;
+    display: none;
+    width: 325px;
+    background-color: #fff;
+    box-shadow: 1px 2px 1px #888888;
+}
+
+#filter-table td {
+    width: 75px;
+}
+
+.fixed-header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 21px;
+}
+
+.fixed-header-padding {
+    position: relative;
+    left: 5px;
+}
+
+.collapse-list {
+    padding: 1px 5px;
+}
+
+.summary-font-icon {
+    color: /*#22B573;*/var(--main-color);
+    text-decoration: none !important;
+    cursor: pointer;
+}
+
+    .summary-font-icon :hover {
+        color: #000 !important;
+    }
+
+.search-assets {
+    height: 35px;
+}
+
+.top-border-container{
+    border-top: 3px solid /*#22B573;*/var(--main-color);
+    margin-bottom: 5px;
+}

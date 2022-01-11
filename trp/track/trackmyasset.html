@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="TrackMyTruck">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>TrackPro: Track My Truck</title>
+    <link href="../contents/styles/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="../contents/styles/common.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="../contents/styles/pgps-icons/css/pgps-function-items.css" rel="stylesheet" />
+    <link href="../contents/styles/track/track.css" rel="stylesheet" />
+
+    <link href="../contents/styles/trackmytruck.css" rel="stylesheet" />
+
+    <script src="../scripts/js-libs/moment/moment.min.js"></script>
+    <script src="../scripts/js-libs/moment/moment-precise-range.js"></script>
+</head>
+<body ng-controller="TrackMyTruckController">
+    <div class="head">
+        <img src="../contents/images/login/trackpro_logo.png" class="title-logo" />
+    </div>
+    <div id="alert_placeholder"></div>
+    <div id="map"> </div>
+
+    <div id="asset-info">
+        <table class="table table-condensed table-hover" id="asset-information-details">
+            <tr>
+                <td class="width-40px">
+                    <a title="Customer Name"><img class="label-icon" src="../contents/images/track/asset-information/details/name.png" /></a>
+                </td>
+                <!--<td class="width-100px">Customer</td>-->
+
+                <td>{{AssetGPSInformation.CustomerName}}</td>
+            </tr>
+            <tr>
+                <td class="width-40px">
+                    <a title="Asset Name"> <img class="label-icon" src="../contents/images/track/asset-information/details/name.png" /></a>
+                </td>
+                <!--<td class="width-100px">Name</td>-->
+                <td>{{AssetGPSInformation.Name}}</td>
+            </tr>
+            <tr>
+                <td class="width-40px">
+                    <a title="Asset ID"><img class="label-icon" src="../contents/images/track/asset-information/details/asset_id.png" /></a>
+                </td>
+                <!--<td>GPS ID</td>-->
+                <td>{{AssetGPSInformation.AssetID}}</td>
+            </tr>
+            <tr>
+                <td class="width-40px">
+                    <a title="DateTime"><img class="label-icon" src="../contents/images/track/asset-information/details/data_time.png" /></a>
+                </td>
+                <!--<td>
+                    Date Time <br />
+                </td>-->
+                <td><span style="white-space:pre-wrap;">{{AssetGPSInformation.GPSTime}}</span></td>
+            </tr>
+            <tr>
+                <td class="width-40px">
+                    <img class="label-icon" src="../contents/images/track/asset-information/details/speed.png" />
+                </td>
+              <!--  <td>Speed-Course</td>-->
+                <td>{{AssetGPSInformation.Speed}} kph, {{AssetGPSInformation.DirectionDegrees}}° {{AssetGPSInformation.DirectionCardinal}}</td>
+            </tr>
+            <tr>
+                <td class="width-40px">
+                    <img class="label-icon" src="../contents/images/track/asset-information/details/location.png" />
+                </td>
+                <!--<td>Location</td>-->
+                <td>
+                    <span class="location-ellipsis" title="{{AssetGPSInformation.Location}}">
+                        {{AssetGPSInformation.Location}}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="width-40px">
+                    <img class="label-icon" src="../contents/images/track/asset-information/details/status.png" />
+                </td>
+                <!--<td>Status</td>-->
+                <td>{{AssetGPSInformation.Status1}}</td>
+            </tr>
+            <tr>
+                <td class="width-40px">
+                    <img class="label-icon" src="../contents/images/track/asset-information/details/status.png" />
+                </td>
+                <!--<td>Alert</td>-->
+                <td>{{AssetGPSInformation.AlertStatus}}</td>
+            </tr>
+            <tr>
+                <td class="width-40px">
+                    <img class="label-icon" src="../contents/images/track/asset-information/details/sim.png" />
+                </td>
+                <!--<td>SIM No.</td>-->
+                <td>{{AssetGPSInformation.SIMNumber}}</td>
+            </tr>
+            <tr>
+                <td class="width-40px">
+                    <img class="label-icon" src="../contents/images/track/asset-information/details/coordinates.png" />
+                </td>
+                <!--<td>Coordinates</td>-->
+                <td>{{AssetGPSInformation.Latitude + ', ' + AssetGPSInformation.Longitude}}</td>
+
+            </tr>
+
+            <tr>
+                <td class="width-40px">
+                    <img class="label-icon" src="../contents/images/track/asset-information/details/odometer.png" />
+                </td>
+                <!--<td>Odometer</td>-->
+                <td>{{AssetGPSInformation.Odometer == "" ? "0" : AssetGPSInformation.Odometer | number:0   }} km</td>
+            </tr>
+
+            <tr>
+                <td class="width-40px">
+                    <img class="label-icon" src="../contents/images/track/asset-information/sensors/fuel.png" />
+                </td>
+                <!--<td>Fuel</td>-->
+                <td>{{AssetGPSInformation.Fuel < 0 || AssetGPSInformation.Fuel == null ? "N/A" : AssetGPSInformation.Fuel + " L"}}</td>
+            </tr>
+
+            <tr>
+                <td class="width-40px">
+                    <img class="label-icon" src="../contents/images/track/asset-information/sensors/temperature_1.png" />
+                </td>
+                <!--<td>Temperature 1</td>-->
+                <td>{{AssetGPSInformation.Temperature1 < 0 ? "N/A" :  AssetGPSInformation.Temperature1 + " °C"}}</td>
+            </tr>
+
+            <tr>
+                <td class="width-40px">
+                    <img class="label-icon" src="../contents/images/track/asset-information/sensors/temperature_2.png" />
+                </td>
+                <!--<td>Temperature 2</td>-->
+                <td>{{AssetGPSInformation.Temperature2 < 0 ? "N/A" : AssetGPSInformation.Temperature2 + " °C"}}</td>
+            </tr>
+
+            <tr>
+                <td class="width-40px">
+                    <a title="Ignition"><img class="label-icon" src="../contents/images/track/asset-information/details/statuses.svg" /></a>
+                </td>
+                <!--<td>Ignition</td>-->
+                <td>
+                    <button ng-class="{'on-text-button': AssetGPSInformation.Ignition == true, 'off-text-button': AssetGPSInformation.Ignition == false}">
+                        <span>{{AssetGPSInformation.Ignition| on_off}}</span>
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="width-40px">
+                    <a title="Sensor 1"><img class="label-icon" src="../contents/images/track/asset-information/details/statuses.svg" /></a>
+                </td>
+                <!--<td>Sensor 1</td>-->
+                <td>
+                    <button ng-class="{'on-text-button': AssetGPSInformation.Sensor1 == true, 'off-text-button': AssetGPSInformation.Sensor1 == false}">
+                        <span>{{AssetGPSInformation.Sensor1| on_off}}</span>
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="width-40px">
+                    <a title="Sensor 2"><img class="label-icon" src="../contents/images/track/asset-information/details/statuses.svg" /></a>
+                </td>
+                <!--<td>Sensor 2</td>-->
+                <td>
+                    <button ng-class="{'on-text-button': AssetGPSInformation.Sensor2 == true, 'off-text-button': AssetGPSInformation.Sensor2 == false}">
+                        <span>{{AssetGPSInformation.Sensor2| on_off}}</span>
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="width-40px">
+                    <a title="Power Cut"><img class="label-icon" src="../contents/images/track/asset-information/details/statuses.svg" /></a>
+                </td>
+                <!--<td>Power Cut</td>-->
+                <td>
+                    <button ng-class="{'on-red-text-button': AssetGPSInformation.PowerCut == true, 'off-text-button': AssetGPSInformation.PowerCut == false}">
+                        <span>{{AssetGPSInformation.PowerCut| on_off}}</span>
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="width-40px">
+                    <a title="SOS"><img class="label-icon" src="../contents/images/track/asset-information/details/statuses.svg" /></a>
+                </td>
+                <!--<td>SOS</td>-->
+                <td>
+                    <button ng-class="{'on-red-text-button': AssetGPSInformation.SOS == true, 'off-text-button': AssetGPSInformation.SOS == false}">
+                        <span>{{AssetGPSInformation.SOS| on_off}}</span>
+                    </button>
+                </td>
+            </tr>
+     
+        </table>
+    </div>
+    
+
+    <!-- JS Libraries Scripts -->
+    <script src="../scripts/js-libs/jquery/jquery-2.2.3.min.js"></script>
+    <script src="../scripts/js-libs/angularjs/angular.min.js"></script>
+    <script src="../scripts/js-libs/angularjs/angular-route.min.js"></script>
+    <script src="../scripts/js-libs/angularjs/ngStorage.js"></script>
+    <script src="../scripts/js-libs/parsley/parsley.min.js"></script>
+    <script src="../scripts/js-libs/angularjs/angular-filter.min.js"></script>
+    <script src="../scripts/js-libs/angularjs/angular-animate.min.js"></script>
+    <script src="../scripts/js-libs/angularjs/loading-bar.js"></script>
+    <script src="../scripts/js-libs/angularjs/ui-bootstrap-tpls-1.3.2.min.js"></script>
+    <script src="../scripts/js-libs/chartjs/chart.js"></script>
+    <script src="../scripts/js-libs/chartjs/angular-chart.min.js"></script>
+
+    <!--Services Script-->
+    <script src="../scripts/modules/trackmytruck-module.js"></script>
+    <script src="../scripts/factories/asset-factory.js"></script>
+    
+    <!--Google maps-->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4LKHtD5D_qNHx175vd2L0zVvduQLiAQc&client=gme-philgpscorporation&libraries=places,drawing,geometry"></script>
+
+    <!-- Helper Script -->
+    <script src="../scripts/helpers/StringHelpers.js"></script>
+
+    <!--Controller Section-->
+    <script src="../scripts/controllers/trackmytruck-controller.js"></script>
+
+
+</body>
+</html>

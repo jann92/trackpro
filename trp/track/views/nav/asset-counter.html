@@ -1,0 +1,73 @@
+﻿<div class="left-side-content-container" id="asset-counter" style="width:600px;">
+    <div class="side-panel-menu-content-header-container">
+        <div class="side-panel-menu-content-header">
+            <label class="side-panel-menu-content-header-title">Asset Counter</label>
+            <a target="_blank" href="{{helperUrl + '/helper/faq/#/trp/3/asset'}}" style="text-decoration:none;" class="pointer" title="FAQ"><i class="fa fa-question-circle-o faq-question"></i></a>
+            <hr class="spacing-2px" />
+        </div>
+
+    </div>
+    <div class="side-panel-menu-content-body-container">
+        <div class="side-panel-menu-content-body" style="width:600px;overflow-y:hidden;max-height:500px;">
+            <div class="export-panel-filter">
+                <a ng-click="getCounterList()" class="btn btn-default export-panel-button" title="Refresh">
+                    <i class="fa fa-refresh circle-icon"></i>
+                </a>
+                <a href="../../track/counter/" target="_blank" class="btn btn-default export-panel-button" title="Open in New Tab.">
+                    <i class="fa fa-file-o circle-icon"></i>
+                </a>
+            </div>
+
+            <div class="grid" ng-show="AssetCounterList.length > 0">
+                <div class="grid-item grid-item black-border-bottom">
+                    <span class="counter-title">Total</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].Total}}&nbsp;</span>
+                </div>
+                <div class="grid-item black-border-bottom">
+                    <span class="counter-title">Active</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].Active}}&nbsp;</span>
+                </div>
+                <div class="grid-item grey-border-bottom">
+                    <span class="counter-title">InActive</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].InActive}}&nbsp;</span>
+                </div>
+                <div class="grid-item green-border-bottom">
+                    <span class="counter-title">Drive</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].Driving}}&nbsp;</span>
+                </div>
+                <div class="grid-item yellow-border-bottom">
+                    <span class="counter-title">Idle</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].Idling}}&nbsp;</span>
+                </div>
+                <div class="grid-item blue-border-bottom">
+                    <span class="counter-title">Park</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].Parking}}&nbsp;</span>
+                </div>
+                <div class="grid-item red-border-bottom">
+                    <span class="counter-title">OverSpeed</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].OverSpeed}}&nbsp;</span>
+                </div>
+                <div class="grid-item red-border-bottom">
+                    <span class="counter-title">OverIdle</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].OverIdle}}&nbsp;</span>
+                </div>
+                <div class="grid-item red-border-bottom">
+                    <span class="counter-title">OverPark</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].OverPark}}&nbsp;</span>
+                </div>
+                <div class="grid-item red-border-bottom">
+                    <span class="counter-title">SOS</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].SOS}}&nbsp;</span>
+                </div>
+                <div class="grid-item red-border-bottom">
+                    <span class="counter-title">Power Cut</span><br /><br /><br />
+                    <span class="font-40px pull-right">{{AssetCounterList[0].PowerCut}} &nbsp;</span>
+                </div>
+                <div class="grid-item" style="border:none;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
