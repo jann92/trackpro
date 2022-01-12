@@ -1494,8 +1494,8 @@
     <Content Include="scripts\js-libs\jquery-ui\jquery.mCustomScrollbar.min.js" />
     <Content Include="scripts\js-libs\jquery-ui\jquery.mousewheel-3.0.6.js" />
     <Content Include="scripts\js-libs\jquery-ui\jquery.mousewheel.js" />
-    <Content Include="scripts\js-libs\jquery\jquery-2.2.3.js" />
-    <Content Include="scripts\js-libs\jquery\jquery-2.2.3.min.js" />
+    <Content Include="scripts\js-libs\jquery\jquery-3.6.0.js" />
+    <Content Include="scripts\js-libs\jquery\jquery-3.6.0.min.js" />
     <Content Include="scripts\js-libs\jquery\jquery.stickytableheaders.js" />
     <Content Include="scripts\js-libs\moment\moment-precise-range.js" />
     <Content Include="scripts\js-libs\moment\moment.min.js" />
@@ -1550,6 +1550,8 @@
     <Content Include="scripts\js-libs\stringjs\string.js" />
     <Content Include="scripts\js-libs\svg\snap.svg-min.js" />
     <Content Include="scripts\js-libs\svg\snap.svg.js" />
+    <Content Include="scripts\js-libs\tabletoexcel\index.js" />
+    <Content Include="scripts\js-libs\tabletoexcel\tableToExcel.js" />
     <Content Include="scripts\modules\counter-module.js" />
     <Content Include="scripts\modules\dashboard-module.js" />
     <Content Include="scripts\modules\home-module.js" />
@@ -2892,6 +2894,10 @@
     <Content Include="scripts\js-libs\parsley\parsley.js.map" />
     <Content Include="scripts\js-libs\parsley\parsley.min.js.map" />
     <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="scripts\js-libs\tabletoexcel\index.js.map" />
+    <Content Include="scripts\js-libs\tabletoexcel\index.map" />
+    <Content Include="scripts\js-libs\tabletoexcel\tableToExcel.js.map" />
+    <Content Include="scripts\js-libs\tabletoexcel\tableToExcel.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
