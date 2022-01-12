@@ -3661,7 +3661,7 @@ var jsPDF = (function (global) {
                 $frame = window.frames[framename];
                 $frame.document.body.innerHTML = element;
                 return $frame.document.body;
-            })(element.replace(/<\/?script[^>]*?>/g, ''));
+            })(element.replace(/<\\\/?script[^>]*?>/gi, ''));
         }
         var r = new Renderer(pdf, x, y, settings), out;
 
