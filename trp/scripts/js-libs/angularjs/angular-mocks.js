@@ -1572,7 +1572,7 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
     if (!url || !angular.isString(url)) return ret;
 
     url = url
-      .replace(/([().])/g, '\\$1')
+        .replace(/([().])/g, '\\\\$1')
       .replace(/(\/)?:(\w+)([\?\*])?/g, function(_, slash, key, option) {
         var optional = option === '?' ? option : null;
         var star = option === '*' ? option : null;
@@ -1587,7 +1587,7 @@ function createHttpBackendMock($rootScope, $timeout, $delegate, $browser) {
           + ')'
           + (optional || '');
       })
-      .replace(/([\/$\*])/g, '\\$1');
+        .replace(/([\/$\*])/g, '\\\\$1');
 
     ret.regexp = new RegExp('^' + url, 'i');
     return ret;

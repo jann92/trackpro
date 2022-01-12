@@ -3394,7 +3394,7 @@ var lastActive,
 			form = radio.form,
 			radios = $( [] );
 		if ( name ) {
-			name = name.replace( /'/g, "\\'" );
+			name = name.replace(/'/g, "\\\\'" );
 			if ( form ) {
 				radios = $( form ).find( "[name='" + name + "'][type=radio]" );
 			} else {

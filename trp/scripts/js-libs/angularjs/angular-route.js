@@ -221,7 +221,7 @@ function $RouteProvider() {
         keys = ret.keys = [];
 
     path = path
-      .replace(/([().])/g, '\\$1')
+        .replace(/([().])/g, '\\\\$1')
       .replace(/(\/)?:(\w+)(\*\?|[\?\*])?/g, function(_, slash, key, option) {
         var optional = (option === '?' || option === '*?') ? '?' : null;
         var star = (option === '*' || option === '*?') ? '*' : null;
@@ -236,7 +236,7 @@ function $RouteProvider() {
           + ')'
           + (optional || '');
       })
-      .replace(/([\/$\*])/g, '\\$1');
+        .replace(/([\/$\*])/g, '\\\\$1');
 
     ret.regexp = new RegExp('^' + path + '$', insensitive ? 'i' : '');
     return ret;
