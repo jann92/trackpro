@@ -3579,7 +3579,7 @@ Snap.plugin(function (Snap, Element, Paper, glob, Fragment) {
             if (type) {
                 for (var i = 0, ii = attr.length; i < ii; i++) {
                     res += " " + attr[i].name + '="' +
-                            attr[i].value.replace(/"/g, '\\\"') + '"';
+                            attr[i].value.replace(/\"/g, '\\"') + '"';
                 }
             }
             if (chld.length) {
