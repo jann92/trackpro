@@ -1406,8 +1406,6 @@
     <None Include="Properties\PublishProfiles\prf1.pubxml" />
     <None Include="Properties\PublishProfiles\prf_trackpro2.pubxml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="scripts\jquery-1.10.2.js" />
-    <Content Include="scripts\jquery-1.10.2.min.js" />
     <Content Include="scripts\jquery.signalR-2.1.2.js" />
     <Content Include="scripts\jquery.signalR-2.1.2.min.js" />
     <Content Include="scripts\js-libs\angularjs\angular-animate.js" />
@@ -2893,7 +2891,6 @@
     <Content Include="scripts\js-libs\jquery-export\tools\minify3.py" />
     <Content Include="scripts\js-libs\parsley\parsley.js.map" />
     <Content Include="scripts\js-libs\parsley\parsley.min.js.map" />
-    <Content Include="scripts\jquery-1.10.2.min.map" />
     <Content Include="scripts\js-libs\tabletoexcel\index.js.map" />
     <Content Include="scripts\js-libs\tabletoexcel\index.map" />
     <Content Include="scripts\js-libs\tabletoexcel\tableToExcel.js.map" />
