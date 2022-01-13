@@ -2898,6 +2898,8 @@
     <Content Include="scripts\js-libs\tabletoexcel\index.map" />
     <Content Include="scripts\js-libs\tabletoexcel\tableToExcel.js.map" />
     <Content Include="scripts\js-libs\tabletoexcel\tableToExcel.map" />
+    <Content Include="scripts\js-libs\bootstrap\bootstrap.js.map" />
+    <Content Include="scripts\js-libs\bootstrap\bootstrap.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
